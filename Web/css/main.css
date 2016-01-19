@@ -21,15 +21,28 @@ li{
   display:inline;
   position:relative;
   top:-1.5em;
+  margin-left:10%;
+  margin-rigth:10%;
+  padding:5px;
+}
 
-  /*margin-right:15%;*/
+li>a:hover{
+  transition: background 0.3s linear 0.15s, color 0.3s linear 0.25s;
+  background-color:rgba(0, 140, 255, 0.63);
+  color:#FFFFFF;
+  border-radius:1em;
+  padding: 10px 10px;
+  margin-left:-0.65em;
 }
 
 ul>li:nth-child(2) {
-  height:70px;
-  width:20px;
+  position:relative;
+  top:-23px;
 
-  border: solid 2px rgb(250, 255, 0);
+  color:rgb(204, 33, 33);
+  margin-left:0;
+  margin-right:2%;
+  font-size:22px;
 }
 
 ul>a{
@@ -37,18 +50,6 @@ ul>a{
   margin-left:0em;
 }
 
-a>div{
-  position: relative;
-  top:-70px;
-
-  height:70px;
-  width:100px;
-
-
-  border: solid 2px rgb(36, 255, 0);
-
-  font-size: 25px;
-}
 
 nav{
   background-color:rgba(255, 255, 255, 0.81);
