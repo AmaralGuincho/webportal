@@ -1,5 +1,17 @@
 CREATE DATABASE AMARAL_GUINCHOS;
 
+CREATE TABLE user{
+  id_user INT NOT NULL AUTO_INCREMENT,
+  login_user VARCHAR(30) NOT NULL,
+  password_user VARCHAR(30) NOT NULL,
+  id_funcionario INT NOT NULL,
+  id_cliente INT NOT NULL,
+
+  PRIMARY KEY (id_user),
+  FOREIGN KEY (id_funcionario) REFERENCES funcionario (id_funcionario),
+  FOREIGN KEY (id_cliente) REFERENCES cliente(id_cliente)
+};
+
 CREATE TABLE session(
    id_session INT NOT NULL AUTO_INCREMENT,
    id_funcionario INT NOT NULL,
