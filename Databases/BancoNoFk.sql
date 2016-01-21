@@ -1,19 +1,19 @@
-DROP DATABASE AMARAK_GUINCHOS;
+#Banco de Dados s/ FK
+DROP DATABASE amaral_guincho;
 
-CREATE DATABASE AMARAL_GUINCHOS;
+CREATE DATABASE amaral_guincho;
 
-USE AMARAL_GUINCHOS;
-CREATE TABLE user{
+USE amaral_guincho;
+
+CREATE TABLE user(
   id_user INT NOT NULL AUTO_INCREMENT,
   login_user VARCHAR(30) NOT NULL,
   password_user VARCHAR(30) NOT NULL,
   id_funcionario INT NOT NULL,
   id_cliente INT NOT NULL,
 
-  PRIMARY KEY (id_user),
-  FOREIGN KEY (id_funcionario) REFERENCES funcionario (id_funcionario),
-  FOREIGN KEY (id_cliente) REFERENCES cliente(id_cliente)
-};
+  PRIMARY KEY (id_user)
+);
 
 CREATE TABLE session(
    id_session INT NOT NULL AUTO_INCREMENT,
@@ -21,9 +21,7 @@ CREATE TABLE session(
    data_session datetime NOT NULL,
    id_oe INT NOT NULL,
 
-  PRIMARY KEY (id_session),
-  FOREIGN KEY (id_funcionario) REFERENCES funcionario (id_funcionario),
-  FOREIGN KEY (id_oe) REFERENCES ordem_de_servico (id_oe)
+  PRIMARY KEY (id_session)
 );
 
 CREATE TABLE ordem_de_servico(
@@ -37,16 +35,11 @@ CREATE TABLE ordem_de_servico(
    local_retirada  VARCHAR(30) NOT NULL,
    agendamento  DATE NOT NULL,
    numero_sinistro  INT NOT NULL,
-  -----------------------------------------
    local_entrega  VARCHAR(30) NOT NULL,
   --MOTORISTA
    id_funcionario  INT NOT NULL,
 
-  PRIMARY KEY (id_oe),
-  FOREIGN KEY (id_seguro) REFERENCES seguro (id_seguro),
-  FOREIGN KEY (d_cliente) REFERENCES cliente (id_cliente),
-  --Motorista
-  FOREIGN KEY (id_funcionario) REFERENCES funcionario (id_funcionario)
+  PRIMARY KEY (id_oe)
 );
 
 CREATE TABLE cliente(
@@ -58,7 +51,7 @@ CREATE TABLE cliente(
    end_cliente  VARCHAR(30) NOT NULL,
 
   PRIMARY KEY (id_cliente),
-  FOREIGN KEY (id_seguro) REFERENCES seguro (id_seguro)
+  CONSTRAINT UNIQUE (cpf_cliente)
 );
 
 CREATE TABLE veiculo(
@@ -70,21 +63,19 @@ CREATE TABLE veiculo(
    placa_veiculo  VARCHAR(6) NOT NULL,
    cor_veiculo  VARCHAR(10) NOT NULL,
 
-  PRIMARY KEY (id_veiculo),
-  FOREIGN KEY (id_cliente) REFERENCES cliente (id_cliente)
+  PRIMARY KEY (id_veiculo)
 );
 
 CREATE TABLE funcionario(
    id_funcionario  INT NOT NULL AUTO_INCREMENT,
    nome_funcionario  VARCHAR(20) NOT NULL,
-   categoria_funcionario  INT NOT NULL
+   categoria_funcionario  INT NOT NULL,
    end_funcionario  VARCHAR(20) NOT NULL,
    cel_funcionario  INT(11) NOT NULL,
    fixo_funcionario  INT(10) NOT NULL,
    data_contratacao_funcionario  DATE NOT NULL,
 
-  PRIMARY KEY (id_funcionario),
-  FOREIGN KEY (id_habilitacao) REFERENCES habilitacao (id_habilitacao)
+  PRIMARY KEY (id_funcionario)
 );
 
 #region (Descrição_Funcionarios)
@@ -104,8 +95,7 @@ CREATE TABLE habilitacao(
    local_gerado  VARCHAR(30) NOT NULL,
    emissao  DATE NOT NULL,
 
-  PRIMARY KEY (id_habilitacao),
-  FOREIGN KEY (id_funcionario) REFERENCES funcionario (id_funcionario)
+  PRIMARY KEY (id_habilitacao)
 );
 
 CREATE TABLE frota(
@@ -203,4 +193,4 @@ CREATE TABLE seguro(
   vigilante_hora_trabalhada INT NOT NULL,
 
   PRIMARY KEY (id_seguro)
- );
+);
