@@ -36,7 +36,7 @@ CREATE TABLE ordem_de_servico(
    agendamento  DATE NOT NULL,
    numero_sinistro  INT NOT NULL,
    local_entrega  VARCHAR(30) NOT NULL,
-  --MOTORISTA
+  #--MOTORISTA
    id_funcionario  INT NOT NULL,
 
   PRIMARY KEY (id_oe)
@@ -79,9 +79,9 @@ CREATE TABLE funcionario(
 );
 
 #region (Descrição_Funcionarios)
--- Na tabela funcionarios, o item "Categoria funcionario" de tipo
--- inteiro, serve para estabelecer uma hierarquia  onde
--- 1>2>3>4>5, sendo 1 para adm e 5 para funcionario
+#-- Na tabela funcionarios, o item "Categoria funcionario" de tipo
+#-- inteiro, serve para estabelecer uma hierarquia  onde
+#-- 1>2>3>4>5, sendo 1 para adm e 5 para funcionario
 #endregion
 
 CREATE TABLE habilitacao(
@@ -100,13 +100,13 @@ CREATE TABLE habilitacao(
 
 CREATE TABLE frota(
    id_veiculo  INT NOT NULL AUTO_INCREMENT,
--- (Tipo veiculo)
+#-- (Tipo veiculo)
    tipo_guincho  BOOLEAN NOT NULL,
    tipo_taxi  BOOLEAN NOT NULL,
    tipo_sosguincho  BOOLEAN NOT NULL,
    tipo_pesado  BOOLEAN NOT NULL,
---(Fim tipo veiculo)
-   placa  INT(6) NOT NULL ;
+#--(Fim tipo veiculo)
+   placa  INT(6) NOT NULL,
 
   PRIMARY KEY (id_veiculo)
 );
@@ -117,77 +117,77 @@ CREATE TABLE seguro(
   cod_prestador  VARCHAR(30) NOT NULL,
   cep  INT NOT NULL,
   cgc  INT NOT NULL,
- --LISTA DE TELEFONES
+ #--LISTA DE TELEFONES
   setor_cadastro_tel  INT NOT NULL,
   setor_pagto_tel  INT NOT NULL,
   fechamento_servicos_tel  INT NOT NULL,
   casos_andamento_tel  INT NOT NULL,
- --Cordenador
+ #--Cordenador
   cordenador_regiao  INT NOT NULL,
- --Tabela de preco Reboque
- --Passeio
+ #--Tabela de preco Reboque
+ #--Passeio
   passeio_40km  FLOAT NOT NULL,
   passeio_maior40km  FLOAT NOT NULL,
   passeio_hora_trabalhada  FLOAT NOT NULL,
   passeio_hora_parada  FLOAT NOT NULL,
- --Ultilitario Lanca leve
+ #--Ultilitario Lanca leve
   ull_40km  FLOAT NOT NULL,
   ull_maior40km  FLOAT NOT NULL,
   ull_hora_trabalhada  FLOAT NOT NULL,
   ull_hora_parada  FLOAT NOT NULL,
- --Moto
+ #--Moto
   moto_40km  FLOAT NOT NULL,
   moto_maior40km  FLOAT NOT NULL,
   moto_hora_trabalhada  FLOAT NOT NULL,
   moto_hora_parada  FLOAT NOT NULL,
- --Garagem
+ #--Garagem
   garagem_40km  FLOAT NOT NULL,
   garagem_maior40km  FLOAT NOT NULL,
   garagem_hora_trabalhada  FLOAT NOT NULL,
   garagem_hora_parada  FLOAT NOT NULL,
- --Rodas Extras
+ #--Rodas Extras
   re_40km  FLOAT NOT NULL,
   re_maior40km  FLOAT NOT NULL,
   re_hora_trabalhada  FLOAT NOT NULL,
   re_hora_parada  FLOAT NOT NULL,
- --Patins
+ #--Patins
   patins_40km  FLOAT NOT NULL,
   patins_maior40km  FLOAT NOT NULL,
   patins_hora_trabalhada  FLOAT NOT NULL,
   patins_hora_parada  FLOAT NOT NULL,
- --cam/leve
+ #--cam/leve
   cl_40km  FLOAT NOT NULL,
   cl_maior40km  FLOAT NOT NULL,
   cl_hora_trabalhada  FLOAT NOT NULL,
   cl_hora_parada  FLOAT NOT NULL,
- --SOS Pesado
+ #--SOS Pesado
   sospsd_40km  FLOAT NOT NULL,
   sospsd_maior40km  FLOAT NOT NULL,
   sospsd_hora_trabalhada  FLOAT NOT NULL,
   sospsd_hora_parada  FLOAT NOT NULL,
- --Extra Pesado
+ #--Extra Pesado
   xtrpsd_40km  FLOAT NOT NULL,
   xtrpsd_maior40km  FLOAT NOT NULL,
   xtrpsd_hora_trabalhada  FLOAT NOT NULL,
   xtrpsd_hora_parada  FLOAT NOT NULL,
- --Socorro Mecanico
+ #--Socorro Mecanico
   scrmec_40km  INT NOT NULL,
   scrmec_mais40km  INT NOT NULL,
- --Taxi
+ #--Taxi
   km_rodado  INT NOT NULL,
   km_parado  INT NOT NULL,
- --Abertura Chaveiro
+ #--Abertura Chaveiro
   saida_nacional_40km  INT NOT NULL,
   saida_nacional_mais40km  INT NOT NULL,
   saida_importado_40km  INT NOT NULL,
   saida_importado_mais40km  INT NOT NULL,
   saida_confeccao_40km  INT NOT NULL,
   saida_confeccao_mais40km  INT NOT NULL,
- --Residencia
+ #--Residencia
   saida_40km  INT NOT NULL,
   saida_mais40km  INT NOT NULL,
   saida_hora_trabalhada INT NOT NULL,
- --Vigilante
+ #--Vigilante
   vigilante_40km  INT NOT NULL,
   vigilante_mais40km  INT NOT NULL,
   vigilante_hora_trabalhada INT NOT NULL,
