@@ -18,7 +18,7 @@
     <style>
         form{
             background-color:#004e90;
-            margin:10px 150px;
+            margin:10px 50px;
             padding:50px;
             border-radius:0.8em;
         }
@@ -27,18 +27,19 @@
             color:#FFF;
             text-align:center;
             font-size:3em;
-            font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            font-family:'Open Sans', Arial, sans-serif;
+            font-weight:300;
         }
 
         form>.input{
             display:block;
             height:30px;
-            width:30%;
+            width:90%;
             border-radius:0.8em;
             padding:5px;
-            margin:2% 35%;
+            margin:5px 10px;
             font-size:1em;
-           font-family:'Segoe UI',sans-serif
+           font-family:'Open Sans',sans-serif
         }
 
             form > .input-button {
@@ -70,6 +71,20 @@
                 color:#b1b1b1;
                 border:none;
             }
+
+        @media only screen and (min-width : 1280px) {
+            form > .input {
+                width:30%;
+                margin:10px 35%;
+            }
+
+            form{
+            background-color:#004e90;
+            margin:10px 300px;
+            padding:30px 5px;
+            border-radius:0.8em;
+            }
+        }
           
     </style>
     <nav>
