@@ -4,17 +4,66 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title></title>
+    <title>Administrador</title>
+    <meta name="viewport" content="width=device-width" />
+    <link href="../../css/adm.css" rel="stylesheet" />
     <asp:ContentPlaceHolder id="head" runat="server">
+        <meta name="viewport" content="width=device-width" />
+        <link href="../../css/adm.css" rel="stylesheet" />
     </asp:ContentPlaceHolder>
 </head>
 <body>
-    <form id="form1" runat="server">
-    <div>
-        <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
-        
+   <nav>
+       <ul>
+           <li>
+              <a href="dashboard.aspx">
+                 <img src="../../resources/icons/house.png" alt="Dashboard"/>
+                 <figcaption>Home</figcaption>
+              </a>
+           </li>
+           <li>
+               <a href="compose.aspx">
+                   <img src="../../resources/icons/compose.png" alt="novaoe" />
+                   <figcaption>Nova OE</figcaption>
+               </a>
+           </li>
+           <li>
+               <a href="../search.aspx">
+                   <img src="../../resources/icons/magnifier.png" alt="Procurar" />
+                   <figcaption class="align">Pesquisar</figcaption>
+               </a>
+           </li>
+           <li>
+               <a href="../cadastro.aspx">
+                   <img src="../../resources/icons/plus.png" alt="cadastro" />
+                   <figcaption class="align">Cadastrar</figcaption>
+               </a>
+           </li>
+           <li>
+               <a href="../index.html">
+                   <img src="../../resources/icons/logout.png" alt="sair" />
+                   <figcaption>Sair</figcaption>
+               </a>
+           </li>
+           </ul>
+    </nav>
+    <header>
+        <img />
+        <h1>Console do Funcionário</h1>
+        <small>
+            <asp:Label Text="Username" runat="server" /></small>
+    </header>
+    <content>
+         <asp:ContentPlaceHolder id="cph" runat="server">
         </asp:ContentPlaceHolder>
-    </div>
-    </form>
+    </content>
+    <footer>
+        <small>
+            <span class="footer-simbols"><></span>
+            with
+            <span class="footer-simbols">&#9829</span>
+            by <a href="https://github.com/caiobep" target="_blank">Caiobep</a>
+        </small>
+    </footer>
 </body>
 </html>

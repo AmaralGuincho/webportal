@@ -107,7 +107,7 @@
             <h1>Bem-Vindo de Volta!</h1>
             <asp:TextBox ID="txtUsername" runat="server" CssClass="input" placeholder="Login"></asp:TextBox>
             <asp:TextBox ID="txtPassword" runat="server" CssClass="input" placeholder="Senha" TextMode="Password"></asp:TextBox>
-            <asp:button text="Entrar" runat="server" CssClass="input-button" />
+            <asp:button text="Entrar" runat="server" CssClass="input-button" OnClick="loginSubmit_Click" />
         </form>
     </content>
 </body>

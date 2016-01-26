@@ -11,4 +11,13 @@ public partial class Web_websites_login : System.Web.UI.Page
     {
 
     }
+
+    protected void loginSubmit_Click(object sender, EventArgs e)
+    {
+        if(txtUsername.Text == "deadpool") {
+          if (txtPassword.Text == "666") {
+                Response.Redirect("adm/dashboard.aspx");
+          }
+        }
+    }
 }
