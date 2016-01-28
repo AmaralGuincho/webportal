@@ -141,6 +141,17 @@
                         </div>
                     </td>
                 </tr>
+                <tr>
+                    <td>
+                        <asp:Button Text="Resetar" runat="server" Class="button" />
+                    </td>
+                    <td>
+                        
+                    </td>
+                    <td>
+                        <asp:Button Text="Obrir OE" runat="server" Class="button" />
+                    </td>
+                </tr>
             </table>
         </form>
 </asp:Content>
