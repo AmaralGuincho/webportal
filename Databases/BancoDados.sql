@@ -1,18 +1,20 @@
 SET NAMES 'utf8';
 
-DROP DATABASE IF EXIST amaral-guincho;
+DROP DATABASE IF EXISTs `amaral_guincho`;
 
-CREATE DATABASE IF NOT EXISTS amaral-guincho
-DEFAULT CHARACTER SET utf8 COLLATE uft8_unicode_ci;
-USE amaral-guincho;
+# CREATE DATABASE IF NOT EXISTS `amaral_guincho`
+# DEFAULT CHARACTER SET utf8 COLLATE uft8_unicode_ci;
+CREATE DATABASE `amaral_guincho`;
+
+USE `amaral_guincho`;
 
 CREATE TABLE frota(
    id_frota TINYINT NOT NULL AUTO_INCREMENT,
-                      -- 8-bit unsigned int [0, 255]
- --(Tipo veiculo)
-  tipo ENUM('Guincho','Taxi','SOS-Guincho','Pesado') Default 'Guincho',
+                      # 8-bit unsigned int [0, 255]
+ #(Tipo veiculo)
+  tipo ENUM('Guincho','Taxi','SOS-Guincho','Pesado'),
 
- --(Fim tipo veiculo)
+ #(Fim tipo veiculo)
    placa  INT(6) NOT NULL,
 
   PRIMARY KEY (id_frota),
@@ -21,7 +23,7 @@ CREATE TABLE frota(
 
 CREATE TABLE seguro(
   id_seguro  TINYINT NOT NULL AUTO_INCREMENT,
-              -- 8-bit unsigned int [0, 255]
+              # 8-bit unsigned int [0, 255]
   nome_seguro  CHAR(20) NOT NULL,
   cod_prestador  VARCHAR(30) NOT NULL,
   cep  CHAR(11) NOT NULL,
@@ -32,7 +34,7 @@ CREATE TABLE seguro(
   fechamento_servicos_tel CHAR(11) NOT NULL,
   casos_andamento_tel CHAR(11) NOT NULL,
  #Cordenador
-  cordenador_regiao VARCHAR(255) NOT NULL,
+  cordenador_regiao VARCHAR(45) NOT NULL,
  #Tabela de preco Reboque
  #Passeio
   passeio_40km FLOAT NOT NULL,
@@ -105,9 +107,9 @@ CREATE TABLE seguro(
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE habilitacao(
-   id_habilitacao  SMALLINT UNSIGNED NOT NULL AUTO_INCREMENT,
+   id_habilitacao  SMALLINT NOT NULL AUTO_INCREMENT,
    id_funcionario  SMALLINT NOT NULL,
-   nome_habilitacao  VARCHAR(30) NOT NULL,
+   nome_habilitacao  VARCHAR(45) NOT NULL,
    identidade  INT NOT NULL,
    numero_registro  INT(12) NOT NULL,
    validade  DATE NOT NULL,
@@ -115,24 +117,24 @@ CREATE TABLE habilitacao(
    local_gerado  VARCHAR(30) NOT NULL,
    emissao  DATE NOT NULL,
 
-  PRIMARY KEY (id_habilitacao)
+  PRIMARY KEY (id_habilitacao),
+  KEY(id_funcionario)
 );
 
 CREATE TABLE funcionario(
-   id_funcionario  INT NOT NULL AUTO_INCREMENT,
-   id_habilitacao INT NOT NULL,
+   id_funcionario  SMALLINT NOT NULL AUTO_INCREMENT,
+   id_habilitacao SMALLINT NOT NULL,
    nome_funcionario  VARCHAR(20) NOT NULL,
    categoria_funcionario  INT NOT NULL,
    end_funcionario  VARCHAR(20) NOT NULL,
    cel_funcionario  INT(11) NOT NULL,
    fixo_funcionario  INT(10) NOT NULL,
-   data_contratacao_funcionario  DATE NOT NULL,
+   data_contratacao_funcionario DATE NOT NULL,
 
   PRIMARY KEY (id_funcionario),
 
-  CONSTRAINT fk_habilitacao FOREIGN KEY (id_habilitacao)
+  FOREIGN KEY (id_habilitacao)
     REFERENCES habilitacao (id_habilitacao)
-    ON DELETE RESTRICT ON UPDATE CASCADE
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 #region (Descrição_Funcionarios)
@@ -142,18 +144,17 @@ CREATE TABLE funcionario(
 #endregion
 
 CREATE TABLE cliente(
-   id_cliente  INT UNSIGNED NOT NULL AUTO_INCREMENT,
-   id_seguro  INT UNSIGNED NOT NULL,
+   id_cliente  INT NOT NULL AUTO_INCREMENT,
+   id_seguro  TINYINT NOT NULL,
    nome_cliente  VARCHAR(30) NOT NULL,
-   rg_cliente  INT NOT NULL,
+   rg_cliente  CHAR(11) NOT NULL,
    cpf_cliente  INT NOT NULL,
    end_cliente  VARCHAR(30) NOT NULL,
 
   PRIMARY KEY (id_cliente),
   CONSTRAINT UNIQUE (cpf_cliente),
-  CONTRAINT fk_id_seguro FOREIGN KEY (id_seguro)
-    REFERENCES seguro (id_seguro) ON DELETE
-     RESTRICT ON UPDATE CASCADE
+  FOREIGN KEY (id_seguro)
+    REFERENCES seguro (id_seguro)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE veiculo(
@@ -174,7 +175,7 @@ CREATE TABLE user(
   id_user INT NOT NULL AUTO_INCREMENT,
   login_user VARCHAR(30) NOT NULL,
   password_user VARCHAR(30) NOT NULL,
-  id_funcionario INT NOT NULL,
+  id_funcionario SMALLINT NULL,
   id_cliente INT NOT NULL,
 
   PRIMARY KEY (id_user),
@@ -184,32 +185,19 @@ CREATE TABLE user(
     REFERENCES cliente(id_cliente)
 );
 
-CREATE TABLE session(
-   id_session INT NOT NULL AUTO_INCREMENT,
-   id_funcionario INT NOT NULL,
-   data_session datetime NOT NULL,
-   id_oe INT NOT NULL,
-
-  PRIMARY KEY (id_session),
-  FOREIGN KEY (id_funcionario)
-    REFERENCES funcionario (id_funcionario),
-  FOREIGN KEY (id_oe)
-    REFERENCES ordem_de_servico (id_oe)
-);
-
 CREATE TABLE ordem_de_servico(
    id_oe  INT NOT NULL AUTO_INCREMENT,
-   data_abertura_oe  datetime NOT NULL,
-   id_seguro  INT NOT NULL,
+   data_abertura_oe  TIMESTAMP NOT NULL,
+   id_seguro TINYINT NOT NULL,
    nome_ab_chamado VARCHAR (30) NOT NULL,
-   nome_assistente_seguro  VARCHAR(30) NOT NULL,
-   tipo_seguro  VARCHAR(30) NOT NULL,
-   id_cliente  INT NOT NULL,
-   local_retirada  VARCHAR(30) NOT NULL,
-   agendamento  DATE NOT NULL,
-   numero_sinistro  INT NOT NULL,
-   local_entrega  VARCHAR(30) NOT NULL,
-   id_funcionario  INT NOT NULL,
+   nome_assistente_seguro VARCHAR(30) NOT NULL,
+   tipo_seguro VARCHAR(30) NOT NULL,
+   id_cliente INT NOT NULL,
+   local_retirada VARCHAR(30) NOT NULL,
+   agendamento DATE NOT NULL,
+   numero_sinistro INT NOT NULL,
+   local_entrega VARCHAR(30) NOT NULL,
+   id_motorista SMALLINT NOT NULL,
   #MOTORISTA
 
 
@@ -219,6 +207,19 @@ CREATE TABLE ordem_de_servico(
   FOREIGN KEY (id_cliente)
     REFERENCES cliente (id_cliente),
   #Motorista
-  FOREIGN KEY (id_funcionario)
+  FOREIGN KEY (id_motorista)
     REFERENCES funcionario (id_funcionario)
+);
+
+CREATE TABLE session(
+   id_session INT NOT NULL AUTO_INCREMENT,
+   id_funcionario SMALLINT NOT NULL,
+   data_session TIMESTAMP NOT NULL,
+   id_oe INT NOT NULL,
+
+  PRIMARY KEY (id_session),
+  FOREIGN KEY (id_funcionario)
+    REFERENCES funcionario (id_funcionario),
+  FOREIGN KEY (id_oe)
+    REFERENCES ordem_de_servico (id_oe)
 );
