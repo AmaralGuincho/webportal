@@ -121,7 +121,7 @@
                             <asp:TextBox ID="Agendamento" CssClass="input" runat="server" />
                             <span class="highlight"></span>
                             <span class="bar"></span>
-                            <asp:Label Text="agendamento" CssClass="label" runat="server" />
+                            <asp:Label Text="Agendamento" CssClass="label" runat="server" />
                         </div>
                     </td>
                     <td>
@@ -153,5 +153,6 @@
                     </td>
                 </tr>
             </table>
+            <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:amaral_guinchoConnectionString %>" ProviderName="<%$ ConnectionStrings:amaral_guinchoConnectionString.ProviderName %>" SelectCommand="SELECT * FROM [ordem_de_servico]"></asp:SqlDataSource>
         </form>
 </asp:Content>
