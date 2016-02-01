@@ -15,7 +15,7 @@ CREATE TABLE frota(
   tipo ENUM('Guincho','Taxi','SOS-Guincho','Pesado'),
 
  #(Fim tipo veiculo)
-   placa  INT(6) NOT NULL,
+   placa  CHAR(7) NOT NULL,
 
   PRIMARY KEY (id_frota),
   UNIQUE KEY (placa)
@@ -82,33 +82,32 @@ CREATE TABLE seguro(
   xtrpsd_hora_trabalhada  FLOAT NOT NULL,
   xtrpsd_hora_parada  FLOAT NOT NULL,
  #Socorro Mecanico
-  scrmec_40km  INT NOT NULL,
-  scrmec_mais40km  INT NOT NULL,
+  scrmec_40km  float NOT NULL,
+  scrmec_mais40km  float NOT NULL,
  #Taxi
-  km_rodado  INT NOT NULL,
-  km_parado  INT NOT NULL,
+  km_rodado  float NOT NULL,
+  km_parado  float NOT NULL,
  #Abertura Chaveiro
-  saida_nacional_40km  INT NOT NULL,
-  saida_nacional_mais40km  INT NOT NULL,
-  saida_importado_40km  INT NOT NULL,
-  saida_importado_mais40km  INT NOT NULL,
-  saida_confeccao_40km  INT NOT NULL,
-  saida_confeccao_mais40km  INT NOT NULL,
+  saida_nacional_40km  FLOAT NOT NULL,
+  saida_nacional_mais40km  FLOAT NOT NULL,
+  saida_importado_40km  FLOAT NOT NULL,
+  saida_importado_mais40km  FLOAT NOT NULL,
+  saida_confeccao_40km  FLOAT NOT NULL,
+  saida_confeccao_mais40km  FLOAT NOT NULL,
  #Residencia
-  saida_40km  INT NOT NULL,
-  saida_mais40km  INT NOT NULL,
-  saida_hora_trabalhada INT NOT NULL,
+  saida_40km  FLOAT NOT NULL,
+  saida_mais40km  FLOAT NOT NULL,
+  saida_hora_trabalhada FLOAT NOT NULL,
  #Vigilante
-  vigilante_40km  INT NOT NULL,
-  vigilante_mais40km  INT NOT NULL,
-  vigilante_hora_trabalhada INT NOT NULL,
+  vigilante_40km  FLOAT NOT NULL,
+  vigilante_mais40km  FLOAT NOT NULL,
+  vigilante_hora_trabalhada FLOAT NOT NULL,
 
   PRIMARY KEY (id_seguro)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE habilitacao(
    id_habilitacao  SMALLINT NOT NULL AUTO_INCREMENT,
-   id_funcionario  SMALLINT NOT NULL,
    nome_habilitacao  VARCHAR(45) NOT NULL,
    identidade  INT NOT NULL,
    numero_registro  INT(12) NOT NULL,
@@ -117,18 +116,17 @@ CREATE TABLE habilitacao(
    local_gerado  VARCHAR(30) NOT NULL,
    emissao  DATE NOT NULL,
 
-  PRIMARY KEY (id_habilitacao),
-  KEY(id_funcionario)
+  PRIMARY KEY (id_habilitacao)
 );
 
 CREATE TABLE funcionario(
    id_funcionario  SMALLINT NOT NULL AUTO_INCREMENT,
-   id_habilitacao SMALLINT NOT NULL,
+   id_habilitacao SMALLINT NULL,
    nome_funcionario  VARCHAR(20) NOT NULL,
-   categoria_funcionario  INT NOT NULL,
+   categoria_funcionario  ENUM('adm','staff','thirdy','none'),
    end_funcionario  VARCHAR(20) NOT NULL,
-   cel_funcionario  INT(11) NOT NULL,
-   fixo_funcionario  INT(10) NOT NULL,
+   cel_funcionario  CHAR(11) NOT NULL,
+   fixo_funcionario  CHAR(10) NULL,
    data_contratacao_funcionario DATE NOT NULL,
 
   PRIMARY KEY (id_funcionario),
@@ -137,18 +135,12 @@ CREATE TABLE funcionario(
     REFERENCES habilitacao (id_habilitacao)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-#region (Descrição_Funcionarios)
-# Na tabela funcionarios, o item "Categoria funcionario" de tipo
-# inteiro, serve para estabelecer uma hierarquia  onde
-# 1>2>3>4>5, sendo 1 para adm e 5 para funcionario
-#endregion
-
 CREATE TABLE cliente(
    id_cliente  INT NOT NULL AUTO_INCREMENT,
    id_seguro  TINYINT NOT NULL,
    nome_cliente  VARCHAR(30) NOT NULL,
    rg_cliente  CHAR(11) NOT NULL,
-   cpf_cliente  INT NOT NULL,
+   cpf_cliente  CHAR(11) NOT NULL,
    end_cliente  VARCHAR(30) NOT NULL,
 
   PRIMARY KEY (id_cliente),
@@ -163,7 +155,7 @@ CREATE TABLE veiculo(
    marca_veiculo  VARCHAR(30) NOT NULL,
    modelo_veiculo  VARCHAR(30) NOT NULL,
    ano_veiculo  DATE NOT NULL,
-   placa_veiculo  VARCHAR(6) NOT NULL,
+   placa_veiculo  VARCHAR(7) NOT NULL,
    cor_veiculo  VARCHAR(10) NOT NULL,
 
   PRIMARY KEY (id_veiculo),
@@ -176,7 +168,7 @@ CREATE TABLE user(
   login_user VARCHAR(30) NOT NULL,
   password_user VARCHAR(30) NOT NULL,
   id_funcionario SMALLINT NULL,
-  id_cliente INT NOT NULL,
+  id_cliente INT NULL,
 
   PRIMARY KEY (id_user),
   FOREIGN KEY (id_funcionario)
@@ -194,7 +186,7 @@ CREATE TABLE ordem_de_servico(
    tipo_seguro VARCHAR(30) NOT NULL,
    id_cliente INT NOT NULL,
    local_retirada VARCHAR(30) NOT NULL,
-   agendamento DATE NOT NULL,
+   agendamento DATE NULL,
    numero_sinistro INT NOT NULL,
    local_entrega VARCHAR(30) NOT NULL,
    id_motorista SMALLINT NOT NULL,
