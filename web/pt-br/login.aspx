@@ -73,6 +73,12 @@
                 <span class="bar"></span>
             </div>
             <asp:button text="Entrar" runat="server" CssClass="button" OnClick="loginSubmit_Click" />
+            <asp:SqlDataSource ID="MySqlLogin" runat="server" ConnectionString="<%$ ConnectionStrings:amaral_guinchoConnectionString %>" ProviderName="<%$ ConnectionStrings:amaral_guinchoConnectionString.ProviderName %>" SelectCommand="SELECT id_usr, login_usr, email_usr, pwd_usr, type_usr, nome_usr, sx_usr, birth_usr, cpf_usr, cep_usr, mobile_usr FROM usr WHERE (login_usr = @LOGIN) AND (pwd_usr = @PWD) OR (pwd_usr = @PWD) AND (email_usr = @LOGIN)">
+                <SelectParameters>
+                    <asp:ControlParameter ControlID="txtUsername" Name="LOGIN" PropertyName="Text" />
+                    <asp:ControlParameter ControlID="txtPassword" Name="PWD" PropertyName="Text" />
+                </SelectParameters>
+            </asp:SqlDataSource>
         </form>
     </content>
 </body>
