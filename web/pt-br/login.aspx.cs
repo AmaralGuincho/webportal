@@ -33,9 +33,49 @@ public partial class Web_websites_login : System.Web.UI.Page
         }
         else
         {
-            string type = dv.Table.Rows[0]["type_usr"].ToString();
+            //Sucesso na Autenticação
 
-            Response.Redirect("adm/dashboard.aspx");
+            string type = dv.Table.Rows[0]["type_usr"].ToString();
+            
+            if(type == "adm")
+            {   
+                Session["Log"] = "On";
+                Session["Staff"] = "On";
+                Session["Admin"] = "On";
+
+                //registrando o usiario
+                Session["id_usr"] = dv.Table.Rows[0]["id_usr"].ToString();
+
+                Response.Redirect("adm/dashboard.aspx");
+            }
+
+            if (type == "staff")
+            {
+                Session["Log"] = "On";
+                Session["Staff"] = "On";
+                Session["Admin"] = "OFF";
+
+                //registrando o usiario
+                Session["id_usr"] = dv.Table.Rows[0]["id_usr"].ToString();
+
+                Response.Redirect("adm/dashboard.aspx");
+
+                
+            }
+
+            if (type == "adm")
+            {
+                Session["Log"] = "On";
+                Session["Staff"] = "OFF";
+                Session["Admin"] = "OFF";
+
+                //registrando o usiario
+                Session["id_usr"] = dv.Table.Rows[0]["id_usr"].ToString();
+
+                Response.Redirect("index.html");
+            }
+
+
         }
 
       

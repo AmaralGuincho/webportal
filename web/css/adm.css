@@ -43,20 +43,20 @@ nav>ul{
             transition: background 0.5s ease-out 0.25;
         }
 
-nav>ul>li>a{
+nav>ul>li>.a{
     width:100%;
     padding:0;
     margin:0;
     text-decoration:none;
 }
 
-a > img {
+.a > img {
     height: 40px;
     padding: 0;
     margin: 0;
 }
 
-a > figcaption {
+.a > figcaption {
     color: white;
     font-family: "Roboto", sans-serif;
     font-weight: 400;
@@ -76,7 +76,7 @@ a > figcaption {
     margin-left:0;
 }
 
-a:hover figcaption {
+.a:hover figcaption {
     visibility: visible;
     opacity: 1;
     -moz-transition-delay: 0;
