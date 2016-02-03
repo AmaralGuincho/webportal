@@ -1,6 +1,76 @@
 #HUGE INSERT <> WITH <3 BY CAIOBEP
 
 USE amaral_guincho;
+INSERT INTO usr VALUES(
+  null,
+  'admin',
+   null,
+  'admin',
+  'adm',
+  'Administrador Client Sever',
+  'M',
+  null,
+  null,
+  null,
+  '88178535',
+);
+
+INSERT INTO usr VALUES(
+  null,
+  'clue',
+   'littleClue@emcon.com',
+   '0000'
+  'staff',
+  'Clue Flynns Son',
+  'M',
+  null,
+  null,
+  null,
+  '88178535',
+);
+
+INSERT INTO usr VALUES(
+  null,
+  'Flynn',
+   'flynn@emcon.com',
+   '0000'
+  'staff',
+  'The Creator',
+  'M',
+  null,
+  null,
+  null,
+  '881785315',
+);
+
+INSERT INTO usr VALUES(
+  null,
+  'Sam',
+   'sam@emcon.com',
+   '0000'
+  'lowStaff',
+  'Samuel',
+  'M',
+  null,
+  null,
+  null,
+  '881785315',
+);
+
+INSERT INTO usr VALUES(
+  null,
+  'jessica',
+   'jhones@emcon.com',
+   '0000'
+  'usr',
+  'Jessica Jhones',
+  'F',
+  null,
+  null,
+  null,
+  '881785315',
+);
+
 
 INSERT INTO frota VALUES(null,'Guincho','abc1234');
 INSERT INTO frota VALUES(null,'Taxi','tax1666');
@@ -50,69 +120,20 @@ INSERT INTO seguro VALUES(
 
 INSERT INTO habilitacao VALUES(
   null,
-  'Anakin Skywalker',
-  328234394,
+  4,
+  'Samuelzão',
   48933,
+  4892842,
   '2020-01-01',
   '1985-12-31',
   'Poupa Tempo Caraguatatuba',
   '2010-05-12'
 );
 
-INSERT INTO funcionario VALUES(
-  null,
-  null,
-  'Jéssica Amaral',
-  'staff',
-  'Rua esmeralda, 128',
-  '12988178537',
-  null,
-  '1998-12-12'
-);
-
-INSERT INTO funcionario VALUES(
-  null,
-  null,
-  'Theo Amaral',
-  'staff',
-  'Rua esmeralda, 128',
-  '12988178537',
-  null,
-  '1998-12-12'
-);
-
-INSERT INTO funcionario VALUES(
-  null,
-   1,
-  'Anakin Skywalker',
-  'thirdy',
-  'Tatooini',
-  '12988178537',
-  null,
-  '1998-12-12'
-);
-
-INSERT INTO cliente VALUES(
-  null,
-  1,
-  'Felipe Montanha',
-  '12345678912',
-  '9012901',
-  'Rua Cupuaçu Latarino'
-);
-
-INSERT INTO cliente VALUES(
-  null,
-  1,
-  'Renato Fernandes de Moura',
-  '12345678912',
-  '012909121',
-  'Rua Cupuaçu Latarino'
-);
 
 INSERT INTO veiculo VALUES(
   null,
-  2,
+  5,
   'Chevrolet',
   'Vectra Sedan',
   '2013-02-01',
@@ -120,25 +141,19 @@ INSERT INTO veiculo VALUES(
   'Prata'
 );
 
-INSERT INTO user VALUES (
+INSERT INTO oe VALUES(
   null,
-  'jessica@23',
-  'passaros32',
+  "2016-05-01",
   1,
-  null
-);
+  'sistema',
+  'ronaldo',
+  'express',
+  5,
+  'pindamanhagaba',
+  null,
+  1332,
+  'caraguatatuba',
+  4,
+  'Aberto'
 
-INSERT INTO ordem_de_servico VALUES(
-  null,
-  '2010-05-12',
-  2,
-  'jessica',
-  'Ronaldo',
-  'Premium',
-  1,
-  'Pindamonhangaba',
-  '2010-05-12',
-  3,
-  'Rua Patagonia',
-  1
 );

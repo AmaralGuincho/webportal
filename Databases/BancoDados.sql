@@ -15,7 +15,7 @@ CREATE TABLE usr(
   type_usr ENUM('adm','staff','lowStaff','usr') NOT NULL,
   nome_usr VARCHAR(50) NOT NULL,
   sx_usr ENUM('M','F') NOT NULL,
-  birth_usr DATE NOT NULL,
+  birth_usr DATE NULL,
   cpf_usr CHAR(11) NULL,
   cep_usr CHAR(11) NULL,
   mobile_usr CHAR(12) NOT NULL,
@@ -131,10 +131,10 @@ CREATE TABLE seguro_cli(
   PRIMARY KEY(id_cli),
 
   FOREIGN KEY(id_usr)
-          REFERENCES user(id_usr),
+          REFERENCES usr (id_usr),
 
   FOREIGN KEY(id_seguro)
-          REFERENCES seguro(id_seguro)
+          REFERENCES seguro (id_seguro)
 );
 
 CREATE TABLE habilitacao(
@@ -151,28 +151,28 @@ CREATE TABLE habilitacao(
   PRIMARY KEY (id_habilitacao),
 
   FOREIGN KEY(id_motorista)
-          REFERENCES user(id_usr)
+          REFERENCES usr(id_usr)
 );
 
 CREATE TABLE veiculo(
    id_veiculo  INT NOT NULL AUTO_INCREMENT,
    id_usr INT NOT NULL,
-   marca_veiculo  VARCHAR(30) NOT NULL,
+  #marca_veiculo  VARCHAR(30) NOT NULL,
    modelo_veiculo  VARCHAR(30) NOT NULL,
-   ano_veiculo  DATE NOT NULL,
+  #ano_veiculo  DATE NOT NULL,
    placa_veiculo  VARCHAR(7) NOT NULL,
    cor_veiculo  VARCHAR(10) NOT NULL,
 
   PRIMARY KEY (id_veiculo),
   FOREIGN KEY (id_usr)
-    REFERENCES user (id_usr)
+    REFERENCES usr (id_usr)
 );
 
 CREATE TABLE ordem_de_servico(
    id_oe  INT NOT NULL AUTO_INCREMENT,
    data_abertura_oe  TIMESTAMP NOT NULL,
-   id_seguro TINYINT NOT NULL,
    nome_ab_chamado VARCHAR (30) NOT NULL,
+   id_seguro TINYINT NOT NULL,
    nome_assistente_seguro VARCHAR(30) NOT NULL,
    tipo_seguro VARCHAR(30) NOT NULL,
    id_cliente INT NOT NULL,
@@ -181,7 +181,7 @@ CREATE TABLE ordem_de_servico(
    numero_sinistro INT NOT NULL,
    local_entrega VARCHAR(30) NOT NULL,
    id_motorista INT NOT NULL,
-  #MOTORISTA
+   status ENUM('Aberto','Fechado','Recusado','Outro') NOT NULL,
 
 
   PRIMARY KEY (id_oe),
@@ -189,10 +189,10 @@ CREATE TABLE ordem_de_servico(
     REFERENCES seguro (id_seguro),
 
   FOREIGN KEY (id_cliente)
-    REFERENCES user (id_usr),
+    REFERENCES usr (id_usr),
   #Motorista
   FOREIGN KEY (id_motorista)
-    REFERENCES user (id_usr)
+    REFERENCES usr (id_usr)
 );
 
 CREATE TABLE session(
@@ -203,7 +203,7 @@ CREATE TABLE session(
 
   PRIMARY KEY (id_session),
   FOREIGN KEY (id_funcionario)
-    REFERENCES user (id_usr),
+    REFERENCES usr (id_usr),
   FOREIGN KEY (id_oe)
     REFERENCES ordem_de_servico (id_oe)
 );
