@@ -108,7 +108,7 @@
                     </div>
                 </td>
             </tr>
-            <tr>
+            <tr class="client-info">
                 <td>
                     <div class="group">
                         <asp:TextBox ID="cpf_cli" CssClass="input" runat="server" />
@@ -119,22 +119,72 @@
                 </td>
                 <td>
                     <div class="group">
-                        <asp:TextBox ID="endereco_cli" CssClass="input" runat="server" TextMode="MultiLine" />
+                        <asp:Label Text="Endereço" CssClass="simpleLabel-multiline" runat="server" />
+                        <asp:TextBox ID="endereco_cli" CssClass="large-input" runat="server" TextMode="MultiLine" />
                         <span class="highlight"></span>
                         <span class="bar"></span>
-                        <asp:Label Text="Endereço" CssClass="label" runat="server" />
                     </div>
                 </td>
                 <td>
                     <div class="group">
-                        <asp:TextBox ID="local_de_retirada" CssClass="input" TextMode="MultiLine" runat="server" />
+                        <asp:Label Text="Local de Retirada" CssClass="simpleLabel-multiline" runat="server" />
+                        <asp:TextBox ID="local_de_retirada" CssClass="large-input" TextMode="MultiLine" runat="server" />
                         <span class="highlight"></span>
                         <span class="bar"></span>
-                        <asp:Label Text="Local de Retirada" CssClass="label" runat="server" />
                     </div>
                 </td>
             </tr>
-            <tr>
+            <tr class="motorista">
+                <td>
+                    <asp:Label Text="Motorista" CssClass="simpleLabeldd" runat="server" />
+                    <asp:DropDownList ID="ddMotorista" runat="server" CssClass="dropdown">
+                        <asp:ListItem Text="Motorista1" />
+                        <asp:ListItem Text="Motorista2" />
+                    </asp:DropDownList>
+                </td>
+                <td>
+                    <asp:Label Text="Frota" CssClass="simpleLabeldd" runat="server" />
+                    <asp:DropDownList ID="ddFrota" runat="server" CssClass="dropdown">
+                        <asp:ListItem Text="Frota1" />
+                        <asp:ListItem Text="Frota2" />
+                    </asp:DropDownList>
+                </td>
+                <td>
+                    <div class="group">
+                        <asp:Label Text="Observação" CssClass="simpleLabel-multiline" runat="server" />
+                        <asp:TextBox ID="txtobs" CssClass="large-input" runat="server" TextMode="MultiLine" />
+                        <span class="highlight"></span>
+                        <span class="bar"></span>
+                    </div>
+                </td>
+            </tr>
+            <tr class="Viagem">
+                <td>
+                    <div class="group">
+                        <asp:TextBox ID="txtKmSaida" CssClass="input" runat="server" />
+                        <span class="highlight"></span>
+                        <span class="bar"></span>
+                        <asp:Label Text="Km Saida" CssClass="label" runat="server" />
+                    </div>
+                </td>
+                <td>
+                    <div class="group">
+                        <asp:TextBox ID="txtKmChegada" CssClass="input" runat="server" />
+                        <span class="highlight"></span>
+                        <span class="bar"></span>
+                        <asp:Label Text="Km Chegada" CssClass="label" runat="server" />
+                    </div>
+                </td>
+                <td>
+                    <div class="group">
+                        <asp:TextBox ID="txtHoraTrabalhada" CssClass="input" runat="server" />
+                        <span class="highlight"></span>
+                        <span class="bar"></span>
+                        <asp:Label Text="Hora Trabalhada" CssClass="label" runat="server" />
+                    </div>
+                </td>
+            </tr>
+            <tr class="oe-info">
                 <td>
                     <div class="group">
                         <asp:TextBox ID="Agendamento" CssClass="input" runat="server" />
