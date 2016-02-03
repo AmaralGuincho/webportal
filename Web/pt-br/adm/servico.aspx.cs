@@ -19,20 +19,30 @@ public partial class pt_br_adm_servico : System.Web.UI.Page
         data_abertura.Text = DateTime.Now.ToString();
     }
 
-    protected void nome_cli_TextChanged(object sender, EventArgs e)
+    protected void ClienteDD_SelectedIndexChanged(object sender, EventArgs e)
     {
-        try
+        if(ClienteDD.Items.Count > 0)
         {
-            if (Cliente.ToString() == "Novo Cliente")
-            {
-
-            }
-            else
-            {
-                
-            }
+            btnProcurar_cliente.Enabled = false;
         }
-        catch { }
-       
+        else
+        {
+            btnProcurar_cliente.Enabled = true;
+        }
     }
 }
+/*
+DataView pesq_cli;
+pesq_cli = (DataView)MySqlSelectClient.Select(DataSourceSelectArguments.Empty);
+
+                if (pesq_cli.Table.Rows.Count == 0)
+                {
+                    //Cliente não encontrado
+                }
+                else
+                {
+                    //Cliente encontrado
+                    cpf_cli.Text = pesq_cli.Table.Rows[0]["cpf_usr"].ToString();
+                }
+
+    */

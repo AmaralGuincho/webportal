@@ -7,7 +7,7 @@ DROP DATABASE IF EXISTs `amaral_guincho`;
 CREATE DATABASE `amaral_guincho`;
 
 USE `amaral_guincho`;
-CREATE TABLE user(
+CREATE TABLE usr(
   id_usr INT NOT NULL AUTO_INCREMENT,
   login_usr VARCHAR(30) NOT NULL,
   email_usr CHAR(50) NULL,
