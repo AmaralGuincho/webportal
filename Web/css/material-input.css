@@ -46,7 +46,7 @@
  .button:focus, .inline-button:focus{outline:none;}
 
 .simpleLabel , .simpleLabeldd, .simpleLabel-multiline{
-  color:#999; 
+  color:#5264AE; 
   font-size:18px;
   font-weight:normal;
   pointer-events:none;

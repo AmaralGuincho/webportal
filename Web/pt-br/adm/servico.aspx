@@ -1,4 +1,4 @@
-﻿<%@ Page MasterPageFile="~/pt-br/adm/adm-master.master" Language="C#" EnableEventValidation="false"  AutoEventWireup="true" CodeFile="servico.aspx.cs" Inherits="pt_br_adm_servico" %>
+﻿<%@ Page MasterPageFile="~/pt-br/adm/adm-master.master" Language="C#" MaintainScrollPositionOnPostBack="true" EnableEventValidation="false"  AutoEventWireup="true" CodeFile="servico.aspx.cs" Inherits="pt_br_adm_servico" %>
 
 <asp:Content ContentPlaceHolderID="head" runat="server">
     <meta name="viewport" content="width=device-width" />
@@ -9,7 +9,7 @@
 
 <asp:Content ContentPlaceHolderID="cph" runat="server">
     <h1>Ordem de Serviço</h1>
-    <form action="" method="get" class="container">
+    <form method="get" class="container">
         <table class="frmTable">
             <tr class="System_info">
                 <td>
@@ -68,8 +68,8 @@
                 <td>
                     <!-- Cadastrando Cliente-->
                     <asp:DropDownList ID="ClienteDD" runat="server" CssClass="dropdown" Enabled="true" OnSelectedIndexChanged="ClienteDD_SelectedIndexChanged">
-                        <asp:ListItem Text="Novo Cliente" />
                         <asp:ListItem Text="Cliente Existente" />
+                        <asp:ListItem Text="Novo Cliente" />
                     </asp:DropDownList>
                 </td>
                 <td>
@@ -86,6 +86,7 @@
             </tr>
             <tr class="client-info">
                 <td>
+                    <asp:Label Text="Sexo" CssClass="simpleLabeldd" runat="server" />
                     <asp:DropDownList ID="sexoCli" runat="server" CssClass="dropdown">
                         <asp:ListItem Text="Masculino" />
                         <asp:ListItem Text="Feminino" />
@@ -137,14 +138,14 @@
             <tr class="motorista">
                 <td>
                     <asp:Label Text="Motorista" CssClass="simpleLabeldd" runat="server" />
-                    <asp:DropDownList ID="ddMotorista" runat="server" CssClass="dropdown">
+                    <asp:DropDownList ID="ddMotorista" runat="server" CssClass="dropdown" DataSourceID="MySqlSelectMotorista" DataTextField="nome_usr" DataValueField="id_usr">
                         <asp:ListItem Text="Motorista1" />
                         <asp:ListItem Text="Motorista2" />
                     </asp:DropDownList>
                 </td>
                 <td>
                     <asp:Label Text="Frota" CssClass="simpleLabeldd" runat="server" />
-                    <asp:DropDownList ID="ddFrota" runat="server" CssClass="dropdown">
+                    <asp:DropDownList ID="ddFrota" runat="server" CssClass="dropdown" DataSourceID="MySqlSelectFrota" DataTextField="placa" DataValueField="id_frota">
                         <asp:ListItem Text="Frota1" />
                         <asp:ListItem Text="Frota2" />
                     </asp:DropDownList>
@@ -203,14 +204,26 @@
                 </td>
                 <td>
                     <div class="group">
-                        <asp:TextBox ID="local_entrega" CssClass="input" TextMode="MultiLine" placeholder="Local de Entrega" runat="server" />
+                        <asp:Label Text="Local Entrega" CssClass="simpleLabel-multiline" runat="server" />
+                        <asp:TextBox ID="local_entrega" CssClass="large-input" TextMode="MultiLine" runat="server" />
                         <span class="highlight"></span>
                         <span class="bar"></span>
-                        <asp:Label Text="" CssClass="label" runat="server" />
                     </div>
                 </td>
             </tr>
             <tr>
+                <td></td>
+                <td>
+                    <div class="group">
+                        <asp:Label Text="Status" CssClass="simpleLabeldd" runat="server" />
+                        <asp:DropDownList runat="server" CssClass="dropdown">
+                            <asp:ListItem Text="Status1" />
+                            <asp:ListItem Text="Status2" />
+                        </asp:DropDownList>
+                    </div>
+                </td>
+            </tr>
+            <tr class="Ação">
                 <td>
                     <asp:Button Text="Resetar" runat="server" Class="button" />
                 </td>
@@ -220,6 +233,7 @@
                 </td>
             </tr>
         </table>
+   <!--Database Interaction-->
         <asp:SqlDataSource ID="MySqlUsr" runat="server" ConnectionString="<%$ ConnectionStrings:amaral_guinchoConnectionString %>" ProviderName="<%$ ConnectionStrings:amaral_guinchoConnectionString.ProviderName %>" SelectCommand="SELECT id_usr, login_usr, email_usr, pwd_usr, type_usr, nome_usr, sx_usr, birth_usr, cpf_usr, cep_usr, mobile_usr FROM usr WHERE (id_usr = @IDUSR)">
             <SelectParameters>
                 <asp:SessionParameter Name="IDUSR" SessionField="id_usr" />
@@ -231,5 +245,10 @@
                 <asp:ControlParameter ControlID="nome_pesq_cli" Name="USERNAME" PropertyName="Text" />
             </SelectParameters>
         </asp:SqlDataSource>
+        <asp:SqlDataSource ID="MySqlSelectMotorista" runat="server" ConnectionString="<%$ ConnectionStrings:amaral_guinchoConnectionString %>" ProviderName="<%$ ConnectionStrings:amaral_guinchoConnectionString.ProviderName %>" SelectCommand="SELECT id_usr, login_usr, email_usr, pwd_usr, type_usr, nome_usr, sx_usr, birth_usr, cpf_usr, cep_usr, mobile_usr FROM usr WHERE (type_usr = 'lowStaff')"></asp:SqlDataSource>
+        <asp:SqlDataSource ID="MySqlSelectFrota" runat="server" ConnectionString="<%$ ConnectionStrings:amaral_guinchoConnectionString %>" ProviderName="<%$ ConnectionStrings:amaral_guinchoConnectionString.ProviderName %>" SelectCommand="SELECT * FROM frota"></asp:SqlDataSource>
+        <asp:SqlDataSource ID="MySqlAbrirOe" runat="server"></asp:SqlDataSource>
+        
+        <!--end of database interaction-->
     </form>
 </asp:Content>

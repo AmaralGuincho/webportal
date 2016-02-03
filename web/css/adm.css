@@ -4,17 +4,20 @@ body{
     margin:0;
     margin-left:55px;
     font-family:'Roboto',Arial,sans-serif;
+    height:100%;
 }
 
 nav{
     width:55px;
-    height:100%;
-    position:absolute;
+    max-height:10000%;
+    position:fixed;
     left:0px;
     padding:0;
     float:left;
     color:white;
-    background-color:#293c79;
+    background-color:#0c295b;
+    margin-bottom:-50%;
+    padding-bottom:50%;
 }
 
 nav>ul{
@@ -32,15 +35,11 @@ nav>ul{
         -moz-transition: background 0.25s ease-in 0.15s;
         -o-transition: background 0.25s ease-in 0.15s;
         -webkit-transition: background 0.25s ease-in 0.15s;
-        transition: background 0.25s ease-in 0.15s;
+        transition: background 0.15s ease-in 3.0;
     }
 
         nav > ul > li:hover {
-            background-color: #125e97;
-            -moz-transition: background 0.5s ease-out 0.25;
-            -o-transition: background 0.5s ease-out 0.25;
-            -webkit-transition: background 0.5s ease-out 0.25;
-            transition: background 0.5s ease-out 0.25;
+            background-color: #17418b;
         }
 
 nav>ul>li>.a{
@@ -57,16 +56,7 @@ nav>ul>li>.a{
 }
 
 .a > figcaption {
-    color: white;
-    font-family: "Roboto", sans-serif;
-    font-weight: 400;
-    text-align: center;
-    margin-left:-9px;
-    opacity: 0;
-    -moz-transition:opacity 0.5s ease-in;
-    -o-transition:opacity 0.5s ease-in;
-    -webkit-transition:opacity 0.5s ease-in;
-    transition:opacity 0.5s ease-in;
+    display:none;
 }
 
 .align{
