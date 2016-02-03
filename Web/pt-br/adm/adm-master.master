@@ -17,32 +17,28 @@
    <nav>
        <ul>
            <li>
-               <asp:LinkButton CssClass="a" runat="server">
+               <asp:LinkButton CssClass="a" runat="server" PostBackUrl="~/pt-br/adm/dashboard.aspx">
                  <img src="../../resources/icons/house.png" alt="Dashboard"/>
                  <figcaption>Home</figcaption>
                </asp:LinkButton>
-              </a>
            </li>
            <li>
-               <asp:LinkButton CssClass="a" runat="server">
+               <asp:LinkButton CssClass="a" runat="server" PostBackUrl="~/pt-br/adm/servico.aspx">
                    <img src="../../resources/icons/compose.png" alt="novaoe" />
                    <figcaption>Nova OE</figcaption>
                </asp:LinkButton>
-               </a>
            </li>
            <li>
                <asp:LinkButton CssClass="a" runat="server">
                    <img src="../../resources/icons/magnifier.png" alt="Procurar" />
                    <figcaption class="align">Pesquisar</figcaption>
                </asp:LinkButton>
-               </a>
            </li>
            <li>
                <asp:LinkButton CssClass="a" runat="server">
                    <img src="../../resources/icons/plus.png" alt="cadastro" />
                    <figcaption class="align">Cadastrar</figcaption>
                </asp:LinkButton>
-               </a>
            </li>
            <li>
                <asp:LinkButton CssClass="a" runat="server" OnClick="logoff">

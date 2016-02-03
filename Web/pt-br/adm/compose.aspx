@@ -9,7 +9,7 @@
 
 <asp:Content ContentPlaceHolderID="cph" runat="server">
         <h1>Ordem de Serviço</h1>
-        <form action="" method="get" runat="server" class="container">
+        <form action="" method="get" class="container">
             <table class="frmTable">
                 <tr>
                     <td>
