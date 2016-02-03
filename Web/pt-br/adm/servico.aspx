@@ -1,4 +1,4 @@
-﻿<%@ Page MasterPageFile="~/pt-br/adm/adm-master.master" Language="C#" AutoEventWireup="true" CodeFile="servico.aspx.cs" Inherits="pt_br_adm_servico" %>
+﻿<%@ Page MasterPageFile="~/pt-br/adm/adm-master.master" Language="C#" EnableEventValidation="false"  AutoEventWireup="true" CodeFile="servico.aspx.cs" Inherits="pt_br_adm_servico" %>
 
 <asp:Content ContentPlaceHolderID="head" runat="server">
     <meta name="viewport" content="width=device-width" />
@@ -81,7 +81,7 @@
                     </div>
                 </td>
                 <td>
-                    <asp:Button Text="Procurar" ID="btnProcurar_cliente" runat="server" Class="inline-button" Enabled="True"/>
+                    <asp:Button Text="Procurar" ID="btnProcurar_cliente" runat="server" Class="inline-button" Enabled="True" OnClick="btnProcurar_cliente_Click"/>
                 </td>
             </tr>
             <tr class="client-info">
@@ -176,7 +176,10 @@
             </SelectParameters>
         </asp:SqlDataSource>
         <asp:SqlDataSource ID="MySqlSeguro" runat="server" ConnectionString="<%$ ConnectionStrings:amaral_guinchoConnectionString %>" ProviderName="<%$ ConnectionStrings:amaral_guinchoConnectionString.ProviderName %>" SelectCommand="SELECT * FROM seguro"></asp:SqlDataSource>
-       <!-- <asp:SqlDataSource ID="MySqlSelectClient" runat="server" ConnectionString="<%$ ConnectionStrings:amaral_guinchoConnectionString %>" ProviderName="<%$ ConnectionStrings:amaral_guinchoConnectionString.ProviderName %>" SelectCommand="SELECT id_usr, login_usr, email_usr, pwd_usr, type_usr, nome_usr, sx_usr, birth_usr, cpf_usr, cep_usr, mobile_usr FROM usr WHERE (nome_usr = @NOME) AND (type_usr = 'usr')  OR (cpf_usr = @CPF) AND (type_usr = 'usr') OR (mobile_usr = @CEL) AND (type_usr = 'usr')">
-        </asp:SqlDataSource>-->
+        <asp:SqlDataSource runat="server" ID="MySqlSelectClient" ConnectionString="<%$ ConnectionStrings:amaral_guinchoConnectionString %>" ProviderName="<%$ ConnectionStrings:amaral_guinchoConnectionString.ProviderName %>" SelectCommand="SELECT id_usr, login_usr, email_usr, pwd_usr, type_usr, nome_usr, sx_usr, birth_usr, cpf_usr, cep_usr, mobile_usr FROM usr WHERE (nome_usr = @USERNAME)" >
+            <SelectParameters>
+                <asp:ControlParameter ControlID="nome_pesq_cli" Name="USERNAME" PropertyName="Text" />
+            </SelectParameters>
+        </asp:SqlDataSource>
     </form>
 </asp:Content>
