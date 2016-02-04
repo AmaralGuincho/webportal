@@ -198,6 +198,23 @@ CREATE TABLE ordem_de_servico(
     REFERENCES usr (id_usr)
 );
 
+CREATE TABLE viagem(
+  id_viagem INT NOT NULL AUTO_INCREMENT,
+  id_motorista INT NOT NULL,
+  id_oe INT NOT NULL,
+  kmsaida VARCHAR(30) NOT NULL,
+  kmchegada VARCHAR(30) NOT NULL,
+  horatrab VARCHAR(30) NOT NULL,
+
+   PRIMARY KEY(id_viagem),
+
+  FOREIGN KEY (id_motorista)
+    REFERENCES usr (id_usr),
+
+  FOREIGN KEY (id_oe)
+    REFERENCES ordem_de_servico (id_oe)
+);
+
 CREATE TABLE session(
    id_session INT NOT NULL AUTO_INCREMENT,
    id_funcionario INT NOT NULL,
