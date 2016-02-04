@@ -171,7 +171,7 @@ CREATE TABLE veiculo(
 CREATE TABLE ordem_de_servico(
    id_oe  INT NOT NULL AUTO_INCREMENT,
    data_abertura_oe  TIMESTAMP NOT NULL,
-   nome_ab_chamado VARCHAR (30) NOT NULL,
+   nome_ab_chamado INT NOT NULL,
    id_seguro TINYINT NOT NULL,
    nome_assistente_seguro VARCHAR(30) NOT NULL,
    tipo_seguro VARCHAR(30) NOT NULL,
@@ -187,6 +187,9 @@ CREATE TABLE ordem_de_servico(
   PRIMARY KEY (id_oe),
   FOREIGN KEY (id_seguro)
     REFERENCES seguro (id_seguro),
+
+  FOREIGN KEY(nome_ab_chamado)
+      REFERENCES usr (id_usr),
 
   FOREIGN KEY (id_cliente)
     REFERENCES usr (id_usr),

@@ -12,63 +12,63 @@ INSERT INTO usr VALUES(
   null,
   null,
   null,
-  '88178535',
+  '88178535'
 );
 
 INSERT INTO usr VALUES(
   null,
   'clue',
-   'littleClue@emcon.com',
-   '0000'
+  'littleClue@emcon.com',
+  '0000',
   'staff',
   'Clue Flynns Son',
   'M',
   null,
   null,
   null,
-  '88178535',
+  '88178535'
 );
 
 INSERT INTO usr VALUES(
   null,
   'Flynn',
-   'flynn@emcon.com',
-   '0000'
+  'flynn@emcon.com',
+  '0000',
   'staff',
   'The Creator',
   'M',
   null,
   null,
   null,
-  '881785315',
+  '881785315'
 );
 
 INSERT INTO usr VALUES(
   null,
   'Sam',
-   'sam@emcon.com',
-   '0000'
+  'sam@emcon.com',
+  '0000',
   'lowStaff',
   'Samuel',
   'M',
   null,
   null,
   null,
-  '881785315',
+  '881785315'
 );
 
 INSERT INTO usr VALUES(
   null,
   'jessica',
-   'jhones@emcon.com',
-   '0000'
+  'jhones@emcon.com',
+  '0000',
   'usr',
   'Jessica Jhones',
   'F',
   null,
   null,
   null,
-  '881785315',
+  '881785315'
 );
 
 
@@ -134,18 +134,16 @@ INSERT INTO habilitacao VALUES(
 INSERT INTO veiculo VALUES(
   null,
   5,
-  'Chevrolet',
   'Vectra Sedan',
-  '2013-02-01',
   'abc112',
   'Prata'
 );
 
-INSERT INTO oe VALUES(
+INSERT INTO ordem_de_servico VALUES(
   null,
   "2016-05-01",
+  2,
   1,
-  'sistema',
   'ronaldo',
   'express',
   5,
@@ -155,5 +153,4 @@ INSERT INTO oe VALUES(
   'caraguatatuba',
   4,
   'Aberto'
-
 );
