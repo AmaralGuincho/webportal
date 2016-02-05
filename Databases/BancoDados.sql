@@ -170,7 +170,7 @@ CREATE TABLE veiculo(
 
 CREATE TABLE ordem_de_servico(
    id_oe  INT NOT NULL AUTO_INCREMENT,
-   data_abertura_oe  TIMESTAMP NOT NULL,
+   data_abertura_oe  DATETIME NOT NULL,
    nome_ab_chamado INT NOT NULL,
    id_seguro TINYINT NOT NULL,
    nome_assistente_seguro VARCHAR(30) NOT NULL,
