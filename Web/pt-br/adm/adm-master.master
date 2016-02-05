@@ -33,7 +33,7 @@
                </asp:LinkButton>
            </li>
            <li>
-               <asp:LinkButton CssClass="a" runat="server" AutoPostback="true">
+               <asp:LinkButton CssClass="a" runat="server" PostBackUrl="~/pt-br/adm/searchoe.aspx">
                    <img src="../../resources/icons/magnifier.png" alt="Procurar"/>
                </asp:LinkButton>
            </li>
