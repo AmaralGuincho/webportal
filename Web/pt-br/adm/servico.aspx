@@ -15,7 +15,7 @@
                 <td>
                     <div class="group">
                         <asp:Label Text="Numero Ordem de Serviço:" runat="server" CssClass="simpleLabel" />
-                        <asp:TextBox ID="id_oe" runat="server" CssClass="input" placeholder="Numero OE" Enabled="False" />
+                        <asp:TextBox ID="txtid_oe" runat="server" CssClass="input" placeholder="Numero OE" Enabled="False" />
                         <span class="highlight"></span>
                         <span class="bar"></span>
                     </div>
@@ -41,7 +41,7 @@
                 <td>
                     <div class="group">
                         <asp:Label Text="Seguradora" CssClass="simpleLabeldd" runat="server" />
-                        <asp:DropDownList runat="server" CssClass="dropdown" DataSourceID="MySqlSeguro" DataTextField="nome_seguro" DataValueField="id_seguro">
+                        <asp:DropDownList runat="server" ID="ddSeguradora" CssClass="dropdown" DataSourceID="MySqlSeguro" DataTextField="nome_seguro" DataValueField="id_seguro">
                             <asp:ListItem Text="Seguradora1" />
                             <asp:ListItem Text="Seguradpra2" />
                         </asp:DropDownList>
@@ -128,10 +128,13 @@
                 </td>
                 <td>
                     <div class="group">
-                        <asp:Label Text="Local de Retirada" CssClass="simpleLabel-multiline" runat="server" />
-                        <asp:TextBox ID="local_de_retirada" CssClass="large-input" TextMode="MultiLine" runat="server" />
-                        <span class="highlight"></span>
-                        <span class="bar"></span>
+                        <asp:Label Text="Status" CssClass="simpleLabeldd" runat="server" />
+                        <asp:DropDownList runat="server" CssClass="dropdown" ID="ddStatus">
+                            <asp:ListItem Text="Aberto" />
+                            <asp:ListItem Text="Fechado" />
+                            <asp:ListItem Text="Resusado" />
+                            <asp:ListItem Text="Outro" />
+                        </asp:DropDownList>
                     </div>
                 </td>
             </tr>
@@ -152,8 +155,8 @@
                 </td>
                 <td>
                     <div class="group">
-                        <asp:Label Text="Observação" CssClass="simpleLabel-multiline" runat="server" />
-                        <asp:TextBox ID="txtobs" CssClass="large-input" runat="server" TextMode="MultiLine" />
+                        <asp:Label Text="Local de Retirada" CssClass="simpleLabel-multiline" runat="server" />
+                        <asp:TextBox ID="txtLocalRetirada" CssClass="large-input" runat="server" TextMode="MultiLine" />
                         <span class="highlight"></span>
                         <span class="bar"></span>
                     </div>
@@ -211,25 +214,13 @@
                     </div>
                 </td>
             </tr>
-            <tr>
-                <td></td>
-                <td>
-                    <div class="group">
-                        <asp:Label Text="Status" CssClass="simpleLabeldd" runat="server" />
-                        <asp:DropDownList runat="server" CssClass="dropdown">
-                            <asp:ListItem Text="Status1" />
-                            <asp:ListItem Text="Status2" />
-                        </asp:DropDownList>
-                    </div>
-                </td>
-            </tr>
             <tr class="Ação">
                 <td>
                     <asp:Button Text="Resetar" runat="server" Class="button" />
                 </td>
                 <td></td>
                 <td>
-                    <asp:Button Text="Obrir OE" runat="server" Class="button" />
+                    <asp:Button Text="Obrir OE" runat="server" Class="button" OnClick="abriroe"/>
                 </td>
             </tr>
         </table>
@@ -247,7 +238,46 @@
         </asp:SqlDataSource>
         <asp:SqlDataSource ID="MySqlSelectMotorista" runat="server" ConnectionString="<%$ ConnectionStrings:amaral_guinchoConnectionString %>" ProviderName="<%$ ConnectionStrings:amaral_guinchoConnectionString.ProviderName %>" SelectCommand="SELECT id_usr, login_usr, email_usr, pwd_usr, type_usr, nome_usr, sx_usr, birth_usr, cpf_usr, cep_usr, mobile_usr FROM usr WHERE (type_usr = 'lowStaff')"></asp:SqlDataSource>
         <asp:SqlDataSource ID="MySqlSelectFrota" runat="server" ConnectionString="<%$ ConnectionStrings:amaral_guinchoConnectionString %>" ProviderName="<%$ ConnectionStrings:amaral_guinchoConnectionString.ProviderName %>" SelectCommand="SELECT * FROM frota"></asp:SqlDataSource>
-        <asp:SqlDataSource ID="MySqlAbrirOe" runat="server"></asp:SqlDataSource>
+        <asp:SqlDataSource ID="MySqlAbrirOe" runat="server" ConnectionString="<%$ ConnectionStrings:amaral_guinchoConnectionString %>" ProviderName="<%$ ConnectionStrings:amaral_guinchoConnectionString.ProviderName %>" SelectCommand="SELECT * FROM [ordem_de_servico]" InsertCommand="INSERT INTO ordem_de_servico(data_abertura_oe, nome_ab_chamado, id_seguro, tipo_seguro, nome_assistente_seguro, id_cliente, local_retirada, agendamento, numero_sinistro, local_entrega, id_motorista, status) VALUES (@DATA, @NOMEA, @IDSEGURO, @TIPOSEG, @ASSEG, @IDCLI, @LOCALRE, @AGENDA, @NUMSINISTRO, @ENTREGA, @IDMOTORISTA, @STATUS)">
+            <InsertParameters>
+                <asp:SessionParameter Name="NOMEA" SessionField="id_usr" />
+                <asp:ControlParameter Name="IDSEGURO" ControlID="ddSeguradora" PropertyName="SelectedValue" />
+                <asp:ControlParameter ControlID="tipo_seguro" Name="TIPOSEG" PropertyName="Text" />
+                <asp:ControlParameter ControlID="nome_assistente" Name="ASSEG" PropertyName="Text" />
+                <asp:Parameter Name="IDCLI" />
+<asp:ControlParameter ControlID="txtLocalRetirada" PropertyName="Text" Name="LOCALRE"></asp:ControlParameter>
+                <asp:ControlParameter ControlID="Agendamento" Name="AGENDA" PropertyName="Text" />
+                <asp:ControlParameter ControlID="numero_sinistro" Name="NUMSINISTRO" PropertyName="Text" />
+                <asp:ControlParameter ControlID="local_entrega" Name="ENTREGA" PropertyName="Text" />
+                <asp:ControlParameter ControlID="ddMotorista" Name="IDMOTORISTA" PropertyName="SelectedValue" />
+                <asp:ControlParameter ControlID="ddStatus" Name="STATUS" PropertyName="SelectedValue" />
+                <asp:Parameter Name="DATA" />
+            </InsertParameters>
+        </asp:SqlDataSource>
+        <asp:SqlDataSource runat="server" ConnectionString="<%$ ConnectionStrings:amaral_guinchoConnectionString %>" InsertCommand="INSERT INTO viagem(id_motorista, id_oe, kmsaida, kmchegada, horatrab, id_frota) VALUES (@IDMOTORISTA, @IDOE, @KMSAIDA, @KMCHEGADA, @HORATRAB, @IDFROTA)" ProviderName="<%$ ConnectionStrings:amaral_guinchoConnectionString.ProviderName %>" SelectCommand="SELECT * FROM [viagem]" ID="MySqlViagem">
+            <InsertParameters>
+                <asp:ControlParameter ControlID="ddMotorista" Name="IDMOTORISTA" PropertyName="SelectedValue" />
+                <asp:ControlParameter ControlID="txtid_oe" Name="IDOE" PropertyName="Text" />
+                <asp:ControlParameter ControlID="txtKmSaida" Name="KMSAIDA" PropertyName="Text" />
+                <asp:ControlParameter ControlID="txtKmChegada" Name="KMCHEGADA" PropertyName="Text" />
+                <asp:ControlParameter ControlID="txtHoraTrabalhada" Name="HORATRAB" PropertyName="Text" />
+                <asp:ControlParameter ControlID="ddFrota" Name="IDFROTA" PropertyName="SelectedValue" />
+            </InsertParameters>
+        </asp:SqlDataSource>
+        
+        <asp:SqlDataSource ID="MySqlSelect_id" runat="server" ConnectionString="<%$ ConnectionStrings:amaral_guinchoConnectionString %>" ProviderName="<%$ ConnectionStrings:amaral_guinchoConnectionString.ProviderName %>" SelectCommand="SELECT MAX(id_oe) FROM ordem_de_servico"></asp:SqlDataSource>
+        
+        <asp:SqlDataSource ID="MySql_insert_cliente" runat="server" ConnectionString="<%$ ConnectionStrings:amaral_guinchoConnectionString %>" InsertCommand="INSERT INTO usr(login_usr, pwd_usr, type_usr, sx_usr, nome_usr, cpf_usr, mobile_usr, email_usr) VALUES (@LOGCLI, '0000', 'usr', @SEXCLI, @LOGCLI, @CPFCLI, @MOBILE, @MAILCLI)" ProviderName="<%$ ConnectionStrings:amaral_guinchoConnectionString.ProviderName %>">
+            <InsertParameters>
+                <asp:ControlParameter ControlID="nome_pesq_cli" Name="LOGCLI" PropertyName="Text" />
+                <asp:ControlParameter ControlID="sexoCli" Name="SEXCLI" PropertyName="SelectedValue" />
+                <asp:ControlParameter ControlID="cpf_cli" Name="CPFCLI" PropertyName="Text" />
+                <asp:ControlParameter ControlID="Cel_cli" Name="MOBILE" PropertyName="Text" />
+                <asp:ControlParameter ControlID="email_cli" Name="MAILCLI" PropertyName="Text" />
+            </InsertParameters>
+        </asp:SqlDataSource>
+        
+        <asp:SqlDataSource ID="MySqlSelect_MAXCliente" runat="server" ConnectionString="<%$ ConnectionStrings:amaral_guinchoConnectionString %>" ProviderName="<%$ ConnectionStrings:amaral_guinchoConnectionString.ProviderName %>" SelectCommand="SELECT MAX(id_usr) FROM usr"></asp:SqlDataSource>
         
         <!--end of database interaction-->
     </form>

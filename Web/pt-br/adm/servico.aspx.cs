@@ -11,12 +11,27 @@ public partial class pt_br_adm_servico : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+        //Verificando autenticação
+        if (Session["Log"] == "On")
+        {
+            if (Session["Staff"] != "On")
+            {
+                Response.Redirect("../index.html");
+            }
+        }
+
         // Adicionando o Nome Do Usuario a "OE"
         DataView usr_id;
         usr_id = (DataView)MySqlUsr.Select(DataSourceSelectArguments.Empty);
         nome_abertura.Text = usr_id.Table.Rows[0]["nome_usr"].ToString();
 
+        //AUTOSET DATA
         data_abertura.Text = DateTime.Now.ToString();
+
+        //ADICIONANDO O ID DA OE
+        DataView id_oe;
+        id_oe = (DataView)MySqlSelect_id.Select(DataSourceSelectArguments.Empty);
+        txtid_oe.Text =(Convert.ToInt64(id_oe.Table.Rows[0]["MAX(id_oe)"].ToString()) + 1).ToString();
     }
 
     protected void ClienteDD_SelectedIndexChanged(object sender, EventArgs e)
@@ -58,6 +73,59 @@ public partial class pt_br_adm_servico : System.Web.UI.Page
             {
                 sexoCli.Text = "Feminino";
             }
+        }
+    }
+
+    protected void abriroe(object sender, EventArgs e)
+    {
+        if(ClienteDD.Text == "Novo Cliente")
+        {
+            #region Inserir OE + Cadastar Cliente
+
+
+            DataView dvIdcli;
+            dvIdcli = (DataView)MySqlSelect_MAXCliente.Select(DataSourceSelectArguments.Empty);
+
+            DataView usr_id;
+            usr_id = (DataView)MySqlUsr.Select(DataSourceSelectArguments.Empty);
+
+            DateTime dt = Convert.ToDateTime(data_abertura.Text);
+            String datacorreta = dt.ToString("yyyy/mm/dd HH:mm:ss");
+
+            DataView dv_id_cli;
+            dv_id_cli = (DataView)MySqlSelectClient.Select(DataSourceSelectArguments.Empty);
+
+            
+            MySql_insert_cliente.Insert();
+            MySqlAbrirOe.InsertParameters["IDABERTURA"].DefaultValue = usr_id.Table.Rows[0]["id_usr"].ToString();
+            MySqlAbrirOe.InsertParameters["IDCLI"].DefaultValue = dv_id_cli.Table.Rows[0]["id_usr"].ToString();
+            MySqlAbrirOe.InsertParameters["DATA"].DefaultValue = datacorreta;
+
+            MySqlAbrirOe.Insert();
+            MySqlViagem.Insert();
+            #endregion
+        }
+        else
+        {
+            DataView dvIdcli;
+            dvIdcli = (DataView)MySqlSelectClient.Select(DataSourceSelectArguments.Empty);
+
+            DataView usr_id;
+            usr_id = (DataView)MySqlUsr.Select(DataSourceSelectArguments.Empty);
+            
+            DateTime dt = Convert.ToDateTime(data_abertura.Text);
+            String datacorreta = dt.ToString("yyyy/mm/dd HH:mm:ss");
+
+            //Adicionar id do cliente procurado
+
+
+
+            MySqlAbrirOe.InsertParameters["IDCLI"].DefaultValue = dvIdcli.Table.Rows[0]["id_usr"].ToString();
+            MySqlAbrirOe.InsertParameters["DATA"].DefaultValue = datacorreta;
+
+            MySqlAbrirOe.Insert();
+
+            MySqlViagem.Insert();
         }
     }
 }

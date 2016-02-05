@@ -201,6 +201,7 @@ CREATE TABLE ordem_de_servico(
 CREATE TABLE viagem(
   id_viagem INT NOT NULL AUTO_INCREMENT,
   id_motorista INT NOT NULL,
+  id_frota TINYINT NOT NULL,
   id_oe INT NOT NULL,
   kmsaida VARCHAR(30) NOT NULL,
   kmchegada VARCHAR(30) NOT NULL,
@@ -210,6 +211,9 @@ CREATE TABLE viagem(
 
   FOREIGN KEY (id_motorista)
     REFERENCES usr (id_usr),
+
+  FOREIGN KEY (id_frota)
+    REFERENCES frota (id_frota),
 
   FOREIGN KEY (id_oe)
     REFERENCES ordem_de_servico (id_oe)
