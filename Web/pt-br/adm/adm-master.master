@@ -7,6 +7,7 @@
     <title>Administrador</title>
     <meta name="viewport" content="width=device-width" />
     <link href="../../css/adm.css" rel="stylesheet" />
+    <link rel="icon" href="../../resources/icons/console.png" />
     <asp:ContentPlaceHolder id="head" runat="server">
         <meta name="viewport" content="width=device-width" />
         <link href="../../css/adm.css" rel="stylesheet" />

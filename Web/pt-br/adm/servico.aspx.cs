@@ -126,8 +126,15 @@ public partial class pt_br_adm_servico : System.Web.UI.Page
                 MySqlViagem.Insert();
                 #endregion
             }
+            //Sucesso no serviço
+            Response.Redirect("done.aspx");
         }
         catch { }
+        finally
+        {
+            //falha no serviço
+            Response.Redirect("fail.aspx");
+        }
         
        
     }
