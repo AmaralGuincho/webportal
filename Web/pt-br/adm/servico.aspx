@@ -9,7 +9,6 @@
 
 <asp:Content ContentPlaceHolderID="cph" runat="server">
     <h1>Ordem de Serviço</h1>
-    <form method="get" class="container">
         <table class="frmTable">
             <tr class="System_info">
                 <td>
@@ -67,7 +66,7 @@
             <tr class="cliente">
                 <td>
                     <!-- Cadastrando Cliente-->
-                    <asp:DropDownList ID="ClienteDD" runat="server" CssClass="dropdown" Enabled="true" OnSelectedIndexChanged="ClienteDD_SelectedIndexChanged">
+                    <asp:DropDownList ID="ClienteDD" runat="server" CssClass="dropdown" Enabled="true" AutoPostBack="True" OnSelectedIndexChanged="selected">
                         <asp:ListItem Text="Cliente Existente" />
                         <asp:ListItem Text="Novo Cliente" />
                     </asp:DropDownList>
@@ -270,15 +269,14 @@
         <asp:SqlDataSource ID="MySql_insert_cliente" runat="server" ConnectionString="<%$ ConnectionStrings:amaral_guinchoConnectionString %>" InsertCommand="INSERT INTO usr(login_usr, pwd_usr, type_usr, sx_usr, nome_usr, cpf_usr, mobile_usr, email_usr) VALUES (@LOGCLI, '0000', 'usr', @SEXCLI, @LOGCLI, @CPFCLI, @MOBILE, @MAILCLI)" ProviderName="<%$ ConnectionStrings:amaral_guinchoConnectionString.ProviderName %>">
             <InsertParameters>
                 <asp:ControlParameter ControlID="nome_pesq_cli" Name="LOGCLI" PropertyName="Text" />
-                <asp:ControlParameter ControlID="sexoCli" Name="SEXCLI" PropertyName="SelectedValue" />
                 <asp:ControlParameter ControlID="cpf_cli" Name="CPFCLI" PropertyName="Text" />
                 <asp:ControlParameter ControlID="Cel_cli" Name="MOBILE" PropertyName="Text" />
                 <asp:ControlParameter ControlID="email_cli" Name="MAILCLI" PropertyName="Text" />
+                <asp:Parameter Name="SEXCLI" />
             </InsertParameters>
         </asp:SqlDataSource>
         
         <asp:SqlDataSource ID="MySqlSelect_MAXCliente" runat="server" ConnectionString="<%$ ConnectionStrings:amaral_guinchoConnectionString %>" ProviderName="<%$ ConnectionStrings:amaral_guinchoConnectionString.ProviderName %>" SelectCommand="SELECT MAX(id_usr) FROM usr"></asp:SqlDataSource>
         
         <!--end of database interaction-->
-    </form>
 </asp:Content>

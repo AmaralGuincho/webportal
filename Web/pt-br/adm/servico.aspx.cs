@@ -34,18 +34,6 @@ public partial class pt_br_adm_servico : System.Web.UI.Page
         txtid_oe.Text =(Convert.ToInt64(id_oe.Table.Rows[0]["MAX(id_oe)"].ToString()) + 1).ToString();
     }
 
-    protected void ClienteDD_SelectedIndexChanged(object sender, EventArgs e)
-    {
-        if(ClienteDD.SelectedIndex == 1)
-        {
-            btnProcurar_cliente.Enabled = false;
-        }
-        else
-        {
-            btnProcurar_cliente.Enabled = true;
-        }
-    }
-
     protected void btnProcurar_cliente_Click(object sender, EventArgs e)
     {
         DataView pesq_cli;
@@ -56,6 +44,7 @@ public partial class pt_br_adm_servico : System.Web.UI.Page
         {
             //Cliente não encontrado
             nome_pesq_cli.Text = string.Empty;
+            ClienteDD.SelectedIndex = 1;
             
         }
         else
@@ -78,54 +67,76 @@ public partial class pt_br_adm_servico : System.Web.UI.Page
 
     protected void abriroe(object sender, EventArgs e)
     {
+        try {
+            if (ClienteDD.Text == "Novo Cliente")
+            {
+                #region Inserir OE + Cadastar Cliente
+
+                DataView usr_id;
+                usr_id = (DataView)MySqlUsr.Select(DataSourceSelectArguments.Empty);
+
+                #region inserindo sexo no cliente
+
+                if (sexoCli.Text == "Masculino")
+                {
+                    MySql_insert_cliente.InsertParameters["SEXCLI"].DefaultValue = "M";
+                }
+                else
+                {
+                    MySql_insert_cliente.InsertParameters["SEXCLI"].DefaultValue = "F";
+                }
+
+                #endregion
+
+                MySql_insert_cliente.Insert();
+
+                #region abrir oe
+
+                DataView dvIdcli;
+                dvIdcli = (DataView)MySqlSelect_MAXCliente.Select(DataSourceSelectArguments.Empty);
+
+                MySqlAbrirOe.InsertParameters["IDCLI"].DefaultValue = dvIdcli.Table.Rows[0]["MAX(id_usr)"].ToString();
+                MySqlAbrirOe.InsertParameters["DATA"].DefaultValue = DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss");
+
+                MySqlAbrirOe.Insert();
+                #endregion
+
+                MySqlViagem.Insert();
+                #endregion
+            }
+            else
+            {
+                #region Inserir OE + Cliente Existente
+                DataView dvIdcli;
+                dvIdcli = (DataView)MySqlSelectClient.Select(DataSourceSelectArguments.Empty);
+
+                DataView usr_id;
+                usr_id = (DataView)MySqlUsr.Select(DataSourceSelectArguments.Empty);
+
+                DateTime dt = Convert.ToDateTime(data_abertura.Text);
+                String datacorreta = dt.ToString("yyyy-mm-dd HH:mm:ss");
+
+                //Adicionar id do cliente procurado
+
+                MySqlAbrirOe.InsertParameters["IDCLI"].DefaultValue = dvIdcli.Table.Rows[0]["id_usr"].ToString();
+                MySqlAbrirOe.InsertParameters["DATA"].DefaultValue = datacorreta;
+
+                MySqlAbrirOe.Insert();
+
+                MySqlViagem.Insert();
+                #endregion
+            }
+        }
+        catch { }
+        
+       
+    }
+
+    protected void selected(object sender, EventArgs e)
+    {
         if(ClienteDD.Text == "Novo Cliente")
         {
-            #region Inserir OE + Cadastar Cliente
-
-
-            DataView dvIdcli;
-            dvIdcli = (DataView)MySqlSelect_MAXCliente.Select(DataSourceSelectArguments.Empty);
-
-            DataView usr_id;
-            usr_id = (DataView)MySqlUsr.Select(DataSourceSelectArguments.Empty);
-
-            DateTime dt = Convert.ToDateTime(data_abertura.Text);
-            String datacorreta = dt.ToString("yyyy/mm/dd HH:mm:ss");
-
-            DataView dv_id_cli;
-            dv_id_cli = (DataView)MySqlSelectClient.Select(DataSourceSelectArguments.Empty);
-
-            
-            MySql_insert_cliente.Insert();
-            MySqlAbrirOe.InsertParameters["IDABERTURA"].DefaultValue = usr_id.Table.Rows[0]["id_usr"].ToString();
-            MySqlAbrirOe.InsertParameters["IDCLI"].DefaultValue = dv_id_cli.Table.Rows[0]["id_usr"].ToString();
-            MySqlAbrirOe.InsertParameters["DATA"].DefaultValue = datacorreta;
-
-            MySqlAbrirOe.Insert();
-            MySqlViagem.Insert();
-            #endregion
-        }
-        else
-        {
-            DataView dvIdcli;
-            dvIdcli = (DataView)MySqlSelectClient.Select(DataSourceSelectArguments.Empty);
-
-            DataView usr_id;
-            usr_id = (DataView)MySqlUsr.Select(DataSourceSelectArguments.Empty);
-            
-            DateTime dt = Convert.ToDateTime(data_abertura.Text);
-            String datacorreta = dt.ToString("yyyy/mm/dd HH:mm:ss");
-
-            //Adicionar id do cliente procurado
-
-
-
-            MySqlAbrirOe.InsertParameters["IDCLI"].DefaultValue = dvIdcli.Table.Rows[0]["id_usr"].ToString();
-            MySqlAbrirOe.InsertParameters["DATA"].DefaultValue = datacorreta;
-
-            MySqlAbrirOe.Insert();
-
-            MySqlViagem.Insert();
+            btnProcurar_cliente.Style.Add("display", "none");
         }
     }
 }

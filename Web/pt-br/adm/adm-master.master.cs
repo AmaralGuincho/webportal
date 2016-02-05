@@ -13,12 +13,20 @@ public partial class adm_master : System.Web.UI.MasterPage
     {
             if (Session["Log"] == "On")
             {
+                adm_manager.Visible = false;
+                
                 if (Session["Staff"] == "On")
                 {
                     DataView usr_dv;
                     usr_dv = (DataView)MySqlSelectUsr.Select(DataSourceSelectArguments.Empty);
 
                     lblUsername.Text = usr_dv.Table.Rows[0]["nome_usr"].ToString();
+                    adm_manager.Visible = false;
+
+                    if(Session["Admin"] == "On")
+                     {
+                         adm_manager.Visible = true;
+                     }
                 }
                 else
                 {

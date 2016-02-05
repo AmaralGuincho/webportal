@@ -5,6 +5,10 @@
     margin:0px 100px;
 }
 
+.invisible{
+    display:none;
+}
+
 .button, .inline-button{
   display:inline-block;
 	

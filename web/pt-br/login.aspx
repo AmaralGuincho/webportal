@@ -17,6 +17,9 @@
 </head>
 <body>
     <style>
+        *{
+            font-family:'Open Sans', Arial, sans-serif;
+        }
         form{
             background-color:#004e90;
             margin:10px 150px;
@@ -31,9 +34,7 @@
             font-family:'Open Sans', Arial, sans-serif;
             font-weight:300;
         }
-        .input{
-            border-radius:.3em;
-        }
+        
         .group{
             display:block;
             
