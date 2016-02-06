@@ -54,10 +54,14 @@
             <asp:GridView ID="GridView" runat="server">
             </asp:GridView>
         </div>
+        <div class="notFound" runat="server" id="nothing_to_show" visible="false">
+            <style>#error{color:#ff0000}</style>
+            <h2 id="error">Ops! Ainda Não temos nada por aqui!</h2>
+        </div>
     </div>
     <asp:SqlDataSource ID="SqlSelectStaff" runat="server" ConnectionString="<%$ ConnectionStrings:amaral_guinchoConnectionString %>" ProviderName="<%$ ConnectionStrings:amaral_guinchoConnectionString.ProviderName %>" SelectCommand="SELECT id_usr, login_usr, email_usr, pwd_usr, type_usr, nome_usr, sx_usr, birth_usr, cpf_usr, cep_usr, mobile_usr FROM usr WHERE (type_usr = 'staff')"></asp:SqlDataSource>
     <asp:SqlDataSource ID="SqlSelectLowStaff" runat="server" ConnectionString="<%$ ConnectionStrings:amaral_guinchoConnectionString %>" ProviderName="<%$ ConnectionStrings:amaral_guinchoConnectionString.ProviderName %>" SelectCommand="SELECT id_usr, login_usr, email_usr, pwd_usr, type_usr, nome_usr, sx_usr, birth_usr, cpf_usr, cep_usr, mobile_usr FROM usr WHERE (type_usr = 'lowStaff')"></asp:SqlDataSource>
     <asp:SqlDataSource ID="SqlSelectClient" runat="server" ConnectionString="<%$ ConnectionStrings:amaral_guinchoConnectionString %>" ProviderName="<%$ ConnectionStrings:amaral_guinchoConnectionString.ProviderName %>" SelectCommand="SELECT id_usr, login_usr, email_usr, pwd_usr, type_usr, nome_usr, sx_usr, birth_usr, cpf_usr, cep_usr, mobile_usr FROM usr WHERE (type_usr = 'usr')"></asp:SqlDataSource>
-<asp:SqlDataSource ID="SqlSelectAdm" runat="server" ConnectionString="<%$ ConnectionStrings:amaral_guinchoConnectionString %>" ProviderName="<%$ ConnectionStrings:amaral_guinchoConnectionString.ProviderName %>" SelectCommand="SELECT id_usr, login_usr, email_usr, pwd_usr, type_usr, nome_usr, sx_usr, birth_usr, cpf_usr, cep_usr, mobile_usr FROM usr WHERE (type_usr = 'adm') and i(d_usr &gt;0)"></asp:SqlDataSource>
+<asp:SqlDataSource ID="SqlSelectAdm" runat="server" ConnectionString="<%$ ConnectionStrings:amaral_guinchoConnectionString %>" ProviderName="<%$ ConnectionStrings:amaral_guinchoConnectionString.ProviderName %>" SelectCommand="SELECT id_usr, login_usr, email_usr, pwd_usr, type_usr, nome_usr, sx_usr, birth_usr, cpf_usr, cep_usr, mobile_usr FROM usr WHERE (type_usr = 'adm')"></asp:SqlDataSource>
 </asp:Content>
 

@@ -30,7 +30,7 @@
                </asp:LinkButton>
            </li>
            <li runat="server" id="adm_manager">
-               <asp:LinkButton CssClass="a" runat="server" PostBackUrl="~/pt-br/adm/servico.aspx">
+               <asp:LinkButton CssClass="a" runat="server" PostBackUrl="~/pt-br/adm/accounts.aspx">
                    <img src="../../resources/icons/accounts.png" alt="novaoe" />
                </asp:LinkButton>
            </li>

@@ -20,8 +20,36 @@ public partial class pt_br_adm_accounts : System.Web.UI.Page
             //achamos administradores
             DataView admins;
             admins = (DataView)SqlSelectAdm.Select(DataSourceSelectArguments.Empty);
+            Response.Write(admins.Count);
+           
+            #region hide password
+
+            if (Session["root"] == "enabled")
+            {
+
+            }
+            else
+            {
+                #region Loop ninja para esconder a senha
+                int i = 0;
+                int rows = admins.Count;
+                while (i < rows)
+                {
+                    admins.Table.Rows[i]["pwd_usr"] = "****";
+                    admins.Table.Rows[i]["type_usr"] = "Administrador";
+                    i++;
+                }
+                #endregion
+
+            }
+
+            #endregion
 
             GridView.DataSource = admins;
+
+            GridView.DataBind();
+
+            divgv.Visible = true;
         }
         catch { }
         finally
@@ -38,7 +66,31 @@ public partial class pt_br_adm_accounts : System.Web.UI.Page
             DataView staff;
             staff = (DataView)SqlSelectStaff.Select(DataSourceSelectArguments.Empty);
 
+            #region hide password
+            if (Session["root"] == "enabled")
+            {
+
+            }
+            else
+            {
+                #region Loop ninja para esconder a senha
+                int i = 0;
+                int rows = staff.Count;
+                while (i < rows)
+                {
+                    staff.Table.Rows[i]["pwd_usr"] = "****";
+                    staff.Table.Rows[i]["type_usr"] = "Funcionario";
+                    i++;
+                }
+                #endregion
+
+            }
+
+            #endregion
+
             GridView.DataSource = staff;
+            GridView.DataBind();
+            divgv.Visible = true;
         }
         catch { }
         finally
@@ -55,22 +107,34 @@ public partial class pt_br_adm_accounts : System.Web.UI.Page
             DataView lowStaff;
             lowStaff = (DataView)SqlSelectLowStaff.Select(DataSourceSelectArguments.Empty);
 
+            #region hide password
             if (Session["root"] == "enabled")
             {
 
             }
             else
             {
-                lowStaff.Table.Rows[0]["pwd_usr"] = "****";
-                lowStaff.Table.Rows[0]["type_usr"] = "Motorista";
+                #region Loop ninja para esconder a senha
+                int i = 0;
+                int rows = lowStaff.Count;
+                while (i < rows)
+                {
+                    lowStaff.Table.Rows[i]["pwd_usr"] = "****";
+                    lowStaff.Table.Rows[i]["type_usr"] = "Motorista";
+                    i++;
+                }
+                #endregion
+
             }
 
-            lowStaff.Table.TableName{ 0; "Código"; };
+            #endregion
 
 
 
             GridView.DataSource = lowStaff;
+
             GridView.DataBind();
+
             divgv.Visible = true;
         }
         catch { }

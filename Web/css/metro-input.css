@@ -28,7 +28,7 @@
     color: #1e6294;
     -webkit-transition: .2s -webkit-transform, 1s opacity;
     -ms-transition: .2s -ms-transform, 1s opacity;
-    transition: .2s transform, 1s opacity;
+    transition: .2s transform, 1s ease-in opacity;
     cursor:pointer;
     display:inline;
     border:none;
@@ -38,9 +38,16 @@
     -webkit-font-smoothing: antialiased;
     background-color:#177ac4;
     text-rendering: optimizeLegibility;
-    border-radius:8px;
-    transition:1s ease-in;
+    border-radius:5px;
+    
 }
+
+.MetroButton:active {
+    -webkit-transform: scale(0.85);
+    -ms-transform: scale(0.85);
+    transform: scale(0.85);
+}
+
 .Material-desc{
     position:relative;
     top:-30px;
@@ -55,15 +62,9 @@
 .MetroButton:hover + .Material-desc{
     opacity:100;
 }
-.MetroButton:hover{
-    
-}
 
-.MetroButton:active {
-    -webkit-transform: scale(0.95);
-    -ms-transform: scale(0.95);
-    transform: scale(0.95);
-}
+
+
 
 .gridview{
     margin-top:50px;
