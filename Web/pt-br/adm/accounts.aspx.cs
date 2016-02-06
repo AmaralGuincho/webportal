@@ -20,7 +20,6 @@ public partial class pt_br_adm_accounts : System.Web.UI.Page
             //achamos administradores
             DataView admins;
             admins = (DataView)SqlSelectAdm.Select(DataSourceSelectArguments.Empty);
-            Response.Write(admins.Count);
            
             #region hide password
 
@@ -35,8 +34,8 @@ public partial class pt_br_adm_accounts : System.Web.UI.Page
                 int rows = admins.Count;
                 while (i < rows)
                 {
-                    admins.Table.Rows[i]["pwd_usr"] = "****";
-                    admins.Table.Rows[i]["type_usr"] = "Administrador";
+                    admins.Table.Rows[i]["Senha"] = "****";
+                    admins.Table.Rows[i]["tipo"] = "Administrador";
                     i++;
                 }
                 #endregion
@@ -58,7 +57,7 @@ public partial class pt_br_adm_accounts : System.Web.UI.Page
         }
     }
 
-        protected void showStaff(object sender, EventArgs e)
+    protected void showStaff(object sender, EventArgs e)
     {
         try
         {
@@ -78,8 +77,8 @@ public partial class pt_br_adm_accounts : System.Web.UI.Page
                 int rows = staff.Count;
                 while (i < rows)
                 {
-                    staff.Table.Rows[i]["pwd_usr"] = "****";
-                    staff.Table.Rows[i]["type_usr"] = "Funcionario";
+                    staff.Table.Rows[i]["Senha"] = "****";
+                    staff.Table.Rows[i]["Tipo"] = "Funcionario";
                     i++;
                 }
                 #endregion
@@ -119,8 +118,8 @@ public partial class pt_br_adm_accounts : System.Web.UI.Page
                 int rows = lowStaff.Count;
                 while (i < rows)
                 {
-                    lowStaff.Table.Rows[i]["pwd_usr"] = "****";
-                    lowStaff.Table.Rows[i]["type_usr"] = "Motorista";
+                    lowStaff.Table.Rows[i]["Senha"] = "****";
+                    lowStaff.Table.Rows[i]["tipo"] = "Motorista";
                     i++;
                 }
                 #endregion
@@ -143,4 +142,57 @@ public partial class pt_br_adm_accounts : System.Web.UI.Page
             //nao achamos administradores
         }
     }
+
+    protected void showClients(object sender, EventArgs e)
+    {
+        try
+        {
+            DataView client;
+            client = (DataView)SqlSelectClient.Select(DataSourceSelectArguments.Empty);
+
+            #region hide password
+            if (Session["root"] == "enabled")
+            {
+
+            }
+            else
+            {
+                #region Loop ninja para esconder a senha
+                int i = 0;
+                int rows = client.Count;
+                while (i < rows)
+                {
+                    client.Table.Rows[i]["Senha"] = "****";
+                    client.Table.Rows[i]["tipo"] = "Cliente";
+                    i++;
+                }
+                #endregion
+
+            }
+
+            #endregion
+
+            GridView.DataSource = client;
+            GridView.DataBind();
+        }
+        catch { }
+    }
+    
+    protected void showFrota(object sender,EventArgs e)
+    {
+        DataView frota;
+        frota = (DataView)SqlDFrota.Select(DataSourceSelectArguments.Empty);
+
+        GridView.DataSource = frota;
+        GridView.DataBind();
+    }
+
+    protected void showSeguro(object sender,EventArgs e)
+    {
+        DataView dvSeg;
+        dvSeg = (DataView)SqlSeguro.Select(DataSourceSelectArguments.Empty);
+        GridView.DataSource = dvSeg;
+        GridView.DataBind();
+    }
 }
+
