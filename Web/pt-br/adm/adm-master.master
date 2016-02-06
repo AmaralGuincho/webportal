@@ -8,6 +8,8 @@
     <meta name="viewport" content="width=device-width" />
     <link href="../../css/adm.css" rel="stylesheet" />
     <link rel="icon" href="../../resources/icons/console.png" />
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600'
+        rel='stylesheet' type='text/css'>
     <asp:ContentPlaceHolder id="head" runat="server">
         <meta name="viewport" content="width=device-width" />
         <link href="../../css/adm.css" rel="stylesheet" />
