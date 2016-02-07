@@ -194,5 +194,21 @@ public partial class pt_br_adm_accounts : System.Web.UI.Page
         GridView.DataSource = dvSeg;
         GridView.DataBind();
     }
+
+    protected void showOE(object sender, EventArgs e)
+    {
+        DataView dvOe;
+        dvOe = (DataView)SqlOe.Select(DataSourceSelectArguments.Empty);
+        GridView.DataSource = dvOe;
+        GridView.DataBind();
+    }
+
+    protected void showViagem(object sender, EventArgs e)
+    {
+        DataView dvOe;
+        dvOe = (DataView)SqlViagem.Select(DataSourceSelectArguments.Empty);
+        GridView.DataSource = dvOe;
+        GridView.DataBind();
+    }
 }
 

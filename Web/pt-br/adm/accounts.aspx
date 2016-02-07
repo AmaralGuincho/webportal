@@ -37,7 +37,7 @@
                 <span class="Material-desc">Seguro</span>
             </div>
             <div class="button">
-                <asp:Button Text="book" runat="server" CssClass="MetroButton" />
+                <asp:Button Text="book" runat="server" CssClass="MetroButton" OnClick="showOE"/>
                 <span class="Material-desc">OE</span>
             </div>
             <div class="button">
@@ -45,7 +45,7 @@
                 <span class="Material-desc">Funcionarios</span>
             </div>
             <div class="button">
-                <asp:Button Text="near_me" runat="server" CssClass="MetroButton" />
+                <asp:Button Text="near_me" runat="server" CssClass="MetroButton" OnClick="showViagem" />
                 <span class="Material-desc">Viagens</span>
             </div>
         </div>
@@ -64,6 +64,7 @@
     <asp:SqlDataSource ID="SqlDFrota" runat="server" ConnectionString="<%$ ConnectionStrings:amaral_guinchoConnectionString %>" ProviderName="<%$ ConnectionStrings:amaral_guinchoConnectionString.ProviderName %>" SelectCommand="SELECT id_frota as 'Código', tipo, placa FROM frota"></asp:SqlDataSource>
     <asp:SqlDataSource ID="SqlSelectLowStaff" runat="server" ConnectionString="<%$ ConnectionStrings:amaral_guinchoConnectionString %>" ProviderName="<%$ ConnectionStrings:amaral_guinchoConnectionString.ProviderName %>" SelectCommand="SELECT id_usr as 'Código', login_usr as 'Login', email_usr as 'email', pwd_usr as 'Senha', type_usr as 'tipo', nome_usr as 'Nome', sx_usr as 'Sexo', birth_usr as 'Nascimento', cpf_usr as 'Cpf' , cep_usr as 'Cep', mobile_usr as 'Celular' FROM usr WHERE (type_usr = 'lowStaff')"></asp:SqlDataSource>
     <asp:SqlDataSource ID="SqlSelectClient" runat="server" ConnectionString="<%$ ConnectionStrings:amaral_guinchoConnectionString %>" ProviderName="<%$ ConnectionStrings:amaral_guinchoConnectionString.ProviderName %>" SelectCommand="SELECT id_usr as 'Código', login_usr as 'Login', email_usr as 'email', pwd_usr as 'Senha', type_usr as 'tipo', nome_usr as 'Nome', sx_usr as 'Sexo', birth_usr as 'Nascimento', cpf_usr as 'Cpf' , cep_usr as 'Cep', mobile_usr as 'Celular' FROM usr WHERE (type_usr = 'usr')"></asp:SqlDataSource>
+    <asp:SqlDataSource ID="SqlViagem" runat="server" ConnectionString="<%$ ConnectionStrings:amaral_guinchoConnectionString %>" ProviderName="<%$ ConnectionStrings:amaral_guinchoConnectionString.ProviderName %>" SelectCommand="SELECT id_viagem, id_motorista, id_frota, id_oe, kmsaida, kmchegada, horatrab FROM Viagem"></asp:SqlDataSource>
 <asp:SqlDataSource ID="SqlSelectAdm" runat="server" ConnectionString="<%$ ConnectionStrings:amaral_guinchoConnectionString %>" ProviderName="<%$ ConnectionStrings:amaral_guinchoConnectionString.ProviderName %>" SelectCommand="SELECT id_usr as 'Código', login_usr as 'Login', email_usr as 'email', pwd_usr as 'Senha', type_usr as 'tipo', nome_usr as 'Nome', sx_usr as 'Sexo', birth_usr as 'Nascimento', cpf_usr as 'Cpf' , cep_usr as 'Cep', mobile_usr as 'Celular' FROM usr WHERE (type_usr = 'adm')"></asp:SqlDataSource>
     <asp:SqlDataSource ID="SqlSeguro" runat="server" ConnectionString="<%$ ConnectionStrings:amaral_guinchoConnectionString %>" ProviderName="<%$ ConnectionStrings:amaral_guinchoConnectionString.ProviderName %>" SelectCommand="SELECT id_seguro, nome_seguro, cod_prestador, cep, cgc, setor_cadastro_tel, setor_pagto_tel, fechamento_servicos_tel, casos_andamento_tel, cordenador_regiao, passeio_40km, passeio_maior40km, passeio_hora_trabalhada, passeio_hora_parada, ull_40km, ull_maior40km, ull_hora_trabalhada, ull_hora_parada, moto_40km, moto_maior40km, moto_hora_trabalhada, moto_hora_parada, garagem_40km, garagem_maior40km, garagem_hora_trabalhada, garagem_hora_parada, re_40km, re_maior40km, re_hora_trabalhada, re_hora_parada, patins_40km, patins_maior40km, patins_hora_trabalhada, patins_hora_parada, cl_40km, cl_maior40km, cl_hora_trabalhada, cl_hora_parada, sospsd_40km, sospsd_maior40km, sospsd_hora_trabalhada, sospsd_hora_parada, xtrpsd_40km, xtrpsd_maior40km, xtrpsd_hora_trabalhada, xtrpsd_hora_parada, scrmec_40km, scrmec_mais40km, km_rodado, km_parado, saida_nacional_40km, saida_nacional_mais40km, saida_importado_40km, saida_importado_mais40km, saida_confeccao_40km, saida_confeccao_mais40km, saida_40km, saida_mais40km, saida_hora_trabalhada, vigilante_40km, vigilante_mais40km, vigilante_hora_trabalhada FROM seguro">
     </asp:SqlDataSource>
