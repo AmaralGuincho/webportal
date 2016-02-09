@@ -1,10 +1,4 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/pt-br/adm/adm-master.master" AutoEventWireup="true" CodeFile="editusr.aspx.cs" Inherits="css_editusr" %>
-
-<asp:Content ContentPlaceHolderID="head" runat="server">
-    <meta name="viewport" content="width=device-width" />
-    <link rel="stylesheet" href="../../css/material-input.css" type="text/css" />
-</asp:Content>
-
+﻿<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="~/pt-br/adm/adm-master.master" CodeFile="newUsr.aspx.cs" Inherits="pt_br_adm_newUsr" %>
 
 
 <asp:Content ContentPlaceHolderID="cph" runat="server">
@@ -91,8 +85,7 @@
             </td>
         </tr>
         <tr class="#">
-            <td>
-            </td>
+            <td></td>
             <td>
                 <div class="group">
                     <asp:TextBox ID="txtCelular" CssClass="input" runat="server" />
@@ -101,21 +94,28 @@
                     <asp:Label Text="Celular" CssClass="label" runat="server" />
                 </div>
             </td>
-            <td>
-            </td>
+            <td></td>
         </tr>
         <tr class="Ação">
             <td></td>
             <td></td>
             <td>
-                <asp:Button Text="Salvar" runat="server" Class="button" OnClick="update" />
+                <asp:Button Text="Salvar" runat="server" Class="button" OnClick="Cadastrar" />
             </td>
         </tr>
-     </table>
-    <asp:SqlDataSource ID="SqlUpdate" runat="server"></asp:SqlDataSource>
-    <asp:SqlDataSource ID="SqlInportUsr" runat="server" ConnectionString="<%$ ConnectionStrings:amaral_guinchoConnectionString %>" ProviderName="<%$ ConnectionStrings:amaral_guinchoConnectionString.ProviderName %>" SelectCommand="SELECT id_usr, login_usr, email_usr, pwd_usr, type_usr, nome_usr, sx_usr, birth_usr, cpf_usr, cep_usr, mobile_usr FROM usr WHERE (id_usr = @IDUSR)">
-        <SelectParameters>
-            <asp:SessionParameter Name="IDUSR" SessionField="idPesq" />
-        </SelectParameters>
+    </table>
+    <asp:SqlDataSource ID="SqlInsert_Client" runat="server" ConnectionString="<%$ ConnectionStrings:amaral_guinchoConnectionString %>" InsertCommand="INSERT INTO usr(login_usr, email_usr, pwd_usr, type_usr, nome_usr, sx_usr, birth_usr, cpf_usr, cep_usr, mobile_usr) VALUES (@LOGIN, @MAIL, @PASSWORD, @TIPO, @NOME, @SEXO, @BIRTH, @CPF, @CEP, @MOBILE)" ProviderName="<%$ ConnectionStrings:amaral_guinchoConnectionString.ProviderName %>" SelectCommand="SELECT * FROM [frota]">
+        <InsertParameters>
+            <asp:ControlParameter ControlID="txtLogin" Name="LOGIN" PropertyName="Text" />
+            <asp:ControlParameter ControlID="txtEmail" Name="MAIL" PropertyName="Text" />
+            <asp:ControlParameter ControlID="txtSenha" Name="PASSWORD" PropertyName="Text" />
+            <asp:Parameter Name="TIPO" />
+            <asp:ControlParameter ControlID="txtNome" Name="NOME" PropertyName="Text" />
+            <asp:Parameter Name="SEXO" />
+            <asp:ControlParameter ControlID="txtNacimento" Name="BIRTH" PropertyName="Text" />
+            <asp:ControlParameter ControlID="txtCpf" Name="CPF" PropertyName="Text" />
+            <asp:ControlParameter ControlID="txtCep" Name="CEP" PropertyName="Text" />
+            <asp:ControlParameter ControlID="txtCelular" Name="MOBILE" PropertyName="Text" />
+        </InsertParameters>
     </asp:SqlDataSource>
 </asp:Content>

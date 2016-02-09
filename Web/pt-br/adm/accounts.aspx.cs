@@ -10,7 +10,7 @@ public partial class pt_br_adm_accounts : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-
+  
     }
 
     protected void showAdm(object sender, EventArgs e)
@@ -278,6 +278,33 @@ public partial class pt_br_adm_accounts : System.Web.UI.Page
 
         }
 
+    }
+    protected void addBtn(object sender, EventArgs e)
+    {
+        if (Session["pesq"] == "usr")
+        {
+            DataView maxid = (DataView)SqlSelectNew.Select(DataSourceSelectArguments.Empty);
+            Session["newid"] = maxid.Table.Rows[0]["MAX(id_usr)"].ToString();
+
+            Response.Redirect("newtusr.aspx");
+        }
+        if (Session["pesq"] == "frota")
+        {
+
+        }
+        if (Session["pesq"] == "seguro")
+        {
+
+        }
+
+        if (Session["pesq"] == "oe")
+        {
+
+        }
+        if (Session["pesq"] == "viagem")
+        {
+
+        }
     }
 }
 

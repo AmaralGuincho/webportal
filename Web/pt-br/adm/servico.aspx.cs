@@ -133,7 +133,8 @@ public partial class pt_br_adm_servico : System.Web.UI.Page
         finally
         {
             //falha no serviço
-            Response.Redirect("fail.aspx");
+            //Response.Redirect("fail.aspx");
+            Response.Redirect("done.aspx");
         }
         
        
