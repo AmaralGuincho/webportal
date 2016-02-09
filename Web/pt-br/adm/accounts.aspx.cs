@@ -49,6 +49,8 @@ public partial class pt_br_adm_accounts : System.Web.UI.Page
             GridView.DataBind();
 
             divgv.Visible = true;
+
+            Session["pesq"] = "usr";
         }
         catch { }
         finally
@@ -135,6 +137,8 @@ public partial class pt_br_adm_accounts : System.Web.UI.Page
             GridView.DataBind();
 
             divgv.Visible = true;
+
+            Session["pesq"] = "usr";
         }
         catch { }
         finally
@@ -174,6 +178,9 @@ public partial class pt_br_adm_accounts : System.Web.UI.Page
 
             GridView.DataSource = client;
             GridView.DataBind();
+            divgv.Visible = true;
+
+            Session["pesq"] = "usr";
         }
         catch { }
     }
@@ -185,6 +192,7 @@ public partial class pt_br_adm_accounts : System.Web.UI.Page
 
         GridView.DataSource = frota;
         GridView.DataBind();
+        Session["pesq"] = "frota";
     }
 
     protected void showSeguro(object sender,EventArgs e)
@@ -193,6 +201,8 @@ public partial class pt_br_adm_accounts : System.Web.UI.Page
         dvSeg = (DataView)SqlSeguro.Select(DataSourceSelectArguments.Empty);
         GridView.DataSource = dvSeg;
         GridView.DataBind();
+
+        Session["pesq"] = "seguro";
     }
 
     protected void showOE(object sender, EventArgs e)
@@ -201,6 +211,7 @@ public partial class pt_br_adm_accounts : System.Web.UI.Page
         dvOe = (DataView)SqlOe.Select(DataSourceSelectArguments.Empty);
         GridView.DataSource = dvOe;
         GridView.DataBind();
+        Session["pesq"] = "oe";
     }
 
     protected void showViagem(object sender, EventArgs e)
@@ -209,6 +220,8 @@ public partial class pt_br_adm_accounts : System.Web.UI.Page
         dvOe = (DataView)SqlViagem.Select(DataSourceSelectArguments.Empty);
         GridView.DataSource = dvOe;
         GridView.DataBind();
+        Session["pesq"] = "viagem";
+        
     }
 
     protected void OnRowDataBound(object sender, System.Web.UI.WebControls.GridViewRowEventArgs e)
@@ -229,6 +242,7 @@ public partial class pt_br_adm_accounts : System.Web.UI.Page
                 row.BackColor = System.Drawing.ColorTranslator.FromHtml("#177ac4");
                 row.ForeColor = System.Drawing.Color.White;
                 row.ToolTip = string.Empty;
+                Session["idpesq"] = GridView.SelectedRow.Cells[0].Text;
             }
             else
             {
@@ -242,7 +256,28 @@ public partial class pt_br_adm_accounts : System.Web.UI.Page
 
     protected void editBtn(object sender, EventArgs e)
     {
-        Response.Write(GridView.SelectedRow.Cells[1].Text);
+        if (Session["pesq"] == "usr")
+        {
+            Response.Redirect("editusr.aspx");
+        }
+        if (Session["pesq"] == "frota")
+        {
+
+        }
+        if (Session["pesq"] == "seguro")
+        {
+
+        }
+
+        if (Session["pesq"] == "oe")
+        {
+
+        }
+        if (Session["pesq"] == "viagem")
+        {
+
+        }
+
     }
 }
 
