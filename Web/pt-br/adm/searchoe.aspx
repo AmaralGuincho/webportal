@@ -11,7 +11,7 @@
     <div class="container">
         <div class="pesquisa">
              <h2>Selecione a data de busca</h2>
-             <asp:Calendar ID="cldr" runat="server" NextPrevStyle-VerticalAlign="NotSet" SelectionMode="Day" BorderColor="#4B4B4B" DayHeaderStyle-BackColor="#CC3300" DayHeaderStyle-ForeColor="White" TitleStyle-BackColor="#177AC4" TitleStyle-ForeColor="White" BorderStyle="Solid" DayStyle-BorderStyle="None" SelectedDayStyle-BorderStyle="None" SelectedDayStyle-BackColor="#FF3300" Font-Underline="False" DayStyle-ForeColor="#666666" WeekendDayStyle-BorderStyle="None" TodayDayStyle-BorderStyle="None" TodayDayStyle-BorderColor="Yellow" DayStyle-BorderWidth="0" NextPrevStyle-BorderStyle="None" TitleStyle-BorderStyle="None" FirstDayOfWeek="Monday" OnSelectionChanged="cldr_SelectionChanged">
+             <asp:Calendar ID="cldr" runat="server" NextPrevStyle-VerticalAlign="NotSet" SelectionMode="Day" BorderColor="#4B4B4B" DayHeaderStyle-BackColor="#CC3300" DayHeaderStyle-ForeColor="White" TitleStyle-BackColor="#177AC4" TitleStyle-ForeColor="White" BorderStyle="Solid" DayStyle-BorderStyle="None" SelectedDayStyle-BorderStyle="None" SelectedDayStyle-BackColor="#FF3300" Font-Underline="False" DayStyle-ForeColor="#666666" WeekendDayStyle-BorderStyle="None" TodayDayStyle-BorderStyle="None" TodayDayStyle-BorderColor="Yellow" DayStyle-BorderWidth="0" NextPrevStyle-BorderStyle="None" TitleStyle-BorderStyle="None" FirstDayOfWeek="Monday">
 <DayHeaderStyle BackColor="#CC3300" ForeColor="White"></DayHeaderStyle>
 
 <DayStyle BorderWidth="0px" BorderStyle="None" ForeColor="#666666"></DayStyle>

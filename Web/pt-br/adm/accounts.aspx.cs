@@ -210,5 +210,39 @@ public partial class pt_br_adm_accounts : System.Web.UI.Page
         GridView.DataSource = dvOe;
         GridView.DataBind();
     }
+
+    protected void OnRowDataBound(object sender, System.Web.UI.WebControls.GridViewRowEventArgs e)
+    {
+        if (e.Row.RowType == DataControlRowType.DataRow)
+        {
+            e.Row.Attributes["onclick"] = Page.ClientScript.GetPostBackClientHyperlink(GridView, "Select$" + e.Row.RowIndex);
+            e.Row.ToolTip = "Click to select this row.";
+        }
+    }
+
+    protected void OnSelectedIndexChanged(object sender, EventArgs e)
+    {
+        foreach (GridViewRow row in GridView.Rows)
+        {
+            if (row.RowIndex == GridView.SelectedIndex)
+            {
+                row.BackColor = System.Drawing.ColorTranslator.FromHtml("#177ac4");
+                row.ForeColor = System.Drawing.Color.White;
+                row.ToolTip = string.Empty;
+            }
+            else
+            {
+                row.BackColor = System.Drawing.Color.White;
+                row.ForeColor = System.Drawing.Color.Black;
+                row.ToolTip = "Clique para selecionar!";
+                
+            }
+        }
+    }
+
+    protected void editBtn(object sender, EventArgs e)
+    {
+        Response.Write(GridView.SelectedRow.Cells[1].Text);
+    }
 }
 

@@ -1,4 +1,4 @@
-﻿<%@ Page MasterPageFile="~/pt-br/adm/adm-master.master" Language="C#" MaintainScrollPositionOnPostBack="true" EnableEventValidation="false"  AutoEventWireup="true" CodeFile="servico.aspx.cs" Inherits="pt_br_adm_servico" %>
+﻿<%@ Page MasterPageFile="~/pt-br/adm/adm-master.master" Language="C#" MaintainScrollPositionOnPostBack="true" EnableEventValidation="true"  AutoEventWireup="true" CodeFile="servico.aspx.cs" Inherits="pt_br_adm_servico" %>
 
 <asp:Content ContentPlaceHolderID="head" runat="server">
     <meta name="viewport" content="width=device-width" />

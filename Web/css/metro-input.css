@@ -63,10 +63,28 @@
     opacity:100;
 }
 
-
-
-
 .gridview{
-    margin-top:50px;
+    margin-top:0px;
     display:inline-block;
+}
+.actions{
+    margin-top:20px;
+}
+
+.actions>h2{
+    margin-bottom:0;
+}
+.actions>.MetroButton{
+    font-size:18px;
+    color:#177ac4;
+    font-family:'Open Sans', Arial, sans-serif;
+    height:50px;
+    margin: 0 100px;
+    background-color:rgba(255, 255, 255, 0.00);
+}
+
+.actions>.MetroButton:hover{
+    color:#065de6;
+    text-decoration:underline;
+
 }

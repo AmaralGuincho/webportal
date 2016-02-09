@@ -13,8 +13,4 @@ public partial class pt_br_adm_searchoe : System.Web.UI.Page
 
     }
 
-    protected void cldr_SelectionChanged(object sender, EventArgs e)
-    {
-       
-    }
 }

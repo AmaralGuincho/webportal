@@ -1,4 +1,4 @@
-﻿<%@ Page MasterPageFile="~/pt-br/adm/adm-master.master" Language="C#" AutoEventWireup="true" CodeFile="accounts.aspx.cs" Inherits="pt_br_adm_accounts" %>
+﻿<%@ Page MasterPageFile="~/pt-br/adm/adm-master.master" EnableEventValidation="false" MaintainScrollPositionOnPostback="true" Language="C#" AutoEventWireup="true" CodeFile="accounts.aspx.cs" Inherits="pt_br_adm_accounts" %>
 
 <asp:Content ContentPlaceHolderID="head" runat="server">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
@@ -50,8 +50,12 @@
             </div>
         </div>
         <div class="gridview" id="divgv" runat="server" visible="false">
-            <h2>Dados encontrados</h2>
-            <asp:GridView ID="GridView" runat="server">
+            <div class="actions">
+                <h2>Dados encontrados</h2>
+                <asp:Button Text="Editar" runat="server" CssClass="MetroButton" OnClick="editBtn" />
+                <asp:Button Text="Adicionar" runat="server" CssClass="MetroButton" />
+            </div>
+            <asp:GridView ID="GridView" runat="server" OnRowDataBound="OnRowDataBound" OnSelectedIndexChanged="OnSelectedIndexChanged" EditRowStyle-VerticalAlign="Middle" AutoGenerateEditButton="False">
             </asp:GridView>
         </div>
         <div class="notFound" runat="server" id="nothing_to_show" visible="false">
