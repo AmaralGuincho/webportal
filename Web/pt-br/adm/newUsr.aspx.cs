@@ -14,39 +14,41 @@ public partial class pt_br_adm_newUsr : System.Web.UI.Page
 
     protected void Cadastrar(object sender, EventArgs e)
     {
-        string tipo;
-        tipo = string.Empty;
-        
-        //traduzindo o dropdown Tipo
-        if (ddTipo.Text == "Administrador")
+        try
         {
-            SqlInsert_Client.InsertParameters["TIPO"].DefaultValue = "adm";
-        }
 
-        if (ddTipo.Text == "Funcionario")
-        {
-            SqlInsert_Client.InsertParameters["TIPO"].DefaultValue = "staff";
-        }
+            //traduzindo o dropdown Tipo
+            if (ddTipo.Text == "Administrador")
+            {
+                SqlInsert_Client.InsertParameters["TIPO"].DefaultValue = "adm";
+            }
 
-        if (ddTipo.Text == "Motorista")
-        {
-            SqlInsert_Client.InsertParameters["TIPO"].DefaultValue = "lowStaff";
-        }
+            if (ddTipo.Text == "Funcionario")
+            {
+                SqlInsert_Client.InsertParameters["TIPO"].DefaultValue = "staff";
+            }
 
-        if (ddTipo.Text == "Cliente")
-        {
-            SqlInsert_Client.InsertParameters["TIPO"].DefaultValue = "usr";
-        }
+            if (ddTipo.Text == "Motorista")
+            {
+                SqlInsert_Client.InsertParameters["TIPO"].DefaultValue = "lowStaff";
+            }
 
-        //Traduzindo o DropDown 
-        if(ddSexo.Text == "Masculino")
-        {
-            SqlInsert_Client.InsertParameters["SEXO"].DefaultValue = "M";
-        }
-        else{
-            SqlInsert_Client.InsertParameters["Sexo"].DefaultValue = "F";
-        }
-        
+            if (ddTipo.Text == "Cliente")
+            {
+                SqlInsert_Client.InsertParameters["TIPO"].DefaultValue = "usr";
+            }
 
+            //Traduzindo o DropDown 
+            if (ddSexo.Text == "Masculino")
+            {
+                SqlInsert_Client.InsertParameters["SEXO"].DefaultValue = "M";
+            }
+            else {
+                SqlInsert_Client.InsertParameters["Sexo"].DefaultValue = "F";
+            }
+
+            SqlInsert_Client.Insert();
+        }
+        catch { }
     }
 }

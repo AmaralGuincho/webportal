@@ -39,11 +39,11 @@
         <tr class="#">
             <td>
                 <asp:Label Text="Tipo" CssClass="simpleLabeldd" runat="server" />
-                <asp:DropDownList ID="ddTipo" runat="server" CssClass="dropdown">
-                    <asp:ListItem Text="Administrador" />
-                    <asp:ListItem Text="Funcionario" />
-                    <asp:ListItem Text="Motorista" />
-                    <asp:ListItem Text="Cliente" />
+                <asp:DropDownList ID="ddTipo" runat="server" CssClass="dropdown" OnSelectedIndexChanged="ddtipo_changed" AutoPostBack="true">
+                    <asp:ListItem Text="Administrador" Value="adm" />
+                    <asp:ListItem Text="Funcionario" Value="staff" />
+                    <asp:ListItem Text="Motorista" Value="lowStaff"/>
+                    <asp:ListItem Text="Cliente" Value="usr"/>
                 </asp:DropDownList>
             </td>
             <td>
@@ -57,9 +57,9 @@
             <td>
                 <div class="group">
                     <asp:Label Text="Sexo" CssClass="simpleLabeldd" runat="server" />
-                    <asp:DropDownList runat="server" CssClass="dropdown" ID="ddSexo">
-                        <asp:ListItem Text="Masculino" />
-                        <asp:ListItem Text="Feminino" />
+                    <asp:DropDownList runat="server" CssClass="dropdown" ID="ddSexo" OnSelectedIndexChanged="ddsex_changed" AutoPostBack="true">
+                        <asp:ListItem Text="Masculino" Value="M" />
+                        <asp:ListItem Text="Feminino" Value="F" />
                     </asp:DropDownList>
                 </div>
             </td>
@@ -108,11 +108,25 @@
             <td></td>
             <td></td>
             <td>
-                <asp:Button Text="Salvar" runat="server" Class="button" OnClick="update" />
+                <asp:Button Text="Salvar" runat="server" Class="button" OnClick="update" AutoPostBack="true"/>
             </td>
         </tr>
      </table>
-    <asp:SqlDataSource ID="SqlUpdate" runat="server"></asp:SqlDataSource>
+    <asp:SqlDataSource ID="SqlUpdate" runat="server" ConnectionString="<%$ ConnectionStrings:amaral_guinchoConnectionString %>" ProviderName="<%$ ConnectionStrings:amaral_guinchoConnectionString.ProviderName %>" SelectCommand="SELECT * FROM [frota]" UpdateCommand="UPDATE usr SET login_usr = @LOGIN, email_usr = @EMAIL, pwd_usr = @PWD, type_usr = @TIPO, nome_usr = @NOME, sx_usr = @SEXO, birth_usr = @BIRTH, cpf_usr = @CPF, cep_usr = @CEP, mobile_usr = @MOBILE WHERE (id_usr = @IDPESQ)">
+        <UpdateParameters>
+            <asp:ControlParameter ControlID="txtLogin" Name="LOGIN" PropertyName="Text" />
+            <asp:ControlParameter ControlID="txtEmail" Name="EMAIL" PropertyName="Text" />
+            <asp:ControlParameter ControlID="txtSenha" Name="PWD" PropertyName="Text" />
+            <asp:ControlParameter ControlID="ddTipo" Name="TIPO" PropertyName="SelectedValue" />
+            <asp:ControlParameter ControlID="txtNome" Name="NOME" PropertyName="Text" />
+            <asp:ControlParameter ControlID="ddSexo" Name="SEXO" PropertyName="SelectedValue" />
+            <asp:ControlParameter ControlID="txtNacimento" Name="BIRTH" PropertyName="Text" />
+            <asp:ControlParameter ControlID="txtCpf" Name="CPF" PropertyName="Text" />
+            <asp:ControlParameter ControlID="txtCep" Name="CEP" PropertyName="Text" />
+            <asp:ControlParameter ControlID="txtCelular" Name="MOBILE" PropertyName="Text" />
+            <asp:SessionParameter Name="IDPESQ" SessionField="idPesq" />
+        </UpdateParameters>
+    </asp:SqlDataSource>
     <asp:SqlDataSource ID="SqlInportUsr" runat="server" ConnectionString="<%$ ConnectionStrings:amaral_guinchoConnectionString %>" ProviderName="<%$ ConnectionStrings:amaral_guinchoConnectionString.ProviderName %>" SelectCommand="SELECT id_usr, login_usr, email_usr, pwd_usr, type_usr, nome_usr, sx_usr, birth_usr, cpf_usr, cep_usr, mobile_usr FROM usr WHERE (id_usr = @IDUSR)">
         <SelectParameters>
             <asp:SessionParameter Name="IDUSR" SessionField="idPesq" />

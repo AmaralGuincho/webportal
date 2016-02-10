@@ -21,62 +21,66 @@ public partial class Web_websites_login : System.Web.UI.Page
 
     protected void loginSubmit_Click(object sender, EventArgs e)
     {
-        DataView dv;
-
-        dv = (DataView)MySqlLogin.Select
-            (DataSourceSelectArguments.Empty);
-
-        if (dv.Table.Rows.Count == 0)
+        try
         {
-            //Fail to login
-            Response.Redirect("index.html");
-        }
-        else
-        {
-            //Sucesso na Autenticação
+            DataView dv;
 
-            string type = dv.Table.Rows[0]["type_usr"].ToString();
-            
-            if(type == "adm")
-            {   
-                Session["Log"] = "On";
-                Session["Staff"] = "On";
-                Session["Admin"] = "On";
+            dv = (DataView)MySqlLogin.Select
+                (DataSourceSelectArguments.Empty);
 
-                //registrando o usiario
-                Session["id_usr"] = dv.Table.Rows[0]["id_usr"].ToString();
-
-                Response.Redirect("adm/dashboard.aspx");
-            }
-
-            if (type == "staff")
+            if (dv.Table.Rows.Count == 0)
             {
-                Session["Log"] = "On";
-                Session["Staff"] = "On";
-                Session["Admin"] = "OFF";
-
-                //registrando o usiario
-                Session["id_usr"] = dv.Table.Rows[0]["id_usr"].ToString();
-
-                Response.Redirect("adm/dashboard.aspx");
-
-                
-            }
-
-            if (type == "adm")
-            {
-                Session["Log"] = "On";
-                Session["Staff"] = "OFF";
-                Session["Admin"] = "OFF";
-
-                //registrando o usiario
-                Session["id_usr"] = dv.Table.Rows[0]["id_usr"].ToString();
-
+                //Fail to login
                 Response.Redirect("index.html");
             }
+            else
+            {
+                //Sucesso na Autenticação
+
+                string type = dv.Table.Rows[0]["type_usr"].ToString();
+
+                if (type == "adm")
+                {
+                    Session["Log"] = "On";
+                    Session["Staff"] = "On";
+                    Session["Admin"] = "On";
+
+                    //registrando o usiario
+                    Session["id_usr"] = dv.Table.Rows[0]["id_usr"].ToString();
+
+                    Response.Redirect("adm/dashboard.aspx");
+                }
+
+                if (type == "staff")
+                {
+                    Session["Log"] = "On";
+                    Session["Staff"] = "On";
+                    Session["Admin"] = "OFF";
+
+                    //registrando o usiario
+                    Session["id_usr"] = dv.Table.Rows[0]["id_usr"].ToString();
+
+                    Response.Redirect("adm/dashboard.aspx");
 
 
+                }
+
+                if (type == "adm")
+                {
+                    Session["Log"] = "On";
+                    Session["Staff"] = "OFF";
+                    Session["Admin"] = "OFF";
+
+                    //registrando o usiario
+                    Session["id_usr"] = dv.Table.Rows[0]["id_usr"].ToString();
+
+                    Response.Redirect("index.html");
+                }
+
+
+            }
         }
+        catch { }
 
       
     }
