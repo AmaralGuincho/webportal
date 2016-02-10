@@ -6,59 +6,12 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data;
 
-public partial class pt_br_adm_accounts : System.Web.UI.Page
+public partial class pt_br_adm_Manage : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-  
+
     }
-
-    protected void showAdm(object sender, EventArgs e)
-    {
-        try
-        {
-            //achamos administradores
-            DataView admins;
-            admins = (DataView)SqlSelectAdm.Select(DataSourceSelectArguments.Empty);
-           
-            #region hide password
-
-            if (Session["root"] == "enabled")
-            {
-
-            }
-            else
-            {
-                #region Loop ninja para esconder a senha
-                int i = 0;
-                int rows = admins.Count;
-                while (i < rows)
-                {
-                    admins.Table.Rows[i]["Senha"] = "****";
-                    admins.Table.Rows[i]["tipo"] = "Administrador";
-                    i++;
-                }
-                #endregion
-
-            }
-
-            #endregion
-
-            GridView.DataSource = admins;
-
-            GridView.DataBind();
-
-            divgv.Visible = true;
-
-            Session["pesq"] = "usr";
-        }
-        catch { }
-        finally
-        {
-            //nao achamos administradores
-        }
-    }
-
     protected void showStaff(object sender, EventArgs e)
     {
         try
@@ -92,7 +45,8 @@ public partial class pt_br_adm_accounts : System.Web.UI.Page
             GridView.DataSource = staff;
             GridView.DataBind();
             divgv.Visible = true;
-            Session["pesq"] = "usr";
+
+            Session["pesq"] = "none";
         }
         catch { }
         finally
@@ -185,8 +139,8 @@ public partial class pt_br_adm_accounts : System.Web.UI.Page
         }
         catch { }
     }
-    
-    protected void showFrota(object sender,EventArgs e)
+
+    protected void showFrota(object sender, EventArgs e)
     {
         DataView frota;
         frota = (DataView)SqlDFrota.Select(DataSourceSelectArguments.Empty);
@@ -197,13 +151,14 @@ public partial class pt_br_adm_accounts : System.Web.UI.Page
         Session["pesq"] = "frota";
     }
 
-    protected void showSeguro(object sender,EventArgs e)
+    protected void showSeguro(object sender, EventArgs e)
     {
         DataView dvSeg;
         dvSeg = (DataView)SqlSeguro.Select(DataSourceSelectArguments.Empty);
         GridView.DataSource = dvSeg;
         GridView.DataBind();
         divgv.Visible = true;
+
         Session["pesq"] = "seguro";
     }
 
@@ -225,7 +180,7 @@ public partial class pt_br_adm_accounts : System.Web.UI.Page
         GridView.DataBind();
         divgv.Visible = true;
         Session["pesq"] = "viagem";
-        
+
     }
 
     protected void OnRowDataBound(object sender, System.Web.UI.WebControls.GridViewRowEventArgs e)
@@ -253,7 +208,7 @@ public partial class pt_br_adm_accounts : System.Web.UI.Page
                 row.BackColor = System.Drawing.Color.White;
                 row.ForeColor = System.Drawing.Color.Black;
                 row.ToolTip = "Clique para selecionar!";
-                
+
             }
         }
     }
@@ -311,4 +266,3 @@ public partial class pt_br_adm_accounts : System.Web.UI.Page
         }
     }
 }
-

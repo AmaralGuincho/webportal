@@ -106,9 +106,9 @@ nav{
  margin-left:95%;
 }
 
- a>img{
-        height:60px;
-      }
+a > img {
+    height: 60px;
+}
 
 
 @media (max-width: 910px) {

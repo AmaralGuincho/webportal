@@ -17,7 +17,7 @@ public partial class pt_br_adm_newUsr : System.Web.UI.Page
         try
         {
 
-            //traduzindo o dropdown Tipo
+            /*//traduzindo o dropdown Tipo
             if (ddTipo.Text == "Administrador")
             {
                 SqlInsert_Client.InsertParameters["TIPO"].DefaultValue = "adm";
@@ -46,8 +46,9 @@ public partial class pt_br_adm_newUsr : System.Web.UI.Page
             else {
                 SqlInsert_Client.InsertParameters["Sexo"].DefaultValue = "F";
             }
-
+            */
             SqlInsert_Client.Insert();
+            Response.Redirect("accounts.aspx");
         }
         catch { }
     }

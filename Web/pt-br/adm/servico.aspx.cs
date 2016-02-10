@@ -11,27 +11,31 @@ public partial class pt_br_adm_servico : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        //Verificando autenticação
-        if (Session["Log"] == "On")
+        try
         {
-            if (Session["Staff"] != "On")
+            //Verificando autenticação
+            if (Session["Log"] == "On")
             {
-                Response.Redirect("../index.html");
+                if (Session["Staff"] != "On")
+                {
+                    Response.Redirect("../index.html");
+                }
             }
+
+            // Adicionando o Nome Do Usuario a "OE"
+            DataView usr_id;
+            usr_id = (DataView)MySqlUsr.Select(DataSourceSelectArguments.Empty);
+            nome_abertura.Text = usr_id.Table.Rows[0]["nome_usr"].ToString();
+
+            //AUTOSET DATA
+            data_abertura.Text = DateTime.Now.ToString();
+
+            //ADICIONANDO O ID DA OE
+            DataView id_oe;
+            id_oe = (DataView)MySqlSelect_id.Select(DataSourceSelectArguments.Empty);
+            txtid_oe.Text = (Convert.ToInt64(id_oe.Table.Rows[0]["MAX(id_oe)"].ToString()) + 1).ToString();
         }
-
-        // Adicionando o Nome Do Usuario a "OE"
-        DataView usr_id;
-        usr_id = (DataView)MySqlUsr.Select(DataSourceSelectArguments.Empty);
-        nome_abertura.Text = usr_id.Table.Rows[0]["nome_usr"].ToString();
-
-        //AUTOSET DATA
-        data_abertura.Text = DateTime.Now.ToString();
-
-        //ADICIONANDO O ID DA OE
-        DataView id_oe;
-        id_oe = (DataView)MySqlSelect_id.Select(DataSourceSelectArguments.Empty);
-        txtid_oe.Text =(Convert.ToInt64(id_oe.Table.Rows[0]["MAX(id_oe)"].ToString()) + 1).ToString();
+        catch { }
     }
 
     protected void btnProcurar_cliente_Click(object sender, EventArgs e)

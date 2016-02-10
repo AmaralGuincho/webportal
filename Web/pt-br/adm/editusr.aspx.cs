@@ -12,10 +12,7 @@ public partial class css_editusr : System.Web.UI.Page
     {
         if (!IsPostBack)
         {
-            int i = 1;
-            while (i == 1)
-            {
-                i++;
+ 
 
                 DataView dvimport = (DataView)SqlInportUsr.Select(DataSourceSelectArguments.Empty);
 
@@ -53,7 +50,6 @@ public partial class css_editusr : System.Web.UI.Page
                 {
                     ddSexo.SelectedIndex = 1;
                 }
-            }
         }
 
     }

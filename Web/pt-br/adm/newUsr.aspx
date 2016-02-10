@@ -1,5 +1,9 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="~/pt-br/adm/adm-master.master" CodeFile="newUsr.aspx.cs" Inherits="pt_br_adm_newUsr" %>
 
+<asp:Content ContentPlaceHolderID="head" runat="server">
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="../../css/material-input.css" type="text/css" />
+</asp:Content>
 
 <asp:Content ContentPlaceHolderID="cph" runat="server">
     <h1>Ordem de Serviço</h1>
@@ -34,10 +38,10 @@
             <td>
                 <asp:Label Text="Tipo" CssClass="simpleLabeldd" runat="server" />
                 <asp:DropDownList ID="ddTipo" runat="server" CssClass="dropdown">
-                    <asp:ListItem Text="Administrador" />
-                    <asp:ListItem Text="Funcionario" />
-                    <asp:ListItem Text="Motorista" />
-                    <asp:ListItem Text="Cliente" />
+                    <asp:ListItem Text="Administrador" Value="adm"/>
+                    <asp:ListItem Text="Funcionario" Value="staff" />
+                    <asp:ListItem Text="Motorista" Value="lowStaff"/>
+                    <asp:ListItem Text="Cliente" Value="usr"/>
                 </asp:DropDownList>
             </td>
             <td>
@@ -52,8 +56,8 @@
                 <div class="group">
                     <asp:Label Text="Sexo" CssClass="simpleLabeldd" runat="server" />
                     <asp:DropDownList runat="server" CssClass="dropdown" ID="ddSexo">
-                        <asp:ListItem Text="Masculino" />
-                        <asp:ListItem Text="Feminino" />
+                        <asp:ListItem Text="Masculino" Value="M"/>
+                        <asp:ListItem Text="Feminino" Value="F"/>
                     </asp:DropDownList>
                 </div>
             </td>
@@ -109,9 +113,9 @@
             <asp:ControlParameter ControlID="txtLogin" Name="LOGIN" PropertyName="Text" />
             <asp:ControlParameter ControlID="txtEmail" Name="MAIL" PropertyName="Text" />
             <asp:ControlParameter ControlID="txtSenha" Name="PASSWORD" PropertyName="Text" />
-            <asp:Parameter Name="TIPO" />
+            <asp:ControlParameter ControlID="ddTipo" Name="TIPO" PropertyName="SelectedValue" />
             <asp:ControlParameter ControlID="txtNome" Name="NOME" PropertyName="Text" />
-            <asp:Parameter Name="SEXO" />
+            <asp:ControlParameter ControlID="ddSexo" Name="SEXO" PropertyName="SelectedValue" />
             <asp:ControlParameter ControlID="txtNacimento" Name="BIRTH" PropertyName="Text" />
             <asp:ControlParameter ControlID="txtCpf" Name="CPF" PropertyName="Text" />
             <asp:ControlParameter ControlID="txtCep" Name="CEP" PropertyName="Text" />
