@@ -215,7 +215,7 @@
             </tr>
             <tr class="Ação">
                 <td>
-                    <asp:Button Text="Resetar" runat="server" Class="button" />
+                    <asp:Button Text="Imprimir" runat="server" Class="button" OnClientClick="print();"/>
                 </td>
                 <td></td>
                 <td>
@@ -223,6 +223,11 @@
                 </td>
             </tr>
         </table>
+    <script type="text/javascript">
+        function print() {
+            window.print();
+        }
+    </script>
    <!--Database Interaction-->
         <asp:SqlDataSource ID="MySqlUsr" runat="server" ConnectionString="<%$ ConnectionStrings:amaral_guinchoConnectionString %>" ProviderName="<%$ ConnectionStrings:amaral_guinchoConnectionString.ProviderName %>" SelectCommand="SELECT id_usr, login_usr, email_usr, pwd_usr, type_usr, nome_usr, sx_usr, birth_usr, cpf_usr, cep_usr, mobile_usr FROM usr WHERE (id_usr = @IDUSR)">
             <SelectParameters>

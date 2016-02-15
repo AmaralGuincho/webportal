@@ -275,7 +275,7 @@ public partial class pt_br_adm_accounts : System.Web.UI.Page
 
         if (Session["pesq"] == "oe")
         {
-
+            Response.Redirect("editServico.aspx");
         }
         if (Session["pesq"] == "viagem")
         {
@@ -294,7 +294,7 @@ public partial class pt_br_adm_accounts : System.Web.UI.Page
         }
         if (Session["pesq"] == "frota")
         {
-
+            Response.Redirect("newFrota.aspx");
         }
         if (Session["pesq"] == "seguro")
         {
@@ -303,7 +303,7 @@ public partial class pt_br_adm_accounts : System.Web.UI.Page
 
         if (Session["pesq"] == "oe")
         {
-
+            Response.Redirect("servico.aspx");
         }
         if (Session["pesq"] == "viagem")
         {

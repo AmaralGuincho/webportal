@@ -8,6 +8,7 @@
 
 
 <asp:content contentplaceholderid="cph" runat="server">
+    
     <h1>Ordem de Serviço</h1>
     <table class="frmTable">
         <tr class="#">
@@ -35,7 +36,7 @@
             <td></td>
             <td></td>
             <td>
-                <asp:Button Text="Salvar" runat="server" Class="button" OnClick="update" />
+                <asp:Button Text="Salvar" runat="server" Class="button" />
             </td>
         </tr>
      </table>

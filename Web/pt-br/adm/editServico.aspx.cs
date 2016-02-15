@@ -4,10 +4,9 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-//Referencia de Dados
 using System.Data;
 
-public partial class pt_br_adm_servico : System.Web.UI.Page
+public partial class pt_br_adm_editServico : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
@@ -22,51 +21,28 @@ public partial class pt_br_adm_servico : System.Web.UI.Page
                 }
             }
 
-            // Adicionando o Nome Do Usuario a "OE"
-            DataView usr_id;
-            usr_id = (DataView)MySqlUsr.Select(DataSourceSelectArguments.Empty);
-            nome_abertura.Text = usr_id.Table.Rows[0]["nome_usr"].ToString();
+            DataView dvoe = (DataView)SqlSelectOE.Select(DataSourceSelectArguments.Empty);
 
-            //AUTOSET DATA
-            data_abertura.Text = DateTime.Now.ToString();
+            data_abertura.Text = dvoe.Table.Rows[0]["data_abertura_oe"].ToString();
+            nome_abertura.Text = dvoe.Table.Rows[0]["nome_ab_chamado"].ToString();
+            //idseguro
+            nome_assistente.Text = dvoe.Table.Rows[0]["nome_assistente_seguro"].ToString();
+            tipo_seguro.Text = dvoe.Table.Rows[0]["tipo_seguro"].ToString();
+            //idcli
+            txtLocalRetirada.Text = dvoe.Table.Rows[0]["local_retirada"].ToString();
+            Agendamento.Text = dvoe.Table.Rows[0]["agendamento"].ToString();
+            numero_sinistro.Text = dvoe.Table.Rows[0]["numero_sinistro"].ToString();
+            local_entrega.Text = dvoe.Table.Rows[0]["local_entrega"].ToString();
+            //idmotorista
+            ddStatus.Text = dvoe.Table.Rows[0]["status"].ToString();
 
-            //ADICIONANDO O ID DA OE
-            DataView id_oe;
-            id_oe = (DataView)MySqlSelect_id.Select(DataSourceSelectArguments.Empty);
-            txtid_oe.Text = (Convert.ToInt64(id_oe.Table.Rows[0]["MAX(id_oe)"].ToString()) + 1).ToString();
         }
         catch { }
     }
 
     protected void btnProcurar_cliente_Click(object sender, EventArgs e)
     {
-        DataView pesq_cli;
-        pesq_cli = (DataView)MySqlSelectClient.Select
-            (DataSourceSelectArguments.Empty);
-
-        if (pesq_cli.Table.Rows.Count == 0)
-        {
-            //Cliente não encontrado
-            ClienteDD.SelectedIndex = 1;
-            btnProcurar_cliente.Visible = false;
-            
-        }
-        else
-        {
-            //Cliente encontrado
-            cpf_cli.Text = pesq_cli.Table.Rows[0]["cpf_usr"].ToString();
-            email_cli.Text = pesq_cli.Table.Rows[0]["email_usr"].ToString();
-            Cel_cli.Text = pesq_cli.Table.Rows[0]["mobile_usr"].ToString();
-
-            if (pesq_cli.Table.Rows[0]["sx_usr"].ToString() == "M")
-            {
-                sexoCli.Text = "Masculino";
-            }
-            else
-            {
-                sexoCli.Text = "Feminino";
-            }
-        }
+        
     }
 
     protected void abriroe(object sender, EventArgs e)
@@ -118,40 +94,42 @@ public partial class pt_br_adm_servico : System.Web.UI.Page
                 DataView usr_id;
                 usr_id = (DataView)MySqlUsr.Select(DataSourceSelectArguments.Empty);
 
+                DateTime dt = Convert.ToDateTime(data_abertura.Text);
+                String datacorreta = dt.ToString("yyyy-mm-dd HH:mm:ss");
+
                 //Adicionar id do cliente procurado
 
                 MySqlAbrirOe.InsertParameters["IDCLI"].DefaultValue = dvIdcli.Table.Rows[0]["id_usr"].ToString();
-                MySqlAbrirOe.InsertParameters["DATA"].DefaultValue = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+                MySqlAbrirOe.InsertParameters["DATA"].DefaultValue = datacorreta;
 
                 MySqlAbrirOe.Insert();
 
                 MySqlViagem.Insert();
                 #endregion
-
-                Response.Redirect("done.aspx");
             }
             //Sucesso no serviço
-            //Response.Redirect("done.aspx");
+            Response.Redirect("done.aspx");
         }
-        catch (Exception ex)
+        catch { }
+        finally
         {
-            Response.Write(ex);
+            //falha no serviço
             //Response.Redirect("fail.aspx");
+            Response.Redirect("done.aspx");
         }
-        
-       
+
+
     }
 
     protected void selected(object sender, EventArgs e)
     {
-       if(ClienteDD.SelectedIndex == 1)
+        if (ClienteDD.SelectedIndex == 1)
         {
-           btnProcurar_cliente.Visible = false;
+            btnProcurar_cliente.Visible = false;
         }
         else
         {
-          btnProcurar_cliente.Visible = true;
+            btnProcurar_cliente.Visible = true;
         }
     }
-
 }
