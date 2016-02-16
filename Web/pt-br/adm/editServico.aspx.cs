@@ -22,7 +22,7 @@ public partial class pt_br_adm_editServico : System.Web.UI.Page
             }
 
             DataView dvoe = (DataView)SqlSelectOE.Select(DataSourceSelectArguments.Empty);
-
+            txtid_oe.Text = Session["idpesq"].ToString();
             data_abertura.Text = dvoe.Table.Rows[0]["data_abertura_oe"].ToString();
             nome_abertura.Text = dvoe.Table.Rows[0]["nome_ab_chamado"].ToString();
             //idseguro
@@ -132,4 +132,5 @@ public partial class pt_br_adm_editServico : System.Web.UI.Page
             btnProcurar_cliente.Visible = true;
         }
     }
+
 }

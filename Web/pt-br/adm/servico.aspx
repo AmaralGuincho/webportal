@@ -3,12 +3,46 @@
 <asp:Content ContentPlaceHolderID="head" runat="server">
     <meta name="viewport" content="width=device-width" />
     <link rel="stylesheet" href="../../css/material-input.css" type="text/css" />
+    <style>
+        @media print{
+            @page {
+                size: auto;
+                margin: 0;
+            }
+            h1{
+                visibility:hidden;
+                margin-bottom:100px;
+            }
+                h1:after {
+                    visibility: visible;
+                    content: "Ordem de Serviço";
+                    text-align: center;
+                }
+
+            .button{
+                display:none;
+            }
+
+            table{
+                margin:0;
+            }
+            #title{
+                display:none;
+            }
+            small{
+                display:none;
+            }
+            .inline-button{
+                display:none;
+            }
+        }
+    </style>
 </asp:Content>
 
 
 
 <asp:Content ContentPlaceHolderID="cph" runat="server">
-    <h1>Ordem de Serviço</h1>
+    <h1 id="title">Ordem de Serviço</h1>
         <table class="frmTable">
             <tr class="System_info">
                 <td>
@@ -215,7 +249,7 @@
             </tr>
             <tr class="Ação">
                 <td>
-                    <asp:Button Text="Imprimir" runat="server" Class="button" OnClientClick="print();"/>
+                    <asp:Button Text="Imprimir" runat="server" Class="button" OnClientClick="printScr()"/>
                 </td>
                 <td></td>
                 <td>
@@ -224,7 +258,7 @@
             </tr>
         </table>
     <script type="text/javascript">
-        function print() {
+        function printScr() {
             window.print();
         }
     </script>

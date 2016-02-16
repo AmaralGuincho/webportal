@@ -4,12 +4,43 @@
     <meta name="viewport" content="width=device-width" />
     <link rel="stylesheet" href="../../css/material-input.css" type="text/css" />
     <style>
-        
+        @media print{
+            @page {
+                size: auto;
+                margin: 0;
+            }
+            h1{
+                visibility:hidden;
+                margin-bottom:100px;
+            }
+                h1:after {
+                    visibility: visible;
+                    content: "Ordem de Serviço";
+                    text-align: center;
+                }
+
+            .button{
+                display:none;
+            }
+
+            table{
+                margin:0;
+            }
+            #title{
+                display:none;
+            }
+            small{
+                display:none;
+            }
+            .inline-button{
+                display:none;
+            }
+        }
     </style>
 </asp:Content>
 
 <asp:Content ContentPlaceHolderID="cph" runat="server">
-    <h1>Ordem de Serviço</h1>
+    <h1 id="title">Ordem de Serviço</h1>
     <table class="frmTable">
         <tr class="System_info">
             <td>
@@ -216,7 +247,7 @@
         </tr>
         <tr class="Ação">
             <td>
-                <asp:Button Text="Imprimir" runat="server" Class="button" />
+                <input value="Imprimir" runat="server" type="button" Class="button" onclick="printScr()" />
             </td>
             <td></td>
             <td>
@@ -224,6 +255,11 @@
             </td>
         </tr>
     </table>
+    <script type="text/javascript">
+        function printScr() {
+            window.print();
+        }
+    </script>
     <!--Database Interaction-->
     <asp:SqlDataSource ID="MySqlUsr" runat="server" ConnectionString="<%$ ConnectionStrings:amaral_guinchoConnectionString %>" ProviderName="<%$ ConnectionStrings:amaral_guinchoConnectionString.ProviderName %>" SelectCommand="SELECT id_usr, login_usr, email_usr, pwd_usr, type_usr, nome_usr, sx_usr, birth_usr, cpf_usr, cep_usr, mobile_usr FROM usr WHERE (id_usr = @IDUSR)">
         <SelectParameters>
