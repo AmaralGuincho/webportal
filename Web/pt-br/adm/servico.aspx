@@ -47,7 +47,7 @@
             <tr class="System_info">
                 <td>
                     <div class="group">
-                        <asp:Label Text="Numero Ordem de Serviço:" runat="server" CssClass="simpleLabel" />
+                        <asp:Label Text="Número Ordem de Serviço:" runat="server" CssClass="simpleLabel" />
                         <asp:TextBox ID="txtid_oe" runat="server" CssClass="input" placeholder="Numero OE" Enabled="False" />
                         <span class="highlight"></span>
                         <span class="bar"></span>
@@ -82,10 +82,10 @@
                 </td>
                 <td>
                     <div class="group">
-                        <asp:TextBox ID="nome_assistente" CssClass="input" runat="server" />
+                        <asp:TextBox ID="Assistência" CssClass="input" runat="server" />
                         <span class="highlight"></span>
                         <span class="bar"></span>
-                        <asp:Label Text="Asisstente" CssClass="label" runat="server" />
+                        <asp:Label Text="Assistência" CssClass="label" runat="server" />
                     </div>
                 </td>
                 <td>
@@ -135,7 +135,7 @@
                 </td>
                 <td>
                     <div class="group">
-                        <asp:TextBox ID="Cel_cli" CssClass="input" runat="server" />
+                        <asp:TextBox ID="Cel_cli" CssClass="input" runat="server" onkeypress="return onlyNumbers();" />
                         <span class="highlight"></span>
                         <span class="bar"></span>
                         <asp:Label Text="Celular" CssClass="label" runat="server" />
@@ -145,7 +145,7 @@
             <tr class="client-info">
                 <td>
                     <div class="group">
-                        <asp:TextBox ID="cpf_cli" CssClass="input" runat="server" />
+                        <asp:TextBox ID="cpf_cli" CssClass="input" runat="server" onkeypress="return onlyNumbers();" />
                         <span class="highlight"></span>
                         <span class="bar"></span>
                         <asp:Label Text="CPF" CssClass="label" runat="server" />
@@ -261,6 +261,19 @@
         function printScr() {
             window.print();
         }
+    </script>
+    <script>
+    function onlyNumbers(evt)
+    {
+      var e = event || evt; // for trans-browser compatibility
+      var charCode = e.which || e.keyCode;
+
+      if (charCode > 31 && (charCode < 48 || charCode > 57))
+        return false;
+
+    return true;
+
+    }
     </script>
    <!--Database Interaction-->
         <asp:SqlDataSource ID="MySqlUsr" runat="server" ConnectionString="<%$ ConnectionStrings:amaral_guinchoConnectionString %>" ProviderName="<%$ ConnectionStrings:amaral_guinchoConnectionString.ProviderName %>" SelectCommand="SELECT id_usr, login_usr, email_usr, pwd_usr, type_usr, nome_usr, sx_usr, birth_usr, cpf_usr, cep_usr, mobile_usr FROM usr WHERE (id_usr = @IDUSR)">

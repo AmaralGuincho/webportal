@@ -32,6 +32,7 @@
         String[] SplitedURL = WebsiteURL.Split('/');
         String[] Temp = SplitedURL[SplitedURL.Length - 1].Split('.');
 
+
         // This is for aspx page
         if (!WebsiteURL.Contains(".aspx") && Temp.Length == 1)
         {
@@ -44,6 +45,7 @@
             if (!string.IsNullOrEmpty(Temp[0].Trim()))
                 Context.RewritePath(Temp[0] + ".html");
         }
+
         /*
         // This is for HTM page
         if (!WebsiteURL.Contains(".htm") && Temp.Length == 1)

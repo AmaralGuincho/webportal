@@ -26,7 +26,7 @@ public partial class pt_br_adm_editServico : System.Web.UI.Page
             data_abertura.Text = dvoe.Table.Rows[0]["data_abertura_oe"].ToString();
             nome_abertura.Text = dvoe.Table.Rows[0]["nome_ab_chamado"].ToString();
             //idseguro
-            nome_assistente.Text = dvoe.Table.Rows[0]["nome_assistente_seguro"].ToString();
+            Assistência.Text = dvoe.Table.Rows[0]["nome_assistente_seguro"].ToString();
             tipo_seguro.Text = dvoe.Table.Rows[0]["tipo_seguro"].ToString();
             //idcli
             txtLocalRetirada.Text = dvoe.Table.Rows[0]["local_retirada"].ToString();

@@ -28,7 +28,7 @@ public partial class pt_br_adm_servico : System.Web.UI.Page
             nome_abertura.Text = usr_id.Table.Rows[0]["nome_usr"].ToString();
 
             //AUTOSET DATA
-            data_abertura.Text = DateTime.Now.ToString();
+            data_abertura.Text = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
 
             //ADICIONANDO O ID DA OE
             DataView id_oe;
