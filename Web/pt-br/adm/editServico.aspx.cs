@@ -133,4 +133,9 @@ public partial class pt_br_adm_editServico : System.Web.UI.Page
         }
     }
 
+    protected void printPage(object sender, EventArgs e)
+    {
+        Response.Redirect("printServico.aspx");
+    }
+
 }

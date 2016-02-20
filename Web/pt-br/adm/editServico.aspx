@@ -247,7 +247,7 @@
         </tr>
         <tr class="Ação">
             <td>
-                <input value="Imprimir" runat="server" type="button" Class="button" onclick="printScr()" />
+                <asp:Button Text="Imprimir" OnClick="printPage" runat="server" />
             </td>
             <td></td>
             <td>

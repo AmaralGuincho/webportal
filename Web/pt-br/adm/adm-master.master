@@ -64,8 +64,8 @@
     <footer>
         <small>
             <span class="footer-simbols"><></span>
-            with
-            <span class="footer-simbols">&#9829</span>
+            <!--with
+            <span class="footer-simbols">&#9829</span>-->
             by <a href="https://github.com/caiobep" target="_blank">Caiobep</a>
         </small>
     </footer>

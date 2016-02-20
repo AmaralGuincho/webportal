@@ -4,37 +4,43 @@
     <meta name="viewport" content="width=device-width" />
     <link rel="stylesheet" href="../../css/material-input.css" type="text/css" />
     <style>
-        @media print{
+        @media print {
             @page {
                 size: auto;
                 margin: 0;
             }
-            h1{
-                visibility:hidden;
-                margin-bottom:100px;
+
+            h1 {
+                visibility: hidden;
+                margin-bottom: 100px;
             }
+
                 h1:after {
                     visibility: visible;
-                    content: "Ordem de Serviço";
+                    content: "Amaral Guincho";
                     text-align: center;
                 }
 
-            .button{
-                display:none;
+            .button {
+                display: none;
             }
 
-            table{
-                margin:0;
+            table {
+                margin: 0;
             }
-            #title{
-                display:none;
+
+            #title {
+                display: none;
             }
-            small{
-                display:none;
+
+            small {
+                display: none;
             }
-            .inline-button{
-                display:none;
+
+            .inline-button {
+                display: none;
             }
+            
         }
     </style>
 </asp:Content>
@@ -249,7 +255,7 @@
             </tr>
             <tr class="Ação">
                 <td>
-                    <asp:Button Text="Imprimir" runat="server" Class="button" OnClientClick="printScr()"/>
+                    <asp:Button Text="Imprimir" runat="server" Class="button" PostBackUrl="~/pt-br/adm/printServico.aspx" />
                 </td>
                 <td></td>
                 <td>
