@@ -37,6 +37,12 @@ CREATE TABLE frota
     CONSTRAINT uq_placa UNIQUE (placa_frota)
 );
 
+CREATE TABLE seguro
+(
+    id_seguro INT NOT NULL AUTO_INCREMENT,
+    
+);
+
 CREATE TABLE seguro_usr
 (
     id_usr INT NOT NULL AUTO_INCREMENT,
@@ -87,6 +93,7 @@ CREATE TABLE ordem_de_servico
     id_cli INT NOT NULL,
     id_motorista INT NOT NULL,
     funcAbChamado_oe INT NOT NULL,
+    cod_oe TEXT NOT NULL,
     dtAbr_oe DATETIME NOT NULL,
     nomeAsstSeguro_oe VARCHAR(100) NOT NULL,
     tpSeguro_oe VARCHAR (30) NOT NULL,
@@ -100,7 +107,8 @@ CREATE TABLE ordem_de_servico
     FOREIGN KEY (id_seguro) REFERENCES seguro (id_seguro),
     FOREIGN KEY (id_cli) REFERENCES usr (id_usr),
     FOREIGN KEY (funcAbChamado_oe) REFERENCES usr (id_usr),
-    FOREIGN KEY (id_motorista) REFERENCES usr (id_usr)
+    FOREIGN KEY (id_motorista) REFERENCES usr (id_usr),
+    CONSTRAINT uq_cod UNIQUE (cod_oe)
 );
 
 CREATE TABLE viagem
