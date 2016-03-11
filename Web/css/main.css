@@ -22,7 +22,7 @@ li{
   position:relative;
   top:-1.5em;
   margin-left:10%;
-  margin-rigth:10%;
+  /*margin-right:10%;*/
   padding:5px;
 }
 
@@ -105,6 +105,11 @@ nav{
  opacity: 0.6;
  margin-left:95%;
 }
+
+a > img {
+    height: 60px;
+}
+
 
 @media (max-width: 910px) {
     .fb{
