@@ -8,7 +8,7 @@ USE amaral_guincho;
 
 CREATE TABLE cliente
 (
-<<<<<<< HEAD:Databases/NewBD
+
     id_cli INT NOT NULL AUTO_INCREMENT,
     nome_cli VARCHAR(20) NOT NULL,
     sobrenome_cli VARCHAR (50) NOT NULL,
@@ -27,30 +27,10 @@ CREATE TABLE cliente
     CONSTRAINT uq_cpf UNIQUE (cpf_cli),
     CONSTRAINT uq_telefone UNIQUE (telefone_cli),
     CONSTRAINT uq_email UNIQUE (email_cli)
-=======
-    id_usr INT NOT NULL AUTO_INCREMENT,
-    login_usr VARCHAR(50) NOT NULL,
-    email_usr CHAR(50) NULL,
-    password_urs CHAR(50) NOT NULL,
-    type_usr ENUM('adm','staff','lowStaff','usr') NOT NULL,
-    nome_usr VARCHAR(50) NOT NULL,
-    sx_usr ENUM('M','F') NOT NULL,
-    dtnasc_usr DATE NULL,
-    cpf_usr CHAR(11) NULL,
-    cep_usr CHAR(11) NULL,
-    mobile_usr CHAR(12) NOT NULL,
-
-    PRIMARY KEY (id_usr),
-    CONSTRAINT uq_cpf UNIQUE (cpf_usr),
-    CONSTRAINT uq_mobile UNIQUE (mobile_usr),
-    CONSTRAINT uq_email UNIQUE (email_usr),
-    CONSTRAINT uq_login UNIQUE (login_usr)
->>>>>>> origin/master:Databases/NewBD.sql
 );
 
 CREATE TABLE funcionario
 (
-<<<<<<< HEAD:Databases/NewBD
     id_func INT NOT NULL AUTO_INCREMENT,
     nome_func VARCHAR(20) NOT NULL,
     sobrenome_func VARCHAR(30) NOT NULL,
@@ -81,16 +61,10 @@ CREATE TABLE adm
     PRIMARY KEY (id_func),
     FOREIGN KEY (id_func) REFERENCES funcionario (id_func),
     CONSTRAINT uq_log UNIQUE (login_adm)
-=======
-    id_frota INT NOT NULL AUTO_INCREMENT,
-    tipo_frota ENUM ('Guincho','Taxi','SOS-Guincho','Pesado'),
-    placa_frota CHAR(7) NOT NULL,
-
-    PRIMARY KEY (id_frota),
-    CONSTRAINT uq_placa UNIQUE (placa_frota)
 );
 
-CREATE TABLE seguro(
+CREATE TABLE seguro
+(
   id_seguro  TINYINT NOT NULL AUTO_INCREMENT,
               # 8-bit unsigned int [0, 255]
   nome_seguro  CHAR(20) NOT NULL,
@@ -173,12 +147,10 @@ CREATE TABLE seguro(
   vigilante_hora_trabalhada FLOAT NOT NULL,
 
   PRIMARY KEY (id_seguro)
->>>>>>> origin/master:Databases/NewBD.sql
 );
 
 CREATE TABLE motorista
 (
-<<<<<<< HEAD:Databases/NewBD
     id_mot INT NOT NULL AUTO_INCREMENT,
     nome_mot VARCHAR(20) NOT NULL,
     sobrenome_mot VARCHAR(30) NOT NULL,
@@ -220,19 +192,10 @@ CREATE TABLE frota
     
     PRIMARY KEY (id_frota),
     CONSTRAINT uq_placa UNIQUE (placa_frota)
-=======
-    id_usr INT NOT NULL AUTO_INCREMENT,
-    id_seguro INT NOT NULL,
-
-    PRIMARY KEY (id_usr,id_seguro),
-    FOREIGN KEY(id_usr) REFERENCES usr (id_usr),
-    FOREIGN KEY(id_seguro) REFERENCES seguro (id_seguro)
->>>>>>> origin/master:Databases/NewBD.sql
 );
 
 CREATE TABLE habilitacao
 (
-<<<<<<< HEAD:Databases/NewBD
     id_hab INT NOT NULL AUTO_INCREMENT,
     id_mot INT NOT NULL,
     nome_hab VARCHAR(45) NOT NULL,
@@ -248,22 +211,6 @@ CREATE TABLE habilitacao
     CONSTRAINT uq_cpf UNIQUE (cpf_hab),
     CONSTRAINT uq_nregistro UNIQUE (nregistro_hab),
     CONSTRAINT uq_id UNIQUE (id_hab)
-=======
-    id_habilitacao INT NOT NULL AUTO_INCREMENT,
-    id_motorista INT NOT NULL,
-    nome_habilitacao VARCHAR(45) NOT NULL,
-    identidade_habilitacao INT NOT NULL,
-    nregistro_habilitacao INT(12) NOT NULL,
-    validade_habilitacao DATE NOT NULL,
-    primeira_habilitacao DATE NOT NULL,
-    local_habilitacao VARCHAR(30) NOT NULL,
-    dtemissao_habilitacao DATE(30) NOT NULL,
-
-    PRIMARY KEY (id_habilitacao),
-    FOREIGN KEY(id_motorista) REFERENCES usr(id_usr),
-    CONSTRAINT uq_nregistro UNIQUE (nregistro_habilitacao),
-    CONSTRAINT uq_identidade UNIQUE (identidade_habilitacao)
->>>>>>> origin/master:Databases/NewBD.sql
 );
 
 CREATE TABLE veiculo
@@ -277,13 +224,8 @@ CREATE TABLE veiculo
     cor_veiculo VARCHAR(10) NOT NULL,
 
     PRIMARY KEY (id_veiculo),
-<<<<<<< HEAD:Databases/NewBD
     FOREIGN KEY (id_cli) REFERENCES cliente(id_cli),
     CONSTRAINT uq_placa UNIQUE (placa_veiculo)    
-=======
-    FOREIGN KEY (id_usr) REFERENCES usr(id_usr),
-    CONSTRAINT uq_placa UNIQUE (placa_veiculo)
->>>>>>> origin/master:Databases/NewBD.sql
 );
 
 CREATE TABLE sinistro
@@ -301,7 +243,12 @@ CREATE TABLE servico
     id_sinistro INT NOT NULL,
     id_viagem INT NOT NULL,
     id_frota INT NOT NULL,
-    tipo_servico VARCHAR(30) NOT NULL
+    tipo_servico VARCHAR(30) NOT NULL,
+    
+    PRIMARY KEY (id_servico),
+    FOREIGN KEY (id_sinistro) REFERENCES sinistro(id_sinistro),    
+    FOREIGN KEY (id_viagem) REFERENCES viagem(id_viagem),    
+    FOREIGN KEY (id_frota) REFERENCES frota(id_frota),
 );
 
 CREATE TABLE viagem
@@ -330,52 +277,20 @@ CREATE TABLE viagem_serviço
     
 );
 
-CREATE TABLE seguro
-(
-    
-)
+
 
 CREATE TABLE ordem_de_servico
 (
     id_oe INT NOT NULL AUTO_INCREMENT,
     id_seguro INT NOT NULL,
-    id_cli INT NOT NULL,
-    id_motorista INT NOT NULL,
-    funcAbChamado_oe INT NOT NULL,
-    cod_oe TEXT NOT NULL,
-    dtAbr_oe DATETIME NOT NULL,
-    nomeAsstSeguro_oe VARCHAR(100) NOT NULL,
-    tpSeguro_oe VARCHAR (30) NOT NULL,
-    lcRet_oe VARCHAR(30) NOT NULL,
-    lcEnt_oe VARCHAR(30) NOT NULL,
-    agendamento_oe DATE NULL,
-    nSinistro_oe INT NOT NULL,
-    status_oe ENUM('Aberto','Fechado','Recusado','Outro') NOT NULL,
-
+    id_func INT NOT NULL,
+    id_veiculo INT NOT NULL,
+    dtab_oe DATETIME NOT NULL,
+    status_oe VARCHAR(20) NOT NULL,
+    agendamento_oe VARCHAR(100) NULL,
+    
     PRIMARY KEY (id_oe),
     FOREIGN KEY (id_seguro) REFERENCES seguro (id_seguro),
-    FOREIGN KEY (id_cli) REFERENCES usr (id_usr),
-    FOREIGN KEY (funcAbChamado_oe) REFERENCES usr (id_usr),
-    FOREIGN KEY (id_motorista) REFERENCES usr (id_usr),
-    CONSTRAINT uq_cod UNIQUE (cod_oe)
-<<<<<<< HEAD:Databases/NewBD
+    FOREIGN KEY (id_func) REFERENCES func (id_func),
+    FOREIGN KEY (id_veiculo) REFERENCES veiculo (id_veiculo)
 );
-=======
-);
-
-CREATE TABLE viagem
-(
-    id_viagem INT NOT NULL AUTO_INCREMENT,
-    id_motorista INT NOT NULL,
-    id_frota INT NOT NULL,
-    id_oe INT NOT NULL,
-    kmsaida_viagem VARCHAR(30) NOT NULL,
-    kmchegada_viagem VARCHAR(30) NOT NULL,
-    hrTrab_viagem VARCHAR(30) NOT NULL,
-
-    PRIMARY KEY (id_viagem),
-    FOREIGN KEY (id_motorista) REFERENCES usr (id_usr),
-    FOREIGN KEY (id_frota) REFERENCES frota (id_frota),
-    FOREIGN KEY (id_oe) REFERENCES ordem_de_servico (id_oe)
-);
->>>>>>> origin/master:Databases/NewBD.sql
