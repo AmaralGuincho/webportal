@@ -6,85 +6,189 @@ CREATE DATABASE amaral_guincho;
 
 USE amaral_guincho;
 
-CREATE TABLE usuario
+CREATE TABLE cliente
 (
-    id_usr INT NOT NULL AUTO_INCREMENT,
-    login_usr VARCHAR(50) NOT NULL,
-    email_usr CHAR(50) NULL,
-    password_urs CHAR(50) NOT NULL,
-    type_usr ENUM('adm','staff','lowStaff','usr') NOT NULL,
-    nome_usr VARCHAR(50) NOT NULL,
-    sx_usr ENUM('M','F') NOT NULL,
-    dtnasc_usr DATE NULL,
-    cpf_usr CHAR(11) NULL,
-    cep_usr CHAR(11) NULL,
-    mobile_usr CHAR(12) NOT NULL,
+    id_cli INT NOT NULL AUTO_INCREMENT,
+    nome_cli VARCHAR(20) NOT NULL,
+    sobrenome_cli VARCHAR (50) NOT NULL,
+    cpf_cli CHAR(11) NOT NULL,
+    email_cli CHAR(50) NULL,
+    sx_cli CHAR(1) NOT NULL,
+    dtnasc_cli DATE NOT NULL,
+    cep_cli CHAR(11) NOT NULL,
+    cid_cli CHAR(11) NOT NULL,
+    us_cli CHAR(2) NOT NULL,
+    telefone_cli CHAR(12) NOT NULL,
     
-    PRIMARY KEY (id_usr),
-    CONSTRAINT uq_cpf UNIQUE (cpf_usr),
-    CONSTRAINT uq_mobile UNIQUE (mobile_usr),
-    CONSTRAINT uq_email UNIQUE (email_usr),
-    CONSTRAINT uq_login UNIQUE (login_usr)
+    PRIMARY KEY (id_cli),
+    CONSTRAINT ch_sx CHECK (sx_cli = "M","F"),
+    CONSTRAINT uq_cep UNIQUE (cep_cli),
+    CONSTRAINT uq_cpf UNIQUE (cpf_cli),
+    CONSTRAINT uq_telefone UNIQUE (telefone_cli),
+    CONSTRAINT uq_email UNIQUE (email_cli)
+);
+
+CREATE TABLE funcionario
+(
+    id_func INT NOT NULL AUTO_INCREMENT,
+    nome_func VARCHAR(20) NOT NULL,
+    sobrenome_func VARCHAR(30) NOT NULL,
+    dtnasc_func DATE NOT NULL,
+    cep_func CHAR(8) NOT NULL,
+    cpf_func CHAR(11) NOT NULL,
+    dtcont_func DATE NOT NULL,
+    sx_func CHAR(1) NOT NULL,
+    tel_func CHAR(11) NOT NULL,
+    email_func VARCHAR(30) NOT NULL,
+    us_func CHAR(2) NOT NULL,
+    cid_func VARCHAR(20) NOT NULL,
+    
+    PRIMARY KEY (id_func),
+    CONSTRAINT uq_cep UNIQUE (cep_func),
+    CONSTRAINT uq_cpf UNIQUE (cpf_func),
+    CONSTRAINT uq_email UNIQUE (email_func),
+    CONSTRAINT uq_tel UNIQUE (tel_func),
+    CONSTRAINT ch_sx CHECK (sx_func)
+);
+
+CREATE TABLE adm
+(
+    id_func INT NOT NULL AUTO_INCREMENT,
+    login_adm VARCHAR(20) NOT NULL,
+    senha_adm VARCHAR(20) NOT NULL,
+    
+    PRIMARY KEY (id_func),
+    FOREIGN KEY (id_func) REFERENCES funcionario (id_func),
+    CONSTRAINT uq_log UNIQUE (login_adm)
+);
+
+CREATE TABLE motorista
+(
+    id_mot INT NOT NULL AUTO_INCREMENT,
+    nome_mot VARCHAR(20) NOT NULL,
+    sobrenome_mot VARCHAR(30) NOT NULL,
+    dtnasc_mot DATE NOT NULL,
+    cep_mot CHAR(8) NOT NULL,
+    dtcont_mot DATE NOT NULL,
+    sx_mot CHAR(1) NOT NULL,
+    tel_mot INT NOT NULL,
+    email_mot VARCHAR(30) NOT NULL,
+    cid_mot VARCHAR(20) NOT NULL,
+    
+    PRIMARY KEY (id_mot),
+    CONSTRAINT ch_sx CHECK (sx_mot = "M","F"),
+    CONSTRAINT uq_cep UNIQUE (cep_mot),
+    CONSTRAINT uq_email UNIQUE (email_mot)    
+);
+
+CREATE TABLE login
+(
+    id_login INT NOT NULL AUTO_INCREMENT,
+    nome_log VARCHAR(20) NOT NULL,
+    senha_log VARCHAR(20) NOT NULL,
+    classe_log VARCHAR(20) NOT NULL;
+    
+    PRIMARY KEY (id_login),
+    CONSTRAINT uq_log UNIQUE(nome_log)
 );
 
 CREATE TABLE frota
 (
     id_frota INT NOT NULL AUTO_INCREMENT,
-    tipo_frota ENUM ('Guincho','Taxi','SOS-Guincho','Pesado'),
+    nome_frota VARCHAR(30) NULL,
+    modelo_frota VARCHAR(30) NULL,
+    ano_frota DATE NULL,
+    fabricante_frota VARCHAR(30) NULL,
+    tipo_frota VARCHAR(20) NOT NULL,
     placa_frota CHAR(7) NOT NULL,
+    cor_frota VARCHAR(20) NULL,
     
     PRIMARY KEY (id_frota),
     CONSTRAINT uq_placa UNIQUE (placa_frota)
 );
 
-CREATE TABLE seguro
-(
-    id_seguro INT NOT NULL AUTO_INCREMENT,
-    
-);
-
-CREATE TABLE seguro_usr
-(
-    id_usr INT NOT NULL AUTO_INCREMENT,
-    id_seguro INT NOT NULL,
-    
-    PRIMARY KEY (id_usr,id_seguro),
-    FOREIGN KEY(id_usr) REFERENCES usr (id_usr),
-    FOREIGN KEY(id_seguro) REFERENCES seguro (id_seguro)
-);
-
 CREATE TABLE habilitacao
 (
-    id_habilitacao INT NOT NULL AUTO_INCREMENT,
-    id_motorista INT NOT NULL,
-    nome_habilitacao VARCHAR(45) NOT NULL,
-    identidade_habilitacao INT NOT NULL,
-    nregistro_habilitacao INT(12) NOT NULL,
-    validade_habilitacao DATE NOT NULL,
-    primeira_habilitacao DATE NOT NULL,
-    local_habilitacao VARCHAR(30) NOT NULL,
-    dtemissao_habilitacao DATE(30) NOT NULL,
+    id_hab INT NOT NULL AUTO_INCREMENT,
+    id_mot INT NOT NULL,
+    nome_hab VARCHAR(45) NOT NULL,
+    id_hab INT NOT NULL,
+    cpf_hab CHAR(11) NOT NULL,
+    nregistro_hab INT(12) NOT NULL,
+    validade_hab DATE NOT NULL,
+    local_hab VARCHAR(30) NOT NULL,
+    dtemissao_hab DATE(30) NOT NULL,
     
-    PRIMARY KEY (id_habilitacao),
-    FOREIGN KEY(id_motorista) REFERENCES usr(id_usr),
-    CONSTRAINT uq_nregistro UNIQUE (nregistro_habilitacao),
-    CONSTRAINT uq_identidade UNIQUE (identidade_habilitacao)
+    PRIMARY KEY (id_hab),
+    FOREIGN KEY(id_mot) REFERENCES motorista(id_mot),
+    CONSTRAINT uq_cpf UNIQUE (cpf_hab),
+    CONSTRAINT uq_nregistro UNIQUE (nregistro_hab),
+    CONSTRAINT uq_id UNIQUE (id_hab)
 );
 
 CREATE TABLE veiculo
 (
     id_veiculo INT NOT NULL AUTO_INCREMENT,
-    id_usr INT NOT NULL,
-    marca_veiculo VARCHAR (30) NOT NULL,
+    id_cli INT NOT NULL,
     modelo_veiculo VARCHAR (30) NOT NULL,
     ano_veiculo DATE NOT NULL,
+    fabricante_veiculo VARCHAR(20) NOT NULL,
     placa_veiculo VARCHAR(7) NOT NULL,
     cor_veiculo VARCHAR(10) NOT NULL,
     
     PRIMARY KEY (id_veiculo),
-    FOREIGN KEY (id_usr) REFERENCES usr(id_usr),
+    FOREIGN KEY (id_cli) REFERENCES cliente(id_cli),
     CONSTRAINT uq_placa UNIQUE (placa_veiculo)    
 );
+
+CREATE TABLE sinistro
+(
+    id_sinistro INT NOT NULL AUTO_INCREMENT,
+    id_cli INT NOT NULL,
+    id_seguro INT NULL,
+    tipo_sin VARCHAR(20) NOT NULL,
+    fabricante_sin VARCHAR(20) NOT NULL
+);
+
+CREATE TABLE servico
+(
+    id_servico INT NOT NULL AUTO_INCREMENT,
+    id_sinistro INT NOT NULL,
+    id_viagem INT NOT NULL,
+    id_frota INT NOT NULL,
+    tipo_servico VARCHAR(30) NOT NULL
+);
+
+CREATE TABLE viagem
+(
+    id_viagem INT NOT NULL AUTO_INCREMENT,
+    id_mot INT NOT NULL,
+    id_frota INT NOT NULL,
+    id_cli INT NOT NULL,
+    locals_viagem VARCHAR(20) NOT NULL,
+    localc_viagem VARCHAR(20) NOT NULL
+    
+    PRIMARY KEY (id_viagem),
+    FOREIGN KEY (id_mot) REFERENCES motorista (id_mot),
+    FOREIGN KEY (id_frota) REFERENCES frota (id_frota),
+    FOREIGN KEY (id_cli) REFERENCES cliente (id_cli)
+);
+
+CREATE TABLE viagem_serviço
+(
+    id_viagem INT NOT NULL AUTO_INCREMENT,
+    id_servico INT NOT NULL,
+    
+    PRIMARY KEY (id_viagem, id_servico),
+    FOREIGN KEY (id_viagem) REFERENCES viagem(id_viagem),
+    FOREIGN KEY (id_servico) REFERENCES servico(id_servico)
+    
+);
+
+CREATE TABLE seguro
+(
+    
+)
 
 CREATE TABLE ordem_de_servico
 (
@@ -109,20 +213,4 @@ CREATE TABLE ordem_de_servico
     FOREIGN KEY (funcAbChamado_oe) REFERENCES usr (id_usr),
     FOREIGN KEY (id_motorista) REFERENCES usr (id_usr),
     CONSTRAINT uq_cod UNIQUE (cod_oe)
-);
-
-CREATE TABLE viagem
-(
-    id_viagem INT NOT NULL AUTO_INCREMENT,
-    id_motorista INT NOT NULL,
-    id_frota INT NOT NULL,
-    id_oe INT NOT NULL,
-    kmsaida_viagem VARCHAR(30) NOT NULL,
-    kmchegada_viagem VARCHAR(30) NOT NULL,
-    hrTrab_viagem VARCHAR(30) NOT NULL,
-    
-    PRIMARY KEY (id_viagem),
-    FOREIGN KEY (id_motorista) REFERENCES usr (id_usr),
-    FOREIGN KEY (id_frota) REFERENCES frota (id_frota),
-    FOREIGN KEY (id_oe) REFERENCES ordem_de_servico (id_oe)
 );
