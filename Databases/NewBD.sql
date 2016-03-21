@@ -1,6 +1,4 @@
-SET NAMES 'utf8';
-
-DROP DATABASE IF EXISTs 'amaral_guincho';
+DROP DATABASE amaral_guincho;
 
 CREATE DATABASE amaral_guincho;
 
@@ -22,7 +20,7 @@ CREATE TABLE cliente
     telefone_cli CHAR(12) NOT NULL,
     
     PRIMARY KEY (id_cli),
-    CONSTRAINT ch_sx CHECK (sx_cli = "M","F"),
+    CONSTRAINT ch_sx CHECK (sx_cli = "M" or "F"),
     CONSTRAINT uq_cep UNIQUE (cep_cli),
     CONSTRAINT uq_cpf UNIQUE (cpf_cli),
     CONSTRAINT uq_telefone UNIQUE (telefone_cli),
@@ -49,12 +47,12 @@ CREATE TABLE funcionario
     CONSTRAINT uq_cpf UNIQUE (cpf_func),
     CONSTRAINT uq_email UNIQUE (email_func),
     CONSTRAINT uq_tel UNIQUE (tel_func),
-    CONSTRAINT ch_sx CHECK (sx_func)
+    CONSTRAINT ch_sx CHECK (sx_func = "M" or "F")
 );
 
 CREATE TABLE seguro
 (
-  id_seguro  TINYINT NOT NULL AUTO_INCREMENT,
+  id_seguro  INT NOT NULL AUTO_INCREMENT,
               # 8-bit unsigned int [0, 255]
   nome_seguro  CHAR(20) NOT NULL,
   cod_prestador  VARCHAR(30) NOT NULL,
@@ -153,11 +151,11 @@ CREATE TABLE motorista
     nregistro_hab INT(12) NOT NULL,
     validade_hab DATE NOT NULL,
     local_hab VARCHAR(30) NOT NULL,
-    dtemissao_hab DATE(30) NOT NULL,    
+    dtemissao_hab DATE NOT NULL,    
     id_hab INT NOT NULL,
     
     PRIMARY KEY (id_mot),
-    CONSTRAINT ch_sx CHECK (sx_mot = "M","F"),
+    CONSTRAINT ch_sx CHECK (sx_mot = "M" or "F"),
     CONSTRAINT uq_cep UNIQUE (cep_mot),
     CONSTRAINT uq_email UNIQUE (email_mot),    
     CONSTRAINT uq_nregistro UNIQUE (nregistro_hab),
@@ -200,21 +198,21 @@ CREATE TABLE sinistro
     id_cli INT NOT NULL,
     id_seguro INT NULL,
     tipo_sin VARCHAR(20) NOT NULL,
-    fabricante_sin VARCHAR(20) NOT NULL
+    fabricante_sin VARCHAR(20) NOT NULL,
+    
+    PRIMARY KEY (id_sinistro),
+    FOREIGN KEY (id_cli) REFERENCES cliente(id_cli),
+    FOREIGN KEY (id_seguro) REFERENCES seguro(id_seguro)
 );
 
 CREATE TABLE servico
 (
     id_servico INT NOT NULL AUTO_INCREMENT,
     id_sinistro INT NOT NULL,
-    id_viagem INT NOT NULL,
-    id_frota INT NOT NULL,
     tipo_servico VARCHAR(30) NOT NULL,
     
     PRIMARY KEY (id_servico),
-    FOREIGN KEY (id_sinistro) REFERENCES sinistro(id_sinistro),    
-    FOREIGN KEY (id_viagem) REFERENCES viagem(id_viagem),    
-    FOREIGN KEY (id_frota) REFERENCES frota(id_frota),
+    FOREIGN KEY (id_sinistro) REFERENCES sinistro(id_sinistro)
 );
 
 CREATE TABLE viagem
@@ -222,14 +220,12 @@ CREATE TABLE viagem
     id_viagem INT NOT NULL AUTO_INCREMENT,
     id_mot INT NOT NULL,
     id_frota INT NOT NULL,
-    id_cli INT NOT NULL,
     locals_viagem VARCHAR(20) NOT NULL,
-    localc_viagem VARCHAR(20) NOT NULL
+    localc_viagem VARCHAR(20) NOT NULL,
     
     PRIMARY KEY (id_viagem),
     FOREIGN KEY (id_mot) REFERENCES motorista (id_mot),
-    FOREIGN KEY (id_frota) REFERENCES frota (id_frota),
-    FOREIGN KEY (id_cli) REFERENCES cliente (id_cli)
+    FOREIGN KEY (id_frota) REFERENCES frota (id_frota)
 );
 
 CREATE TABLE viagem_serviço
@@ -248,7 +244,6 @@ CREATE TABLE viagem_serviço
 CREATE TABLE ordem_de_servico
 (
     id_oe INT NOT NULL AUTO_INCREMENT,
-    id_seguro INT NOT NULL,
     id_func INT NOT NULL,
     id_veiculo INT NOT NULL,
     dtab_oe DATETIME NOT NULL,
@@ -256,7 +251,16 @@ CREATE TABLE ordem_de_servico
     agendamento_oe VARCHAR(100) NULL,
     
     PRIMARY KEY (id_oe),
-    FOREIGN KEY (id_seguro) REFERENCES seguro (id_seguro),
-    FOREIGN KEY (id_func) REFERENCES func (id_func),
+    FOREIGN KEY (id_func) REFERENCES funcionario (id_func),
     FOREIGN KEY (id_veiculo) REFERENCES veiculo (id_veiculo)
+);
+
+CREATE TABLE servico_oe
+(
+    id_oe INT NOT NULL AUTO_INCREMENT,
+    id_servico INT NOT NULL,
+    
+    PRIMARY KEY(id_oe, id_servico),
+    FOREIGN KEY (id_oe) REFERENCES ordem_de_servico(id_oe),
+    FOREIGN KEY (id_servico) REFERENCES servico(id_servico)
 );
