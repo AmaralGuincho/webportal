@@ -52,17 +52,6 @@ CREATE TABLE funcionario
     CONSTRAINT ch_sx CHECK (sx_func)
 );
 
-CREATE TABLE adm
-(
-    id_func INT NOT NULL AUTO_INCREMENT,
-    login_adm VARCHAR(20) NOT NULL,
-    senha_adm VARCHAR(20) NOT NULL,
-    
-    PRIMARY KEY (id_func),
-    FOREIGN KEY (id_func) REFERENCES funcionario (id_func),
-    CONSTRAINT uq_log UNIQUE (login_adm)
-);
-
 CREATE TABLE seguro
 (
   id_seguro  TINYINT NOT NULL AUTO_INCREMENT,
@@ -161,22 +150,18 @@ CREATE TABLE motorista
     tel_mot INT NOT NULL,
     email_mot VARCHAR(30) NOT NULL,
     cid_mot VARCHAR(20) NOT NULL,
+    nregistro_hab INT(12) NOT NULL,
+    validade_hab DATE NOT NULL,
+    local_hab VARCHAR(30) NOT NULL,
+    dtemissao_hab DATE(30) NOT NULL,    
+    id_hab INT NOT NULL,
     
     PRIMARY KEY (id_mot),
     CONSTRAINT ch_sx CHECK (sx_mot = "M","F"),
     CONSTRAINT uq_cep UNIQUE (cep_mot),
-    CONSTRAINT uq_email UNIQUE (email_mot)    
-);
-
-CREATE TABLE login
-(
-    id_login INT NOT NULL AUTO_INCREMENT,
-    nome_log VARCHAR(20) NOT NULL,
-    senha_log VARCHAR(20) NOT NULL,
-    classe_log VARCHAR(20) NOT NULL;
-    
-    PRIMARY KEY (id_login),
-    CONSTRAINT uq_log UNIQUE(nome_log)
+    CONSTRAINT uq_email UNIQUE (email_mot),    
+    CONSTRAINT uq_nregistro UNIQUE (nregistro_hab),
+    CONSTRAINT uq_id UNIQUE (id_hab)  
 );
 
 CREATE TABLE frota
@@ -192,25 +177,6 @@ CREATE TABLE frota
     
     PRIMARY KEY (id_frota),
     CONSTRAINT uq_placa UNIQUE (placa_frota)
-);
-
-CREATE TABLE habilitacao
-(
-    id_hab INT NOT NULL AUTO_INCREMENT,
-    id_mot INT NOT NULL,
-    nome_hab VARCHAR(45) NOT NULL,
-    id_hab INT NOT NULL,
-    cpf_hab CHAR(11) NOT NULL,
-    nregistro_hab INT(12) NOT NULL,
-    validade_hab DATE NOT NULL,
-    local_hab VARCHAR(30) NOT NULL,
-    dtemissao_hab DATE(30) NOT NULL,
-    
-    PRIMARY KEY (id_hab),
-    FOREIGN KEY(id_mot) REFERENCES motorista(id_mot),
-    CONSTRAINT uq_cpf UNIQUE (cpf_hab),
-    CONSTRAINT uq_nregistro UNIQUE (nregistro_hab),
-    CONSTRAINT uq_id UNIQUE (id_hab)
 );
 
 CREATE TABLE veiculo
