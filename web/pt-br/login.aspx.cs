@@ -31,7 +31,7 @@ public partial class Web_websites_login : System.Web.UI.Page
             if (dv.Table.Rows.Count == 0)
             {
                 //Fail to login
-                Response.Redirect("index.html");
+                Response.Redirect("~/Web/pt-br/index.html");
             }
             else
             {
@@ -48,7 +48,7 @@ public partial class Web_websites_login : System.Web.UI.Page
                     //registrando o usiario
                     Session["id_usr"] = dv.Table.Rows[0]["id_usr"].ToString();
 
-                    Response.Redirect("adm/dashboard.aspx");
+                    Response.Redirect("~/Web/pt-br/adm/dashboard.aspx");
                 }
 
                 if (type == "staff")
@@ -60,12 +60,12 @@ public partial class Web_websites_login : System.Web.UI.Page
                     //registrando o usiario
                     Session["id_usr"] = dv.Table.Rows[0]["id_usr"].ToString();
 
-                    Response.Redirect("adm/dashboard.aspx");
+                    Response.Redirect("~/Web/pt-br/adm/dashboard.aspx");
 
 
                 }
 
-                if (type == "adm")
+                if (type == "usr")
                 {
                     Session["Log"] = "On";
                     Session["Staff"] = "OFF";
@@ -74,7 +74,7 @@ public partial class Web_websites_login : System.Web.UI.Page
                     //registrando o usiario
                     Session["id_usr"] = dv.Table.Rows[0]["id_usr"].ToString();
 
-                    Response.Redirect("index.html");
+                    Response.Redirect("~/Web/pt-br/index.html");
                 }
 
 
@@ -82,7 +82,7 @@ public partial class Web_websites_login : System.Web.UI.Page
         }
         catch { }
 
-      
+
     }
 
 

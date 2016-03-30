@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/pt-br/adm/adm-master.master" AutoEventWireup="true" CodeFile="printServico.aspx.cs" Inherits="css_printServico" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/Web/pt-br/adm/adm-master.master" AutoEventWireup="true" CodeFile="printServico.aspx.cs" Inherits="css_printServico" %>
 <asp:Content ContentPlaceHolderID="head" runat="server">
     <style>
         table{
@@ -14,7 +14,7 @@
         @media print{
             @page{size:auto;margin:0;}
             *{
-                
+
             }
             body{
                 width:100%;
@@ -50,7 +50,7 @@
             input[type=text]{
                 height:30px;
             }
-            
+
         }
     </style>
 </asp:Content>
@@ -83,7 +83,7 @@
             </td>
             <td>
                 <asp:Label Text="Tipo de Seguro" CssClass="label" runat="server" />
-                <asp:TextBox ID="tipo_seguro" runat="server" /> 
+                <asp:TextBox ID="tipo_seguro" runat="server" />
             </td>
         </tr>
         <tr class="cliente">
@@ -108,11 +108,11 @@
                 <asp:TextBox ID="cpf_cli" runat="server" />
             </td>
             <td>
-                
+
             </td>
             <td>
                 <asp:Label Text="Status" runat="server" />
-                 <asp:TextBox Text="Status" runat="server" />  
+                 <asp:TextBox Text="Status" runat="server" />
               </td>
         </tr>
         <tr class="motorista">
@@ -122,7 +122,7 @@
             </td>
             <td>
                 <asp:Label Text="Frota" runat="server" />
-                <asp:TextBox runat="server" id="Frota"/>  
+                <asp:TextBox runat="server" id="Frota"/>
             </td>
             <td>
               <asp:Label Text="Local de Retirada"   runat="server" />
@@ -136,11 +136,11 @@
             </td>
             <td>
                 <asp:Label Text="Km Chegada" CssClass="label" runat="server" />
-                <asp:TextBox ID="txtKmChegada" runat="server" />  
+                <asp:TextBox ID="txtKmChegada" runat="server" />
             </td>
             <td>
                 <asp:Label Text="Hora Trabalhada" CssClass="label" runat="server" />
-                <asp:TextBox ID="txtHoraTrabalhada" runat="server" />  
+                <asp:TextBox ID="txtHoraTrabalhada" runat="server" />
             </td>
         </tr>
         <tr class="oe-info">

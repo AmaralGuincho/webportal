@@ -1,7 +1,7 @@
-﻿<%@ Page MasterPageFile="~/pt-br/adm/adm-master.master" Language="C#" AutoEventWireup="true" CodeFile="fail.aspx.cs" Inherits="pt_br_adm_feedback_fail" %>
+﻿<%@ Page MasterPageFile="~/Web/pt-br/adm/adm-master.master" Language="C#" AutoEventWireup="true" CodeFile="fail.aspx.cs" Inherits="pt_br_adm_feedback_fail" %>
 
 <asp:Content ContentPlaceHolderID="head" runat="server">
-   
+
 </asp:Content>
 
 <asp:Content ContentPlaceHolderID="cph" runat="server">

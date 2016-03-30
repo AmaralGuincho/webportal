@@ -1,4 +1,4 @@
-﻿<%@ Page MasterPageFile="~/pt-br/adm/adm-master.master" EnableEventValidation="false" MaintainScrollPositionOnPostback="true" Language="C#" AutoEventWireup="true" CodeFile="accounts.aspx.cs" Inherits="pt_br_adm_accounts" %>
+﻿<%@ Page MasterPageFile="~/Web/pt-br/adm/adm-master.master" EnableEventValidation="false" MaintainScrollPositionOnPostback="true" Language="C#" AutoEventWireup="true" CodeFile="accounts.aspx.cs" Inherits="pt_br_adm_accounts" %>
 
 <asp:Content ContentPlaceHolderID="head" runat="server">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
@@ -75,4 +75,3 @@
     <asp:SqlDataSource ID="SqlOe" runat="server" ConnectionString="<%$ ConnectionStrings:amaral_guinchoConnectionString %>" ProviderName="<%$ ConnectionStrings:amaral_guinchoConnectionString.ProviderName %>" SelectCommand="SELECT id_oe as 'Código', data_abertura_oe as 'Data de Abertura', nome_ab_chamado as 'Aberto por', id_seguro, nome_assistente_seguro as 'Assistencia', tipo_seguro as 'Tipo de Seguro', id_cliente, local_retirada as 'Retirada', agendamento as 'Agendamento', numero_sinistro as 'Sinistro', local_entrega as 'Entrega', id_motorista, status as 'Status' FROM ordem_de_servico"></asp:SqlDataSource>
     <asp:SqlDataSource runat="server" ID="SqlSelectNew" ConnectionString="<%$ ConnectionStrings:amaral_guinchoConnectionString %>" ProviderName="<%$ ConnectionStrings:amaral_guinchoConnectionString.ProviderName %>" SelectCommand="SELECT MAX(id_usr) FROM usr"></asp:SqlDataSource>
 </asp:Content>
-

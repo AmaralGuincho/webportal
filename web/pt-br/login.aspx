@@ -25,7 +25,7 @@
             display:inline;
         }
         form{
-            
+
             border-radius:8px;
             width:25%;
             margin-left:auto;
@@ -39,7 +39,7 @@
                 font-family: 'Open Sans', Arial, sans-serif;
                 font-weight: 300;
             }
-        
+
         .group{
             display:block;
         }
@@ -71,16 +71,16 @@
       color:#989898;
       font-weight:500;
     }
-          
+
     </style>
     <nav>
         <ul>
             <a href="index.html">
                 <img src="../resources/logotipo.png" /></a>
                      <li>Amaral Guincho</li>
-                      <li><a href="websites/login.aspx">Login</a></li>
-                      <li><a href="websites/404.html">Cadastre-se</a></li>
-                      <li><a href="websites/404.html">Contato</a></li>
+                      <li><a href="~/Web/pt-br/login.aspx">Login</a></li>
+                      <li><a href="~/Web/pt-br/404.html">Cadastre-se</a></li>
+                      <li><a href="~/Web/pt-br/404.html">Contato</a></li>
                       <li class="fb">
                       <a href="https://www.facebook.com/amaral.guincho?fref=ts" target="_blank">
                     <img src="../resources/social/facebook-button.png"/>

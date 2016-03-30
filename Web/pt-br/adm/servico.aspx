@@ -1,4 +1,4 @@
-﻿<%@ Page MasterPageFile="~/pt-br/adm/adm-master.master" Language="C#" MaintainScrollPositionOnPostBack="true" EnableEventValidation="true"  AutoEventWireup="true" CodeFile="servico.aspx.cs" Inherits="pt_br_adm_servico" %>
+﻿<%@ Page MasterPageFile="~/Web/pt-br/adm/adm-master.master" Language="C#" MaintainScrollPositionOnPostBack="true" EnableEventValidation="true"  AutoEventWireup="true" CodeFile="servico.aspx.cs" Inherits="pt_br_adm_servico" %>
 
 <asp:Content ContentPlaceHolderID="head" runat="server">
     <meta name="viewport" content="width=device-width" />
@@ -40,7 +40,7 @@
             .inline-button {
                 display: none;
             }
-            
+
         }
     </style>
 </asp:Content>
@@ -255,7 +255,7 @@
             </tr>
             <tr class="Ação">
                 <td>
-                    <asp:Button Text="Imprimir" runat="server" Class="button" PostBackUrl="~/pt-br/adm/printServico.aspx" />
+                    <asp:Button Text="Imprimir" runat="server" Class="button" PostBackUrl="~/Web/pt-br/adm/printServico.aspx" />
                 </td>
                 <td></td>
                 <td>
@@ -321,9 +321,9 @@
                 <asp:ControlParameter ControlID="ddFrota" Name="IDFROTA" PropertyName="SelectedValue" />
             </InsertParameters>
         </asp:SqlDataSource>
-        
+
         <asp:SqlDataSource ID="MySqlSelect_id" runat="server" ConnectionString="<%$ ConnectionStrings:amaral_guinchoConnectionString %>" ProviderName="<%$ ConnectionStrings:amaral_guinchoConnectionString.ProviderName %>" SelectCommand="SELECT MAX(id_oe) FROM ordem_de_servico"></asp:SqlDataSource>
-        
+
         <asp:SqlDataSource ID="MySql_insert_cliente" runat="server" ConnectionString="<%$ ConnectionStrings:amaral_guinchoConnectionString %>" InsertCommand="INSERT INTO usr(login_usr, pwd_usr, type_usr, sx_usr, nome_usr, cpf_usr, mobile_usr, email_usr) VALUES (@LOGCLI, '0000', 'usr', @SEXCLI, @LOGCLI, @CPFCLI, @MOBILE, @MAILCLI)" ProviderName="<%$ ConnectionStrings:amaral_guinchoConnectionString.ProviderName %>">
             <InsertParameters>
                 <asp:ControlParameter ControlID="nome_pesq_cli" Name="LOGCLI" PropertyName="Text" />
@@ -333,8 +333,8 @@
                 <asp:Parameter Name="SEXCLI" />
             </InsertParameters>
         </asp:SqlDataSource>
-        
+
         <asp:SqlDataSource ID="MySqlSelect_MAXCliente" runat="server" ConnectionString="<%$ ConnectionStrings:amaral_guinchoConnectionString %>" ProviderName="<%$ ConnectionStrings:amaral_guinchoConnectionString.ProviderName %>" SelectCommand="SELECT MAX(id_usr) FROM usr"></asp:SqlDataSource>
-        
+
         <!--end of database interaction-->
 </asp:Content>

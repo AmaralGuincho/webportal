@@ -1,4 +1,4 @@
-﻿<%@ Page  MasterPageFile="~/pt-br/adm/adm-master.master" %>
+﻿<%@ Page  MasterPageFile="~/Web/pt-br/adm/adm-master.master" %>
 
 <asp:Content ContentPlaceHolderID="head" runat="server">
     <meta name="viewport" content="width=device-width" />
@@ -146,7 +146,7 @@
                         <asp:Button Text="Resetar" runat="server" Class="button" />
                     </td>
                     <td>
-                        
+
                     </td>
                     <td>
                         <asp:Button Text="Obrir OE" runat="server" Class="button" />

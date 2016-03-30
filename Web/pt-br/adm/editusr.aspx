@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/pt-br/adm/adm-master.master" AutoEventWireup="true" CodeFile="editusr.aspx.cs" Inherits="css_editusr" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/Web/pt-br/adm/adm-master.master" AutoEventWireup="true" CodeFile="editusr.aspx.cs" Inherits="css_editusr" %>
 
 <asp:Content ContentPlaceHolderID="head" runat="server">
     <meta name="viewport" content="width=device-width" />

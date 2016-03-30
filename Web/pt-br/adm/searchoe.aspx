@@ -1,4 +1,4 @@
-﻿<%@ Page MasterPageFile="~/pt-br/adm/adm-master.master" Language="C#" AutoEventWireup="true" CodeFile="searchoe.aspx.cs" Inherits="pt_br_adm_searchoe" %>
+﻿<%@ Page MasterPageFile="~/Web/pt-br/adm/adm-master.master" Language="C#" AutoEventWireup="true" CodeFile="searchoe.aspx.cs" Inherits="pt_br_adm_searchoe" %>
 
 <asp:Content ContentPlaceholderID="head" runat="server">
     <link rel="stylesheet" href="../../css/adm.css" />
