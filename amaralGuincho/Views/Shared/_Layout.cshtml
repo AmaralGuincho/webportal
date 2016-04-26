@@ -3,64 +3,52 @@
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>@ViewData["Title"] - amaralGuincho</title>
+        <title>@ViewData["Public"]</title>
 
-        <environment names="Development">
-            <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
-            <link rel="stylesheet" href="~/css/site.css" />
-        </environment>
-        <environment names="Staging,Production">
-            <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.5/css/bootstrap.min.css"
-                  asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
-                  asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
-            <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
-        </environment>
+        <!-- My stylesheet -->
+        <link rel="stylesheet" href="/css/site.min.css">
+        <!-- Material Design Lite Stylesheet -->
+        <link rel="stylesheet" href="https://code.getmdl.io/1.0.6/material.indigo-pink.min.css">
+        <!-- Material Design Icons Resource -->
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     </head>
     <body>
-        <div class="navbar navbar-inverse navbar-fixed-top">
-            <div class="container">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a asp-controller="Home" asp-action="Index" class="navbar-brand">amaralGuincho</a>
-                </div>
-                <div class="navbar-collapse collapse">
-                    <ul class="nav navbar-nav">
-                        <li><a asp-controller="Home" asp-action="Index">Home</a></li>
-                        <li><a asp-controller="Home" asp-action="About">About</a></li>
-                        <li><a asp-controller="Home" asp-action="Contact">Contact</a></li>
-                    </ul>
-                </div>
+        <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+          <header class="mdl-layout__header">
+            <div class="mdl-layout__header-row">
+              <span class="mdl-layout__drawer">Amaral Guincho</span>
+              <div class="mdl-layout-spacer"></div>
+              <nav class="mdl-layout-title">
+                <a class="mdl-navigaition__link" asp-controller="Home" asp-action="Index">Home</a>
+                <a class="mdl-navigaition__link" asp-controller="Home" asp-action="About">About</a>
+                <a class="mdl-navigaition__link" asp-controller="Home" asp-action="Contact">Contact</a>
+              </nav>
             </div>
+          </header>
+          <div class="mdl-layout__drawer">
+            <span class="mdl-layout-title">Amaral Guincho</span>
+            <nav class="mdl-navigation">
+              <a class="mdl-navigaition__link" asp-controller="Home" asp-action="Index">Home</a>
+              <a class="mdl-navigaition__link" asp-controller="Home" asp-action="About">About</a>
+              <a class="mdl-navigaition__link" asp-controller="Home" asp-action="Contact">Contact</a>
+            </nav>
+          </div>
         </div>
-        <div class="container body-content">
+        <main class="mdl-layout-content">
+          <div class="page-content">
             @RenderBody()
+          </div>
             <hr />
             <footer>
-                <p>&copy; 2016 - amaralGuincho</p>
+                <p>&copy; 2016 - io.Etep</p>
             </footer>
-        </div>
+          </main>
 
-        <environment names="Development">
-            <script src="~/lib/jquery/dist/jquery.js"></script>
-            <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
-            <script src="~/js/site.js" asp-append-version="true"></script>
-        </environment>
-        <environment names="Staging,Production">
-            <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-2.1.4.min.js"
-                    asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
-                    asp-fallback-test="window.jQuery">
-            </script>
-            <script src="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.5/bootstrap.min.js"
-                    asp-fallback-src="~/lib/bootstrap/dist/js/bootstrap.min.js"
-                    asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal">
-            </script>
-            <script src="~/js/site.min.js" asp-append-version="true"></script>
-        </environment>
+        <!-- My JS files -->
+        <script src="~/js/site.js" asp-append-version="true"></script>
+
+        <!-- Material Design Lite Scripts -->
+        <script src="https://storage.googleapis.com/code.getmdl.io/1.0.6/material.min.js"></script>
 
         @RenderSection("scripts", required: false)
     </body>
