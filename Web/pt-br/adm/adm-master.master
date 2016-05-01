@@ -20,27 +20,27 @@
    <nav>
        <ul>
            <li>
-               <asp:LinkButton CssClass="a" runat="server" PostBackUrl="~/pt-br/adm/dashboard.aspx">
+               <asp:LinkButton CssClass="a" runat="server" PostBackUrl="~/Web/pt-br/adm/dashboard.aspx">
                  <img src="../../resources/icons/house.png" alt="Dashboard"/>
                </asp:LinkButton>
            </li>
            <li>
-               <asp:LinkButton CssClass="a" runat="server" PostBackUrl="~/pt-br/adm/servico.aspx">
+               <asp:LinkButton CssClass="a" runat="server" PostBackUrl="~/Web/pt-br/adm/servico.aspx">
                    <img src="../../resources/icons/compose.png" alt="novaoe" />
                </asp:LinkButton>
            </li>
            <li runat="server" id="adm_manager">
-               <asp:LinkButton CssClass="a" runat="server" PostBackUrl="~/pt-br/adm/accounts.aspx">
+               <asp:LinkButton CssClass="a" runat="server" PostBackUrl="~/Web/pt-br/adm/accounts.aspx">
                    <img src="../../resources/icons/accounts.png" alt="novaoe" />
                </asp:LinkButton>
            </li>
            <li>
-               <asp:LinkButton CssClass="a" runat="server" PostBackUrl="~/pt-br/adm/searchoe.aspx">
+               <asp:LinkButton CssClass="a" runat="server" PostBackUrl="~/Web/pt-br/adm/searchoe.aspx">
                    <img src="../../resources/icons/magnifier.png" alt="Procurar"/>
                </asp:LinkButton>
            </li>
            <li>
-               <asp:LinkButton CssClass="a" runat="server" PostBackUrl="~/pt-br/adm/manage.aspx">
+               <asp:LinkButton CssClass="a" runat="server" PostBackUrl="~/Web/pt-br/adm/manage.aspx">
                    <img src="../../resources/icons/plus.png" alt="cadastro"/>
                </asp:LinkButton>
            </li>

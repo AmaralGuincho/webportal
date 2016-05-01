@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="~/pt-br/adm/adm-master.master" CodeFile="newUsr.aspx.cs" Inherits="pt_br_adm_newUsr" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="~/Web/pt-br/adm/adm-master.master" CodeFile="newUsr.aspx.cs" Inherits="pt_br_adm_newUsr" %>
 
 <asp:Content ContentPlaceHolderID="head" runat="server">
     <meta name="viewport" content="width=device-width" />
