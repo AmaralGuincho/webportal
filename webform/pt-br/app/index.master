@@ -1,0 +1,61 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="index.master.cs" Inherits="pt_br_app_index" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>Amaral Guincho</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="~/images/logotipo.png" rel="icon" />
+
+    <!-- Material Desing Lite-->
+    <link href="~/pt-br/style/material.min.css" rel="stylesheet" />
+    <!--Material Design Icons-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+        rel="stylesheet">
+    <asp:ContentPlaceHolder id="indexHeadPlaceholder" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <style>
+        .header-title{
+            color:red;
+        }
+        .layoutbkg{
+            background:url('~/images/foto10.png') center / cover;
+        }
+    </style>
+    <div class="layoutbkg mdl-layout mdl-js-layout">
+        <header class="mdl-layout__header mdl-layout__header--transparent">
+            <div class="mdl-layout-header-row">
+                <span class="header-title mdl-layout-title">Amaral Guincho</span>
+                <div class="mdl-layout-spacer"></div>
+                <nav class="mdl-navigation">
+                    <a class="mdl_navigation__link" href="#">Login</a>
+                    <a class="mdl_navigation__link" href="#">Cadastre-se</a>
+                    <a class="mdl_navigation__link" href="#">Contato</a>
+                </nav>
+            </div>
+        </header>
+        <div class="mdl-layout__drawer">
+            <span class="header-title mdl-layout-title ">Amaral Guincho</span>
+            <nav class="mdl-navigation">
+                <a class="mdl_navigation__link" href="#">Login</a>
+                <a class="mdl_navigation__link" href="#">Cadastre-se</a>
+                <a class="mdl_navigation__link" href="#">Contato</a>
+            </nav>
+        </div>
+    <main class="mdl-layout__content">
+      <asp:ContentPlaceHolder id="indexBodyPlaceholder" runat="server">
+          </asp:ContentPlaceHolder>
+   </main>
+    </div>
+    <footer class="mdl-mini-footer">
+        <div class="mdl-mini-footer__left-section">
+            &copy 2016 | Todos os direitos reservados a Amaral Guincho | Desenvolvido por <a href="https://www.github.com/ioEtep" target="_blank">io.Etep</a>
+        </div>
+    </footer>
+    <!-- Material Design Scripts-->
+    <script src="../scripts/material.min.js"></script>
+</body>
+</html>

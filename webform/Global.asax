@@ -5,13 +5,13 @@
 
     void Application_BeginRequest(object sender, EventArgs e)
     {
-        this.Response.Redirect("~/pt-br/app/index.html");
+       // this.Response.Redirect("~/pt-br/app/index.aspx");
     }
 
     void Application_Start(object sender, EventArgs e)
     {
         // Code that runs on application startup
-        RegisterRoutes(RouteTable.Routes);
+      //  RegisterRoutes(RouteTable.Routes);
     }
 
     void Application_End(object sender, EventArgs e)
