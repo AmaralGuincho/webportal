@@ -13,6 +13,7 @@
     <!--Material Design Icons-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
         rel="stylesheet"/>
+    <link href="~/pt-br/style/main.css" rel="stylesheet" />
     <asp:ContentPlaceHolder id="indexHeadPlaceholder" runat="server">
     </asp:ContentPlaceHolder>
 </head>
