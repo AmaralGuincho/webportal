@@ -2,6 +2,6 @@
 
 <asp:Content ContentplaceholderID="indexBodyPlaceholder" runat="server">
     <main class="mdl-layout__content">
-        <h1>Hello</h1>
+        
         </main>
 </asp:Content>
