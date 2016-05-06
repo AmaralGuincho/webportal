@@ -6,31 +6,31 @@
 <head runat="server">
     <title>Amaral Guincho</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="../images/logotipo-flat.png" rel="icon" />
+    <link href="../images/icon.png" rel="icon" />
 
     <!-- Material Desing Lite-->
     <link href="~/pt-br/style/material.min.css" rel="stylesheet" />
     <!--Material Design Icons-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
-        rel="stylesheet">
+        rel="stylesheet"/>
     <asp:ContentPlaceHolder id="indexHeadPlaceholder" runat="server">
     </asp:ContentPlaceHolder>
 </head>
 <body>
     <!-- Uses a transparent header that draws on top of the layout's background -->
     <style>
-.demo-layout-transparent {
-  background: url('../images/foto10.jpg') center / cover;
-}
-.demo-layout-transparent .mdl-layout__header,
-.demo-layout-transparent .mdl-layout__drawer-button {
-  /* This background is dark, so we set text to white. Use 87% black instead if
-     your background is light. */
-  color: white;
-}
-</style>
+    #headerBkgrnd {
+      background: url('../images/wide/foto5.jpg') center / cover;
+    }
+    .demo-layout-transparent .mdl-layout__header,
+    .demo-layout-transparent .mdl-layout__drawer-button {
+      /* This background is dark, so we set text to white. Use 87% black instead if
+         your background is light. */
+      color: white;
+    }
+    </style>
 
-    <div class="demo-layout-transparent mdl-layout mdl-js-layout">
+    <div class="demo-layout-transparent mdl-layout mdl-js-layout" id="headerBkgrnd">
         <header class="mdl-layout__header mdl-layout__header--transparent">
             <div class="mdl-layout__header-row">
                 <!-- Title -->
@@ -39,20 +39,19 @@
                 <div class="mdl-layout-spacer"></div>
                 <!-- Navigation -->
                 <nav class="mdl-navigation">
-                    <a class="mdl-navigation__link" href="">Login</a>
-                    <a class="mdl-navigation__link" href="">Cadastre-se</a>
-                    <a class="mdl-navigation__link" href="">Quem Somos</a>
-                    <a class="mdl-navigation__link" href="">Contato</a>
+                    <a class="mdl-navigation__link" href="#">Login</a>
+                    <a class="mdl-navigation__link" href="#">Cadastre-se</a>
+                    <a class="mdl-navigation__link" href="#">Quem Somos</a>
+                    <a class="mdl-navigation__link" href="#">Contato</a>
                 </nav>
             </div>
         </header>
         <div class="mdl-layout__drawer">
-            <span class="mdl-layout-title">Menu</span>
             <nav class="mdl-navigation">
-                <a class="mdl-navigation__link" href="">Login</a>
-                <a class="mdl-navigation__link" href="">Cadastre-se</a>
-                <a class="mdl-navigation__link" href="">Quem Somos</a>
-                <a class="mdl-navigation__link" href="">Contato</a>
+                <a class="mdl-navigation__link" href="#">Login</a>
+                <a class="mdl-navigation__link" href="#">Cadastre-se</a>
+                <a class="mdl-navigation__link" href="#">Quem Somos</a>
+                <a class="mdl-navigation__link" href="#">Contato</a>
             </nav>
         </div>
         <main class="mdl-layout__content">
@@ -69,6 +68,37 @@
     
     <!-- Material Design Scripts-->
     <script src="../scripts/material.min.js"></script>
+    <script>
+        var random
+        function randomNumber() {
+            random = (Math.floor(Math.random() * 10) + 1);
+            return random;
+        };
+        function show_banner() {
+            var foto = [
+            "none",
+            "url('../images/wide/foto1.jpg') center / cover",
+            "url('../images/wide/foto2.jpg') center / cover",
+            "url('../images/wide/foto3.jpg') center / cover",
+            "url('../images/wide/foto4.jpg') center / cover",
+            "url('../images/wide/foto5.jpg') center / cover",
+            "url('../images/wide/foto6.jpg') center / cover",
+            "url('../images/wide/foto7.jpg') center / cover",
+            "url('../images/wide/foto8.jpg') center / cover",
+            "url('../images/wide/foto9.jpg') center / cover",
+            "url('../images/wide/foto10.jpg') center / cover"
+            ]
+            
+            document.getElementById('headerBkgrnd').style.background = foto[randomNumber()];
+            
+            setTimeout(show_banner, 10000);
+        }
+
+        window.onload = function () {
+            show_banner();
+        };
+       
+    </script>
 </body>
 </html>
 
