@@ -13,37 +13,25 @@
     <!--Material Design Icons-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
         rel="stylesheet"/>
-    <link href="~/pt-br/style/main.css" rel="stylesheet" />
+    <link href="~/pt-br/style/app.css" rel="stylesheet" />
     <asp:ContentPlaceHolder id="indexHeadPlaceholder" runat="server">
     </asp:ContentPlaceHolder>
 </head>
 <body>
     <!-- Uses a transparent header that draws on top of the layout's background -->
     <style>
-    #headerBkgrnd {
-      background: url('../images/wide/foto5.jpg') center / cover;
-    }
-    .demo-layout-transparent .mdl-layout__header,
-    .demo-layout-transparent .mdl-layout__drawer-button {
-      /* This background is dark, so we set text to white. Use 87% black instead if
-         your background is light. */
-      color: white;
-    }
     </style>
 
     <div class="demo-layout-transparent mdl-layout mdl-js-layout" id="headerBkgrnd">
-        <header class="mdl-layout__header mdl-layout__header--transparent">
+        <header class="mdl-layout__header mdl-layout__header--tab">
             <div class="mdl-layout__header-row">
-                <!-- Title -->
                 <span class="mdl-layout-title">Amaral Guincho</span>
-                <!-- Add spacer, to align navigation to the right -->
                 <div class="mdl-layout-spacer"></div>
-                <!-- Navigation -->
                 <nav class="mdl-navigation">
-                    <a class="mdl-navigation__link" href="#">Login</a>
-                    <a class="mdl-navigation__link" href="#">Cadastre-se</a>
-                    <a class="mdl-navigation__link" href="#">Quem Somos</a>
-                    <a class="mdl-navigation__link" href="#">Contato</a>
+                    <a class="headerLink mdl-navigation__link" href="#">Login</a>
+                    <a class="headerLink mdl-navigation__link" href="#">Cadastre-se</a>
+                    <a class="headerLink mdl-navigation__link" href="#">Quem Somos</a>
+                    <a class="headerLink mdl-navigation__link" href="../index.html">Sair</a>
                 </nav>
             </div>
         </header>
@@ -52,7 +40,7 @@
                 <a class="mdl-navigation__link" href="#">Login</a>
                 <a class="mdl-navigation__link" href="#">Cadastre-se</a>
                 <a class="mdl-navigation__link" href="#">Quem Somos</a>
-                <a class="mdl-navigation__link" href="#">Contato</a>
+                <a class="mdl-navigation__link" href="../index.html">Sair</a>
             </nav>
         </div>
         <main class="mdl-layout__content">
@@ -61,7 +49,7 @@
         </main>
 
         <footer class="mdl-mini-footer">
-            <div class="mdl-mini-footer__left-section">
+            <div class="copyrights">
                 &copy 2016 | Todos os direitos reservados a Amaral Guincho | Desenvolvido por <a href="https://www.github.com/ioEtep" target="_blank" class="ioetep">io.Etep</a>
             </div>
         </footer>
@@ -69,37 +57,6 @@
     
     <!-- Material Design Scripts-->
     <script src="../scripts/material/material.min.js"></script>
-    <script>
-        var random
-        function randomNumber() {
-            random = (Math.floor(Math.random() * 10) + 1);
-            return random;
-        };
-        function show_banner() {
-            var foto = [
-            "none",
-            "url('../images/wide/foto1.jpg') center / cover",
-            "url('../images/wide/foto2.jpg') center / cover",
-            "url('../images/wide/foto3.jpg') center / cover",
-            "url('../images/wide/foto4.jpg') center / cover",
-            "url('../images/wide/foto5.jpg') center / cover",
-            "url('../images/wide/foto6.jpg') center / cover",
-            "url('../images/wide/foto7.jpg') center / cover",
-            "url('../images/wide/foto8.jpg') center / cover",
-            "url('../images/wide/foto9.jpg') center / cover",
-            "url('../images/wide/foto10.jpg') center / cover"
-            ]
-            
-            document.getElementById('headerBkgrnd').style.background = foto[randomNumber()];
-            
-            setTimeout(show_banner, 10000);
-        }
-
-        window.onload = function () {
-            show_banner();
-        };
-       
-    </script>
 </body>
 </html>
 

@@ -38,9 +38,9 @@
             margin-bottom:0;
         }
     </style>
-    <a href="index.aspx">
+    <a href="../index.html">
     <div class="center">
-        <a href="index.aspx">
+        <a href="../index.html">
         <p>
             <i class="material-icons">error_outline</i>
             <b>404</b>
