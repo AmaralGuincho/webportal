@@ -1,6 +1,6 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="login.aspx.cs" Inherits="pt_br_app_login" MasterPageFile="~/pt-br/app/index.master" %>
 
-<asp:Content ContentPlaceHolderID="indexBodyPlaceholder" runat="server">    
+<asp:Content ContentPlaceHolderID="indexBodyPlaceholder" runat="server">
         <style>
             .loginCard{
                 display:block;
@@ -29,15 +29,20 @@
               </div>
            <form class="loginForm" runat="server">
             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-              <asp:TextBox class="mdl-textfield__input" id="login" runat="server"/>
+              <asp:TextBox class="mdl-textfield__input" id="login" ID="txtLogin" runat="server"/>
               <label class="mdl-textfield__label" for="login">Nome de Usuário</label>
             </div>
             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-               <asp:TextBox class="mdl-textfield__input" ID="password" TextMode="Password" runat="server" />
+               <asp:TextBox class="mdl-textfield__input" id="password" ID="txtPassword" TextMode="Password" runat="server" />
                <label class="mdl-textfield__label" for="login">Senha</label>
             </div>
             <asp:Button ID="loginEntrar" runat="server" Text="Entrar" class="mdl-button mdl-js-button mdl-button--primary" />
-           </form>     
+            <asp:SqlDataSource ID="MySqlLogin" runat="server" ConnectionString="<%$ ConnectionStrings:amaral_guinchoConnectionString %>" ProviderName="<%$ ConnectionStrings:amaral_guinchoConnectionString.ProviderName %>" SelectCommand="SELECT id_func FROM login WHERE (username_login = login) and (password_login = password)">
+              <SelectParameters>
+                <asp:ControlParameter ControlID="txtLogin" Name="login" PropertyName="Text" />
+                <asp:ControlParameter ControlID="txtPassword" Name="password" PropertyName="Text" />
+              </SelectParameters>
+            </asp:SqlDataSource>
+           </form>
            </div>
 </asp:Content>
-
