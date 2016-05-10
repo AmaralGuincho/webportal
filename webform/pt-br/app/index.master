@@ -1,0 +1,63 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="index.master.cs" Inherits="pt_br_app_index" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>Amaral Guincho</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="../images/icon.png" rel="icon" />
+
+    <!-- Material Desing Lite-->
+    <link href="~/pt-br/style/material/material.min.css" rel="stylesheet" />
+    <!--Material Design Icons-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+        rel="stylesheet"/>
+    <link href="~/pt-br/style/app.css" rel="stylesheet" />
+    <asp:ContentPlaceHolder id="indexHeadPlaceholder" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <!-- Uses a transparent header that draws on top of the layout's background -->
+    <style>
+    </style>
+
+    <div class="demo-layout-transparent mdl-layout mdl-js-layout" id="headerBkgrnd">
+        <header class="mdl-layout__header mdl-layout__header--tab">
+            <div class="mdl-layout__header-row">
+                <span class="mdl-layout-title">Amaral Guincho</span>
+                <div class="mdl-layout-spacer"></div>
+                <nav class="mdl-navigation">
+                    <a class="headerLink mdl-navigation__link" href="#">Login</a>
+                    <a class="headerLink mdl-navigation__link" href="#">Cadastre-se</a>
+                    <a class="headerLink mdl-navigation__link" href="#">Quem Somos</a>
+                    <a class="headerLink mdl-navigation__link" href="../index.html">Sair</a>
+                </nav>
+            </div>
+        </header>
+        <div class="mdl-layout__drawer">
+            <nav class="mdl-navigation">
+                <a class="mdl-navigation__link" href="#">Login</a>
+                <a class="mdl-navigation__link" href="#">Cadastre-se</a>
+                <a class="mdl-navigation__link" href="#">Quem Somos</a>
+                <a class="mdl-navigation__link" href="../index.html">Sair</a>
+            </nav>
+        </div>
+        <main class="mdl-layout__content">
+            <asp:ContentPlaceHolder ID="indexBodyPlaceholder" runat="server">
+            </asp:ContentPlaceHolder>
+        </main>
+
+        <footer class="mdl-mini-footer">
+            <div class="copyrights">
+                &copy 2016 | Todos os direitos reservados a Amaral Guincho | Desenvolvido por <a href="https://www.github.com/ioEtep" target="_blank" class="ioetep">io.Etep</a>
+            </div>
+        </footer>
+    </div>
+    
+    <!-- Material Design Scripts-->
+    <script src="../scripts/material/material.min.js"></script>
+</body>
+</html>
+
+

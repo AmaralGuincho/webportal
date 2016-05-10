@@ -1,0 +1,149 @@
+/*Main Stylesheet by Caiobep*/
+
+body{
+  width:100%;
+  margin:0;
+  font-family:'Open Sans', sans-serif;
+}
+
+a{
+  text-decoration:none;
+  color:inherit;
+}
+
+ul{
+  list-style: none;
+  margin:0em;
+  margin-left:0;
+}
+
+li{
+  display:inline;
+  position:relative;
+  top:-1.5em;
+  margin-left:10%;
+  /*margin-right:10%;*/
+  padding:5px;
+}
+
+li>a{
+  transition: text 6s ease-out 0.15s, color 2s ease-out 0.15s;
+  color:#000000;
+  text-decoration: none;
+}
+
+  li>a:hover{
+    color:#e70d0d;
+    transition: text 0.3s ease-in 0.15s, color 0.15s ease-in 0.15s;
+  }
+
+  li>a:active{
+    color:#0d85e7;
+  }
+
+
+
+ul>li:nth-child(2) {
+  position:relative;
+  top:-23px;
+
+  color:rgb(204, 33, 33);
+  margin-left:0;
+  margin-right:2%;
+  font-size:22px;
+}
+
+ul>a{
+  height:40px;
+  margin-left:0em;
+}
+
+
+nav{
+  background-color:rgba(255, 255, 255, 0.81);
+  margin:0;
+  padding:.2em;
+  color:rgb(51, 51, 54);
+  height:60px;;
+  font-size: 1em;
+  font-weight: 300;
+}
+
+.copyrights{
+  width:100%;
+  font-weight: 300;
+  font-size:0.8em;
+  text-align: center;
+}
+
+.copyrights>a{
+  font-weight: 400;
+  color:rgba(17, 110, 218, 0.77);
+}
+
+.copyrights>a:hover{
+  font-weight: 600;
+  color:rgb(255, 0, 0);
+}
+
+.social>a>img{
+  display: none;
+ height: 30px;
+ opacity: 0.6;
+ margin-left:95%;
+}
+
+ a>img{
+        height:60px;
+      }
+
+
+@media (max-width: 910px) {
+    .fb{
+      display:none;
+    }
+
+    ul>a:first-child{
+     margin-right: 50px;
+    }
+
+    ul>li:nth-child(2){
+      display:none;
+    }
+}
+
+@media(max-width: 725px){
+  nav{
+    padding:0;
+  }
+
+  ul{
+    margin: 0;
+  }
+
+  ul>li{
+    display:inline-block;
+    margin:0;
+  }
+
+  ul>li:first-child{
+    margin-left:0;
+  }
+
+  ul>li:nth-child(3){
+    margin-left:-45px;
+  }
+
+  ul>a{
+    margin-left:-40px;
+    margin-right:0;
+  }
+
+  ul{
+    margin:0
+  }
+
+  content>img{
+    content:url("images/wide/poster.jpg");
+  }
+}
