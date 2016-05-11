@@ -6,7 +6,7 @@
 <head runat="server">
     <title>Amaral Guincho</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="../images/icon.png" rel="icon" />
+    <link href="/images/icon.png" rel="icon" />
 
     <!-- Material Desing Lite-->
     <link href="~/pt-br/style/material/material.min.css" rel="stylesheet" />
@@ -31,7 +31,7 @@
                     <a class="headerLink mdl-navigation__link" href="#">Login</a>
                     <a class="headerLink mdl-navigation__link" href="#">Cadastre-se</a>
                     <a class="headerLink mdl-navigation__link" href="#">Quem Somos</a>
-                    <a class="headerLink mdl-navigation__link" href="../index.html">Sair</a>
+                    <a class="headerLink mdl-navigation__link" href="index.html">Voltar</a>
                 </nav>
             </div>
         </header>
@@ -40,7 +40,7 @@
                 <a class="mdl-navigation__link" href="#">Login</a>
                 <a class="mdl-navigation__link" href="#">Cadastre-se</a>
                 <a class="mdl-navigation__link" href="#">Quem Somos</a>
-                <a class="mdl-navigation__link" href="../index.html">Sair</a>
+                <a class="mdl-navigation__link" href="index.html">Voltar</a>
             </nav>
         </div>
         <main class="mdl-layout__content">

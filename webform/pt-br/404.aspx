@@ -6,7 +6,7 @@
 <head runat="server">
     <title>Amaral Guincho - 404</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="../images/icon.png" rel="icon" />
+    <link href="/images/icon.png" rel="icon" />
 
     <!-- Material Desing Lite-->
     <link href="~/pt-br/style/material.min.css" rel="stylesheet" />
