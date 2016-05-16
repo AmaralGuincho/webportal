@@ -40,7 +40,7 @@
     </style>
     <a href="../index.html">
     <div class="center">
-        <a href="../index.html">
+        <a href="index.html">
         <p>
             <i class="material-icons">error_outline</i>
             <b>404</b>
