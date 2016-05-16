@@ -1,0 +1,36 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="app.master.cs" Inherits="pt_br_app_app" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>Amaral Guincho|Console</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="../images/icon.png" rel="icon" />
+
+    <!-- Material Desing Lite-->
+    <link href="~/pt-br/style/material/material.min.css" rel="stylesheet" />
+    <!--Material Design Icons-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+        rel="stylesheet" />
+    <link href="~/pt-br/style/app.css" rel="stylesheet" />
+    <asp:ContentPlaceHolder ID="appHeadPlaceholder" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <div class="mdl-layout mdl-js-layout mdl-layout__header">
+        <div class="mdl-layout__header-row">
+            <div class="mdl-layout__drawer-button">
+                <nav class="mdl-navigation">
+                    <a class="mdl-navigation__link is-active">Bom-Dia</a>
+                </nav>
+            </div>
+        </div>
+    </div>
+    <div>
+        <asp:ContentPlaceHolder id="appBody" runat="server">
+        
+        </asp:ContentPlaceHolder>
+    </div>
+</body>
+</html>
