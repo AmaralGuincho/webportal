@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="login.aspx.cs" Inherits="pt_br_app_login" MasterPageFile="~/pt-br/index.master" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="login.aspx.cs" Inherits="pt_br_app_login" MasterPageFile="~/pt-br/app/index.master" %>
 
 <asp:Content ContentPlaceHolderID="indexBodyPlaceholder" runat="server">
     <style>
