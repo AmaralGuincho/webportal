@@ -6,7 +6,7 @@
 <head runat="server">
     <title>Amaral Guincho - 404</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="/images/icon.png" rel="icon" />
+    <link href="../images/icon.png" rel="icon" />
 
     <!-- Material Desing Lite-->
     <link href="~/pt-br/style/material.min.css" rel="stylesheet" />
@@ -40,7 +40,7 @@
     </style>
     <a href="../index.html">
     <div class="center">
-        <a href="index.html">
+        <a href="../index.html">
         <p>
             <i class="material-icons">error_outline</i>
             <b>404</b>
