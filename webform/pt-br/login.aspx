@@ -39,10 +39,16 @@
             </div>
             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                 <asp:TextBox class="mdl-textfield__input" ID="password" TextMode="Password" runat="server" />
-                <label class="mdl-textfield__label" for="login">Senha</label>
-            </div>
+                <label class="mdl-textfield__label" for="password" id="lblPassword" runat="server">Senha</label>
+            &nbsp;</div>
             <div class="menuboard mdl-card__actions mdl-card--border">
-                <asp:Button ID="loginEntrar" runat="server" Text="Entrar" class="mdl-button mdl-js-button mdl-button--primary" />
+                <asp:Button ID="loginEntrar" runat="server" Text="Entrar" class="mdl-button mdl-js-button mdl-button--primary" OnClick="loginEntrar_Click" />
+                <asp:SqlDataSource ID="SqlLogin" runat="server" ConnectionString="<%$ ConnectionStrings:amaralguinchoConnectionString %>" OnSelecting="SqlLogin_Selecting" ProviderName="<%$ ConnectionStrings:amaralguinchoConnectionString.ProviderName %>" SelectCommand="SELECT id_login, username_login, password_login, id_func FROM login WHERE (username_login = @LOGIN) AND (password_login = @PASSWORD)">
+                    <SelectParameters>
+                        <asp:ControlParameter ControlID="login" Name="LOGIN" PropertyName="Text" />
+                        <asp:ControlParameter ControlID="password" Name="PASSWORD" PropertyName="Text" />
+                    </SelectParameters>
+                </asp:SqlDataSource>
             </div>
         </form>
     </div>
