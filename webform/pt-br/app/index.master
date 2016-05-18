@@ -11,9 +11,10 @@
     <!-- Material Desing Lite-->
     <link href="~/pt-br/style/material/material.min.css" rel="stylesheet" />
     <!--Material Design Icons-->
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
-        rel="stylesheet"/>
     <link href="~/pt-br/style/app.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italiic,light,bolditalic,black,medium&apm;lang=en" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+    <link href="https://code.getmdl.io/1.1.3/material.cyan-light_blue.min.css" rel="stylesheet" />
     <asp:ContentPlaceHolder id="indexHeadPlaceholder" runat="server">
     </asp:ContentPlaceHolder>
 </head>
@@ -22,25 +23,36 @@
     <style>
     </style>
 
-    <div class="demo-layout-transparent mdl-layout mdl-js-layout" id="headerBkgrnd">
-        <header class="mdl-layout__header mdl-layout__header--tab">
+    <div class="layout mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header" id="headerBkgrnd">
+        <header class="header mdl-layout__header mdl-color--grey-100 mdl-color-text--grey-600">
             <div class="mdl-layout__header-row">
-                <span class="mdl-layout-title">Amaral Guincho</span>
+                <span class="mdl-layout-title">Home</span>
                 <div class="mdl-layout-spacer"></div>
-                <nav class="mdl-navigation">
-                    <a class="headerLink mdl-navigation__link" href="#">Login</a>
-                    <a class="headerLink mdl-navigation__link" href="#">Cadastre-se</a>
-                    <a class="headerLink mdl-navigation__link" href="#">Quem Somos</a>
-                    <a class="headerLink mdl-navigation__link" href="../index.html">Sair</a>
-                </nav>
+                <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" id="options">
+                    <i class="material-icons">more_vert</i>
+                </button>
+                <ul class="mdl-menu mdl-js-menu mdl-js-ripple-effect mdl-menu--bottom-right" for="options">
+                    <li class="mdl-menu__item">Sobre</li>
+                    <li class="mdl-menu__item">Ajuda</li>
+                    <li class="mdl-menu__item mdl-color--red-700 mdl-color-text--white">Sair</li>
+                </ul>
             </div>
         </header>
-        <div class="mdl-layout__drawer">
-            <nav class="mdl-navigation">
-                <a class="mdl-navigation__link" href="#">Login</a>
-                <a class="mdl-navigation__link" href="#">Cadastre-se</a>
-                <a class="mdl-navigation__link" href="#">Quem Somos</a>
-                <a class="mdl-navigation__link" href="../index.html">Sair</a>
+        <div class="drawer mdl-layout__drawer mdl-color--blue-grey-900 mdl-color-text--blue-grey-50">
+            <header class="drawer-header">
+                <img class="avatar" src="../images/icon.png">
+                <span id="nome">Nome</span>
+                <span id="email">nome@email.com</span>
+                <div class="mdl-layout-spacer"></div>
+            </header>
+            <nav class="navigation mdl-navigation mdl-color--blue-grey-800">
+                <a class="mdl-navigation__link" href="#"><i class="mdl-color-text--blue-grey-400 material-icons">home</i>home</a>
+                <a class="mdl-navigation__link" href="#"><i class="mdl-color-text--blue-grey-400 material-icons">inbox</i>inbox</a>
+                <a class="mdl-navigation__link" href="#"><i class="mdl-color-text--blue-grey-400 material-icons">description</i>oe</a>
+                <a class="mdl-navigation__link" href="#"><i class="mdl-color-text--blue-grey-400 material-icons">local_shipping</i>motoristas</a>
+                <a class="mdl-navigation__link" href="#"><i class="mdl-color-text--blue-grey-400 material-icons">face</i>clientes</a>
+                <div class="mdl-layout-spacer"></div>
+                <a class="mdl-navigation__link" href="../index.html"><i class="mdl-color-text--blue-grey-400 material-icons">power_settings_new</i>sair</a>
             </nav>
         </div>
         <main class="mdl-layout__content">
@@ -48,11 +60,6 @@
             </asp:ContentPlaceHolder>
         </main>
 
-        <footer class="mdl-mini-footer">
-            <div class="copyrights">
-                &copy 2016 | Todos os direitos reservados a Amaral Guincho | Desenvolvido por <a href="https://www.github.com/ioEtep" target="_blank" class="ioetep">io.Etep</a>
-            </div>
-        </footer>
     </div>
     
     <!-- Material Design Scripts-->
