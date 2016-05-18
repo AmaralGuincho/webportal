@@ -40,17 +40,19 @@
         </header>
         <div class="drawer mdl-layout__drawer mdl-color--blue-grey-900 mdl-color-text--blue-grey-50">
             <header class="drawer-header">
-                <img class="avatar" src="../images/icon.png">
+                <img class="avatar" src="../images/icon.png"/>
                 <span id="nome">Nome</span>
                 <span id="email">nome@email.com</span>
                 <div class="mdl-layout-spacer"></div>
             </header>
             <nav class="navigation mdl-navigation mdl-color--blue-grey-800">
-                <a class="mdl-navigation__link" href="#"><i class="mdl-color-text--blue-grey-400 material-icons">home</i>home</a>
+                <a class="mdl-navigation__link" href="#"><i class="mdl-color-text--blue-grey-400 material-icons is-active">home</i>home</a>
                 <a class="mdl-navigation__link" href="#"><i class="mdl-color-text--blue-grey-400 material-icons">inbox</i>inbox</a>
                 <a class="mdl-navigation__link" href="#"><i class="mdl-color-text--blue-grey-400 material-icons">description</i>oe</a>
                 <a class="mdl-navigation__link" href="#"><i class="mdl-color-text--blue-grey-400 material-icons">local_shipping</i>motoristas</a>
                 <a class="mdl-navigation__link" href="#"><i class="mdl-color-text--blue-grey-400 material-icons">face</i>clientes</a>
+                <a class="mdl-navigation__link" href="#"><i class="mdl-color-text--blue-grey-400 material-icons is-disabled">pie_chart</i>estatisticas</a>
+                <a class="mdl-navigation__link" href="#"><i class="mdl-color-text--blue-grey-400 material-icons is-disabled">monetization_on</i>financeiro</a>
                 <div class="mdl-layout-spacer"></div>
                 <a class="mdl-navigation__link" href="../index.html"><i class="mdl-color-text--blue-grey-400 material-icons">power_settings_new</i>sair</a>
             </nav>

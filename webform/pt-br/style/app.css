@@ -71,7 +71,7 @@ html, body {
     display:flex !important;
     flex-direction: row;
     align-items: center;
-    color: rgba(255,255,255, 0.56);
+    color: rgba(255, 255, 255, 0.56);
     font-weight:500;
 }
 
