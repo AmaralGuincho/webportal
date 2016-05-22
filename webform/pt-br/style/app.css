@@ -30,7 +30,7 @@ html, body {
     display:block;
     margin-right:auto;
     margin-left:auto;
-    margin-bottom:20px;
+    margin-bottom:5px;
 }
 
 .layout .mdl-layout__header .mdl-layout__drawer-button{
@@ -60,7 +60,7 @@ html, body {
    justify-content: flex-end;
    padding:16px;
    height:151px;
-   text-align:center;   
+   text-align:center;
 }
 
 .navigation{
@@ -78,6 +78,17 @@ html, body {
 .layout .navigation .mdl-navigation__link:hover{
     background-color:#00BCD4;
     color: #37474F;
+    color: black;
+}
+
+.layout .navigation .mdl-navigation__link:hover + i{
+    background-color:#00BCD4;
+    color: #37474F;
+    color: green;
+}
+
+i{
+  color:black;
 }
 
 .navigation .mdl-navigation__link .material-icons{
@@ -85,4 +96,3 @@ html, body {
     color: rgba(255,255,255, 0.56);
     margin-right:32px;
 }
-

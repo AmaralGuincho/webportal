@@ -8,21 +8,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link href="../images/icon.png" rel="icon" />
 
-    <!-- Material Desing Lite-->
-    <link href="~/pt-br/style/material/material.min.css" rel="stylesheet" />
-    <!--Material Design Icons-->
-    <link href="~/pt-br/style/app.css" rel="stylesheet" />
+    <!-- Roboto Font -->
     <link href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italiic,light,bolditalic,black,medium&apm;lang=en" rel="stylesheet" />
+    <!-- Google Material Icons -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+    <!-- Material Design Lite -->
     <link href="https://code.getmdl.io/1.1.3/material.cyan-light_blue.min.css" rel="stylesheet" />
+    <!--Stylesheet-->
+    <link href="~/pt-br/style/app.css" rel="stylesheet" />
+
     <asp:ContentPlaceHolder id="indexHeadPlaceholder" runat="server">
     </asp:ContentPlaceHolder>
+
 </head>
 <body>
-    <!-- Uses a transparent header that draws on top of the layout's background -->
     <style>
-    </style>
+    #headerBkgrnd{
+      display:none;
+    }
+    #screenLoading{
+      display: block;
+      margin: auto;
+      margin-top:400px;
+    }
 
+    </style>
+    <div class="mdl-spinner mdl-js-spinner mdl-spinner--single-color is-active" id="screenLoading"></div>
     <div class="layout mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header" id="headerBkgrnd">
         <header class="header mdl-layout__header mdl-color--grey-100 mdl-color-text--grey-600">
             <div class="mdl-layout__header-row">
@@ -40,19 +51,19 @@
         </header>
         <div class="drawer mdl-layout__drawer mdl-color--blue-grey-900 mdl-color-text--blue-grey-50">
             <header class="drawer-header">
-                <img class="avatar" src="../images/icon.png"/>
+                <img class="avatar" src="https://github.com/caiobep.png"/>
                 <span id="nome">Nome</span>
                 <span id="email">nome@email.com</span>
                 <div class="mdl-layout-spacer"></div>
             </header>
             <nav class="navigation mdl-navigation mdl-color--blue-grey-800">
-                <a class="mdl-navigation__link" href="#"><i class="mdl-color-text--blue-grey-400 material-icons is-active">home</i>home</a>
-                <a class="mdl-navigation__link" href="#"><i class="mdl-color-text--blue-grey-400 material-icons">inbox</i>inbox</a>
-                <a class="mdl-navigation__link" href="#"><i class="mdl-color-text--blue-grey-400 material-icons">description</i>oe</a>
-                <a class="mdl-navigation__link" href="#"><i class="mdl-color-text--blue-grey-400 material-icons">local_shipping</i>motoristas</a>
-                <a class="mdl-navigation__link" href="#"><i class="mdl-color-text--blue-grey-400 material-icons">face</i>clientes</a>
-                <a class="mdl-navigation__link" href="#"><i class="mdl-color-text--blue-grey-400 material-icons is-disabled">pie_chart</i>estatisticas</a>
-                <a class="mdl-navigation__link" href="#"><i class="mdl-color-text--blue-grey-400 material-icons is-disabled">monetization_on</i>financeiro</a>
+                <a class="mdl-navigation__link" href="#"><i class="mdl-color-text--blue-grey-400 material-icons is-active">home</i>Home</a>
+                <a class="mdl-navigation__link" href="#"><i class="mdl-color-text--blue-grey-400 material-icons">inbox</i>Inbox</a>
+                <a class="mdl-navigation__link" href="#"><i class="mdl-color-text--blue-grey-400 material-icons">description</i>Serviço</a>
+                <a class="mdl-navigation__link" href="#"><i class="mdl-color-text--blue-grey-400 material-icons">local_shipping</i>Motoristas</a>
+                <a class="mdl-navigation__link" href="#"><i class="mdl-color-text--blue-grey-400 material-icons">face</i>Clientes</a>
+                <a class="mdl-navigation__link is-disabled" href="#"><i class="mdl-color-text--blue-grey-400 material-icons">pie_chart</i>Estatisticas</a>
+                <a class="mdl-navigation__link is-disabled" href="#"><i class="mdl-color-text--blue-grey-400 material-icons">monetization_on</i>Financeiro</a>
                 <div class="mdl-layout-spacer"></div>
                 <a class="mdl-navigation__link" href="../index.html"><i class="mdl-color-text--blue-grey-400 material-icons">power_settings_new</i>sair</a>
             </nav>
@@ -63,10 +74,17 @@
         </main>
 
     </div>
-    
-    <!-- Material Design Scripts-->
-    <script src="../scripts/material/material.min.js"></script>
+
+    <!-- Material Design Scripts src -->
+    <script defer src="https://code.getmdl.io/1.1.3/material.min.js"></script>
+    <script type="text/javascript">
+
+     function loading() {
+        document.getElementById('headerBkgrnd').style.display='block';
+        document.getElementById('screenLoading').style.display='none';
+      }
+
+    document.onload = loading();
+    </script>
 </body>
 </html>
-
-
