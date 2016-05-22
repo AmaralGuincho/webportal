@@ -65,7 +65,7 @@
                 <a class="mdl-navigation__link is-disabled" href="#"><i class="mdl-color-text--blue-grey-400 material-icons">pie_chart</i>Estatisticas</a>
                 <a class="mdl-navigation__link is-disabled" href="#"><i class="mdl-color-text--blue-grey-400 material-icons">monetization_on</i>Financeiro</a>
                 <div class="mdl-layout-spacer"></div>
-                <a class="mdl-navigation__link" href="../index.html"><i class="mdl-color-text--blue-grey-400 material-icons">power_settings_new</i>sair</a>
+                <a class="mdl-navigation__link" href="../index.html"><i class="mdl-color-text--blue-grey-400 material-icons">power_settings_new</i>Sair</a>
             </nav>
         </div>
         <main class="mdl-layout__content">
