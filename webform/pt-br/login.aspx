@@ -4,13 +4,12 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <link rel="icon" href="../resources/logotipo.png" />
+    <link rel="icon" href="images/icon.png"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta charset="utf-8" />
-    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600'
- rel='stylesheet' type='text/css'/>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600' rel='stylesheet' type='text/css'/>
     <link rel="stylesheet" href="style/old.css" />
-    <title>Login</title>
+    <title>Amaral Guincho | Login</title>
 
 </head>
 <body>
