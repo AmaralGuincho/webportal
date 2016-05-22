@@ -57,7 +57,7 @@
                 <div class="mdl-layout-spacer"></div>
             </header>
             <nav class="navigation mdl-navigation mdl-color--blue-grey-800">
-                <a class="mdl-navigation__link" href="#"><i class="mdl-color-text--blue-grey-400 material-icons is-active">home</i>Home</a>
+                <a class="mdl-navigation__link is-active" href="#"><i class="mdl-color-text--blue-grey-400 material-icons">home</i>Home</a>
                 <a class="mdl-navigation__link" href="#"><i class="mdl-color-text--blue-grey-400 material-icons">inbox</i>Inbox</a>
                 <a class="mdl-navigation__link" href="#"><i class="mdl-color-text--blue-grey-400 material-icons">description</i>Serviço</a>
                 <a class="mdl-navigation__link" href="#"><i class="mdl-color-text--blue-grey-400 material-icons">local_shipping</i>Motoristas</a>
