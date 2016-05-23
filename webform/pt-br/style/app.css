@@ -98,6 +98,10 @@ html, body {
   font-size: 14px;
 }
 
+.material-icons.md-38{
+  font-size: 38px;
+}
+
 .mdl-layout__content{
   max-width: 1080px;
 }
