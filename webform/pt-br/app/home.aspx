@@ -12,12 +12,16 @@
       margin:0;
       width:100%;
     }
+    label{
+      font-size: 14px;
+      font-weight: 400;
+    }
   </style>
 
   <div class="mdl-grid card-box">
-    <div class="card mdl-card mdl-shadow--4dp mdl-cell mdl-cell--6-col-desktop mdl-cell--1-offset-tablet mdl-cell--6-col-tablet mdl-cell--4-col-phone" id="card-Cliente">
+    <div class="card mdl-card mdl-shadow--4dp mdl-cell mdl-cell--7-col-desktop mdl-cell--1-offset-tablet mdl-cell--6-col-tablet mdl-cell--4-col-phone" id="card-Cliente">
       <div class="mdl-card__title">
-        <h2 class="mdl-card__title-text">Ordens de Serviço Abertas</h2>
+        <h2 class="mdl-card__title-text">Clientes Recentes</h2>
       </div>
       <div class="card-content mdl-grid">
         <table class="mdl-data-table mdl-data-table--selectable mdl-js-data-table mdl-cell mdl-cell--12-col mdl-cell--8-tablet">
@@ -72,7 +76,7 @@
       </div>
     </div>
 
-    <div class="card mdl-card mdl-shadow--4dp mdl-cell mdl-cell--1-offset-desktop mdl-cell--5-col-desktop mdl-cell--1-offset-tablet mdl-cell--6-col-tablet mdl-cell--4-col-phone" id="card-ordemServico">
+    <div class="card mdl-card mdl-shadow--4dp mdl-cell mdl-cell--5-col-desktop mdl-cell--1-offset-tablet mdl-cell--6-col-tablet mdl-cell--4-col-phone" id="card-ordemServico">
       <div class="mdl-card__title">
         <h2 class="mdl-card__title-text">Ordens de Serviço Abertas</h2>
       </div>
@@ -123,6 +127,63 @@
           <i class="material-icons">more_vert</i>
         </button>
         <ul class="mdl-menu mdl-js-menu mdl-js-ripple-effect mdl-menu--bottom-right" for="card-os-options">
+            <li class="mdl-menu__item"><i class="material-icons md-14">visibility_off</i>  Esconder</li>
+            <li class="mdl-menu__item"><i class="material-icons md-14">star</i> Fixar</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card mdl-card mdl-shadow--4dp mdl-cell mdl-cell--4-col-desktop mdl-cell--1-offset-tablet mdl-cell--6-col-tablet mdl-cell--4-col-phone" id="card-Cliente">
+      <div class="mdl-card__title">
+        <h2 class="mdl-card__title-text">Frota</h2>
+      </div>
+      <div class="card-content mdl-grid">
+        <table class="mdl-data-table mdl-data-table--selectable mdl-js-data-table mdl-cell mdl-cell--12-col mdl-cell--8-tablet">
+            <tr class="frota1">
+              <td class="card-avatar mdl-data-table__cell--non-numeric">
+                <img src="http://www.federalassistance.com.br/img/veiculos/originais/leve_branco2_orig.jpg" class="avatar"/>
+              </td>
+              <td class="card-name mdl-data-table__cell--non-numeric">
+                <label>IVECO 3</label>
+              </td>
+              <td class="card-phone mdl-cell mdl-data-table__cell--non-numeric">
+                <label>Disponível</label>
+              </td>
+            </tr>
+            <tr class="frota2">
+              <td class="card-avatar mdl-data-table__cell--non-numeric">
+                <img src="http://origin.fstatic.com.br/240x180/iveco-daily-guincho_2c6789d2.jpg" class="avatar"/>
+              </td>
+              <td class="card-name mdl-data-table__cell--non-numeric">
+                <label>IVECO 1</label>
+              </td>
+              <td class="card-phone mdl-cell mdl-data-table__cell--non-numeric">
+                <label>Disponível</label>
+              </td>
+            </tr>
+            <tr class="frota3">
+              <td class="card-avatar mdl-data-table__cell--non-numeric">
+                <img src="http://www.caminhoesecarretas.com.br/PortalVeiculos/Fotos/547342_img_0003_big.jpg" class="avatar"/>
+              </td>
+              <td class="card-name mdl-data-table__cell--non-numeric">
+                <label>Mercedes 1</label>
+              </td>
+              <td class="card-phone mdl-cell mdl-data-table__cell--non-numeric">
+                <label>Em Serviço</label>
+              </td>
+            </tr>
+        </table>
+      </div>
+      <div class="mdl-card__actions">
+        <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+          Ver Mais
+        </a>
+      </div>
+      <div class="mdl-card__menu">
+        <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect" id="card-cli-options">
+          <i class="material-icons">more_vert</i>
+        </button>
+        <ul class="mdl-menu mdl-js-menu mdl-js-ripple-effect mdl-menu--bottom-right" for="card-cli-options">
             <li class="mdl-menu__item"><i class="material-icons md-14">visibility_off</i>  Esconder</li>
             <li class="mdl-menu__item"><i class="material-icons md-14">star</i> Fixar</li>
         </ul>
