@@ -1,4 +1,4 @@
-﻿.ioetep{
+.ioetep{
   text-decoration:none;
 }
 
@@ -80,6 +80,10 @@ html, body {
   color: #FFF;
 }
 
+.layout .navigation .mdl-navigation__link:hover + .mdl-color-text--blue-grey-400{
+  color: #FFF;
+}
+
 .layout .navigation .mdl-navigation__link:last-child:hover{
   background-color:#b71c1c;
   color: #FFF;
@@ -90,7 +94,11 @@ html, body {
   color: rgba(255,255,255, 0.56);
   margin-right:32px;
 }
+.material-icons.md-14{
+  font-size: 14px;
+}
 
-main{
-  padding:50px;
+.mdl-layout__content{
+  background: url('../images/logo-comercial-flat.png') center no-repeat;
+  max-width: 1080px;
 }
