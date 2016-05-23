@@ -22,19 +22,7 @@
 
 </head>
 <body>
-    <style>
-    #headerBkgrnd{
-      display:none;
-    }
-    #screenLoading{
-      display: block;
-      margin: auto;
-      margin-top:400px;
-    }
-
-    </style>
-    <div class="mdl-spinner mdl-js-spinner mdl-spinner--single-color is-active" id="screenLoading"></div>
-    <div class="layout mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header" id="headerBkgrnd">
+    <div class="layout mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header">
         <header class="header mdl-layout__header mdl-color--grey-100 mdl-color-text--grey-600">
             <div class="mdl-layout__header-row">
                 <span class="mdl-layout-title">Home</span>
@@ -68,7 +56,7 @@
                 <a class="mdl-navigation__link" href="../index.html"><i class="mdl-color-text--blue-grey-400 material-icons">power_settings_new</i>Sair</a>
             </nav>
         </div>
-        <main class="mdl-layout__content">
+        <main class="mdl-layout__content mdl-color--grey-100">
             <asp:ContentPlaceHolder ID="indexBodyPlaceholder" runat="server">
             </asp:ContentPlaceHolder>
         </main>
@@ -77,14 +65,5 @@
 
     <!-- Material Design Scripts src -->
     <script defer src="https://code.getmdl.io/1.1.3/material.min.js"></script>
-    <script type="text/javascript">
-
-     function loading() {
-        document.getElementById('headerBkgrnd').style.display='block';
-        document.getElementById('screenLoading').style.display='none';
-      }
-
-    document.onload = loading();
-    </script>
 </body>
 </html>
