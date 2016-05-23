@@ -237,6 +237,90 @@
         </ul>
       </div>
     </div>
+
+    <div class="card mdl-card mdl-shadow--4dp mdl-cell mdl-cell--8-col-desktop mdl-cell--1-offset-tablet mdl-cell--6-col-tablet mdl-cell--4-col-phone" id="card-Funcionario">
+      <div class="mdl-card__title">
+        <h2 class="mdl-card__title-text">Viagens em Progresso</h2>
+      </div>
+      <div class="card-content mdl-grid">
+        <table class="mdl-data-table mdl-data-table--selectable mdl-js-data-table mdl-cell mdl-cell--12-col mdl-cell--8-tablet">
+          <thead>
+            <tr>
+              <th class="mdl-data-table__cell--non-numeric">
+                Código Serviço
+              </th>
+              <th class="mdl-data-table__cell--non-numeric">
+                Cidade
+              </th>
+              <th class="mdl-data-table__cell--non-numeric">
+                Motorista
+              </th>
+              <th frota="mdl-data-table__cell--non-numeric">
+                Frota
+              </th>
+            </tr>
+          <tbody>
+            <tr class="viagem-1">
+              <td class="mdl-data-table__cell--non-numeric">
+                <label>142</label>
+              </td>
+              <td class="mdl-data-table__cell--non-numeric">
+                <label>São José dos Campos</label>
+              </td>
+              <td class="mdl-data-table__cell--non-numeric">
+                <label>Anderson Guedes</label>
+              </td>
+              <td class="mdl-data-table__cel--non-numeric">
+                <label>Mercedes 1</label>
+              </td>
+            </tr>
+            <tr class="viagem-2">
+              <td class="mdl-data-table__cell--non-numeric">
+                <label>122</label>
+              </td>
+              <td class="mdl-data-table__cell--non-numeric">
+                <label>Caraguátatuba</label>
+              </td>
+              <td class="mdl-data-table__cell--non-numeric">
+                <label>Leonardo DeVitto</label>
+              </td>
+              <td class="mdl-data-table__cel--non-numeric">
+                <label>Iveco 2</label>
+              </td>
+          </tr>
+          <tr class="viagem-3">
+            <td class="mdl-data-table__cell--non-numeric">
+              <label>132</label>
+            </td>
+            <td class="mdl-data-table__cell--non-numeric">
+              <label>Jacareí</label>
+            </td>
+            <td class="mdl-data-table__cell--non-numeric">
+              <label>Fatbiana</label>
+            </td>
+            <td class="mdl-data-table__cel--non-numeric">
+              <label>Mercedes 3</label>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      </div>
+      <div class="mdl-card__actions">
+        <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+          Ver Mais
+        </a>
+      </div>
+      <div class="mdl-card__menu">
+        <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect" id="card-func-options">
+          <i class="material-icons">more_vert</i>
+        </button>
+        <ul class="mdl-menu mdl-js-menu mdl-js-ripple-effect mdl-menu--bottom-right" for="card-func-options">
+            <li class="mdl-menu__item"><i class="material-icons md-14">visibility_off</i>  Esconder</li>
+            <li class="mdl-menu__item"><i class="material-icons md-14">star</i> Fixar</li>
+        </ul>
+      </div>
+    </div>
+
   </div>
 
   <button class="fab mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--fab mdl-button--colored mdl-color--red mdl-color-text--white">
