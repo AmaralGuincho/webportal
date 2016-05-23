@@ -6,6 +6,7 @@
     .card{
       align-items: flex-start;
       align-content: flex-start;
+      margin:5px;
     }
     .card-content{
       padding:0;
@@ -238,6 +239,54 @@
       </div>
     </div>
 
+    <div class="card mdl-card mdl-shadow--4dp mdl-cell mdl-cell--4-col-desktop mdl-cell--1-offset-tablet mdl-cell--6-col-tablet mdl-cell--4-col-phone" id="card-Funcionario">
+      <div class="mdl-card__title">
+        <h2 class="mdl-card__title-text">Motoristas</h2>
+      </div>
+      <div class="card-content mdl-grid">
+        <table class="mdl-data-table mdl-data-table--selectable mdl-js-data-table mdl-cell mdl-cell--12-col mdl-cell--8-tablet">
+          <tr>
+            <td class="card-avatar mdl-data-table__cell--non-numeric">
+              <img src="https://scontent-atl3-1.xx.fbcdn.net/v/l/t1.0-9/13227004_117463975336487_4831492734377396982_n.jpg?oh=409367d318020533fde709ad7d6c187b&oe=579C3C22" class="avatar"/>
+            </td>
+            <td class="card-name mdl-data-table__cell--non-numeric">
+              <label>Anderson Guedes</label>
+            </td>
+          </tr>
+          <tr>
+            <td class="card-avatar mdl-data-table__cell--non-numeric">
+              <img src="https://scontent-atl3-1.xx.fbcdn.net/v/t1.0-9/11406877_1085566011473376_8986291945168675517_n.jpg?oh=14ee0e390d571dad6f4918daa31d6d5d&oe=57D60456" class="avatar"/>
+            </td>
+            <td class="card-name mdl-data-table__cell--non-numeric">
+              <label>Leonardo De Vitto</label>
+            </td>
+          </tr>
+          <tr>
+            <td class="card-avatar mdl-data-table__cell--non-numeric">
+              <img src="https://fbcdn-profile-a.akamaihd.net/hprofile-ak-xpt1/v/t1.0-1/c24.0.150.150/1489072_10201726808907148_842429878_n.jpg?oh=0d0b0a8b3df23e7d2780b133b598fe80&oe=57D38C7E&__gda__=1469848333_ed545cd52cdfc12172f54d149b6c9634" class="avatar"/>
+            </td>
+            <td class="card-name mdl-data-table__cell--non-numeric">
+              <label>Fatbiana</label>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="mdl-card__actions">
+        <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+          Ver Mais
+        </a>
+      </div>
+      <div class="mdl-card__menu">
+        <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect" id="card-func-options">
+          <i class="material-icons">more_vert</i>
+        </button>
+        <ul class="mdl-menu mdl-js-menu mdl-js-ripple-effect mdl-menu--bottom-right" for="card-func-options">
+            <li class="mdl-menu__item"><i class="material-icons md-14">visibility_off</i>  Esconder</li>
+            <li class="mdl-menu__item"><i class="material-icons md-14">star</i> Fixar</li>
+        </ul>
+      </div>
+    </div>
+
     <div class="card mdl-card mdl-shadow--4dp mdl-cell mdl-cell--8-col-desktop mdl-cell--1-offset-tablet mdl-cell--6-col-tablet mdl-cell--4-col-phone" id="card-Funcionario">
       <div class="mdl-card__title">
         <h2 class="mdl-card__title-text">Viagens em Progresso</h2>
@@ -252,10 +301,10 @@
               <th class="mdl-data-table__cell--non-numeric">
                 Cidade
               </th>
-              <th class="mdl-data-table__cell--non-numeric">
+              <th class="mdl-data-table__cell--non-numeric mdl-cell--hide-phone">
                 Motorista
               </th>
-              <th frota="mdl-data-table__cell--non-numeric">
+              <th frota="mdl-data-table__cell--non-numeric mdl-cell--hide-phone">
                 Frota
               </th>
             </tr>
@@ -267,10 +316,10 @@
               <td class="mdl-data-table__cell--non-numeric">
                 <label>São José dos Campos</label>
               </td>
-              <td class="mdl-data-table__cell--non-numeric">
+              <td class="mdl-data-table__cell--non-numeric mdl-cell--hide-phone">
                 <label>Anderson Guedes</label>
               </td>
-              <td class="mdl-data-table__cel--non-numeric">
+              <td class="mdl-data-table__cel--non-numeric mdl-cell--hide-phone">
                 <label>Mercedes 1</label>
               </td>
             </tr>
@@ -279,12 +328,12 @@
                 <label>122</label>
               </td>
               <td class="mdl-data-table__cell--non-numeric">
-                <label>Caraguátatuba</label>
+                <label>Caraguatatúba</label>
               </td>
-              <td class="mdl-data-table__cell--non-numeric">
+              <td class="mdl-data-table__cell--non-numeric mdl-cell--hide-phone">
                 <label>Leonardo DeVitto</label>
               </td>
-              <td class="mdl-data-table__cel--non-numeric">
+              <td class="mdl-data-table__cel--non-numeric mdl-cell--hide-phone">
                 <label>Iveco 2</label>
               </td>
           </tr>
@@ -295,10 +344,10 @@
             <td class="mdl-data-table__cell--non-numeric">
               <label>Jacareí</label>
             </td>
-            <td class="mdl-data-table__cell--non-numeric">
+            <td class="mdl-data-table__cell--non-numeric mdl-cell--hide-phone">
               <label>Fatbiana</label>
             </td>
-            <td class="mdl-data-table__cel--non-numeric">
+            <td class="mdl-data-table__cel--non-numeric mdl-cell--hide-phone">
               <label>Mercedes 3</label>
             </td>
           </tr>
