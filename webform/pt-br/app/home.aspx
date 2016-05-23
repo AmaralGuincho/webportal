@@ -189,6 +189,54 @@
         </ul>
       </div>
     </div>
+
+    <div class="card mdl-card mdl-shadow--4dp mdl-cell mdl-cell--4-col-desktop mdl-cell--1-offset-tablet mdl-cell--6-col-tablet mdl-cell--4-col-phone" id="card-Funcionario">
+      <div class="mdl-card__title">
+        <h2 class="mdl-card__title-text">Funcionários</h2>
+      </div>
+      <div class="card-content mdl-grid">
+        <table class="mdl-data-table mdl-data-table--selectable mdl-js-data-table mdl-cell mdl-cell--12-col mdl-cell--8-tablet">
+          <tr class="client1">
+            <td class="card-avatar mdl-data-table__cell--non-numeric">
+              <img src="https://scontent-gru2-1.xx.fbcdn.net/v/t1.0-9/1236344_573064589416811_349776953_n.jpg?oh=b53b185822f398b27b8c90045fbbcc80&oe=57E50DE5" class="avatar"/>
+            </td>
+            <td class="card-name mdl-data-table__cell--non-numeric">
+              <label>Theo Amaral</label>
+            </td>
+          </tr>
+          <tr class="client2">
+            <td class="card-avatar mdl-data-table__cell--non-numeric">
+              <img src="https://fbcdn-sphotos-h-a.akamaihd.net/hphotos-ak-xpa1/v/t1.0-9/922935_671198722894050_1722055897_n.jpg?oh=a2cb8b968372529f32b5719f9a5037a0&oe=57DD3102&__gda__=1473472625_39d80b1a7da5ea81ca13fe084a4cdb71" class="avatar"/>
+            </td>
+            <td class="card-name mdl-data-table__cell--non-numeric">
+              <label>Jéssica Amaral</label>
+            </td>
+          </tr>
+          <tr class="client3">
+            <td class="card-avatar mdl-data-table__cell--non-numeric">
+              <img src="https://fbcdn-profile-a.akamaihd.net/hprofile-ak-xaf1/v/t1.0-1/12036466_647980228691661_6971487042815542337_n.jpg?oh=29cb08d21ea44c135bddcf55fb4c1526&oe=57D0745F&__gda__=1469848594_950c454086e6dccbc942b8d2fbdac03f" class="avatar"/>
+            </td>
+            <td class="card-name mdl-data-table__cell--non-numeric">
+              <label>Carolina Achetti</label>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="mdl-card__actions">
+        <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+          Ver Mais
+        </a>
+      </div>
+      <div class="mdl-card__menu">
+        <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect" id="card-func-options">
+          <i class="material-icons">more_vert</i>
+        </button>
+        <ul class="mdl-menu mdl-js-menu mdl-js-ripple-effect mdl-menu--bottom-right" for="card-func-options">
+            <li class="mdl-menu__item"><i class="material-icons md-14">visibility_off</i>  Esconder</li>
+            <li class="mdl-menu__item"><i class="material-icons md-14">star</i> Fixar</li>
+        </ul>
+      </div>
+    </div>
   </div>
 
   <button class="fab mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--fab mdl-button--colored mdl-color--red mdl-color-text--white">
