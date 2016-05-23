@@ -99,6 +99,11 @@ html, body {
 }
 
 .mdl-layout__content{
-  background: url('../images/logo-comercial-flat.png') center no-repeat;
   max-width: 1080px;
+}
+
+@media (min-width: 700px) {
+  .mdl-layout__content{
+    background: url('../images/logo-comercial-flat.png') center no-repeat;
+  }
 }
