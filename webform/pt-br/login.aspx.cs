@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 
 using System.Web.Security;
+//acessando banco
 using System.Data;
 
 
@@ -25,6 +26,7 @@ public partial class Web_websites_login : System.Web.UI.Page
 
         dvLogin = (DataView)SqlLogin.Select(DataSourceSelectArguments.Empty);
 
+        //verificando usuário
         if (dvLogin.Table.Rows.Count != 0)
         {
             Session["funcionarioID"] = Convert.ToInt32((dvLogin.Table.Rows[0]["id_func"]).ToString());
@@ -66,6 +68,9 @@ public partial class Web_websites_login : System.Web.UI.Page
         else
         {
             Response.Write("<script>alert('Login ou senha incorretos!');</script>");
+
+            txtUsername.Text = "";
+            txtPassword.Text = "";
         }
     }
 
