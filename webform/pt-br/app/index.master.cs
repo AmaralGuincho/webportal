@@ -9,6 +9,7 @@ public partial class pt_br_app_index : System.Web.UI.MasterPage
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        if (Session["Log"] != "OK")
+            Response.Redirect("login.aspx");
     }
 }
