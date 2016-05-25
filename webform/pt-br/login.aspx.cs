@@ -7,7 +7,6 @@ using System.Web.UI.WebControls;
 
 using System.Web.Security;
 using System.Data;
-//using mysql.data;
 
 
 
@@ -21,65 +20,50 @@ public partial class Web_websites_login : System.Web.UI.Page
 
     protected void loginSubmit_Click(object sender, EventArgs e)
     {
-        /*
-        DataView dv;
+        DataView dvLogin, dvFunc;
+        Session["funcionarioID"] = "null";
 
-        dv = (DataView)MySqlLogin.Select
-            (DataSourceSelectArguments.Empty);
+        dvLogin = (DataView)SqlLogin.Select(DataSourceSelectArguments.Empty);
+        Session["funcionarioID"] = Convert.ToInt32((dvLogin.Table.Rows[0]["id_func"]).ToString());
+        dvFunc = (DataView)SqlFunc.Select(DataSourceSelectArguments.Empty);
 
-        if (dv.Table.Rows.Count == 0)
+        if (dvLogin.Table.Rows.Count == 0)
         {
-            //Fail to login
-            Response.Redirect("index.html");
+            Response.Write("<script>alert('Login ou senha incorretos!');</script>");
         }
         else
         {
             //Sucesso na Autenticação
 
-            string type = dv.Table.Rows[0]["type_usr"].ToString();
+            int cargo = Convert.ToInt32((dvFunc.Table.Rows[0]["id_cargo"]).ToString());
             
-            if(type == "adm")
-            {   
+
+            if (cargo == 1)
+            {
                 Session["Log"] = "On";
-                Session["Staff"] = "On";
+                Session["Secretaria"] = "On";
                 Session["Admin"] = "On";
 
-                //registrando o usiario
-                Session["id_usr"] = dv.Table.Rows[0]["id_usr"].ToString();
+                //registrando o func
+                Session["id_func"] = dvFunc.Table.Rows[0]["id_func"].ToString();
 
-                Response.Redirect("adm/dashboard.aspx");
+                Response.Redirect("app/home.aspx");
             }
 
-            if (type == "staff")
+            if (cargo == 2)
             {
                 Session["Log"] = "On";
-                Session["Staff"] = "On";
+                Session["Secretaria"] = "On";
                 Session["Admin"] = "OFF";
 
-                //registrando o usiario
-                Session["id_usr"] = dv.Table.Rows[0]["id_usr"].ToString();
+                //registrando o func
+                Session["id_func"] = dvFunc.Table.Rows[0]["id_func"].ToString();
 
-                Response.Redirect("adm/dashboard.aspx");
+                Response.Redirect("app/home.aspx");
 
-                
+
             }
-
-            if (type == "adm")
-            {
-                Session["Log"] = "On";
-                Session["Staff"] = "OFF";
-                Session["Admin"] = "OFF";
-
-                //registrando o usiario
-                Session["id_usr"] = dv.Table.Rows[0]["id_usr"].ToString();
-
-                Response.Redirect("index.html");
-            }
-
-
         }
-        
-      */
     }
 
 
