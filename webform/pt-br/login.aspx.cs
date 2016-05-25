@@ -24,19 +24,17 @@ public partial class Web_websites_login : System.Web.UI.Page
         Session["funcionarioID"] = "null";
 
         dvLogin = (DataView)SqlLogin.Select(DataSourceSelectArguments.Empty);
-        Session["funcionarioID"] = Convert.ToInt32((dvLogin.Table.Rows[0]["id_func"]).ToString());
-        dvFunc = (DataView)SqlFunc.Select(DataSourceSelectArguments.Empty);
 
-        if (dvLogin.Table.Rows.Count == 0)
+        if (dvLogin.Table.Rows.Count != 0)
         {
-            Response.Write("<script>alert('Login ou senha incorretos!');</script>");
-        }
-        else
-        {
+            Session["funcionarioID"] = Convert.ToInt32((dvLogin.Table.Rows[0]["id_func"]).ToString());
+            dvFunc = (DataView)SqlFunc.Select(DataSourceSelectArguments.Empty);
+
+
             //Sucesso na Autenticação
 
             int cargo = Convert.ToInt32((dvFunc.Table.Rows[0]["id_cargo"]).ToString());
-            
+
 
             if (cargo == 1)
             {
@@ -63,6 +61,11 @@ public partial class Web_websites_login : System.Web.UI.Page
 
 
             }
+
+        }
+        else
+        {
+            Response.Write("<script>alert('Login ou senha incorretos!');</script>");
         }
     }
 
