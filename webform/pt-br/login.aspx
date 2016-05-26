@@ -98,8 +98,8 @@
             <a href="index.html"><img src="images/icon.png" /></a>
             <li>Amaral Guincho</li>
             <li><a href="index.html">Home</a></li>
-            <li><a href="">Cadastre-se</a></li>
-            <li><a href="">Contato</a></li>
+            <li><a onclick="join();">Cadastre-se</a></li>
+            <li><a href="http://amaralguincho.com.br">Contato</a></li>
         </ul>
     </nav>
     <content>
@@ -129,5 +129,10 @@
             </asp:SqlDataSource>
         </form>
     </content>
+    <script type="text/javascript">
+      function join() {
+        alert("Peça autorização ao administrador!");
+      }
+    </script>
 </body>
 </html>
