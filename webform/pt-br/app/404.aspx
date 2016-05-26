@@ -45,7 +45,7 @@
             <i class="material-icons">error_outline</i>
             <b>404</b>
         </p>
-        <p><span>Esta pagina não está disponível ou não existe!</span></p>     
+        <p><span>Esta pagina não está disponível ou não existe!</span></p>
     </div>
     </a>
 </body>
