@@ -1,0 +1,13 @@
+# Editor Config File
+# EditorConfig is helping to use our project on various IDE's
+root = true
+
+[*]
+end_of_line = lf
+insert_final_newline = true
+
+[*.{C#,aspx,asp,html,js,css,c#,csharp}]
+charset = utf-8
+
+[Makefile]
+indent_style = tab
