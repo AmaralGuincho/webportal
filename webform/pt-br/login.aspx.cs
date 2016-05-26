@@ -4,10 +4,11 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-
 using System.Web.Security;
-//acessando banco
+//Referencia do .net Data
 using System.Data;
+//Referencia do .net mailClient
+using System.Net.Mail;
 
 
 
@@ -21,6 +22,8 @@ public partial class Web_websites_login : System.Web.UI.Page
 
     protected void loginSubmit_Click(object sender, EventArgs e)
     {
+      try{
+        //Declarando as Variaveis
         DataView dvLogin, dvFunc;
         Session["funcionarioID"] = "null";
 
@@ -54,7 +57,7 @@ public partial class Web_websites_login : System.Web.UI.Page
             {
                 Session["Log"] = "On";
                 Session["Secretaria"] = "On";
-                Session["Admin"] = "OFF";
+                Session["Admin"] = "null";
 
                 //registrando o func
                 Session["id_func"] = dvFunc.Table.Rows[0]["id_func"].ToString();
@@ -65,13 +68,19 @@ public partial class Web_websites_login : System.Web.UI.Page
             }
 
         }
+        //Falha na Autênticação
         else
         {
             Response.Write("<script>alert('Login ou senha incorretos!');</script>");
 
-            txtUsername.Text = "";
-            txtPassword.Text = "";
+            txtUsername.Text = String.Empty;
+            txtPassword.Text = String.Empty;
         }
+      }
+      catch(Exception ex){
+        //ERRO NO BANCO DE DADOS
+        Response.Write("<script>function dbError() {if (confirm('Ocorreu um erro no banco de dados interno. Você pode detalhar o erro para nossos desenvolvedores?')) {window.open('mailto:ioetep@gmail.com?subject=Erro+no+Banco+de+Dados&body=Por+favor+detalhe+o+que+estava+fazendo+ao+se+deparar+com+o+erro');}else{alert('Uma menssagem de erro genérica foi enviada ao Desenvolvedor');}} dbError();</script>");
+      }
     }
 
 
