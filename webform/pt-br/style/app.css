@@ -153,3 +153,38 @@ html, body {
 .material-icons.md-38{
   font-size: 38px;
 }
+
+.dropdown{
+width:300px;
+font-size:18px;
+padding:10px 10px 10px 5px;
+display:block;
+width:300px;
+border:none;
+border-bottom:1px solid #757575 ;
+margin-top:-30px;
+}
+.simpleLabeldd{
+color:#5264AE ;
+font-size:12px;
+font-weight:normal;
+pointer-events:none;
+top:-30px;
+text-align:left;
+display:block;
+position:relative;
+}
+
+.dropdown:focus {outline:none;}
+  #fabButton{
+    position:fixed;
+    bottom:20px;
+    right:50px;
+    z-index: 3;
+  }
+  @media (max-width: 720px) {
+    #fabButton{
+      bottom:10px;
+      right:10px;
+    }
+  }
