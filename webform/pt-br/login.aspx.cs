@@ -23,8 +23,8 @@ public partial class Web_websites_login : System.Web.UI.Page
       try{
         //Declarando as Variaveis
         DataView dvLogin, dvFunc;
-        Session["log"] = "null";
-        Session["admin"] = "null";
+        Session["log"] = null;
+        Session["admin"] = null;
 
         //Verificando o Login
         dvLogin = (DataView)SqlLogin.Select(DataSourceSelectArguments.Empty);
@@ -38,22 +38,21 @@ public partial class Web_websites_login : System.Web.UI.Page
 
             // Verificando se é Administrador
             if (Convert.ToInt32((dvFunc.Table.Rows[0]["id_cargo"]).ToString()) == 1){
-                Session["admin"] = "true";
+              Session["admin"] = "true";
             }
             else{
-                Session["admin"] = "false";
+              Session["admin"] = null;
             }
             //Guardando o id do Funcionario
-            Session["log"] = Convert.ToInt32(dvFunc.Table.Rows[0]["id_func"].ToString());
-            Session["staff"] = "true";
+            Session["log"] = dvFunc.Table.Rows[0]["id_func"].ToString();
             Response.Redirect("~/pt-br/app/home.aspx");
         }
         //Falha na Autênticação
         else{
-            //Limpando os campos
-            txtUsername.Text = String.Empty;
-            txtPassword.Text = String.Empty;
-            Response.Write("<script>alert('Login ou senha incorretos!');</script>");
+          //Limpando os campos
+          txtUsername.Text = String.Empty;
+          txtPassword.Text = String.Empty;
+          Response.Write("<script>alert('Login ou senha incorretos!');</script>");
         }
       }
       catch(Exception ex){
