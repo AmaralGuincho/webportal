@@ -7,8 +7,6 @@ using System.Web.UI.WebControls;
 using System.Web.Security;
 //Referencia do .net Data
 using System.Data;
-//Referencia do .net mailClient
-using System.Net.Mail;
 
 
 
@@ -25,63 +23,42 @@ public partial class Web_websites_login : System.Web.UI.Page
       try{
         //Declarando as Variaveis
         DataView dvLogin, dvFunc;
-        Session["funcionarioID"] = "null";
+        Session["log"] = "null";
+        Session["admin"] = "null";
 
+        //Verificando o Login
         dvLogin = (DataView)SqlLogin.Select(DataSourceSelectArguments.Empty);
 
-        //verificando usuário
-        if (dvLogin.Table.Rows.Count != 0)
-        {
-            Session["funcionarioID"] = Convert.ToInt32((dvLogin.Table.Rows[0]["id_func"]).ToString());
+        //Verificando o Usuário
+        if (dvLogin.Table.Rows.Count > 0){
+            //Carregando log com o id do Funcionario
+            Session["log"] = Convert.ToInt32((dvLogin.Table.Rows[0]["id_func"]).ToString());
+            //Obtendo Funcionario
             dvFunc = (DataView)SqlFunc.Select(DataSourceSelectArguments.Empty);
 
-
-            //Sucesso na Autenticação
-
-            int cargo = Convert.ToInt32((dvFunc.Table.Rows[0]["id_cargo"]).ToString());
-
-
-            if (cargo == 1)
-            {
-                Session["Log"] = "On";
-                Session["Secretaria"] = "On";
-                Session["Admin"] = "On";
-
-                //registrando o func
-                Session["id_func"] = dvFunc.Table.Rows[0]["id_func"].ToString();
-
-                Response.Redirect("app/home.aspx");
+            // Verificando se é Administrador
+            if (Convert.ToInt32((dvFunc.Table.Rows[0]["id_cargo"]).ToString()) == 1){
+                Session["admin"] = "true";
             }
-
-            if (cargo == 2)
-            {
-                Session["Log"] = "On";
-                Session["Secretaria"] = "On";
-                Session["Admin"] = "null";
-
-                //registrando o func
-                Session["id_func"] = dvFunc.Table.Rows[0]["id_func"].ToString();
-
-                Response.Redirect("app/home.aspx");
-
-
+            else{
+                Session["admin"] = "false";
             }
-
+            //Guardando o id do Funcionario
+            Session["log"] = Convert.ToInt32(dvFunc.Table.Rows[0]["id_func"].ToString());
+            Session["staff"] = "true";
+            Response.Redirect("~/pt-br/app/home.aspx");
         }
         //Falha na Autênticação
-        else
-        {
-            Response.Write("<script>alert('Login ou senha incorretos!');</script>");
-
+        else{
+            //Limpando os campos
             txtUsername.Text = String.Empty;
             txtPassword.Text = String.Empty;
+            Response.Write("<script>alert('Login ou senha incorretos!');</script>");
         }
       }
       catch(Exception ex){
-        //ERRO NO BANCO DE DADOS
+        //ERRO NA CONEXÃO COM O BANCO DE DADOS
         Response.Write("<script>function dbError() {if (confirm('Ocorreu um erro no banco de dados interno. Você pode detalhar o erro para nossos desenvolvedores?')) {window.open('mailto:ioetep@gmail.com?subject=Erro+no+Banco+de+Dados&body=Por+favor+detalhe+o+que+estava+fazendo+ao+se+deparar+com+o+erro');}else{alert('Uma menssagem de erro genérica foi enviada ao Desenvolvedor');}} dbError();</script>");
       }
     }
-
-
 }

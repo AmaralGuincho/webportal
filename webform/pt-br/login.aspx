@@ -106,12 +106,12 @@
         <form runat="server">
             <h1>Bem-Vindo de Volta!</h1>
             <div class="group">
-                <asp:TextBox ID="txtUsername" runat="server" CssClass="input" placeholder="Nome de Usuario"></asp:TextBox>
+                <asp:TextBox ID="txtUsername" runat="server" CssClass="input" placeholder="Nome de Usuario" type="login"></asp:TextBox>
                 <span class="highlight"></span>
                 <span class="bar"></span>
             </div>
             <div class="group">
-                <asp:TextBox ID="txtPassword" runat="server" CssClass="input" placeholder="Senha" TextMode="Password"></asp:TextBox>
+                <asp:TextBox ID="txtPassword" runat="server" CssClass="input" placeholder="Senha" TextMode="Password" type="password"></asp:TextBox>
                 <span class="highlight"></span>
                 <span class="bar"></span>
             </div>
@@ -124,7 +124,7 @@
             </asp:SqlDataSource>
             <asp:SqlDataSource ID="SqlFunc" runat="server" ConnectionString="<%$ ConnectionStrings:amaralguinchoConnectionString %>" ProviderName="<%$ ConnectionStrings:amaralguinchoConnectionString.ProviderName %>" SelectCommand="SELECT id_func, id_cargo, nome_func, sobrenome_func, dtnasc_func, cep_func, cpf_func, dtcont_func, sx_func, tel_func, email_func, uf_func, cid_func, img_func FROM funcionario WHERE (id_func = @ID)">
                 <SelectParameters>
-                    <asp:SessionParameter Name="@ID" SessionField="funcionarioID" />
+                    <asp:SessionParameter Name="@ID" SessionField="log" />
                 </SelectParameters>
             </asp:SqlDataSource>
         </form>
