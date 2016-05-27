@@ -6,6 +6,8 @@
 <head runat="server">
     <title>Amaral Guincho</title>
     <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="Mobile Plataform for Amaral Guincho">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, maximum-scale=1.0"/>
     <link href="../images/icon.png" rel="icon" />
 
@@ -23,6 +25,7 @@
     <!-- Tile icon for Win8 (144x144 + tile color) -->
     <meta name="msapplication-TileImage" content="../images/icon-white.png">
     <meta name="msapplication-TileColor" content="#FFF">
+    <link rel="shortcut icon" href="../images/icon-white.png">
 
     <!-- Roboto Font -->
     <link href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italiic,light,bolditalic,black,medium&apm;lang=en" rel="stylesheet" />
@@ -32,6 +35,23 @@
     <link href="https://code.getmdl.io/1.1.3/material.cyan-light_blue.min.css" rel="stylesheet" />
     <!--Stylesheet-->
     <link href="~/pt-br/style/app.css" rel="stylesheet" />
+
+    <style>
+      #view-source{
+        position: fixed;
+        display: block;
+        right: 0;
+        bottom: 0;
+        margin-right: 40px;
+        margin-bottom: 40px;
+        z-index:900;
+      }
+      .mdl-layout__drawer-button{
+        display: flex;
+        align-items:center;
+        padding-left: 15px;
+      }
+    </style>
 
     <asp:ContentPlaceHolder id="indexHeadPlaceholder" runat="server">
     </asp:ContentPlaceHolder>
@@ -49,7 +69,7 @@
                 <ul class="mdl-menu mdl-js-menu mdl-js-ripple-effect mdl-menu--bottom-right" for="options">
                     <li class="mdl-menu__item">Sobre</li>
                     <li class="mdl-menu__item">Ajuda</li>
-                    <li class="mdl-menu__item mdl-color--red-700 mdl-color-text--white">Sair</li>
+                    <li class="mdl-menu__item"><a href="../index.html" class="mdl-menu__item">Sair</a></li>
                 </ul>
             </div>
         </header>
@@ -105,9 +125,6 @@
     <!-- Material Design Scripts src -->
     <script defer src="https://code.getmdl.io/1.1.3/material.min.js"></script>
     <script type="text/javascript">
-      function overAllCard(){
-        document.getElementById('over-card').style.display = block;
-      }
     </script>
 </body>
 </html>
