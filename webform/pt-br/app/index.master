@@ -86,8 +86,10 @@
                 <a class="mdl-navigation__link" href="#"><i class="mdl-color-text--blue-grey-400 material-icons">description</i>Serviço</a>
                 <a class="mdl-navigation__link" href="#"><i class="mdl-color-text--blue-grey-400 material-icons">local_shipping</i>Motoristas</a>
                 <a class="mdl-navigation__link" href="#"><i class="mdl-color-text--blue-grey-400 material-icons">face</i>Clientes</a>
+                <a class="mdl-navigation__link" href="#"><i class="mdl-color-text--blue-grey-400 material-icons">perm_contact_calendar</i>Seguro</a>
                 <a class="mdl-navigation__link is-disabled" href="#"><i class="mdl-color-text--blue-grey-400 material-icons">pie_chart</i>Estatisticas</a>
                 <a class="mdl-navigation__link is-disabled" href="#"><i class="mdl-color-text--blue-grey-400 material-icons">monetization_on</i>Financeiro</a>
+                <a class="mdl-navigation__link" href="#"><i class="mdl-color-text--blue-grey-400 material-icons">settings</i>Ajustes</a>
                 <div class="mdl-layout-spacer"></div>
                 <a class="mdl-navigation__link" href="../index.html"><i class="mdl-color-text--blue-grey-400 material-icons">power_settings_new</i>Sair</a>
             </nav>
