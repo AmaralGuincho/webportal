@@ -2,29 +2,26 @@
 
 <asp:Content ContentplaceholderID="indexBodyPlaceholder" runat="server">
   <style media="screen">
-    .fab{display:none;}
-    .card{
-      align-items: flex-start;
-      align-content: flex-start;
-      margin:5px;
+    #fabButton{
+      position:fixed;
+      bottom:20px;
+      right:50px;
+      z-index: 3;
     }
-    .card-content{
-      padding:0;
-      margin:0;
-      width:100%;
-    }
-    label{
-      font-size: 14px;
-      font-weight: 400;
+    @media (max-width: 720px) {
+      #fabButton{
+        bottom:10px;
+        right:10px;
+      }
     }
   </style>
 
   <div class="mdl-grid card-box">
-    <div class="card mdl-card mdl-shadow--4dp mdl-cell mdl-cell--7-col-desktop mdl-cell--1-offset-tablet mdl-cell--6-col-tablet mdl-cell--4-col-phone" id="card-Cliente">
-      <div class="mdl-card__title">
+    <div class="card mdl-card mdl-shadow--4dp mdl-cell mdl-cell--7-col-desktop mdl-cell--1-offset-tablet mdl-cell--6-col-tablet mdl-cell--4-col-phone mdl-grid" id="card-Cliente">
+      <div class="mdl-card__title mdl-cell mdl-cell--12-col">
         <h2 class="mdl-card__title-text">Clientes Recentes</h2>
       </div>
-      <div class="card-content mdl-grid">
+      <div class="card-content mdl-grid mdl-cell mdl-cell--12-col">
         <table class="mdl-data-table mdl-data-table--selectable mdl-js-data-table mdl-cell mdl-cell--12-col mdl-cell--8-tablet">
           <tr class="client1">
             <td class="card-avatar mdl-data-table__cell--non-numeric">
@@ -77,11 +74,11 @@
       </div>
     </div>
 
-    <div class="card mdl-card mdl-shadow--4dp mdl-cell mdl-cell--5-col-desktop mdl-cell--1-offset-tablet mdl-cell--6-col-tablet mdl-cell--4-col-phone" id="card-ordemServico">
-      <div class="mdl-card__title">
+    <div class="card mdl-card mdl-shadow--4dp mdl-cell mdl-cell--5-col-desktop mdl-cell--1-offset-tablet mdl-cell--6-col-tablet mdl-cell--4-col-phone mdl-grid" id="card-ordemServico">
+      <div class="mdl-card__title mdl-cell mdl-cell--12-col">
         <h2 class="mdl-card__title-text">Ordens de Serviço Abertas</h2>
       </div>
-      <div class="card-content mdl-grid">
+      <div class="card-content mdl-grid mdl-cell mdl-cell--12-col">
         <table class="mdl-data-table mdl-data-table--selectable mdl-js-data-table mdl-cell mdl-cell--12-col mdl-cell--8-tablet">
           <tr class="os1">
             <td class="card-avatar mdl-data-table__cell--non-numeric">
@@ -134,11 +131,11 @@
       </div>
     </div>
 
-    <div class="card mdl-card mdl-shadow--4dp mdl-cell mdl-cell--4-col-desktop mdl-cell--1-offset-tablet mdl-cell--6-col-tablet mdl-cell--4-col-phone" id="card-Cliente">
-      <div class="mdl-card__title">
+    <div class="card mdl-card mdl-shadow--4dp mdl-cell mdl-cell--4-col-desktop mdl-cell--1-offset-tablet mdl-cell--6-col-tablet mdl-cell--4-col-phone mdl-grid" id="card-Cliente">
+      <div class="mdl-card__title mdl-cell mdl-cell--12-col">
         <h2 class="mdl-card__title-text">Frota</h2>
       </div>
-      <div class="card-content mdl-grid">
+      <div class="card-content mdl-grid mdl-cell mdl-cell--12-col">
         <table class="mdl-data-table mdl-data-table--selectable mdl-js-data-table mdl-cell mdl-cell--12-col mdl-cell--8-tablet">
             <tr class="frota1">
               <td class="card-avatar mdl-data-table__cell--non-numeric">
@@ -147,7 +144,7 @@
               <td class="card-name mdl-data-table__cell--non-numeric">
                 <label>IVECO 3</label>
               </td>
-              <td class="card-phone mdl-cell mdl-data-table__cell--non-numeric">
+              <td class="card-phone mdl-cell mdl-data-table__cell--non-numeric mdl-cell--hide-phone">
                 <label>Disponível</label>
               </td>
             </tr>
@@ -158,7 +155,7 @@
               <td class="card-name mdl-data-table__cell--non-numeric">
                 <label>IVECO 1</label>
               </td>
-              <td class="card-phone mdl-cell mdl-data-table__cell--non-numeric">
+              <td class="card-phone mdl-cell mdl-data-table__cell--non-numeric mdl-cell--hide-phone">
                 <label>Disponível</label>
               </td>
             </tr>
@@ -169,7 +166,7 @@
               <td class="card-name mdl-data-table__cell--non-numeric">
                 <label>Mercedes 1</label>
               </td>
-              <td class="card-phone mdl-cell mdl-data-table__cell--non-numeric">
+              <td class="card-phone mdl-cell mdl-data-table__cell--non-numeric mdl-cell--hide-phone">
                 <label>Em Serviço</label>
               </td>
             </tr>
@@ -181,21 +178,21 @@
         </a>
       </div>
       <div class="mdl-card__menu">
-        <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect" id="card-cli-options">
+        <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect" id="card-frota-options">
           <i class="material-icons">more_vert</i>
         </button>
-        <ul class="mdl-menu mdl-js-menu mdl-js-ripple-effect mdl-menu--bottom-right" for="card-cli-options">
+        <ul class="mdl-menu mdl-js-menu mdl-js-ripple-effect mdl-menu--bottom-right" for="card-frota-options">
             <li class="mdl-menu__item"><i class="material-icons md-14">visibility_off</i>  Esconder</li>
             <li class="mdl-menu__item"><i class="material-icons md-14">star</i> Fixar</li>
         </ul>
       </div>
     </div>
 
-    <div class="card mdl-card mdl-shadow--4dp mdl-cell mdl-cell--4-col-desktop mdl-cell--1-offset-tablet mdl-cell--6-col-tablet mdl-cell--4-col-phone" id="card-Funcionario">
-      <div class="mdl-card__title">
+    <div class="card mdl-card mdl-shadow--4dp mdl-cell mdl-cell--4-col-desktop mdl-cell--1-offset-tablet mdl-cell--6-col-tablet mdl-cell--4-col-phone mdl-grid" id="card-Funcionario">
+      <div class="mdl-card__title mdl-cell mdl-cell--12-col">
         <h2 class="mdl-card__title-text">Funcionários</h2>
       </div>
-      <div class="card-content mdl-grid">
+      <div class="card-content mdl-grid mdl-cell mdl-cell--12-col">
         <table class="mdl-data-table mdl-data-table--selectable mdl-js-data-table mdl-cell mdl-cell--12-col mdl-cell--8-tablet">
           <tr class="client1">
             <td class="card-avatar mdl-data-table__cell--non-numeric">
@@ -239,11 +236,11 @@
       </div>
     </div>
 
-    <div class="card mdl-card mdl-shadow--4dp mdl-cell mdl-cell--4-col-desktop mdl-cell--1-offset-tablet mdl-cell--6-col-tablet mdl-cell--4-col-phone" id="card-Funcionario">
-      <div class="mdl-card__title">
+    <div class="card mdl-card mdl-shadow--4dp mdl-cell mdl-cell--4-col-desktop mdl-cell--1-offset-tablet mdl-cell--6-col-tablet mdl-cell--4-col-phone mdl-grid" id="card-Funcionario">
+      <div class="mdl-card__title mdl-cell mdl-cell--12-col">
         <h2 class="mdl-card__title-text">Motoristas</h2>
       </div>
-      <div class="card-content mdl-grid">
+      <div class="card-content mdl-grid mdl-cell mdl-cell--12-col">
         <table class="mdl-data-table mdl-data-table--selectable mdl-js-data-table mdl-cell mdl-cell--12-col mdl-cell--8-tablet">
           <tr>
             <td class="card-avatar mdl-data-table__cell--non-numeric">
@@ -277,21 +274,21 @@
         </a>
       </div>
       <div class="mdl-card__menu">
-        <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect" id="card-func-options">
+        <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect" id="card-moto-options">
           <i class="material-icons">more_vert</i>
         </button>
-        <ul class="mdl-menu mdl-js-menu mdl-js-ripple-effect mdl-menu--bottom-right" for="card-func-options">
+        <ul class="mdl-menu mdl-js-menu mdl-js-ripple-effect mdl-menu--bottom-right" for="card-moto-options">
             <li class="mdl-menu__item"><i class="material-icons md-14">visibility_off</i>  Esconder</li>
             <li class="mdl-menu__item"><i class="material-icons md-14">star</i> Fixar</li>
         </ul>
       </div>
     </div>
 
-    <div class="card mdl-card mdl-shadow--4dp mdl-cell mdl-cell--8-col-desktop mdl-cell--1-offset-tablet mdl-cell--6-col-tablet mdl-cell--4-col-phone" id="card-Funcionario">
-      <div class="mdl-card__title">
+    <div class="card mdl-card mdl-shadow--4dp mdl-cell mdl-cell--8-col-desktop mdl-cell--1-offset-tablet mdl-cell--6-col-tablet mdl-cell--4-col-phone mdl-grid" id="card-Funcionario">
+      <div class="mdl-card__title mdl-cell mdl-cell--12-col">
         <h2 class="mdl-card__title-text">Viagens em Progresso</h2>
       </div>
-      <div class="card-content mdl-grid">
+      <div class="card-content mdl-grid mdl-cell mdl-cell--12-col">
         <table class="mdl-data-table mdl-data-table--selectable mdl-js-data-table mdl-cell mdl-cell--12-col mdl-cell--8-tablet">
           <thead>
             <tr>
@@ -360,10 +357,10 @@
         </a>
       </div>
       <div class="mdl-card__menu">
-        <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect" id="card-func-options">
+        <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect" id="card-vp-options">
           <i class="material-icons">more_vert</i>
         </button>
-        <ul class="mdl-menu mdl-js-menu mdl-js-ripple-effect mdl-menu--bottom-right" for="card-func-options">
+        <ul class="mdl-menu mdl-js-menu mdl-js-ripple-effect mdl-menu--bottom-right" for="card-vp-options">
             <li class="mdl-menu__item"><i class="material-icons md-14">visibility_off</i>  Esconder</li>
             <li class="mdl-menu__item"><i class="material-icons md-14">star</i> Fixar</li>
         </ul>
@@ -372,8 +369,18 @@
 
   </div>
 
-  <button class="fab mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--fab mdl-button--colored mdl-color--red mdl-color-text--white">
+
+  <button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored mdl-color--red mdl-color-text--white" id="fabButton">
     <i class="material-icons">add</i>
     <span class="visuallyhidden">Add</span>
   </button>
+
+  <div class="mdl-js-snackbar mdl-snackbar">
+    <div class="mdl-snackbar__text"></div>
+    <button type="button" class="mdl-snackbar__action"></button>
+  </div>
+
+  <script defer src="https://code.getmdl.io/1.1.3/material.min.js"></script>
+
+
 </asp:Content>
