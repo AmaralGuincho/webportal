@@ -1,3 +1,11 @@
+*{
+  font-family: 'Roboto', 'Helvetica','Arial' sans-serif;
+}
+
+html, body {
+  font-family: 'Roboto', 'Helvetica', sans-serif;
+}
+
 .ioetep{
   text-decoration:none;
 }
@@ -19,9 +27,6 @@ h2{
   text-align:center;
 }
 
-html, body {
-  font-family: 'Roboto', 'Helvetica', sans-serif;
-}
 .avatar {
   width: 48px;
   height: 48px;
@@ -156,26 +161,31 @@ html, body {
 
 .dropdown{
 width:300px;
+font-family: "Roboto", "Helvetica", "Arial", sans-serif;
 font-size:18px;
 padding:10px 10px 10px 5px;
 display:block;
-width:300px;
+width:200px;
 border:none;
-border-bottom:1px solid #757575 ;
+border-bottom:1px solid rgba(0,0,0.12) ;
 margin-top:-30px;
 }
+
+.dropdown:focus {
+  outline:none;
+}
+
 .simpleLabeldd{
-color:#5264AE ;
+color:rgb(0,188,212);
 font-size:12px;
-font-weight:normal;
 pointer-events:none;
-top:-30px;
+top:-20px;
 text-align:left;
 display:block;
 position:relative;
 }
 
-.dropdown:focus {outline:none;}
+
   #fabButton{
     position:fixed;
     bottom:20px;
