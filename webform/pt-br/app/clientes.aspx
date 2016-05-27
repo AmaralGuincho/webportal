@@ -2,18 +2,7 @@
 
 <asp:Content ContentplaceholderID="indexBodyPlaceholder" runat="server">
   <style media="screen">
-    #fabButton{
-      position:fixed;
-      bottom:20px;
-      right:50px;
-      z-index: 3;
-    }
-    @media (max-width: 720px) {
-      #fabButton{
-        bottom:10px;
-        right:10px;
-      }
-    }
+
   </style>
 
   <div class="mdl-grid card-box">
@@ -91,16 +80,25 @@
             <label class="mdl-textfield__label" for="cepCli">CEP</label>
           </div>
 
-          <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="checkbox-1">
-            <input type="checkbox" id="checkbox-1" class="mdl-checkbox__input" checked>
-            <span class="mdl-checkbox__label">Masculino</span>
-          </label>
-          <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="checkbox-1">
-            <input type="checkbox" id="checkbox-1" class="mdl-checkbox__input" checked>
-            <span class="mdl-checkbox__label">Feminino</span>
-          </label>
-
-
+          <div class="mdl-textfield mdl-cell mdl-cell--1-offset mdl-cell--3-col">
+            <label class="simpleLabeldd" for="sexoCli">Sexo</label>
+            <asp:DropDownList ID="sexoCli" runat="server" class="dropdown">
+              <asp:ListItem Text="Masculino" Value="M"/>
+              <asp:ListItem Text="Feminino" Value="F"/>
+            </asp:DropDownList>
+          </div>
+          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--3-col">
+            <asp:TextBox ID="telCli" type="text" class="mdl-textfield__input" runat="server"></asp:TextBox>
+            <label class="mdl-textfield__label" for="telCli">Telefone</label>
+          </div>
+          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--3-col">
+            <asp:TextBox ID="emailCli" type="text" class="mdl-textfield__input" runat="server"></asp:TextBox>
+            <label class="mdl-textfield__label" for="emailCli">Email</label>
+          </div>
+          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--1-offset mdl-cell--10-col">
+            <asp:TextBox ID="residenciaCli" TextMode="multiline" class="mdl-textfield__input" rows="4" runat="server"></asp:TextBox>
+            <label class="mdl-textfield__label" for="residenciaCli">Residência</label>
+          </div>
 
         </form>
       </div>
