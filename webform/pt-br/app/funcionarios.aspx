@@ -90,17 +90,21 @@
             </asp:DropDownList>
           </div>
           <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--3-col mdl-cell-4-col-phone">
-            <asp:TextBox ID="telFunc" type="text" class="mdl-textfield__input" runat="server"></asp:TextBox>
+            <asp:TextBox ID="telFunc" type="text" class="mdl-textfield__input" pattern="[0-9, ,-]*" runat="server" onkeypress="mascara(this,'## #####-####')"></asp:TextBox>
             <label class="mdl-textfield__label" for="telFunc">Telefone</label>
           </div>
           <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--3-col mdl-cell-4-col-phone">
-            <asp:TextBox ID="emailFunc" type="text" class="mdl-textfield__input" runat="server"></asp:TextBox>
+            <asp:TextBox ID="emailFunc" class="mdl-textfield__input" type="email" runat="server"></asp:TextBox>
             <label class="mdl-textfield__label" for="emailFunc">Email</label>
           </div>
           <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--3-col mdl-cell-4-col-phone">
             <asp:TextBox ID="cepFunc" type="text" class="mdl-textfield__input" runat="server" pattern="[0-9,-]*" onkeypress="mascara(this,'#####-###')" onblur="pesquisacep()"></asp:TextBox>
             <label class="mdl-textfield__label" for="cepFunc">CEP</label>
             <span class="mdl-textfield__error">Ultilize apenas números</span>
+          </div>
+          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--3-col mdl-cell-4-col-phone">
+            <asp:TextBox ID="contratacaoFunc" type="text" class="mdl-textfield__input" pattern="[0-9,/]*" runat="server" onkeypress="mascara(this,'##/##/####')"></asp:TextBox>
+            <label class="mdl-textfield__label" for="emailFunc">Data de Contratação</label>
           </div>
 
           <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--1-offset-desktop mdl-cell--10-col mdl-cell-4-col-phone">
