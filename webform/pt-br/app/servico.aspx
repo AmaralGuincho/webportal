@@ -15,7 +15,7 @@
       }
     }
   </style>
-<form runat="server">
+<form  runat="server">
   <div class="mdl-grid card-box">
     <div class="card mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col-desktop mdl-cell--1-offset-tablet mdl-cell--6-col-tablet mdl-cell--4-col-phone mdl-grid" id="novoServico">
       <div class="mdl-card__title mdl-cell mdl-cell--12-col">
@@ -23,7 +23,13 @@
       </div>
       <div class="card-content mdl-grid mdl-cell mdl-cell--12-col">
 
-        <div class="card mdl-card mdl-shadow--8dp mdl-cell mdl-cell--12-col-desktop mdl-cell--1-offset-tablet mdl-cell--6-col-tablet mdl-cell--4-col-phone mdl-grid" id="newCli">
+        <div class="opcao mdl-cell mdl-cell--12-col">
+          <h2 class="mdl-card__title-text">Escolha um tipo de Cliente</h2>
+          <asp:Button ID="clienteExistente" Text="Cliente Existente" runat="server" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"/>
+          <asp:Button ID="novoCliente" Text="Novo Cliente" runat="server" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"/>
+        </div>
+
+        <div class="card mdl-card mdl-shadow--8dp mdl-cell mdl-cell--12-col-desktop mdl-cell--1-offset-tablet mdl-cell--6-col-tablet mdl-cell--4-col-phone mdl-grid" id="searchCli">
           <div class="mdl-card__title mdl-cell mdl-cell--12-col">
             <h2 class="mdl-card__title-text">Pesquisar um Cliente</h2>
           </div>
@@ -74,21 +80,10 @@
             </form>
           </div>
           <div class="mdl-card__actions mdl-card--border">
-            <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
-              Cadastrar
-            </a>
-            <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
-              Cancelar
-            </a>
-          </div>
-          <div class="mdl-card__menu">
-            <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect" id="card-newPesqCli-options">
-              <i class="material-icons">more_vert</i>
-            </button>
-            <ul class="mdl-menu mdl-js-menu mdl-js-ripple-effect mdl-menu--bottom-right" for="card-newPesqCli-options">
-              <li class="mdl-menu__item">Esconder</li>
-              <li class="mdl-menu__item">Fixar</li>
-            </ul>
+            <asp:Button  runat="server" Text="Ultilizar" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+            </asp:Button>
+            <asp:Button runat="server" Text="Cancelar" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+            </asp:Button>
           </div>
         </div>
 
@@ -143,41 +138,48 @@
             </form>
           </div>
           <div class="mdl-card__actions mdl-card--border">
-            <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
-              Cadastrar
-            </a>
-            <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
-              Cancelar
-            </a>
-          </div>
-          <div class="mdl-card__menu">
-            <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect" id="card-newCli-options">
-              <i class="material-icons">more_vert</i>
-            </button>
-            <ul class="mdl-menu mdl-js-menu mdl-js-ripple-effect mdl-menu--bottom-right" for="card-newCli-options">
-              <li class="mdl-menu__item">Esconder</li>
-              <li class="mdl-menu__item">Fixar</li>
-            </ul>
+            <asp:Button  runat="server" Text="Cadastrar e Ultilizar" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+            </asp:Button>
+            <asp:Button runat="server" Text="Cancelar" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+            </asp:Button>
           </div>
         </div>
-
       </div>
-      <div class="mdl-card__actions">
+
+
+      <div class="opcao mdl-cell mdl-cell--12-col">
+        <div class="mdl-card__title">
+          <h2 class="mdl-card__title-text">Selecione o Tipo de Serviço</h2>
+        </div>
+        <div class="mdl-grid">
+          <asp:DropDownList ID="tipoServico" runat="server" class="dropdown">
+            <asp:ListItem Text="Retirada de Automovel" value="1"/>
+            <asp:ListItem Text="Transporte" Value="2"/>
+            <asp:ListItem Text="SOS-Guincho" Value="3"/>
+          </asp:DropDownList>
+        </div>
+      </div>
+
+      <div class="opcao mdl-cell mdl-cell--12-col">
+        <div class="mdl-card__title">
+          <h2 class="mdl-card__title-text">Selecione o Seguro</h2>
+        </div>
+        <div class="mdl-grid">
+          <asp:DropDownList ID="seguroServico" runat="server" class="dropdown mdl-cell mdl-cell--4-col">
+            <asp:ListItem Text="Bradesco" value="1"/>
+            <asp:ListItem Text="Sul América" Value="2"/>
+            <asp:ListItem Text="itau" Value="3"/>
+          </asp:DropDownList>
+        </div>
+      </div>
+
+
+      <div class="mdl-card__actions mdl-card--border">
         <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
-          Ver Mais
+          Abrir Ordem de Serviço
         </a>
       </div>
-      <div class="mdl-card__menu">
-        <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect" id="card-cli-options">
-          <i class="material-icons">more_vert</i>
-        </button>
-        <ul class="mdl-menu mdl-js-menu mdl-js-ripple-effect mdl-menu--bottom-right" for="card-cli-options">
-            <li class="mdl-menu__item">Esconder</li>
-            <li class="mdl-menu__item">Fixar</li>
-        </ul>
-      </div>
     </div>
-
   </div>
 </form>
 
