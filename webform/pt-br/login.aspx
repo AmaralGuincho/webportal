@@ -106,7 +106,7 @@
         <form runat="server">
             <h1>Bem-Vindo de Volta!</h1>
             <div class="group">
-                <asp:TextBox ID="txtUsername" runat="server" CssClass="input" placeholder="Nome de Usuario" type="login"></asp:TextBox>
+                <asp:TextBox ID="txtUsername" runat="server" CssClass="input" placeholder="Nome de Usuario" type="email"></asp:TextBox>
                 <span class="highlight"></span>
                 <span class="bar"></span>
             </div>

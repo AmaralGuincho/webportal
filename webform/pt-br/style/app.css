@@ -183,16 +183,20 @@ display:block;
 position:relative;
 }
 
+.search .mdl-card{
+  height: 120px;
+  border-radius: 8px;
+}
 
+#fabButton{
+  position:fixed;
+  bottom:20px;
+  right:50px;
+  z-index: 3;
+}
+@media (max-width: 720px) {
   #fabButton{
-    position:fixed;
-    bottom:20px;
-    right:50px;
-    z-index: 3;
+    bottom:10px;
+    right:10px;
   }
-  @media (max-width: 720px) {
-    #fabButton{
-      bottom:10px;
-      right:10px;
-    }
-  }
+}
