@@ -59,7 +59,7 @@
         </table>
       </div>
       <div class="mdl-card__actions">
-        <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+        <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" href="clientes.aspx">
           Ver Mais
         </a>
       </div>
