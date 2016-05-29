@@ -245,11 +245,13 @@
           <h2 class="mdl-card__title-text">Selecione o Tipo de Serviço</h2>
         </div>
         <div class="mdl-grid">
-          <asp:DropDownList ID="tipoServico" runat="server" class="dropdown mdl-cell mdl-cell--4-col">
-            <asp:ListItem Text="Retirada de Automovel" value="1"/>
-            <asp:ListItem Text="Transporte" Value="2"/>
-            <asp:ListItem Text="SOS-Guincho" Value="3"/>
-          </asp:DropDownList>
+          <div class="mdl-textfield mdl-js-textfield mdl-cell mdl-cell--12-col">
+            <asp:DropDownList ID="tipoServico" runat="server" class="dropdown mdl-cell mdl-cell--4-col">
+              <asp:ListItem Text="Retirada de Automovel" value="1"/>
+              <asp:ListItem Text="Transporte" Value="2"/>
+              <asp:ListItem Text="SOS-Guincho" Value="3"/>
+            </asp:DropDownList>
+          </div>
         </div>
       </div>
 
@@ -258,11 +260,13 @@
           <h2 class="mdl-card__title-text">Selecione o Seguro</h2>
         </div>
         <div class="mdl-grid">
-          <asp:DropDownList ID="seguroServico" runat="server" class="dropdown mdl-cell mdl-cell--4-col">
-            <asp:ListItem Text="Bradesco" value="1"/>
-            <asp:ListItem Text="Sul América" Value="2"/>
-            <asp:ListItem Text="itau" Value="3"/>
-          </asp:DropDownList>
+          <div class="mdl-textfield mdl-js-textfield mdl-cell mdl-cell--12-col">
+            <asp:DropDownList ID="seguroServico" runat="server" class="dropdown">
+              <asp:ListItem Text="Bradesco" value="1"/>
+              <asp:ListItem Text="Sul América" Value="2"/>
+              <asp:ListItem Text="itau" Value="3"/>
+            </asp:DropDownList>
+          </div>
         </div>
       </div>
 
