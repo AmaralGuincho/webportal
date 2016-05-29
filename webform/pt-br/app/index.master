@@ -84,9 +84,11 @@
               <a class="mdl-navigation__link is-active" href="home.aspx"><i class="mdl-color-text--blue-grey-400 material-icons">home</i>Home</a>
               <a class="mdl-navigation__link" href="#"><i class="mdl-color-text--blue-grey-400 material-icons">inbox</i>Inbox</a>
               <a class="mdl-navigation__link" href="#"><i class="mdl-color-text--blue-grey-400 material-icons">description</i>Serviço</a>
-              <a class="mdl-navigation__link" href="#"><i class="mdl-color-text--blue-grey-400 material-icons">local_shipping</i>Motoristas</a>
+              <a class="mdl-navigation__link" href="#"><i class="mdl-color-text--blue-grey-400 material-icons">assignment_ind</i>Motoristas</a>
+              <a class="mdl-navigation__link" href="#"><i class="mdl-color-text--blue-grey-400 material-icons">local_shipping</i>Frota</a>
               <a class="mdl-navigation__link" href="clientes.aspx"><i class="mdl-color-text--blue-grey-400 material-icons">face</i>Clientes</a>
               <a class="mdl-navigation__link" href="#"><i class="mdl-color-text--blue-grey-400 material-icons">perm_contact_calendar</i>Seguro</a>
+              <a class="mdl-navigation__link" href="funcionarios.aspx"><i class="mdl-color-text--blue-grey-400 material-icons">people</i>Funcionários</a>
               <a class="mdl-navigation__link is-disabled" href="#"><i class="mdl-color-text--blue-grey-400 material-icons">pie_chart</i>Estatisticas</a>
               <a class="mdl-navigation__link is-disabled" href="#"><i class="mdl-color-text--blue-grey-400 material-icons">monetization_on</i>Financeiro</a>
               <a class="mdl-navigation__link" href="#"><i class="mdl-color-text--blue-grey-400 material-icons">settings</i>Ajustes</a>
