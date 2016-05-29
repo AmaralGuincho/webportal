@@ -17,6 +17,50 @@
   </style>
 <form  runat="server">
   <div class="mdl-grid card-box">
+    <div class="card mdl-card mdl-shadow--4dp mdl-cell mdl-cell--6-col-desktop mdl-cell--1-offset-tablet mdl-cell--6-col-tablet mdl-cell--4-col-phone mdl-grid" id="cardCli">
+      <div class="mdl-card__title mdl-cell mdl-cell--12-col">
+        <h2 class="mdl-card__title-text">Serviços Recentes</h2>
+      </div>
+      <div class="card-content mdl-grid mdl-cell mdl-cell--12-col">
+      </div>
+      <div class="mdl-card__actions">
+        <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+          Ver Mais
+        </a>
+      </div>
+      <div class="mdl-card__menu">
+        <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect" id="card-cli-options" UseSubmitBehavior="False">
+          <i class="material-icons">more_vert</i>
+        </button>
+        <ul class="mdl-menu mdl-js-menu mdl-js-ripple-effect mdl-menu--bottom-right" for="card-cli-options">
+          <li class="mdl-menu__item">Esconder</li>
+          <li class="mdl-menu__item">Fixar</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card mdl-card mdl-shadow--4dp mdl-cell mdl-cell--6-col-desktop mdl-cell--1-offset-tablet mdl-cell--6-col-tablet mdl-cell--4-col-phone mdl-grid" id="sugestaoCli">
+      <div class="mdl-card__title mdl-cell mdl-cell--12-col">
+        <h2 class="mdl-card__title-text">Ordens de Serviço</h2>
+      </div>
+      <div class="card-content mdl-grid mdl-cell mdl-cell--12-col">
+      </div>
+      <div class="mdl-card__actions">
+        <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+          Ver Mais
+        </a>
+      </div>
+      <div class="mdl-card__menu">
+        <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect" id="card-sugestao-options">
+          <i class="material-icons">more_vert</i>
+        </button>
+        <ul class="mdl-menu mdl-js-menu mdl-js-ripple-effect mdl-menu--bottom-right" for="card-sugestao-options">
+          <li class="mdl-menu__item">Esconder</li>
+          <li class="mdl-menu__item">Fixar</li>
+        </ul>
+      </div>
+    </div>
+
     <div class="card mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col-desktop  mdl-cell--8-col-tablet mdl-cell--4-col-phone mdl-grid" id="novoServico">
       <div class="mdl-card__title mdl-cell mdl-cell--12-col">
         <h2 class="mdl-card__title-text">Abrindo um Serviço</h2>
@@ -159,6 +203,39 @@
         <a onclick="showCard('newVeiculo','none')" ID="clienteExistente" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
           Adicionar um Veículo
         </a>
+      </div>
+
+      <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col" id="newVeiculo" style="display:none;">
+        <div class="mdl-card__title">
+          <h2 class="mdl-card__title-text">Novo Veículo</h2>
+        </div>
+        <div class="mdl-card__supporting-text mdl-grid">
+          <div class="mdl-textfield mdl-js-textfield mdl-cell mdl-cell--4-col">
+            <asp:TextBox runat="server" class="mdl-textfield__input" type="text" id="modeloVeiculo"></asp:TextBox>
+            <label class="mdl-textfield__label" for="modeloVeiculo">Modelo Veículo</label>
+          </div>
+          <div class="mdl-textfield mdl-js-textfield mdl-cell mdl-cell--2-col">
+            <asp:TextBox runat="server" class="mdl-textfield__input" type="text" id="placaVeiculo" pattern="[0-9,-]*" onkeydown="mascara(this,'###-####')"></asp:TextBox>
+            <label class="mdl-textfield__label" for="placaVeiculo">Placa</label>
+            <span class="mdl-textfield__error">Tente ultilizar apenas números</span>
+          </div>
+          <div class="mdl-textfield mdl-js-textfield mdl-cell mdl-cell--3-col">
+            <asp:TextBox runat="server" class="mdl-textfield__input" type="text" id="anoVeiculo" pattern="[0-9,/]*" onkeypress="mascara(this,'####')"></asp:TextBox>
+            <label class="mdl-textfield__label" for="anoVeiculo">Ano de Fabricação</label>
+            <span class="mdl-textfield__error">Tente ultilizar apenas números</span>
+          </div>
+          <div class="mdl-textfield mdl-js-textfield mdl-cell mdl-cell--3-col">
+            <asp:TextBox runat="server" class="mdl-textfield__input" type="text" id="corVeiculo"></asp:TextBox>
+            <label class="mdl-textfield__label" for="corVeiculo">Cor</label>
+          </div>
+        </div>
+        <div class="mdl-card__actions">
+          <asp:Button Text="Ultilizar" id="btnNewVeiculo" runat="server" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+          </asp:Button>
+          <a id="newCliCancelar" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" onclick="showCard('none','newVeiculo')">
+            cancelar
+          </a>
+        </div>
       </div>
 
       <!-- fim veiculo -->
