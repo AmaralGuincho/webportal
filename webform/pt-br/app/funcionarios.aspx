@@ -69,7 +69,7 @@
             <label class="mdl-textfield__label" for="nomeFunc">Nome</label>
           </div>
           <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--4-col mdl-cell-4-col-phone">
-            <asp:TextBox ID="SobrenomeFunc" type="text" class="mdl-textfield__input" runat="server" ></asp:TextBox>
+            <asp:TextBox ID="sobrenomeFunc" type="text" class="mdl-textfield__input" runat="server" ></asp:TextBox>
             <label class="mdl-textfield__label" for="SobrenomeFunc">Sobrenome</label>
           </div>
           <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--2-col mdl-cell-4-col-phone">
@@ -102,14 +102,55 @@
             <label class="mdl-textfield__label" for="cepFunc">CEP</label>
             <span class="mdl-textfield__error">Ultilize apenas números</span>
           </div>
+
           <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--3-col mdl-cell-4-col-phone">
             <asp:TextBox ID="contratacaoFunc" type="text" class="mdl-textfield__input" pattern="[0-9,/]*" runat="server" onkeypress="mascara(this,'##/##/####')"></asp:TextBox>
             <label class="mdl-textfield__label" for="emailFunc">Data de Contratação</label>
           </div>
 
+          <div class="mdl-textfield mdl-cell mdl-cell--3-col mdl-cell-4-col-phone">
+            <label class="simpleLabeldd" for="cargoFunc">Cargo</label>
+            <asp:DropDownList ID="cargoFunc" runat="server" class="dropdown" onblur="habilitacao()">
+              <asp:ListItem Text="Administrador" Value="1"/>
+              <asp:ListItem Text="Funcionário" Value="2"/>
+              <asp:ListItem Text="Motorista" Value="3"/>
+            </asp:DropDownList>
+          </div>
+
           <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--1-offset-desktop mdl-cell--10-col mdl-cell-4-col-phone">
             <asp:TextBox ID="residenciaFunc" TextMode="multiline" class="mdl-textfield__input" rows="4" runat="server"></asp:TextBox>
             <label class="mdl-textfield__label" for="residenciaFunc">Residência</label>
+          </div>
+
+          <!-- Cadastrando as informações de um Motorista -->
+          <div class="mdl-grid mdl-cell mdl-cell--12-col" id="HabMot" style="display:none;" >
+            <div class="titulo mdl-cell mdl-cell--12-col">
+              <h2 class="mdl-card__title-text">Habilitação</h2>
+            </div>
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--8-col mdl-cell-4-col-phone">
+              <asp:TextBox ID="nomeHabMot" type="text" class="mdl-textfield__input" runat="server" ></asp:TextBox>
+              <label class="mdl-textfield__label" for="SobrenomeMot">Nome</label>
+            </div>
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--4-col mdl-cell-4-col-phone">
+              <asp:TextBox ID="idHabMot" type="text" class="mdl-textfield__input" runat="server" ></asp:TextBox>
+              <label class="mdl-textfield__label" for="idHabMot">Identidade</label>
+            </div>
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--4-col mdl-cell-4-col-phone">
+              <asp:TextBox ID="registroHabMot" type="text" class="mdl-textfield__input" runat="server" ></asp:TextBox>
+              <label class="mdl-textfield__label" for="registroHabMot">Registro</label>
+            </div>
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--4-col mdl-cell-4-col-phone">
+              <asp:TextBox ID="validadeHabMot" type="text" class="mdl-textfield__input" pattern="[0-9,/]*" runat="server" onkeypress="mascara(this,'##/##/####')"></asp:TextBox>
+              <label class="mdl-textfield__label" for="validadeHabMot">Validade</label>
+            </div>
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--4-col mdl-cell-4-col-phone">
+              <asp:TextBox ID="localGeradoHabMot" type="text" class="mdl-textfield__input" runat="server" ></asp:TextBox>
+              <label class="mdl-textfield__label" for="localGeradoHabMot">Local Gerado</label>
+            </div>
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--4-col mdl-cell-4-col-phone">
+              <asp:TextBox ID="emissaoHabMot" type="text" class="mdl-textfield__input" runat="server" ></asp:TextBox>
+              <label class="mdl-textfield__label" for="emissaoHabMot">Emissão</label>
+            </div>
           </div>
         </form>
       </div>
@@ -224,6 +265,16 @@ function pesquisacep() {
           var residencia = document.getElementById('<%=residenciaFunc.ClientID%>');
           residencia.value="CEP não encontrado";
       }
+  }
+
+  function habilitacao(){
+    var cargo = document.getElementById('<%=cargoFunc.ClientID%>').value;
+    if(cargo == 3){
+      document.getElementById('HabMot').style.display = 'block';
+    }
+    else{
+      document.getElementById('HabMot').style.display = "none";
+    }
   }
 
   </script>
