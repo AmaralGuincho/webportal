@@ -25,35 +25,35 @@
         <table class="mdl-data-table mdl-data-table--selectable mdl-js-data-table mdl-cell mdl-cell--12-col mdl-cell--8-tablet">
           <tr class="client1">
             <td class="mdl-data-table__cell--non-numeric">
-              <img src="https://github.com/caiobep.png" class="avatar"/>
+              <img id="imgCli1" runat="server" src="../images/profiles/generic.png" class="avatar"/>
             </td>
             <td class="mdl-data-table__cell--non-numeric">
-              <label>Caio Amaral Corrêa</label>
+              <label id="nomeCli1" runat="server">Ainda Não Temos Dados Suficientes</label>
             </td>
             <td class="mdl-cell mdl-cell--hide-phone">
-              <label>(12)99713-6991</label>
+              <label id="telCli1" onchange="mascara('(##)#####-####')" runat="server">--</label>
             </td>
           </tr>
           <tr class="client2">
             <td class="mdl-data-table__cell--non-numeric">
-              <img src="https://fbcdn-sphotos-g-a.akamaihd.net/hphotos-ak-xap1/v/t1.0-9/11034179_881465555247936_954094870571254743_n.jpg?oh=c0c24a598efd0edf83d568ecf3bd1445&oe=57E72A27&__gda__=1473829486_95f7845edeabc8dbe38abee02156720a" class="avatar"/>
+              <img id="imgCli2" runat="server" src="../images/profiles/generic.png" class="avatar"/>
             </td>
             <td class="mdl-data-table__cell--non-numeric">
-              <label>Arthur Tomino</label>
+              <label id="nomeCli2" runat="server">Ainda Não Temos Dados Suficientes</label>
             </td>
             <td class="mdl-cell mdl-cell--hide-phone">
-              <label>(12)997136-6991</label>
+              <label id="telCli2" onchange="mascara('(##)#####-####')"  runat="server">--</label>
             </td>
           </tr>
           <tr class="client3">
             <td class="mdl-data-table__cell--non-numeric">
-              <img src="https://scontent-atl3-1.xx.fbcdn.net/v/t1.0-9/10850040_685418794888629_4557242307461784229_n.jpg?oh=b61cf6c0ee16fe6e2e0a7685b5fef011&oe=57DF0364" class="avatar"/>
+              <img id="imgCli3" runat="server" src="../images/profiles/generic.png" class="avatar"/>
             </td>
             <td class="mdl-data-table__cell--non-numeric">
-              <label>Pedro Henrrique</label>
+              <label id="nomeCli3" runat="server">Ainda Não Temos Dados Suficientes</label>
             </td>
             <td class="mdl-cell mdl-cell--hide-phone">
-              <label>(12)997136-8991</label>
+              <label id="telCli3" onchange="mascara('(##)#####-####')" runat="server">--</label>
             </td>
           </tr>
         </table>
@@ -534,6 +534,22 @@
     <button type="button" class="mdl-snackbar__action"></button>
   </div>
 
-  <script defer src="https://code.getmdl.io/1.1.3/material.min.js"></script>
+  <!-- Sql Interacions -->
+  <asp:SqlDataSource
+  ID="lattestClientes" runat="server"
+  ConnectionString="<%$ ConnectionStrings:amaralguinchoConnectionString %>"
+  ProviderName="<%$ ConnectionStrings:amaralguinchoConnectionString.ProviderName %>"
+  SelectCommand="SELECT img_cli, nome_cli, sobrenome_cli, telefone_cli FROM cliente ORDER BY id_cli DESC LIMIT 3">
+  </asp:SqlDataSource>
+
+  <script type="text/javascript">
+  function mascara(t,mask){
+    var i = t.value.length;
+    var output = mask.substring(1,0);
+    var input = mask.substring(i);
+    if(input.substring(0,1) != output){
+      t.value += input.substring(0,1);
+    }
+  </script>
 
 </asp:Content>
