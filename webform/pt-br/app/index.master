@@ -75,9 +75,9 @@
       </header>
       <div class="drawer mdl-layout__drawer mdl-color--blue-grey-900 mdl-color-text--blue-grey-50">
           <header class="drawer-header">
-              <img class="avatar" src="https://github.com/caiobep.png"/>
-              <span id="nome">Nome</span>
-              <span id="email">nome@email.com</span>
+              <img class="avatar" runat="server" id="profileImage" src="https://github.com/caiobep.png"/>
+              <span id="nome" runat="server">nome</span>
+              <span id="email" runat="server">nome@email.com</span>
               <div class="mdl-layout-spacer"></div>
           </header>
           <nav class="navigation mdl-navigation mdl-color--blue-grey-800">
@@ -129,5 +129,11 @@
     <script defer src="https://code.getmdl.io/1.1.3/material.min.js"></script>
     <script type="text/javascript">
     </script>
+
+    <asp:SqlDataSource ID="getUsuario" runat="server" ConnectionString="<%$ ConnectionStrings:amaralguinchoConnectionString %>" ProviderName="<%$ ConnectionStrings:amaralguinchoConnectionString.ProviderName %>" SelectCommand="SELECT nome_func, img_func, email_func FROM funcionario WHERE (id_func = @idfunc)">
+      <SelectParameters>
+        <asp:SessionParameter Name="idfunc" SessionField="log" />
+      </SelectParameters>
+    </asp:SqlDataSource>
 </body>
 </html>
