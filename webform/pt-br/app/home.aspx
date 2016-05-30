@@ -17,7 +17,7 @@
   </style>
 
   <div class="mdl-grid card-box">
-    <div class="card mdl-card mdl-shadow--4dp mdl-cell mdl-cell--7-col-desktop mdl-cell--1-offset-tablet mdl-cell--6-col-tablet mdl-cell--4-col-phone mdl-grid" id="card-Cliente">
+    <div class="card mdl-card mdl-shadow--4dp mdl-cell mdl-cell--7-col-desktop  mdl-cell--8-col-tablet mdl-cell--4-col-phone mdl-grid" id="card-Cliente">
       <div class="mdl-card__title mdl-cell mdl-cell--12-col">
         <h2 class="mdl-card__title-text">Clientes Recentes</h2>
       </div>
@@ -74,7 +74,7 @@
       </div>
     </div>
 
-    <div class="card mdl-card mdl-shadow--4dp mdl-cell mdl-cell--5-col-desktop mdl-cell--1-offset-tablet mdl-cell--6-col-tablet mdl-cell--4-col-phone mdl-grid" id="card-ordemServico">
+    <div class="card mdl-card mdl-shadow--4dp mdl-cell mdl-cell--5-col-desktop  mdl-cell--8-col-tablet mdl-cell--4-col-phone mdl-grid" id="card-ordemServico">
       <div class="mdl-card__title mdl-cell mdl-cell--12-col">
         <h2 class="mdl-card__title-text">Ordens de Serviço Abertas</h2>
       </div>
@@ -131,7 +131,7 @@
       </div>
     </div>
 
-    <div class="card mdl-card mdl-shadow--4dp mdl-cell mdl-cell--4-col-desktop mdl-cell--1-offset-tablet mdl-cell--6-col-tablet mdl-cell--4-col-phone mdl-grid" id="card-Cliente">
+    <div class="card mdl-card mdl-shadow--4dp mdl-cell mdl-cell--4-col-desktop  mdl-cell--8-col-tablet mdl-cell--4-col-phone mdl-grid" id="card-Cliente">
       <div class="mdl-card__title mdl-cell mdl-cell--12-col">
         <h2 class="mdl-card__title-text">Frota</h2>
       </div>
@@ -188,7 +188,7 @@
       </div>
     </div>
 
-    <div class="card mdl-card mdl-shadow--4dp mdl-cell mdl-cell--4-col-desktop mdl-cell--1-offset-tablet mdl-cell--6-col-tablet mdl-cell--4-col-phone mdl-grid" id="card-Funcionario">
+    <div class="card mdl-card mdl-shadow--4dp mdl-cell mdl-cell--4-col-desktop  mdl-cell--8-col-tablet mdl-cell--4-col-phone mdl-grid" id="card-Funcionario">
       <div class="mdl-card__title mdl-cell mdl-cell--12-col">
         <h2 class="mdl-card__title-text">Funcionários</h2>
       </div>
@@ -236,7 +236,7 @@
       </div>
     </div>
 
-    <div class="card mdl-card mdl-shadow--4dp mdl-cell mdl-cell--4-col-desktop mdl-cell--1-offset-tablet mdl-cell--6-col-tablet mdl-cell--4-col-phone mdl-grid" id="card-Motorista">
+    <div class="card mdl-card mdl-shadow--4dp mdl-cell mdl-cell--4-col-desktop  mdl-cell--8-col-tablet mdl-cell--4-col-phone mdl-grid" id="card-Motorista">
       <div class="mdl-card__title mdl-cell mdl-cell--12-col">
         <h2 class="mdl-card__title-text">Motoristas</h2>
       </div>
@@ -284,7 +284,7 @@
       </div>
     </div>
 
-    <div class="card mdl-card mdl-shadow--4dp mdl-cell mdl-cell--8-col-desktop mdl-cell--1-offset-tablet mdl-cell--6-col-tablet mdl-cell--4-col-phone mdl-grid" id="card-Vs">
+    <div class="card mdl-card mdl-shadow--4dp mdl-cell mdl-cell--8-col-desktop  mdl-cell--8-col-tablet mdl-cell--4-col-phone mdl-grid" id="card-Vs">
       <div class="mdl-card__title mdl-cell mdl-cell--12-col">
         <h2 class="mdl-card__title-text">Viagens em Progresso</h2>
       </div>
@@ -368,7 +368,7 @@
     </div>
 
 
-    <div class="card mdl-card mdl-shadow--4dp mdl-cell mdl-cell--4-col-desktop mdl-cell--1-offset-tablet mdl-cell---col-tablet mdl-cell--4-col-phone mdl-grid" id="card-Sinistro">
+    <div class="card mdl-card mdl-shadow--4dp mdl-cell mdl-cell--4-col-desktop  mdl-cell--8-col-tablet mdl-cell--4-col-phone mdl-grid" id="card-Sinistro">
       <div class="mdl-card__title mdl-cell mdl-cell--12-col">
         <h2 class="mdl-card__title-text">Sinistros</h2>
       </div>
@@ -416,7 +416,7 @@
       </div>
     </div>
 
-    <div class="card mdl-card mdl-shadow--4dp mdl-cell mdl-cell--4-col-desktop mdl-cell--1-offset-tablet mdl-cell---col-tablet mdl-cell--4-col-phone mdl-grid" id="card-servico">
+    <div class="card mdl-card mdl-shadow--4dp mdl-cell mdl-cell--4-col-desktop  mdl-cell--8-col-tablet mdl-cell--4-col-phone mdl-grid" id="card-servico">
       <div class="mdl-card__title mdl-cell mdl-cell--12-col">
         <h2 class="mdl-card__title-text">Serviços</h2>
       </div>
@@ -464,7 +464,7 @@
       </div>
     </div>
 
-    <div class="card mdl-card mdl-shadow--4dp mdl-cell mdl-cell--8-col-desktop mdl-cell--1-offset-tablet mdl-cell---col-tablet mdl-cell--4-col-phone mdl-grid" id="card-veiculo">
+    <div class="card mdl-card mdl-shadow--4dp mdl-cell mdl-cell--8-col-desktop  mdl-cell--8-col-tablet mdl-cell--4-col-phone mdl-grid" id="card-veiculo">
       <div class="mdl-card__title mdl-cell mdl-cell--12-col">
         <h2 class="mdl-card__title-text">Veículos</h2>
       </div>
