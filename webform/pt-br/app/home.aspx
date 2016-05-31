@@ -139,35 +139,35 @@
         <table class="mdl-data-table mdl-data-table--selectable mdl-js-data-table mdl-cell mdl-cell--12-col mdl-cell--8-tablet">
             <tr class="frota1">
               <td class="mdl-data-table__cell--non-numeric">
-                <img src="http://www.federalassistance.com.br/img/veiculos/originais/leve_branco2_orig.jpg" class="avatar"/>
+                <img runat="server" id="imgFrota1" src="" class="avatar"/>
               </td>
               <td class="mdl-data-table__cell--non-numeric">
-                <label>IVECO 3</label>
+                <label id="nomeFrota1" runat="server">IVECO 3</label>
               </td>
               <td class="mdl-cell mdl-data-table__cell--non-numeric mdl-cell--hide-phone">
-                <label>Disponível</label>
+                <label id="statusFrota1" runat="server">Disponível</label>
               </td>
             </tr>
             <tr class="frota2">
               <td class="mdl-data-table__cell--non-numeric">
-                <img src="http://origin.fstatic.com.br/240x180/iveco-daily-guincho_2c6789d2.jpg" class="avatar"/>
+                <img runat="server" id="imgFrota2" class="avatar"/>
               </td>
               <td class="mdl-data-table__cell--non-numeric">
-                <label>IVECO 1</label>
+                <label id="nomeFrota2" runat="server">IVECO 1</label>
               </td>
               <td class="mdl-cell mdl-data-table__cell--non-numeric mdl-cell--hide-phone">
-                <label>Disponível</label>
+                <label id="statusFrota2" runat="server">Disponível</label>
               </td>
             </tr>
             <tr class="frota3">
               <td class="mdl-data-table__cell--non-numeric">
-                <img src="http://www.caminhoesecarretas.com.br/PortalVeiculos/Fotos/547342_img_0003_big.jpg" class="avatar"/>
+                <img runat="server" id="imgFrota3" class="avatar"/>
               </td>
               <td class="mdl-data-table__cell--non-numeric">
-                <label>Mercedes 1</label>
+                <label id="nomeFrota3" runat="server">Mercedes 1</label>
               </td>
               <td class="mdl-cell mdl-data-table__cell--non-numeric mdl-cell--hide-phone">
-                <label>Em Serviço</label>
+                <label id="statusFrota3" runat="server">Em Serviço</label>
               </td>
             </tr>
         </table>
@@ -547,6 +547,13 @@
   ConnectionString="<%$ ConnectionStrings:amaralguinchoConnectionString %>"
   ProviderName="<%$ ConnectionStrings:amaralguinchoConnectionString.ProviderName %>"
   SelectCommand="SELECT id_os, dtab_os FROM ordem_de_servico WHERE (status_os = 'Aberto') ORDER BY id_os ASC LIMIT 3">
+  </asp:SqlDataSource>
+
+  <asp:SqlDataSource
+  ID="lattestFrota" runat="server"
+  ConnectionString="<%$ ConnectionStrings:amaralguinchoConnectionString %>"
+  ProviderName="<%$ ConnectionStrings:amaralguinchoConnectionString.ProviderName %>"
+  SelectCommand="SELECT nome_frota, img_frota, placa_frota FROM frota ORDER BY id_frota DESC LIMIT 3">
   </asp:SqlDataSource>
 
   <script type="text/javascript">
