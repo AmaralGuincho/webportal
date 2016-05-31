@@ -31,7 +31,7 @@
               <label id="nomeCli1" runat="server">Ainda Não Temos Dados Suficientes</label>
             </td>
             <td class="mdl-cell mdl-cell--hide-phone">
-              <label id="telCli1" onchange="mascara('(##)#####-####')" runat="server">--</label>
+              <label id="telCli1" runat="server">--</label>
             </td>
           </tr>
           <tr class="client2">
@@ -42,7 +42,7 @@
               <label id="nomeCli2" runat="server">Ainda Não Temos Dados Suficientes</label>
             </td>
             <td class="mdl-cell mdl-cell--hide-phone">
-              <label id="telCli2" onchange="mascara('(##)#####-####')"  runat="server">--</label>
+              <label id="telCli2"  runat="server">--</label>
             </td>
           </tr>
           <tr class="client3">
@@ -53,7 +53,7 @@
               <label id="nomeCli3" runat="server">Ainda Não Temos Dados Suficientes</label>
             </td>
             <td class="mdl-cell mdl-cell--hide-phone">
-              <label id="telCli3" onchange="mascara('(##)#####-####')" runat="server">--</label>
+              <label id="telCli3" runat="server">--</label>
             </td>
           </tr>
         </table>
@@ -85,10 +85,10 @@
               <i class="material-icons md-38 mdl-color-text--red-200">directions</i>
             </td>
             <td class="os-code">
-              <label>#1293</label>
+              <label id="osID1" runat="server">Ainda não temos dados sufucientes</label>
             </td>
             <td class="os-date mdl-cell">
-              <label>14:00 PM 15/05/17</label>
+              <label id="osData1" runat="server">--</label>
             </td>
           </tr>
           <tr class="os2">
@@ -96,10 +96,10 @@
               <i class="material-icons md-38 mdl-color-text--red-200">directions</i>
             </td>
             <td class="os-code">
-              <label>#12903</label>
+              <label id="osID2" runat="server">Ainda não temos dados sufucientes</label>
             </td>
-            <td class="os-date">
-              <label>15:00 PM 15/05/17</label>
+            <td class="os-date mdl-cell">
+              <label id="osData2" runat="server">--</label>
             </td>
           </tr>
           <tr class="os3">
@@ -107,10 +107,10 @@
               <i class="material-icons md-38 mdl-color-text--red-200">directions</i>
             </td>
             <td class="os-code">
-              <label>#12991</label>
+              <label id="osID3" runat="server">Ainda não temos dados sufucientes</label>
             </td>
-            <td class="os-date">
-              <label>3:00 AM 13/03/17</label>
+            <td class="os-date mdl-cell">
+              <label id="osData3" runat="server">--</label>
             </td>
           </tr>
         </table>
