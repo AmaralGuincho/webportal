@@ -85,10 +85,10 @@
               <i class="material-icons md-38 mdl-color-text--red-200">directions</i>
             </td>
             <td class="os-code">
-              <label id="osID1" runat="server">Ainda não temos dados sufucientes</label>
+              <label id="osID1" runat="server">Sem Dados</label>
             </td>
             <td class="os-date mdl-cell">
-              <label id="osData1" runat="server">--</label>
+              <label id="osData1" runat="server">NotConnected</label>
             </td>
           </tr>
           <tr class="os2">
@@ -96,10 +96,10 @@
               <i class="material-icons md-38 mdl-color-text--red-200">directions</i>
             </td>
             <td class="os-code">
-              <label id="osID2" runat="server">Ainda não temos dados sufucientes</label>
+              <label id="osID2" runat="server">Sem Dados</label>
             </td>
             <td class="os-date mdl-cell">
-              <label id="osData2" runat="server">--</label>
+              <label id="osData2" runat="server">NotConnected</label>
             </td>
           </tr>
           <tr class="os3">
@@ -107,10 +107,10 @@
               <i class="material-icons md-38 mdl-color-text--red-200">directions</i>
             </td>
             <td class="os-code">
-              <label id="osID3" runat="server">Ainda não temos dados sufucientes</label>
+              <label id="osID3" runat="server">Sem Dados</label>
             </td>
             <td class="os-date mdl-cell">
-              <label id="osData3" runat="server">--</label>
+              <label id="osData3" runat="server">NotConnected</label>
             </td>
           </tr>
         </table>
@@ -540,6 +540,13 @@
   ConnectionString="<%$ ConnectionStrings:amaralguinchoConnectionString %>"
   ProviderName="<%$ ConnectionStrings:amaralguinchoConnectionString.ProviderName %>"
   SelectCommand="SELECT img_cli, nome_cli, sobrenome_cli, telefone_cli FROM cliente ORDER BY id_cli DESC LIMIT 3">
+  </asp:SqlDataSource>
+
+  <asp:SqlDataSource
+  ID="lattestOs" runat="server"
+  ConnectionString="<%$ ConnectionStrings:amaralguinchoConnectionString %>"
+  ProviderName="<%$ ConnectionStrings:amaralguinchoConnectionString.ProviderName %>"
+  SelectCommand="SELECT id_os, dtab_os FROM ordem_de_servico WHERE (status_os = 'Aberto') ORDER BY id_os ASC LIMIT 3">
   </asp:SqlDataSource>
 
   <script type="text/javascript">
