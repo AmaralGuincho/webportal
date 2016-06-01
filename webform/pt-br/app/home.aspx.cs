@@ -182,7 +182,7 @@ public partial class pt_br_app_home : System.Web.UI.Page
           }else{
             imgFunc1.Attributes["src"] = recentFuncionarios.Table.Rows[0]["img_func"].ToString();
           }
-          nomeFunc1.InnerHtml = recentFuncionarios.Table.Rows[0]["nome_func"].ToString();
+          nomeFunc1.InnerHtml = recentFuncionarios.Table.Rows[0]["nome_func"].ToString() + " " + recentFuncionarios.Table.Rows[0]["sobrenome_func"].ToString();
           //Checking 2nd Row
           if(recentFuncionarios.Table.Rows.Count > 1){
             if (recentFuncionarios.Table.Rows[1]["img_func"].ToString() == String.Empty) {
@@ -190,7 +190,7 @@ public partial class pt_br_app_home : System.Web.UI.Page
             }else{
               imgFunc2.Attributes["src"] = recentFuncionarios.Table.Rows[1]["img_func"].ToString();
             }
-            nomeFunc2.InnerHtml = recentFuncionarios.Table.Rows[1]["nome_func"].ToString();
+            nomeFunc2.InnerHtml = recentFuncionarios.Table.Rows[1]["nome_func"].ToString() + " " + recentFuncionarios.Table.Rows[1]["sobrenome_func"].ToString();
             //Checking 3rd Row
             if(recentFuncionarios.Table.Rows.Count > 2){
               if (recentFuncionarios.Table.Rows[2]["img_func"].ToString() == String.Empty) {
@@ -198,7 +198,7 @@ public partial class pt_br_app_home : System.Web.UI.Page
               }else{
                 imgFunc3.Attributes["src"] = recentFuncionarios.Table.Rows[2]["img_func"].ToString();
               }
-              nomeFunc3.InnerHtml = recentFuncionarios.Table.Rows[2]["nome_func"].ToString();
+              nomeFunc3.InnerHtml = recentFuncionarios.Table.Rows[2]["nome_func"].ToString() + " " + recentFuncionarios.Table.Rows[2]["sobrenome_func"].ToString();
             }else{
               nomeFunc3.InnerHtml = "--";
             }
