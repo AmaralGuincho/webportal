@@ -194,28 +194,28 @@
       </div>
       <div class="card-content mdl-grid mdl-cell mdl-cell--12-col">
         <table class="mdl-data-table mdl-data-table--selectable mdl-js-data-table mdl-cell mdl-cell--12-col mdl-cell--8-tablet">
-          <tr class="client1">
+          <tr class="funcionario1">
             <td class="mdl-data-table__cell--non-numeric">
-              <img src="https://scontent-gru2-1.xx.fbcdn.net/v/t1.0-9/1236344_573064589416811_349776953_n.jpg?oh=b53b185822f398b27b8c90045fbbcc80&oe=57E50DE5" class="avatar"/>
+              <img id="imgFunc1" runat="server" src="../images/profiles/generic.png" class="avatar"/>
             </td>
             <td class="mdl-data-table__cell--non-numeric">
-              <label>Theo Amaral</label>
-            </td>
-          </tr>
-          <tr class="client2">
-            <td class="mdl-data-table__cell--non-numeric">
-              <img src="https://fbcdn-sphotos-h-a.akamaihd.net/hphotos-ak-xpa1/v/t1.0-9/922935_671198722894050_1722055897_n.jpg?oh=a2cb8b968372529f32b5719f9a5037a0&oe=57DD3102&__gda__=1473472625_39d80b1a7da5ea81ca13fe084a4cdb71" class="avatar"/>
-            </td>
-            <td class="mdl-data-table__cell--non-numeric">
-              <label>Jéssica Amaral</label>
+              <label id="nomeFunc1" runat="server" >Theo Amaral</label>
             </td>
           </tr>
-          <tr class="client3">
+          <tr class="funcionario2">
             <td class="mdl-data-table__cell--non-numeric">
-              <img src="https://fbcdn-profile-a.akamaihd.net/hprofile-ak-xaf1/v/t1.0-1/12036466_647980228691661_6971487042815542337_n.jpg?oh=29cb08d21ea44c135bddcf55fb4c1526&oe=57D0745F&__gda__=1469848594_950c454086e6dccbc942b8d2fbdac03f" class="avatar"/>
+              <img id="imgFunc2" runat="server" src="../images/profiles/generic.png" class="avatar"/>
             </td>
             <td class="mdl-data-table__cell--non-numeric">
-              <label>Carolina Achetti</label>
+              <label id="nomeFunc2" runat="server" >Theo Amaral</label>
+            </td>
+          </tr>
+          <tr class="funcionario3">
+            <td class="mdl-data-table__cell--non-numeric">
+              <img id="imgFunc3" runat="server" src="../images/profiles/generic.png" class="avatar"/>
+            </td>
+            <td class="mdl-data-table__cell--non-numeric">
+              <label id="nomeFunc3" runat="server">Theo Amaral</label>
             </td>
           </tr>
         </table>
@@ -554,6 +554,13 @@
   ConnectionString="<%$ ConnectionStrings:amaralguinchoConnectionString %>"
   ProviderName="<%$ ConnectionStrings:amaralguinchoConnectionString.ProviderName %>"
   SelectCommand="SELECT nome_frota, img_frota, placa_frota FROM frota ORDER BY id_frota DESC LIMIT 3">
+  </asp:SqlDataSource>
+
+  <asp:SqlDataSource
+  ID="lattestFuncionarios" runat="server"
+  ConnectionString="<%$ ConnectionStrings:amaralguinchoConnectionString %>"
+  ProviderName="<%$ ConnectionStrings:amaralguinchoConnectionString.ProviderName %>"
+  SelectCommand="SELECT img_func, nome_func, sobrenome_func, tel_func FROM funcionario ORDER BY id_func DESC LIMIT 3">
   </asp:SqlDataSource>
 
   <script type="text/javascript">
