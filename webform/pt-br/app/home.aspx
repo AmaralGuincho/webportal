@@ -244,26 +244,26 @@
         <table class="mdl-data-table mdl-data-table--selectable mdl-js-data-table mdl-cell mdl-cell--12-col mdl-cell--8-tablet">
           <tr>
             <td class="mdl-data-table__cell--non-numeric">
-              <img src="https://scontent-atl3-1.xx.fbcdn.net/v/l/t1.0-9/13227004_117463975336487_4831492734377396982_n.jpg?oh=409367d318020533fde709ad7d6c187b&oe=579C3C22" class="avatar"/>
+              <img id="imgMot1" runat="server" src="../images/profiles/generic.png" class="avatar"/>
             </td>
             <td class="mdl-data-table__cell--non-numeric">
-              <label>Anderson Guedes</label>
-            </td>
-          </tr>
-          <tr>
-            <td class="mdl-data-table__cell--non-numeric">
-              <img src="https://scontent-atl3-1.xx.fbcdn.net/v/t1.0-9/11406877_1085566011473376_8986291945168675517_n.jpg?oh=14ee0e390d571dad6f4918daa31d6d5d&oe=57D60456" class="avatar"/>
-            </td>
-            <td class="mdl-data-table__cell--non-numeric">
-              <label>Leonardo De Vitto</label>
+              <label runat="server" id="nomeMot1" >sem dados</label>
             </td>
           </tr>
           <tr>
             <td class="mdl-data-table__cell--non-numeric">
-              <img src="https://fbcdn-profile-a.akamaihd.net/hprofile-ak-xpt1/v/t1.0-1/c24.0.150.150/1489072_10201726808907148_842429878_n.jpg?oh=0d0b0a8b3df23e7d2780b133b598fe80&oe=57D38C7E&__gda__=1469848333_ed545cd52cdfc12172f54d149b6c9634" class="avatar"/>
+              <img id="imgMot2" runat="server" src="../images/profiles/generic.png" class="avatar"/>
             </td>
             <td class="mdl-data-table__cell--non-numeric">
-              <label>Fatbiana</label>
+              <label runat="server" id="nomeMot2" >sem dados</label>
+            </td>
+          </tr>
+          <tr>
+            <td class="mdl-data-table__cell--non-numeric">
+              <img id="imgMot3" runat="server" src="../images/profiles/generic.png" class="avatar"/>
+            </td>
+            <td class="mdl-data-table__cell--non-numeric">
+              <label runat="server" id="nomeMot3" >sem dados</label>
             </td>
           </tr>
         </table>
@@ -561,6 +561,13 @@
   ConnectionString="<%$ ConnectionStrings:amaralguinchoConnectionString %>"
   ProviderName="<%$ ConnectionStrings:amaralguinchoConnectionString.ProviderName %>"
   SelectCommand="SELECT img_func, nome_func, sobrenome_func, tel_func FROM funcionario ORDER BY id_func DESC LIMIT 3">
+  </asp:SqlDataSource>
+
+  <asp:SqlDataSource
+  ID="lattestMotoristas" runat="server"
+  ConnectionString="<%$ ConnectionStrings:amaralguinchoConnectionString %>"
+  ProviderName="<%$ ConnectionStrings:amaralguinchoConnectionString.ProviderName %>"
+  SelectCommand="SELECT func.nome_func, func.sobrenome_func, func.img_func, func.tel_func FROM funcionario func INNER JOIN motorista mot ON (func.id_func = mot.id_func) ORDER BY func.id_func DESC LIMIT 3">
   </asp:SqlDataSource>
 
   <script type="text/javascript">
