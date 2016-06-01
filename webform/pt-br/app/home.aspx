@@ -144,7 +144,7 @@
               <td class="mdl-data-table__cell--non-numeric">
                 <label id="nomeFrota1" runat="server">IVECO 3</label>
               </td>
-              <td class="mdl-cell mdl-data-table__cell--non-numeric mdl-cell--hide-phone">
+              <td class="mdl-cell mdl-data-table__cell--non-numeric mdl-cell--hide-phone mdl-cell--hide-desktop">
                 <label id="statusFrota1" runat="server">Disponível</label>
               </td>
             </tr>
@@ -155,7 +155,7 @@
               <td class="mdl-data-table__cell--non-numeric">
                 <label id="nomeFrota2" runat="server">IVECO 1</label>
               </td>
-              <td class="mdl-cell mdl-data-table__cell--non-numeric mdl-cell--hide-phone">
+              <td class="mdl-cell mdl-data-table__cell--non-numeric mdl-cell--hide-phone mdl-cell--hide-desktop">
                 <label id="statusFrota2" runat="server">Disponível</label>
               </td>
             </tr>
@@ -166,7 +166,7 @@
               <td class="mdl-data-table__cell--non-numeric">
                 <label id="nomeFrota3" runat="server">Mercedes 1</label>
               </td>
-              <td class="mdl-cell mdl-data-table__cell--non-numeric mdl-cell--hide-phone">
+              <td class="mdl-cell mdl-data-table__cell--non-numeric mdl-cell--hide-phone mdl-cell--hide-desktop">
                 <label id="statusFrota3" runat="server">Em Serviço</label>
               </td>
             </tr>
