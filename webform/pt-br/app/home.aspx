@@ -560,7 +560,7 @@
   ID="lattestFuncionarios" runat="server"
   ConnectionString="<%$ ConnectionStrings:amaralguinchoConnectionString %>"
   ProviderName="<%$ ConnectionStrings:amaralguinchoConnectionString.ProviderName %>"
-  SelectCommand="SELECT img_func, nome_func, sobrenome_func, tel_func FROM funcionario ORDER BY id_func DESC LIMIT 3">
+  SelectCommand="SELECT img_func, nome_func, sobrenome_func, tel_func FROM funcionario WHERE id_cargo BETWEEN 1 and 2 ORDER BY id_func DESC LIMIT 3">
   </asp:SqlDataSource>
 
   <asp:SqlDataSource
