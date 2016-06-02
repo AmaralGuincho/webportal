@@ -472,35 +472,35 @@
         <table class="mdl-data-table mdl-data-table--selectable mdl-js-data-table mdl-cell mdl-cell--12-col mdl-cell--8-tablet">
           <tr>
             <td class="mdl-data-table__cell--non-numeric">
-              <label>#Nome_cli</label>
+              <label runat="server" id="nomeCliVeiculo1">#Nome_cli</label>
             </td>
             <td class="mdl-data-table__cell--non-numeric">
-              <label>#modeloVei</label>
+              <label runat="server" id="modeloVeiculo1">#modeloVei</label>
             </td>
             <td class="mdl-data-table__cell--non-numeric">
-              <label>#placa</label>
+              <label runat="server" id="placaVeiculo1">#placa</label>
             </td>
           </tr>
           <tr>
             <td class="mdl-data-table__cell--non-numeric">
-              <label>#Nome_cli</label>
+              <label runat="server" id="nomeCliVeiculo2">#Nome_cli</label>
             </td>
             <td class="mdl-data-table__cell--non-numeric">
-              <label>#modeloVei</label>
+              <label runat="server" id="modeloVeiculo2">#modeloVei</label>
             </td>
             <td class="mdl-data-table__cell--non-numeric">
-              <label>#placa</label>
+              <label runat="server" id="placaVeiculo2">#placa</label>
             </td>
         </tr>
         <tr>
           <td class="mdl-data-table__cell--non-numeric">
-            <label>#Nome_cli</label>
+            <label runat="server" id="nomeCliVeiculo3">#Nome_cli</label>
           </td>
           <td class="mdl-data-table__cell--non-numeric">
-            <label>#modeloVei</label>
+            <label runat="server" id="modeloVeiculo3">#modeloVei</label>
           </td>
           <td class="mdl-data-table__cell--non-numeric">
-            <label>#placa</label>
+            <label runat="server" id="placaVeiculo3">#placa</label>
           </td>
         </tr>
         </table>
@@ -593,7 +593,17 @@
   SelectCommand="
   SELECT sinistro.sinistro, cliente.nome_cli
   FROM sinistro INNER JOIN cliente on
-    sinistro.id_sinistro = cliente.id_cliente ORDER by sinistro.id_sinistro DESC LIMIT 3">
+    sinistro.id_sinistro = cliente.id_cli ORDER by sinistro.id_sinistro DESC LIMIT 3">
+  </asp:SqlDataSource>
+
+  <asp:SqlDataSource
+  ID="lattestSinistro" runat="server"
+  ConnectionString="<%$ ConnectionStrings:amaralguinchoConnectionString %>"
+  ProviderName="<%$ ConnectionStrings:amaralguinchoConnectionString.ProviderName %>"
+  SelectCommand="
+  SELECT cliente.nome_cli, veiculo.modelo_veiculo, veiculo.cor_veiculo, veiculo.placa_veiculo
+  FROM veiculo INNER JOIN cliente on
+  veiculo.id_cli = cliente.id_cli ORDER BY id_veiculo DESC LIMIT 3  ">
   </asp:SqlDataSource>
 
   <script type="text/javascript">

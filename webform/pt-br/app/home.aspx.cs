@@ -302,7 +302,25 @@ public partial class pt_br_app_home : System.Web.UI.Page
           nomeCliSinistro3.InnerHtml = recentSinistro.Table.Rows[2].ToString();
           codigoSinistro3.InnerHtml = recentSinistro.Table.Rows[2].ToString();
         }
-        
+
+        //IMPORTING lattestVeiculo
+       DataView recentVeiculo = (DataView)lattestVeiculo.Select(DataSourceSelectArguments.Empty);
+       if(recentVeiculo.Table.Rows.Count > 0){
+         nomeCliVeiculo1.InnerHtml = recentVeiculo.Table.Rows[0]["nome_cli"].ToString();
+         modeloVeiculo1.InnerHtml = recentVeiculo.Table.Rows[0]["modelo_veiculo"].ToString() + " " + recentVeiculo.Table.Rows[0]["cor_veiculo"].ToString();
+         placaVeiculo1.InnerHtml = recentVeiculo.Table.Rows[0]["placa_Veiculo"].ToString();
+       }
+       if(recentVeiculo.Table.Rows.Count > 1){
+         nomeCliVeiculo2.InnerHtml = recentVeiculo.Table.Rows[1]["nome_cli"].ToString();
+         modeloVeiculo2.InnerHtml = recentVeiculo.Table.Rows[1]["modelo_veiculo"].ToString() + " " + recentVeiculo.Table.Rows[1]["cor_veiculo"].ToString();
+         placaVeiculo2.InnerHtml = recentVeiculo.Table.Rows[1]["placa_Veiculo"].ToString();
+       }
+       if(recentVeiculo.Table.Rows.Count > 2){
+         nomeCliVeiculo3.InnerHtml = recentVeiculo.Table.Rows[2]["nome_cli"].ToString();
+         modeloVeiculo3.InnerHtml = recentVeiculo.Table.Rows[2]["modelo_veiculo"].ToString() + " " + recentVeiculo.Table.Rows[2]["cor_veiculo"].ToString();
+         placaVeiculo3.InnerHtml = recentVeiculo.Table.Rows[2]["placa_Veiculo"].ToString();
+       }
+
       }catch(Exception ex){}
     }
 }
