@@ -424,26 +424,26 @@
         <table class="mdl-data-table mdl-data-table--selectable mdl-js-data-table mdl-cell mdl-cell--12-col mdl-cell--8-tablet">
           <tr>
             <td class="mdl-data-table__cell--non-numeric">
-              <label>#idServico</label>
+              <label runat="server" id="codigoServico1">#idServico</label>
             </td>
             <td class="mdl-data-table__cell--non-numeric">
-              <label>#idOs</label>
+              <label runat="server" id="codigoOS1">#idOs</label>
             </td>
           </tr>
           <tr>
             <td class="mdl-data-table__cell--non-numeric">
-              <label>#idServico</label>
+              <label runat="server" id="codigoServico2">#idServico</label>
             </td>
             <td class="mdl-data-table__cell--non-numeric">
-              <label>#idOs</label>
+              <label runat="server" id="codigoOS2">#idOs</label>
             </td>
         </tr>
         <tr>
           <td class="mdl-data-table__cell--non-numeric">
-            <label>#idServico</label>
+            <label runat="server" id="codigoServico3">#idServico</label>
           </td>
           <td class="mdl-data-table__cell--non-numeric">
-            <label>#idOs</label>
+            <label runat="server" id="codigoOS3">#idOs</label>
           </td>
         </tr>
         </table>
@@ -604,6 +604,15 @@
   SELECT cliente.nome_cli, veiculo.modelo_veiculo, veiculo.cor_veiculo, veiculo.placa_veiculo
   FROM veiculo INNER JOIN cliente on
   veiculo.id_cli = cliente.id_cli ORDER BY id_veiculo DESC LIMIT 3  ">
+  </asp:SqlDataSource>
+
+  <asp:SqlDataSource
+  ID="lattestServicoOs" runat="server"
+  ConnectionString="<%$ ConnectionStrings:amaralguinchoConnectionString %>"
+  ProviderName="<%$ ConnectionStrings:amaralguinchoConnectionString.ProviderName %>"
+  SelectCommand="
+  SELECT id_os, id_servico FROM servico_os
+   ORDER BY id_os DESC LIMIT 3  ">
   </asp:SqlDataSource>
 
   <script type="text/javascript">

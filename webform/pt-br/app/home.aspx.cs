@@ -321,6 +321,21 @@ public partial class pt_br_app_home : System.Web.UI.Page
          placaVeiculo3.InnerHtml = recentVeiculo.Table.Rows[2]["placa_Veiculo"].ToString();
        }
 
+       //IMPORTING lattestSinistro
+       DataView recentServicoOs = (DataView)lattestServicoOs.Select(DataSourceSelectArguments.Empty);
+       if (recentServicoOs.Table.Rows.Count > 0) {
+         codigoServico1.InnerHtml = recentServicoOs.Table.Rows[0]["id_servico"].ToString();
+         codigoOs1.InnerHtml = recentServicoOs.Table.Rows[0]["id_os"].ToString();
+       }
+       if (recentServicoOs.Table.Rows.Count > 1) {
+         codigoServico2.InnerHtml = recentServicoOs.Table.Rows[1]["id_servico"].ToString();
+         codigoOs2.InnerHtml = recentServicoOs.Table.Rows[1]["id_os"].ToString();
+       }
+       if (recentServicoOs.Table.Rows.Count > 2) {
+         codigoServico3.InnerHtml = recentServicoOs.Table.Rows[2]["id_servico"].ToString();
+         codigoOs3.InnerHtml = recentServicoOs.Table.Rows[2]["id_os"].ToString();
+       }
+
       }catch(Exception ex){}
     }
 }
