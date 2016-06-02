@@ -285,8 +285,24 @@ public partial class pt_br_app_home : System.Web.UI.Page
             nomeFrotaServicoProgresso3.InnerHtml = recentViagemProgresso.Table.Rows[2]["nome_frota"].ToString();
           }
         }
-      }
 
-      catch(Exception ex){}
+        //IMPORTING lattestSinistro
+        DataView recentSinistro = (DataView)lattestSinistro.Select(DataSourceSelectArguments.Empty);
+        if (recentSinistro.Table.Rows.Count > 0) {
+          nomeCliSinistro1.InnerHtml = recentSinistro.Table.Rows[0].ToString();
+          codigoSinistro1.InnerHtml = recentSinistro.Table.Rows[0].ToString();
+        }
+
+        if (recentSinistro.Table.Rows.Count > 1) {
+          nomeCliSinistro2.InnerHtml = recentSinistro.Table.Rows[1].ToString();
+          codigoSinistro2.InnerHtml = recentSinistro.Table.Rows[1].ToString();
+        }
+
+        if (recentSinistro.Table.Rows.Count > 2) {
+          nomeCliSinistro3.InnerHtml = recentSinistro.Table.Rows[2].ToString();
+          codigoSinistro3.InnerHtml = recentSinistro.Table.Rows[2].ToString();
+        }
+        
+      }catch(Exception ex){}
     }
 }

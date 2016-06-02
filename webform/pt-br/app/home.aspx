@@ -376,26 +376,26 @@
         <table class="mdl-data-table mdl-data-table--selectable mdl-js-data-table mdl-cell mdl-cell--12-col mdl-cell--8-tablet">
           <tr>
             <td class="mdl-data-table__cell--non-numeric">
-              <label>NomeCli</label>
+              <label runat="server" id="nomeCliSinistro1">NomeCli</label>
             </td>
             <td class="mdl-data-table__cell--non-numeric">
-              <label>#sinistro</label>
+              <label runat="server" id="codigoSinistro1">#sinistro</label>
             </td>
           </tr>
           <tr>
             <td class="mdl-data-table__cell--non-numeric">
-              <label>NomeCli</label>
+              <label runat="server" id="nomeCliSinistro2">NomeCli</label>
             </td>
             <td class="mdl-data-table__cell--non-numeric">
-              <label>#sinistro</label>
+              <label runat="server" id="codigoSinistro2">#sinistro</label>
             </td>
         </tr>
         <tr>
           <td class="mdl-data-table__cell--non-numeric">
-            <label>NomeCli</label>
+            <label runat="server" id="nomeCliSinistro3">NomeCli</label>
           </td>
           <td class="mdl-data-table__cell--non-numeric">
-            <label>#sinistro</label>
+            <label runat="server" id="codigoSinistro3">#sinistro</label>
           </td>
         </tr>
         </table>
@@ -584,6 +584,16 @@
         vgm.id_mot = mot.id_mot
           INNER JOIN frota frta on
           vgm.id_frota = frta.id_frota">
+  </asp:SqlDataSource>
+
+  <asp:SqlDataSource
+  ID="lattestSinistro" runat="server"
+  ConnectionString="<%$ ConnectionStrings:amaralguinchoConnectionString %>"
+  ProviderName="<%$ ConnectionStrings:amaralguinchoConnectionString.ProviderName %>"
+  SelectCommand="
+  SELECT sinistro.sinistro, cliente.nome_cli
+  FROM sinistro INNER JOIN cliente on
+    sinistro.id_sinistro = cliente.id_cliente ORDER by sinistro.id_sinistro DESC LIMIT 3">
   </asp:SqlDataSource>
 
   <script type="text/javascript">
