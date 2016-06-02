@@ -250,7 +250,43 @@ public partial class pt_br_app_home : System.Web.UI.Page
             nomeMot2.InnerHtml = "--";
             nomeMot3.InnerHtml = "--";
           }
+
+        //Importing now going trips from DB
+        DataView recentViagemProgresso = (DataView)lattestViagemProgresso.Select(DataSourceSelectArguments.Empty);
+        if (recentViagemProgresso.Table.Rows.Count > 0) {
+          codigoServicoProgresso1.InnerHtml = recentViagemProgresso.Table.Rows[0]["id_servico"].ToString();
+          cidadeServicoProgresso1.InnerHtml = recentViagemProgresso.Table.Rows[0]["cidadeC_viagem"].ToString();
+          nomeMotoristaServicoProgresso1.InnerHtml = recentViagemProgresso.Table.Rows[0]["nome_func"].ToString();
+          if(recentViagemProgresso.Table.Rows[0]["nome_frota"] == String.Empty){
+            nomeFrotaServicoProgresso1.InnerHtml = recentViagemProgresso.Table.Rows[0]["placa_frota"].ToString();
+          }else{
+            nomeFrotaServicoProgresso1.InnerHtml = recentViagemProgresso.Table.Rows[0]["nome_frota"].ToString();
+          }
+        }
+
+        if (recentViagemProgresso.Table.Rows.Count > 1) {
+          codigoServicoProgresso2.InnerHtml = recentViagemProgresso.Table.Rows[1]["id_servico"].ToString();
+          cidadeServicoProgresso2.InnerHtml = recentViagemProgresso.Table.Rows[1]["cidadeC_viagem"].ToString();
+          nomeMotoristaServicoProgresso2.InnerHtml = recentViagemProgresso.Table.Rows[1]["nome_func"].ToString();
+          if(recentViagemProgresso.Table.Rows[1]["nome_frota"] == String.Empty){
+            nomeFrotaServicoProgresso2.InnerHtml = recentViagemProgresso.Table.Rows[1]["placa_frota"].ToString();
+          }else{
+            nomeFrotaServicoProgresso2.InnerHtml = recentViagemProgresso.Table.Rows[1]["nome_frota"].ToString();
+          }
+        }
+
+        if (recentViagemProgresso.Table.Rows.Count > 2) {
+          codigoServicoProgresso3.InnerHtml = recentViagemProgresso.Table.Rows[2]["id_servico"].ToString();
+          cidadeServicoProgresso3.InnerHtml = recentViagemProgresso.Table.Rows[2]["cidadeC_viagem"].ToString();
+          nomeMotoristaServicoProgresso3.InnerHtml = recentViagemProgresso.Table.Rows[2]["nome_func"].ToString();
+          if(recentViagemProgresso.Table.Rows[2]["nome_frota"] == String.Empty){
+            nomeFrotaServicoProgresso3.InnerHtml = recentViagemProgresso.Table.Rows[2]["placa_frota"].ToString();
+          }else{
+            nomeFrotaServicoProgresso3.InnerHtml = recentViagemProgresso.Table.Rows[2]["nome_frota"].ToString();
+          }
+        }
       }
+
       catch(Exception ex){}
     }
 }

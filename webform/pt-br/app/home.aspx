@@ -308,44 +308,44 @@
           <tbody>
             <tr class="viagem-1">
               <td class="mdl-data-table__cell--non-numeric">
-                <label>142</label>
+                <label runat="server" id="codigoServicoProgresso1">código</label>
               </td>
               <td class="mdl-data-table__cell--non-numeric">
-                <label>São José dos Campos</label>
+                <label runat="server" id="cidadeServicoProgresso1">Cidade</label>
               </td>
               <td class="mdl-data-table__cell--non-numeric mdl-cell--hide-phone">
-                <label>Anderson Guedes</label>
+                <label runat="server" id="nomeMotoristaServicoProgresso1">Motorista</label>
               </td>
               <td class="mdl-data-table__cel--non-numeric mdl-cell--hide-phone">
-                <label>Mercedes 1</label>
+                <label runat="server" id="nomeFrotaServicoProgresso1">Frota</label>
               </td>
             </tr>
             <tr class="viagem-2">
               <td class="mdl-data-table__cell--non-numeric">
-                <label>122</label>
+                <label runat="server" id="codigoServicoProgresso2">código</label>
               </td>
               <td class="mdl-data-table__cell--non-numeric">
-                <label>Caraguatatúba</label>
+                <label runat="server" id="cidadeServicoProgresso2">Cidade</label>
               </td>
               <td class="mdl-data-table__cell--non-numeric mdl-cell--hide-phone">
-                <label>Leonardo DeVitto</label>
+                <label runat="server" id="nomeMotoristaServicoProgresso2">Motorista</label>
               </td>
               <td class="mdl-data-table__cel--non-numeric mdl-cell--hide-phone">
-                <label>Iveco 2</label>
+                <label runat="server" id="nomeFrotaServicoProgresso2">Frota</label>
               </td>
           </tr>
           <tr class="viagem-3">
             <td class="mdl-data-table__cell--non-numeric">
-              <label>132</label>
+              <label runat="server" id="codigoServicoProgresso3">código</label>
             </td>
             <td class="mdl-data-table__cell--non-numeric">
-              <label>Jacareí</label>
+              <label runat="server" id="cidadeServicoProgresso3">Cidade</label>
             </td>
             <td class="mdl-data-table__cell--non-numeric mdl-cell--hide-phone">
-              <label>Fatbiana</label>
+              <label runat="server" id="nomeMotoristaServicoProgresso3">Motorista</label>
             </td>
             <td class="mdl-data-table__cel--non-numeric mdl-cell--hide-phone">
-              <label>Mercedes 3</label>
+              <label runat="server" id="nomeFrotaServicoProgresso3">Frota</label>
             </td>
           </tr>
         </tbody>
@@ -568,6 +568,22 @@
   ConnectionString="<%$ ConnectionStrings:amaralguinchoConnectionString %>"
   ProviderName="<%$ ConnectionStrings:amaralguinchoConnectionString.ProviderName %>"
   SelectCommand="SELECT func.nome_func, func.sobrenome_func, func.img_func, func.tel_func FROM funcionario func INNER JOIN motorista mot ON (func.id_func = mot.id_func) ORDER BY func.id_func DESC LIMIT 3">
+  </asp:SqlDataSource>
+
+  <asp:SqlDataSource
+  ID="lattestViagemProgresso" runat="server"
+  ConnectionString="<%$ ConnectionStrings:amaralguinchoConnectionString %>"
+  ProviderName="<%$ ConnectionStrings:amaralguinchoConnectionString.ProviderName %>"
+  SelectCommand="
+  SELECT vs.id_servico, vgm.cidadeC_viagem, mot.nome_func,
+   frta.nome_frota, frta.placa_frota
+    FROM viagem_servico vs
+     INNER JOIN viagem vgm on
+      vs.id_viagem = vgm.id_viagem
+       INNER JOIN motoristaOnly mot on
+        vgm.id_mot = mot.id_mot
+          INNER JOIN frota frta on
+          vgm.id_frota = frta.id_frota">
   </asp:SqlDataSource>
 
   <script type="text/javascript">
