@@ -5,6 +5,7 @@
 
   </style>
   <div class="mdl-grid card-box">
+    <form class="mdl-cell mdl-cell--12-col mdl-grid" id="newClient" autocomplete="on" runat="server">
 
     <div class="mdl-textfield mdl-js-textfield mdl-cell mdl-cell--12-col">
       <input ID="searchCli" class="mdl-textfield__input" runat="server" pattern="[A-Z,a-z, ]*"></input>
@@ -62,7 +63,7 @@
         <h2 class="mdl-card__title-text">Cadastrando um Novo Cliente</h2>
       </div>
       <div class="card-content mdl-grid mdl-cell mdl-cell--12-col">
-        <form class="mdl-cell mdl-cell--12-col mdl-grid" id="newClient" autocomplete="on" runat="server">
+
 
           <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--3-col mdl-cell-4-col-phone">
             <asp:TextBox ID="nomeCli" type="text" class="mdl-textfield__input" runat="server" ></asp:TextBox>
@@ -107,12 +108,11 @@
             <asp:TextBox ID="residenciaCli" TextMode="multiline" class="mdl-textfield__input" rows="4" runat="server"></asp:TextBox>
             <label class="mdl-textfield__label" for="residenciaCli">Residência</label>
           </div>
-        </form>
+
       </div>
       <div class="mdl-card__actions mdl-card--border">
-        <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
-          Cadastrar
-        </a>
+        <asp:Button runat="server" Text="Cadastrar" OnClick="cadastrar" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+        </asp:Button>
         <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
           Cancelar
         </a>
@@ -129,7 +129,7 @@
     </div>
 
   </div>
-
+</form>
   <button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored mdl-color--red mdl-color-text--white" id="fabButton">
     <i class="material-icons">add</i>
     <span class="visuallyhidden">Add</span>
@@ -139,6 +139,18 @@
     <div class="mdl-snackbar__text"></div>
     <button type="button" class="mdl-snackbar__action"></button>
   </div>
+
+  <asp:SqlDataSource ID="novoCliente" runat="server"
+   ConnectionString="<%$ ConnectionStrings:amaralguinchoConnectionString %>"
+   ProviderName="<%$ ConnectionStrings:amaralguinchoConnectionString.ProviderName %>"
+   InsertCommand="INSERT INTO clientes VALUES (0, @nome, @sobrenome, @cpf, @email, @sexo, @dataNasc, @cep, null, null, @telefone, null )">
+    <InsertParameters>
+      <asp:ControlParameter Name="nome" ControlID="nomeCli" PropertyName="Text"/>
+      <asp:ControlParameter Name="sobrenome" ControlID="SobrenomeCli" PropertyName="Text"/>
+      <asp:ControlParameter Name="sexo" ControlID="sexoCli" PropertyName="Value"/>
+      <asp:ControlParameter Name="email" ControlID="emailCli" PropertyName="Text"/>
+    </InsertParameters>
+  </asp:SqlDataSource>
 
   <script src="../scripts/cpf.min.js" charset="utf-8"></script>
 
