@@ -252,12 +252,12 @@ public partial class pt_br_app_home : System.Web.UI.Page
           }
 
         //Importing now going trips from DB
-        DataView recentViagemProgresso = (DataView)lattestViagemProgresso.Select(DataSourceSelectArguments.Empty);
+        DataView recentViagemProgresso = (DataView)lattestOnGoingTrip.Select(DataSourceSelectArguments.Empty);
         if (recentViagemProgresso.Table.Rows.Count > 0) {
           codigoServicoProgresso1.InnerHtml = recentViagemProgresso.Table.Rows[0]["id_servico"].ToString();
           cidadeServicoProgresso1.InnerHtml = recentViagemProgresso.Table.Rows[0]["cidadeC_viagem"].ToString();
           nomeMotoristaServicoProgresso1.InnerHtml = recentViagemProgresso.Table.Rows[0]["nome_func"].ToString();
-          if(recentViagemProgresso.Table.Rows[0]["nome_frota"] == String.Empty){
+          if(recentViagemProgresso.Table.Rows[0]["nome_frota"].ToString() == String.Empty){
             nomeFrotaServicoProgresso1.InnerHtml = recentViagemProgresso.Table.Rows[0]["placa_frota"].ToString();
           }else{
             nomeFrotaServicoProgresso1.InnerHtml = recentViagemProgresso.Table.Rows[0]["nome_frota"].ToString();
@@ -268,7 +268,7 @@ public partial class pt_br_app_home : System.Web.UI.Page
           codigoServicoProgresso2.InnerHtml = recentViagemProgresso.Table.Rows[1]["id_servico"].ToString();
           cidadeServicoProgresso2.InnerHtml = recentViagemProgresso.Table.Rows[1]["cidadeC_viagem"].ToString();
           nomeMotoristaServicoProgresso2.InnerHtml = recentViagemProgresso.Table.Rows[1]["nome_func"].ToString();
-          if(recentViagemProgresso.Table.Rows[1]["nome_frota"] == String.Empty){
+          if(recentViagemProgresso.Table.Rows[1]["nome_frota"].ToString() == String.Empty){
             nomeFrotaServicoProgresso2.InnerHtml = recentViagemProgresso.Table.Rows[1]["placa_frota"].ToString();
           }else{
             nomeFrotaServicoProgresso2.InnerHtml = recentViagemProgresso.Table.Rows[1]["nome_frota"].ToString();
@@ -279,7 +279,7 @@ public partial class pt_br_app_home : System.Web.UI.Page
           codigoServicoProgresso3.InnerHtml = recentViagemProgresso.Table.Rows[2]["id_servico"].ToString();
           cidadeServicoProgresso3.InnerHtml = recentViagemProgresso.Table.Rows[2]["cidadeC_viagem"].ToString();
           nomeMotoristaServicoProgresso3.InnerHtml = recentViagemProgresso.Table.Rows[2]["nome_func"].ToString();
-          if(recentViagemProgresso.Table.Rows[2]["nome_frota"] == String.Empty){
+          if(recentViagemProgresso.Table.Rows[2]["nome_frota"].ToString() == String.Empty){
             nomeFrotaServicoProgresso3.InnerHtml = recentViagemProgresso.Table.Rows[2]["placa_frota"].ToString();
           }else{
             nomeFrotaServicoProgresso3.InnerHtml = recentViagemProgresso.Table.Rows[2]["nome_frota"].ToString();
@@ -289,18 +289,18 @@ public partial class pt_br_app_home : System.Web.UI.Page
         //IMPORTING lattestSinistro
         DataView recentSinistro = (DataView)lattestSinistro.Select(DataSourceSelectArguments.Empty);
         if (recentSinistro.Table.Rows.Count > 0) {
-          nomeCliSinistro1.InnerHtml = recentSinistro.Table.Rows[0].ToString();
-          codigoSinistro1.InnerHtml = recentSinistro.Table.Rows[0].ToString();
+          nomeCliSinistro1.InnerHtml = recentSinistro.Table.Rows[0]["nome_cli"].ToString();
+          codigoSinistro1.InnerHtml = recentSinistro.Table.Rows[0]["sinistro"].ToString();
         }
 
         if (recentSinistro.Table.Rows.Count > 1) {
-          nomeCliSinistro2.InnerHtml = recentSinistro.Table.Rows[1].ToString();
-          codigoSinistro2.InnerHtml = recentSinistro.Table.Rows[1].ToString();
+          nomeCliSinistro2.InnerHtml = recentSinistro.Table.Rows[1]["nome_cli"].ToString();
+          codigoSinistro2.InnerHtml = recentSinistro.Table.Rows[1]["sinistro"].ToString();
         }
 
         if (recentSinistro.Table.Rows.Count > 2) {
-          nomeCliSinistro3.InnerHtml = recentSinistro.Table.Rows[2].ToString();
-          codigoSinistro3.InnerHtml = recentSinistro.Table.Rows[2].ToString();
+          nomeCliSinistro3.InnerHtml = recentSinistro.Table.Rows[2]["nome_cli"].ToString();
+          codigoSinistro3.InnerHtml = recentSinistro.Table.Rows[2]["sinistro"].ToString();
         }
 
         //IMPORTING lattestVeiculo
@@ -324,16 +324,16 @@ public partial class pt_br_app_home : System.Web.UI.Page
        //IMPORTING lattestSinistro
        DataView recentServicoOs = (DataView)lattestServicoOs.Select(DataSourceSelectArguments.Empty);
        if (recentServicoOs.Table.Rows.Count > 0) {
-         codigoServico1.InnerHtml = recentServicoOs.Table.Rows[0]["id_servico"].ToString();
-         codigoOs1.InnerHtml = recentServicoOs.Table.Rows[0]["id_os"].ToString();
+         codigoServico1.InnerHtml = "# " + recentServicoOs.Table.Rows[0]["id_servico"].ToString();
+         codigoOS1.InnerHtml = "# " + recentServicoOs.Table.Rows[0]["id_os"].ToString();
        }
        if (recentServicoOs.Table.Rows.Count > 1) {
-         codigoServico2.InnerHtml = recentServicoOs.Table.Rows[1]["id_servico"].ToString();
-         codigoOs2.InnerHtml = recentServicoOs.Table.Rows[1]["id_os"].ToString();
+         codigoServico2.InnerHtml = "# " + recentServicoOs.Table.Rows[1]["id_servico"].ToString();
+         codigoOS2.InnerHtml = "# " + recentServicoOs.Table.Rows[1]["id_os"].ToString();
        }
        if (recentServicoOs.Table.Rows.Count > 2) {
-         codigoServico3.InnerHtml = recentServicoOs.Table.Rows[2]["id_servico"].ToString();
-         codigoOs3.InnerHtml = recentServicoOs.Table.Rows[2]["id_os"].ToString();
+         codigoServico3.InnerHtml = "# " + recentServicoOs.Table.Rows[2]["id_servico"].ToString();
+         codigoOS3.InnerHtml = "# " + recentServicoOs.Table.Rows[2]["id_os"].ToString();
        }
 
       }catch(Exception ex){}

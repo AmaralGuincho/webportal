@@ -422,7 +422,18 @@
       </div>
       <div class="card-content mdl-grid mdl-cell mdl-cell--12-col">
         <table class="mdl-data-table mdl-data-table--selectable mdl-js-data-table mdl-cell mdl-cell--12-col mdl-cell--8-tablet">
-          <tr>
+          <thead>
+            <tr>
+              <th class="mdl-data-table__cell--non-numeric">
+                <label>Código Servico</label>
+              </th>
+              <th class="mdl-data-table__cell--non-numeric">
+                <label>Código Os</label>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
             <td class="mdl-data-table__cell--non-numeric">
               <label runat="server" id="codigoServico1">#idServico</label>
             </td>
@@ -446,6 +457,7 @@
             <label runat="server" id="codigoOS3">#idOs</label>
           </td>
         </tr>
+      </tbody>
         </table>
       </div>
       <div class="mdl-card__actions">
@@ -571,7 +583,7 @@
   </asp:SqlDataSource>
 
   <asp:SqlDataSource
-  ID="lattestViagemProgresso" runat="server"
+  ID="lattestOnGoingTrip" runat="server"
   ConnectionString="<%$ ConnectionStrings:amaralguinchoConnectionString %>"
   ProviderName="<%$ ConnectionStrings:amaralguinchoConnectionString.ProviderName %>"
   SelectCommand="
@@ -583,7 +595,8 @@
        INNER JOIN motoristaOnly mot on
         vgm.id_mot = mot.id_mot
           INNER JOIN frota frta on
-          vgm.id_frota = frta.id_frota">
+            vgm.id_frota = frta.id_frota
+              ORDER BY vs.id_servico DESC LIMIT 3">
   </asp:SqlDataSource>
 
   <asp:SqlDataSource
@@ -597,7 +610,7 @@
   </asp:SqlDataSource>
 
   <asp:SqlDataSource
-  ID="lattestSinistro" runat="server"
+  ID="lattestVeiculo" runat="server"
   ConnectionString="<%$ ConnectionStrings:amaralguinchoConnectionString %>"
   ProviderName="<%$ ConnectionStrings:amaralguinchoConnectionString.ProviderName %>"
   SelectCommand="
