@@ -28,15 +28,13 @@
         <h2 class="mdl-card__title-text">Alterando Sua Senha</h2>
       </div>
       <div class="card-content mdl-card--border mdl-grid mdl-cell mdl-cell--12-col">
-
-          <div class="mdl-textfield mdl-js-textfield">
+          <div class="mdl-textfield mdl-js-textfield mdl-cell mdl-cell--6-col mdl-cell--3-offset">
             <asp:TextBox class="mdl-textfield__input" id="novaSenha" type="password" runat="server"></asp:TextBox>
-            <label class="mdl-textfield__label" for="novaSenha"></label>
+            <label class="mdl-textfield__label" for="novaSenha">Nova Senha</label>
           </div>
       </div>
-      <div class="mdl-card__actions mdl-grid">
-        <asp:Button class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-cell mdl-cell--4-offset-desktop mdl-cell--3-col" onclick="showScreen('none','mudarSenha')">
-          Alterar
+      <div class="mdl-card__actions mdl-grid mdl-cell mdl-cell--4-col mdl-cell--4-offset">
+        <asp:Button class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-cell mdl-cell--12-col" Text="alterar" OnClick="changePassword" runat="server">
         </asp:Button>
       </div>
     </div>
@@ -54,6 +52,17 @@
     <div class="mdl-snackbar__text"></div>
     <button type="button" class="mdl-snackbar__action"></button>
   </div>
+
+<asp:SqlDataSource ID="sqlChangePassword" runat="server"
+ ConnectionString="<%$ ConnectionStrings:amaralguinchoConnectionString %>"
+ ProviderName="<%$ ConnectionStrings:amaralguinchoConnectionString.ProviderName %>"
+ UpdateCommand="UPDATE login SET password_login = @PASSWORD WHERE id_func = @LOGIN">
+  <UpdateParameters>
+    <asp:SessionParameter Name="LOGIN" SessionField="log"/>
+    <asp:ControlParameter Name="PASSWORD" ControlID="novaSenha" PropertyName="Text"/>
+  </UpdateParameters>
+</asp:SqlDataSource>
+
 <script type="text/javascript">
   function showScreen(card) {
     document.getElementById(card).style.display='block';

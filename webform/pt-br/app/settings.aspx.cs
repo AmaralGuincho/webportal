@@ -11,4 +11,10 @@ public partial class pt_br_app_settings : System.Web.UI.Page
     {
 
     }
+
+    protected void changePassword(object sender, EventArgs e){
+      sqlChangePassword.Update();
+      novaSenha.Text = String.Empty;
+      Response.Write("<script>alert('Senha Alterada!')</script>");
+    }
 }
