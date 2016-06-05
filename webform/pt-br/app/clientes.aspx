@@ -91,7 +91,7 @@
             </asp:DropDownList>
           </div>
           <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--3-col mdl-cell-4-col-phone">
-            <asp:TextBox ID="telCli" type="text" class="mdl-textfield__input" runat="server"></asp:TextBox>
+            <asp:TextBox ID="telCli" type="text" class="mdl-textfield__input" pattern="[0-9, ,-]*" runat="server" onkeypress="mascara(this,'## #####-###')"></asp:TextBox>
             <label class="mdl-textfield__label" for="telCli">Telefone</label>
           </div>
           <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--3-col mdl-cell-4-col-phone">
@@ -102,6 +102,22 @@
             <asp:TextBox ID="cepCli" type="text" class="mdl-textfield__input" runat="server" pattern="[0-9,-]*" onkeypress="mascara(this,'#####-###')" onblur="pesquisacep()"></asp:TextBox>
             <label class="mdl-textfield__label" for="cepCli">CEP</label>
             <span class="mdl-textfield__error">Ultilize apenas números</span>
+          </div>
+
+          <!-- ADDED FULL ENDERECO -->
+          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--3-col mdl-cell--1-offset-desktop mdl-cell-4-col-phone">
+            <asp:TextBox ID="bairroCli" type="text" class="mdl-textfield__input" runat="server" ></asp:TextBox>
+            <label class="mdl-textfield__label" for="bairroCli">Bairro</label>
+          </div>
+
+          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--3-col mdl-cell-4-col-phone">
+            <asp:TextBox ID="cidadeCli" type="text" class="mdl-textfield__input" runat="server" ></asp:TextBox>
+            <label class="mdl-textfield__label" for="cidadeCli">Cidade</label>
+          </div>
+
+          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--4-col mdl-cell-4-col-phone">
+            <asp:TextBox ID="ufCli" type="text" class="mdl-textfield__input" runat="server" ></asp:TextBox>
+            <label class="mdl-textfield__label" for="ufCli">U.F.</label>
           </div>
 
           <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--1-offset-desktop mdl-cell--10-col mdl-cell-4-col-phone">
@@ -221,16 +237,30 @@ function pesquisacep() {
   function meu_callback(conteudo) {
       if (!("erro" in conteudo)) {
         var residencia = document.getElementById('<%=residenciaCli.ClientID%>');
+        var uf = document.getElementById('<%=ufCli.ClientID%>');
+        var cidade = document.getElementById('<%=cidadeCli.ClientID%>');
+        var bairro = document.getElementById('<%=bairroCli.ClientID%>');
+
+
           //Atualiza os campos com os valores.
-          residencia.value=(conteudo.logradouro) +
-          ", " + (conteudo.bairro) +
-          ", " + (conteudo.localidade) +
-          ", " + (conteudo.uf);
+          residencia.value=(conteudo.logradouro);
+          uf.value =  (conteudo.uf);
+          cidade.value = (conteudo.localidade);
+          bairro.value = (conteudo.bairro);
       }
       else {
           //CEP não Encontrado.
           var residencia = document.getElementById('<%=residenciaCli.ClientID%>');
-          residencia.value="CEP não encontrado";
+          var uf = document.getElementById('<%=ufCli.ClientID%>');
+          var cidade = document.getElementById('<%=cidadeCli.ClientID%>');
+          var bairro = document.getElementById('<%=bairroCli.ClientID%>');
+
+
+            //Atualiza os campos com os valores.
+            residencia.value="Não Encontrado";
+            uf.value =  "Não Encontrado";
+            cidade.value = "Não Encontrado";
+            bairro.value = "Não Encontrado";
       }
   }
 
