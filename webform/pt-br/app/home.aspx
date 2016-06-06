@@ -536,7 +536,7 @@
   </div>
 
 
-  <button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored mdl-color--red mdl-color-text--white" id="fabButton">
+  <button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored mdl-color--red mdl-color-text--white" hidden id="fabButton">
     <i class="material-icons">add</i>
     <span class="visuallyhidden">Add</span>
   </button>
