@@ -103,7 +103,31 @@
             <span class="mdl-textfield__error">Ultilize apenas números</span>
           </div>
 
+          <!-- ADDED FULL ENDERECO -->
+          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--3-col mdl-cell--1-offset-desktop mdl-cell-4-col-phone">
+            <asp:TextBox ID="bairroFunc" type="text" class="mdl-textfield__input" runat="server" ></asp:TextBox>
+            <label class="mdl-textfield__label" for="bairroFunc">Bairro</label>
+          </div>
+
           <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--3-col mdl-cell-4-col-phone">
+            <asp:TextBox ID="cidadeFunc" type="text" class="mdl-textfield__input" runat="server" ></asp:TextBox>
+            <label class="mdl-textfield__label" for="cidadeFunc">Cidade</label>
+          </div>
+
+          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--4-col mdl-cell-4-col-phone">
+            <asp:TextBox ID="ufFunc" type="text" class="mdl-textfield__input" runat="server" ></asp:TextBox>
+            <label class="mdl-textfield__label" for="ufFunc">U.F.</label>
+          </div>
+
+          <!-- TODO -->
+          <!-- Watting for Db Master add residencia_func -->
+          <!-- <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--1-offset-desktop mdl-cell--10-col mdl-cell-4-col-phone">
+            <asp:TextBox ID="residenciaFunc" TextMode="multiline" class="mdl-textfield__input" rows="4" runat="server"></asp:TextBox>
+            <label class="mdl-textfield__label" for="residenciaFunc">Residência</label>
+          </div> -->
+          <!-- END TODO -->
+
+          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--3-col mdl-cell--3-offset-desktop mdl-cell-4-col-phone">
             <asp:TextBox ID="contratacaoFunc" type="text" class="mdl-textfield__input" pattern="[0-9,/]*" runat="server" onkeypress="mascara(this,'##/##/####')"></asp:TextBox>
             <label class="mdl-textfield__label" for="emailFunc">Data de Contratação</label>
           </div>
@@ -115,11 +139,6 @@
               <asp:ListItem Text="Funcionário" Value="2"/>
               <asp:ListItem Text="Motorista" Value="3"/>
             </asp:DropDownList>
-          </div>
-
-          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--1-offset-desktop mdl-cell--10-col mdl-cell-4-col-phone">
-            <asp:TextBox ID="residenciaFunc" TextMode="multiline" class="mdl-textfield__input" rows="4" runat="server"></asp:TextBox>
-            <label class="mdl-textfield__label" for="residenciaFunc">Residência</label>
           </div>
 
           <!-- Cadastrando as informações de um Motorista -->
@@ -254,16 +273,30 @@ function pesquisacep() {
   function meu_callback(conteudo) {
       if (!("erro" in conteudo)) {
         var residencia = document.getElementById('<%=residenciaFunc.ClientID%>');
+        var uf = document.getElementById('<%=ufFunc.ClientID%>');
+        var cidade = document.getElementById('<%=cidadeFunc.ClientID%>');
+        var bairro = document.getElementById('<%=bairroFunc.ClientID%>');
+
+
           //Atualiza os campos com os valores.
-          residencia.value=(conteudo.logradouro) +
-          ", " + (conteudo.bairro) +
-          ", " + (conteudo.localidade) +
-          ", " + (conteudo.uf);
+          residencia.value=(conteudo.logradouro);
+          uf.value =  (conteudo.uf);
+          cidade.value = (conteudo.localidade);
+          bairro.value = (conteudo.bairro);
       }
       else {
           //CEP não Encontrado.
           var residencia = document.getElementById('<%=residenciaFunc.ClientID%>');
-          residencia.value="CEP não encontrado";
+          var uf = document.getElementById('<%=ufFunc.ClientID%>');
+          var cidade = document.getElementById('<%=cidadeFunc.ClientID%>');
+          var bairro = document.getElementById('<%=bairroFunc.ClientID%>');
+
+
+            //Atualiza os campos com os valores.
+            residencia.value="Não Encontrado";
+            uf.value =  "Não Encontrado";
+            cidade.value = "Não Encontrado";
+            bairro.value = "Não Encontrado";
       }
   }
 
