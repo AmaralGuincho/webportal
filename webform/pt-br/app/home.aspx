@@ -68,8 +68,8 @@
           <i class="material-icons">more_vert</i>
         </button>
         <ul class="mdl-menu mdl-js-menu mdl-js-ripple-effect mdl-menu--bottom-right" for="card-cli-options">
-            <li class="mdl-menu__item"><i class="material-icons md-14">visibility_off</i>  Esconder</li>
-            <li class="mdl-menu__item"><i class="material-icons md-14">star</i> Fixar</li>
+            <li class="mdl-menu__item"><i  Esconder</li>
+            <li class="mdl-menu__item">Fixar</li>
         </ul>
       </div>
     </div>
@@ -125,8 +125,8 @@
           <i class="material-icons">more_vert</i>
         </button>
         <ul class="mdl-menu mdl-js-menu mdl-js-ripple-effect mdl-menu--bottom-right" for="card-os-options">
-            <li class="mdl-menu__item"><i class="material-icons md-14">visibility_off</i>  Esconder</li>
-            <li class="mdl-menu__item"><i class="material-icons md-14">star</i> Fixar</li>
+            <li class="mdl-menu__item">Esconder</li>
+            <li class="mdl-menu__item">Fixar</li>
         </ul>
       </div>
     </div>
@@ -182,8 +182,8 @@
           <i class="material-icons">more_vert</i>
         </button>
         <ul class="mdl-menu mdl-js-menu mdl-js-ripple-effect mdl-menu--bottom-right" for="card-frota-options">
-            <li class="mdl-menu__item"><i class="material-icons md-14">visibility_off</i>  Esconder</li>
-            <li class="mdl-menu__item"><i class="material-icons md-14">star</i> Fixar</li>
+            <li class="mdl-menu__item">Esconder</li>
+            <li class="mdl-menu__item">Fixar</li>
         </ul>
       </div>
     </div>
@@ -230,8 +230,8 @@
           <i class="material-icons">more_vert</i>
         </button>
         <ul class="mdl-menu mdl-js-menu mdl-js-ripple-effect mdl-menu--bottom-right" for="card-func-options">
-            <li class="mdl-menu__item"><i class="material-icons md-14">visibility_off</i>  Esconder</li>
-            <li class="mdl-menu__item"><i class="material-icons md-14">star</i> Fixar</li>
+            <li class="mdl-menu__item">Esconder</li>
+            <li class="mdl-menu__item">Fixar</li>
         </ul>
       </div>
     </div>
@@ -278,8 +278,8 @@
           <i class="material-icons">more_vert</i>
         </button>
         <ul class="mdl-menu mdl-js-menu mdl-js-ripple-effect mdl-menu--bottom-right" for="card-moto-options">
-            <li class="mdl-menu__item"><i class="material-icons md-14">visibility_off</i>  Esconder</li>
-            <li class="mdl-menu__item"><i class="material-icons md-14">star</i> Fixar</li>
+            <li class="mdl-menu__item">Esconder</li>
+            <li class="mdl-menu__item">Fixar</li>
         </ul>
       </div>
     </div>
@@ -361,8 +361,8 @@
           <i class="material-icons">more_vert</i>
         </button>
         <ul class="mdl-menu mdl-js-menu mdl-js-ripple-effect mdl-menu--bottom-right" for="card-vp-options">
-            <li class="mdl-menu__item"><i class="material-icons md-14">visibility_off</i>  Esconder</li>
-            <li class="mdl-menu__item"><i class="material-icons md-14">star</i> Fixar</li>
+            <li class="mdl-menu__item">Esconder</li>
+            <li class="mdl-menu__item">Fixar</li>
         </ul>
       </div>
     </div>
@@ -410,8 +410,8 @@
           <i class="material-icons">more_vert</i>
         </button>
         <ul class="mdl-menu mdl-js-menu mdl-js-ripple-effect mdl-menu--bottom-right" for="card-sinistro-options">
-            <li class="mdl-menu__item"><i class="material-icons md-14">visibility_off</i>  Esconder</li>
-            <li class="mdl-menu__item"><i class="material-icons md-14">star</i> Fixar</li>
+            <li class="mdl-menu__item">Esconder</li>
+            <li class="mdl-menu__item">Fixar</li>
         </ul>
       </div>
     </div>
@@ -470,8 +470,8 @@
           <i class="material-icons">more_vert</i>
         </button>
         <ul class="mdl-menu mdl-js-menu mdl-js-ripple-effect mdl-menu--bottom-right" for="card-servico-options">
-            <li class="mdl-menu__item"><i class="material-icons md-14">visibility_off</i>  Esconder</li>
-            <li class="mdl-menu__item"><i class="material-icons md-14">star</i> Fixar</li>
+            <li class="mdl-menu__item">Esconder</li>
+            <li class="mdl-menu__item">Fixar</li>
         </ul>
       </div>
     </div>
@@ -527,8 +527,8 @@
           <i class="material-icons">more_vert</i>
         </button>
         <ul class="mdl-menu mdl-js-menu mdl-js-ripple-effect mdl-menu--bottom-right" for="card-veiculo-options">
-            <li class="mdl-menu__item"><i class="material-icons md-14">visibility_off</i>  Esconder</li>
-            <li class="mdl-menu__item"><i class="material-icons md-14">star</i> Fixar</li>
+            <li class="mdl-menu__item">Esconder</li>
+            <li class="mdl-menu__item">Fixar</li>
         </ul>
       </div>
     </div>
