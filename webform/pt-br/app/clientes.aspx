@@ -159,12 +159,23 @@
   <asp:SqlDataSource ID="novoCliente" runat="server"
    ConnectionString="<%$ ConnectionStrings:amaralguinchoConnectionString %>"
    ProviderName="<%$ ConnectionStrings:amaralguinchoConnectionString.ProviderName %>"
-   InsertCommand="INSERT INTO clientes VALUES (0, @nome, @sobrenome, @cpf, @email, @sexo, @dataNasc, @cep, null, null, @telefone, null )">
+   InsertCommand="INSERT INTO cliente
+    (nome_cli, sobrenome_cli, cpf_cli, email_cli, sx_cli, telefone_cli, dtnasc_cli, cep_cli, bairro_cli, cid_cli, uf_cli, endereco_cli)
+     VALUES
+     (@nome, @sobrenome, @cpf, @email, @sexo, @telefone, @dataNasc, @cep, @bairro, @cidade, @uf, @endereco)">
     <InsertParameters>
       <asp:ControlParameter Name="nome" ControlID="nomeCli" PropertyName="Text"/>
       <asp:ControlParameter Name="sobrenome" ControlID="SobrenomeCli" PropertyName="Text"/>
-      <asp:ControlParameter Name="sexo" ControlID="sexoCli" PropertyName="Value"/>
+      <asp:ControlParameter Name="sexo" ControlID="sexoCli" PropertyName="SelectedValue"/>
       <asp:ControlParameter Name="email" ControlID="emailCli" PropertyName="Text"/>
+      <asp:ControlParameter Name="cpf" ControlID="cpfCli" PropertyName="Text"/>
+      <asp:ControlParameter Name="telefone" ControlID="telCli" PropertyName="Text"/>
+      <asp:ControlParameter Name="cep" ControlID="cepCli" PropertyName="Text"/>
+      <asp:ControlParameter Name="bairro" ControlID="bairroCli" PropertyName="Text"/>
+      <asp:ControlParameter Name="uf" ControlID="ufCli" PropertyName="Text"/>
+      <asp:ControlParameter Name="cidade" ControlID="cidadeCli" PropertyName="Text"/>
+      <asp:ControlParameter Name="endereco" ControlID="residenciaCli" PropertyName="Text"/>
+      <asp:Parameter Name="dataNasc"/>
     </InsertParameters>
   </asp:SqlDataSource>
 

@@ -14,18 +14,12 @@ public partial class pt_br_app_clientes : System.Web.UI.Page
 
     }
     protected void cadastrar(object sender, EventArgs e){
-      // Preparing Data For SqlInsert
-      novoCliente.InsertParameters["cpf"].DefaultValue
-      = cpfCli.Text.Replace('.','');
+      //Converting date to international format
 
-      novoCliente.InsertParameters["dataNasc"].DefaultValue
-      = Convert.ToDateTime(dataNascCli.Text).ToString("yyyy/MM/dd");
+      novoCliente.InsertParameters["dataNasc"].DefaultValue =
+        Convert.ToDateTime(dtNascCli.Text).ToString("yyyy/MM/dd");
 
-      novoCliente.InsertParameters["cep"].DefaultValue
-      = cepCli.Text.Replace('.','');
 
-      novoCliente.InsertParameters["telefone"].DefaultValue
-      = telCli.Text.Replace('-','');
-
+      novoCliente.Insert();
     }
 }
