@@ -68,7 +68,7 @@
           <i class="material-icons">more_vert</i>
         </button>
         <ul class="mdl-menu mdl-js-menu mdl-js-ripple-effect mdl-menu--bottom-right" for="card-cli-options">
-            <li class="mdl-menu__item"><i  Esconder</li>
+            <li class="mdl-menu__item">Esconder</li>
             <li class="mdl-menu__item">Fixar</li>
         </ul>
       </div>
