@@ -4,11 +4,50 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Data;
+using System.IO;
 
 public partial class pt_br_app_servico : System.Web.UI.Page
 {
+  int lastCliID;
+
     protected void Page_Load(object sender, EventArgs e)
     {
-      
+
+    }
+
+    protected void cadastrarCliente(object sender, EventArgs e){
+      //Converting date to international format
+      cliente.InsertParameters["dataNasc"].DefaultValue =
+        Convert.ToDateTime(dtNascCli.Text).ToString("yyyy/MM/dd");
+
+      cliente.Insert();
+      //Recording id from insertion
+      DataView lastInsertedCli =
+        (DataView)cliente.Select(DataSourceSelectArguments.Empty);
+
+      lastCliID = Convert.ToInt32(lastInsertedCli.Table.Rows[0]["MAX(id_cli)"].ToString());
+    }
+    protected void pesquisarCliente(object sender, EventArgs e){
+        DataView cliente = (DataView)clientePesq.Select(DataSourceSelectArguments.Empty);
+
+        if(cliente.Table.Rows.Count > 0){
+          nomeCliPesq.Text = cliente.Table.Rows[0]["nome_cli"].ToString();
+          SobrenomeCliPesq.Text = cliente.Table.Rows[0]["sobrenome_cli"].ToString();
+          dtNascCliPesq.Text = cliente.Table.Rows[0]["dtnasc_cli"].ToString();
+          cpfCliPesq.Text = cliente.Table.Rows[0]["cpf_cli"].ToString();
+          // sexo
+          telCliPesq.Text = cliente.Table.Rows[0]["telefone_cli"].ToString();
+          emailCliPesq.Text = cliente.Table.Rows[0]["cep_cli"].ToString();
+          bairroCliPesq.Text = cliente.Table.Rows[0]["bairro_cli"].ToString();
+          cidadeCliPesq.Text = cliente.Table.Rows[0]["cidade_cli"].ToString();
+          ufCliPesq.Text = cliente.Table.Rows[0]["uf_cli"].ToString();
+          residenciaCliPesq.Text = cliente.Table.Rows[0]["residencia_cli"].ToString();
+          //Setting Id cli as current cli
+          lastCliID = Convert.ToInt32(cliente.Table.Rows[0]["id_cliente"].ToString());
+        }else{
+          Response.Write("<script>alert('Parece que esse cliente não foi registrado')</script>");
+          pesqCliente.Text = String.Empty;
+        }
     }
 }

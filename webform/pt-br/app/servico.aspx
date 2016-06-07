@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="servico.aspx.cs" Inherits="pt_br_app_servico" MasterPageFile="~/pt-br/app/index.master"%>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="servico.aspx.cs" Inherits="pt_br_app_servico" MasterPageFile="~/pt-br/app/index.master"  EnableEventValidation="false" MaintainScrollPositionOnPostBack="True"%>
 
 <asp:Content ContentplaceholderID="indexBodyPlaceholder" runat="server">
   <style media="screen">
@@ -82,50 +82,74 @@
             <h2 class="mdl-card__title-text">Pesquisar um Cliente</h2>
           </div>
           <div class="card-content mdl-grid mdl-cell mdl-cell--12-col">
-            <form class="mdl-cell mdl-cell--12-col mdl-grid" id="newClient" autocomplete="on">
+              <div class="mdl-cell mdl-cell--12-col">
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--7-col mdl-cell--1-offset-desktop mdl-cell-4-col-phone">
+                  <asp:TextBox ID="pesqCliente" type="text" class="mdl-textfield__input" runat="server" onblur="pesquisarCliente" ></asp:TextBox>
+                  <label class="mdl-textfield__label" for="pesqCliente">Nome da Pesquisa</label>
+                </div>
+                <asp:Button runat="server" id="btnPesqCli" OnClick="pesquisarCliente" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" Text="Pesquisar"></asp:Button>
+
+              </div>
+
               <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--3-col mdl-cell-4-col-phone">
-                <asp:TextBox ID="nomePesqCli" type="text" class="mdl-textfield__input" runat="server" ></asp:TextBox>
-                <label class="mdl-textfield__label" for="nomePesqCli">Nome</label>
+                <asp:TextBox ID="nomeCliPesq" type="text" class="mdl-textfield__input" runat="server" onblur="pesquisarCliente" ></asp:TextBox>
+                <label class="mdl-textfield__label" for="nomeCliPesq">Nome</label>
               </div>
               <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--4-col mdl-cell-4-col-phone">
-                <asp:TextBox ID="sobrenomePesqCli" type="text" class="mdl-textfield__input" runat="server" ></asp:TextBox>
-                <label class="mdl-textfield__label" for="sobrenomePesqCli">Sobrenome</label>
+                <asp:TextBox ID="SobrenomeCliPesq" type="text" class="mdl-textfield__input" runat="server" ></asp:TextBox>
+                <label class="mdl-textfield__label" for="SobrenomeCliPesq">Sobrenome</label>
               </div>
               <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--2-col mdl-cell-4-col-phone">
-                <asp:TextBox ID="dtNascPesqCli" type="text" class="mdl-textfield__input" runat="server" onkeypress="mascara(this, '##/##/####')"></asp:TextBox>
-                <label class="mdl-textfield__label" for="dtNascPesqCli">Nascimento</label>
+                <asp:TextBox ID="dtNascCliPesq" type="text" class="mdl-textfield__input" runat="server" onkeypress="mascara(this, '##/##/####')"></asp:TextBox>
+                <label class="mdl-textfield__label" for="dtNascCliPesq">Nascimento</label>
               </div>
               <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--3-col mdl-cell-4-col-phone">
-                <asp:TextBox id="cpfPesqCli" type="text" class="mdl-textfield__input" runat="server" pattern="[0-9,.,-]*" onkeypress="mascara(this,'###.###.###-##')" onblur="validateCpf();"></asp:TextBox>
-                <label class="mdl-textfield__label" for="cpfPesqCli">CPF</label>
+                <asp:TextBox id="cpfCliPesq" type="text" class="mdl-textfield__input" runat="server" pattern="[0-9,.,-]*" onkeypress="mascara(this,'###.###.###-##')" onblur="validateCpf();"></asp:TextBox>
+                <label class="mdl-textfield__label" for="cpfCliPesq">CPF</label>
                 <span class="mdl-textfield__error">Ultilize apenas números</span>
               </div>
+
               <div class="mdl-textfield mdl-cell mdl-cell--3-col mdl-cell-4-col-phone">
-                <label class="simpleLabeldd" for="sexoPesqCli">Sexo</label>
-                <asp:DropDownList ID="sexoPesqCli" runat="server" class="dropdown">
+                <label class="simpleLabeldd" for="sexoCliPesq">Sexo</label>
+                <asp:DropDownList ID="sexoCliPesq" runat="server" class="dropdown">
                   <asp:ListItem Text="Masculino" Value="M"/>
                   <asp:ListItem Text="Feminino" Value="F"/>
                 </asp:DropDownList>
               </div>
               <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--3-col mdl-cell-4-col-phone">
-                <asp:TextBox ID="telPesqCli" type="text" class="mdl-textfield__input" runat="server"></asp:TextBox>
-                <label class="mdl-textfield__label" for="telPesqCli">Telefone</label>
+                <asp:TextBox ID="telCliPesq" type="text" class="mdl-textfield__input" pattern="[0-9, ,-]*" runat="server" onkeypress="mascara(this,'## #####-###')"></asp:TextBox>
+                <label class="mdl-textfield__label" for="telCliPesq">Telefone</label>
               </div>
               <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--3-col mdl-cell-4-col-phone">
-                <asp:TextBox ID="emailPesqCli" type="text" class="mdl-textfield__input" runat="server"></asp:TextBox>
-                <label class="mdl-textfield__label" for="emailPesqCli">Email</label>
+                <asp:TextBox ID="emailCliPesq" type="text" class="mdl-textfield__input" runat="server"></asp:TextBox>
+                <label class="mdl-textfield__label" for="emailCliPesq">Email</label>
               </div>
               <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--3-col mdl-cell-4-col-phone">
-                <asp:TextBox ID="cepPesqCli" type="text" class="mdl-textfield__input" runat="server" pattern="[0-9,-]*" onkeypress="mascara(this,'#####-###')" onblur="pesquisacep()"></asp:TextBox>
-                <label class="mdl-textfield__label" for="cepPesqCli">CEP</label>
+                <asp:TextBox ID="cepCliPesq" type="text" class="mdl-textfield__input" runat="server" pattern="[0-9,-]*" onkeypress="mascara(this,'#####-###')" onblur="pesquisacep()"></asp:TextBox>
+                <label class="mdl-textfield__label" for="cepCliPesq">CEP</label>
                 <span class="mdl-textfield__error">Ultilize apenas números</span>
               </div>
 
-              <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--1-offset-desktop mdl-cell--10-col mdl-cell-4-col-phone">
-                <asp:TextBox ID="residenciaPesqCli" TextMode="multiline" class="mdl-textfield__input" rows="4" runat="server"></asp:TextBox>
-                <label class="mdl-textfield__label" for="residenciaPesqCli">Residência</label>
+              <!-- ADDED FULL ENDERECO -->
+              <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--3-col mdl-cell--1-offset-desktop mdl-cell-4-col-phone">
+                <asp:TextBox ID="bairroCliPesq" type="text" class="mdl-textfield__input" runat="server" ></asp:TextBox>
+                <label class="mdl-textfield__label" for="bairroCliPesq">Bairro</label>
               </div>
-            </form>
+
+              <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--3-col mdl-cell-4-col-phone">
+                <asp:TextBox ID="cidadeCliPesq" type="text" class="mdl-textfield__input" runat="server" ></asp:TextBox>
+                <label class="mdl-textfield__label" for="cidadeCliPesq">Cidade</label>
+              </div>
+
+              <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--4-col mdl-cell-4-col-phone">
+                <asp:TextBox ID="ufCliPesq" type="text" class="mdl-textfield__input" runat="server" ></asp:TextBox>
+                <label class="mdl-textfield__label" for="ufCliPesq">U.F.</label>
+              </div>
+
+              <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--1-offset-desktop mdl-cell--10-col mdl-cell-4-col-phone">
+                <asp:TextBox ID="residenciaCliPesq" TextMode="multiline" class="mdl-textfield__input" rows="4" runat="server"></asp:TextBox>
+                <label class="mdl-textfield__label" for="residenciaCliPesq">Residência</label>
+              </div>
           </div>
           <div class="mdl-card__actions mdl-card--border">
             <asp:Button  runat="server" id="usarPesqCli" Text="Ultilizar" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
@@ -141,7 +165,6 @@
             <h2 class="mdl-card__title-text">Cadastrando um Novo Cliente</h2>
           </div>
           <div class="card-content mdl-grid mdl-cell mdl-cell--12-col">
-            <form class="mdl-cell mdl-cell--12-col mdl-grid" id="newClient" autocomplete="on">
               <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--3-col mdl-cell-4-col-phone">
                 <asp:TextBox ID="nomeCli" type="text" class="mdl-textfield__input" runat="server" ></asp:TextBox>
                 <label class="mdl-textfield__label" for="nomeCli">Nome</label>
@@ -159,6 +182,7 @@
                 <label class="mdl-textfield__label" for="cpfCli">CPF</label>
                 <span class="mdl-textfield__error">Ultilize apenas números</span>
               </div>
+
               <div class="mdl-textfield mdl-cell mdl-cell--3-col mdl-cell-4-col-phone">
                 <label class="simpleLabeldd" for="sexoCli">Sexo</label>
                 <asp:DropDownList ID="sexoCli" runat="server" class="dropdown">
@@ -167,7 +191,7 @@
                 </asp:DropDownList>
               </div>
               <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--3-col mdl-cell-4-col-phone">
-                <asp:TextBox ID="telCli" type="text" class="mdl-textfield__input" runat="server"></asp:TextBox>
+                <asp:TextBox ID="telCli" type="text" class="mdl-textfield__input" pattern="[0-9, ,-]*" runat="server" onkeypress="mascara(this,'## #####-###')"></asp:TextBox>
                 <label class="mdl-textfield__label" for="telCli">Telefone</label>
               </div>
               <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--3-col mdl-cell-4-col-phone">
@@ -180,14 +204,30 @@
                 <span class="mdl-textfield__error">Ultilize apenas números</span>
               </div>
 
+              <!-- ADDED FULL ENDERECO -->
+              <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--3-col mdl-cell--1-offset-desktop mdl-cell-4-col-phone">
+                <asp:TextBox ID="bairroCli" type="text" class="mdl-textfield__input" runat="server" ></asp:TextBox>
+                <label class="mdl-textfield__label" for="bairroCli">Bairro</label>
+              </div>
+
+              <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--3-col mdl-cell-4-col-phone">
+                <asp:TextBox ID="cidadeCli" type="text" class="mdl-textfield__input" runat="server" ></asp:TextBox>
+                <label class="mdl-textfield__label" for="cidadeCli">Cidade</label>
+              </div>
+
+              <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--4-col mdl-cell-4-col-phone">
+                <asp:TextBox ID="ufCli" type="text" class="mdl-textfield__input" runat="server" ></asp:TextBox>
+                <label class="mdl-textfield__label" for="ufCli">U.F.</label>
+              </div>
+
               <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--1-offset-desktop mdl-cell--10-col mdl-cell-4-col-phone">
                 <asp:TextBox ID="residenciaCli" TextMode="multiline" class="mdl-textfield__input" rows="4" runat="server"></asp:TextBox>
                 <label class="mdl-textfield__label" for="residenciaCli">Residência</label>
               </div>
-            </form>
+
           </div>
           <div class="mdl-card__actions mdl-card--border">
-            <asp:Button  runat="server" ID="novoCliente" Text="Cadastrar e Ultilizar" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+            <asp:Button  runat="server" ID="novoCliente" Text="Cadastrar e Ultilizar"  OnClick="cadastrarCliente" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
             </asp:Button>
             <a id="newCliCancelar" onclick="showCard('none','newCli')" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
               cancelar
@@ -415,7 +455,41 @@
     <div class="mdl-snackbar__text"></div>
     <button type="button" class="mdl-snackbar__action"></button>
   </div>
+  <!-- DataSource -->
 
+  <asp:SqlDataSource ID="cliente" runat="server"
+   ConnectionString="<%$ ConnectionStrings:amaralguinchoConnectionString %>"
+   ProviderName="<%$ ConnectionStrings:amaralguinchoConnectionString.ProviderName %>"
+   SelectCommand="SELECT MAX(id_cli) FROM cliente"
+   InsertCommand="INSERT INTO cliente
+    (nome_cli, sobrenome_cli, cpf_cli, email_cli, sx_cli, telefone_cli, dtnasc_cli, cep_cli, bairro_cli, cid_cli, uf_cli, endereco_cli)
+     VALUES
+     (@nome, @sobrenome, @cpf, @email, @sexo, @telefone, @dataNasc, @cep, @bairro, @cidade, @uf, @endereco)">
+    <InsertParameters>
+      <asp:ControlParameter Name="nome" ControlID="nomeCli" PropertyName="Text"/>
+      <asp:ControlParameter Name="sobrenome" ControlID="SobrenomeCli" PropertyName="Text"/>
+      <asp:ControlParameter Name="sexo" ControlID="sexoCli" PropertyName="SelectedValue"/>
+      <asp:ControlParameter Name="email" ControlID="emailCli" PropertyName="Text"/>
+      <asp:ControlParameter Name="cpf" ControlID="cpfCli" PropertyName="Text"/>
+      <asp:ControlParameter Name="telefone" ControlID="telCli" PropertyName="Text"/>
+      <asp:ControlParameter Name="cep" ControlID="cepCli" PropertyName="Text"/>
+      <asp:ControlParameter Name="bairro" ControlID="bairroCli" PropertyName="Text"/>
+      <asp:ControlParameter Name="uf" ControlID="ufCli" PropertyName="Text"/>
+      <asp:ControlParameter Name="cidade" ControlID="cidadeCli" PropertyName="Text"/>
+      <asp:ControlParameter Name="endereco" ControlID="residenciaCli" PropertyName="Text"/>
+      <asp:Parameter Name="dataNasc"/>
+    </InsertParameters>
+  </asp:SqlDataSource>
+
+  <asp:SqlDataSource ID="clientePesq" runat="server"
+   ConnectionString="<%$ ConnectionStrings:amaralguinchoConnectionString %>"
+   ProviderName="<%$ ConnectionStrings:amaralguinchoConnectionString.ProviderName %>"
+   SelectCommand="SELECT id_cli, nome_cli, sobrenome_cli, cpf_cli, email_cli, sx_cli, telefone_cli, dtnasc_cli, cep_cli, bairro_cli, cid_cli, uf_cli, endereco_cli
+   FROM cliente WHERE (nome_cli=@nome)">
+   <SelectParameters>
+    <asp:ControlParameter Name="nome" ControlID="pesqCliente" PropertyName="Text"/>
+   </SelectParameters>
+  </asp:SqlDataSource>
 
   <script src="../scripts/cpf.min.js" charset="utf-8"></script>
   <script>
@@ -553,18 +627,33 @@ function pesquisacep() {
   function meu_callback(conteudo) {
       if (!("erro" in conteudo)) {
         var residencia = document.getElementById('<%=residenciaCli.ClientID%>');
+        var uf = document.getElementById('<%=ufCli.ClientID%>');
+        var cidade = document.getElementById('<%=cidadeCli.ClientID%>');
+        var bairro = document.getElementById('<%=bairroCli.ClientID%>');
+
+
           //Atualiza os campos com os valores.
-          residencia.value=(conteudo.logradouro) +
-          ", " + (conteudo.bairro) +
-          ", " + (conteudo.localidade) +
-          ", " + (conteudo.uf);
+          residencia.value=(conteudo.logradouro);
+          uf.value =  (conteudo.uf);
+          cidade.value = (conteudo.localidade);
+          bairro.value = (conteudo.bairro);
       }
       else {
           //CEP não Encontrado.
           var residencia = document.getElementById('<%=residenciaCli.ClientID%>');
-          residencia.value="CEP não encontrado";
+          var uf = document.getElementById('<%=ufCli.ClientID%>');
+          var cidade = document.getElementById('<%=cidadeCli.ClientID%>');
+          var bairro = document.getElementById('<%=bairroCli.ClientID%>');
+
+
+            //Atualiza os campos com os valores.
+            residencia.value="Não Encontrado";
+            uf.value =  "Não Encontrado";
+            cidade.value = "Não Encontrado";
+            bairro.value = "Não Encontrado";
       }
   }
+
   function pesquisaCepDestino() {
       var valor = document.getElementById('cepViagemDestino').value;
       //Nova variável "cep" somente com dígitos.
