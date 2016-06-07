@@ -58,4 +58,8 @@ public partial class pt_br_app_servico : System.Web.UI.Page
       veiculo.InsertParameters["cliente"].DefaultValue = Session["cli"].ToString();
       veiculo.Insert();
     }
+
+    protected void newViagem(object sender, EventArgs e){
+      viagem.Insert();
+    }
 }

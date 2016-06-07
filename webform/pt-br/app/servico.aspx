@@ -317,11 +317,11 @@
 
       <div class="opcao mdl-cell mdl-cell--12-col">
         <h2 class="mdl-card__title-text">Selecione um Sinistro</h2>
-        <a ID="sinistroExistente" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" onclick="showCard('newSinistro','searchSinistro')">
-          Usar um sinistro Existênte
-        </a>
-        <a ID="sinistroNovo" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" onclick="showCard('searchSinistro','newSinistro')">
+        <a ID="sinistroNovo" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" onclick="showCard('newSinistro','searchSinistro')">
           Criar um novo Sinistro
+        </a>
+        <a ID="sinistroExistente" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" onclick="showCard('searchSinistro','newSinistro')">
+          Usar um sinistro Existênte
         </a>
       </div>
 
@@ -430,7 +430,7 @@
           </form>
         </div>
         <div class="mdl-card__actions">
-          <asp:Button Text="Adicionar" id="registrarViagem" runat="server" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+          <asp:Button Text="Adicionar" id="registrarViagem" onclick="newViagem" runat="server" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
           </asp:Button>
           <a id="newCliCancelar" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" onclick="showCard('none','newViagem')">
             cancelar
@@ -510,6 +510,26 @@
       <asp:ControlParameter Name="cor" ControlID="corVeiculo" PropertyName="Text"/>
       <asp:ControlParameter Name="ano" ControlID="anoVeiculo" PropertyName="Text"/>
       <asp:Parameter Name="cliente"/>
+    </InsertParameters>
+  </asp:SqlDataSource>
+
+  <asp:SqlDataSource ID="viagem" runat="server"
+  ConnectionString="<%$ ConnectionStrings:amaralguinchoConnectionString %>"
+  ProviderName="<%$ ConnectionStrings:amaralguinchoConnectionString.ProviderName %>"
+  InsertCommand="INSERT INTO viagem
+  (enderecoS_viagem, cidadeS_viagem, ufS_viagem, enderecoC_viagem, cidadeC_viagem, ufC_viagem)
+  VALUES
+   (@enderecoSaida, @cidadeSaida, @ufSaida, @enderecoChegada, @cidadeChegada, @ufChegada)"
+   SelectCommand="SELECT MAX(id_viagem) from viagem">
+    <InsertParameters>
+      <asp:ControlParameter Name="bairroSaida" ControlID="bairroViagemPartida" PropertyName="Text"/>
+      <asp:ControlParameter Name="cidadeSaida" ControlID="cidViagemPartida" PropertyName="Text"/>
+      <asp:ControlParameter Name="ufSaida" ControlID="ufViagemPartida" PropertyName="Text"/>
+      <asp:ControlParameter Name="enderecoSaida" ControlID="endViagemDestino" PropertyName="Text"/>
+      <asp:ControlParameter Name="bairroChegada" ControlID="bairroViagemDestino" PropertyName="Text"/>
+      <asp:ControlParameter Name="cidadeChegada" ControlID="cidViagemDestino" PropertyName="Text"/>
+      <asp:ControlParameter Name="ufChegada" ControlID="ufViagemDestino" PropertyName="Text"/>
+      <asp:ControlParameter Name="enderecoChegada" ControlID="endViagemDestino" PropertyName="Text"/>
     </InsertParameters>
   </asp:SqlDataSource>
 
