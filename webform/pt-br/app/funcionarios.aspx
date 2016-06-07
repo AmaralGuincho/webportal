@@ -4,6 +4,7 @@
   <style media="screen">
 
   </style>
+  <form runat="server">
   <div class="mdl-grid card-box">
 
     <div class="mdl-textfield mdl-js-textfield mdl-cell mdl-cell--12-col">
@@ -62,7 +63,7 @@
         <h2 class="mdl-card__title-text">Cadastrando um Novo Funcionário</h2>
       </div>
       <div class="card-content mdl-grid mdl-cell mdl-cell--12-col">
-        <form class="mdl-cell mdl-cell--12-col mdl-grid" id="newFuncent" autocomplete="on" runat="server">
+        <form class="mdl-cell mdl-cell--12-col mdl-grid" id="newFuncent" autocomplete="off">
 
           <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--3-col mdl-cell-4-col-phone">
             <asp:TextBox ID="nomeFunc" type="text" class="mdl-textfield__input" runat="server" ></asp:TextBox>
@@ -73,7 +74,7 @@
             <label class="mdl-textfield__label" for="SobrenomeFunc">Sobrenome</label>
           </div>
           <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--2-col mdl-cell-4-col-phone">
-            <asp:TextBox ID="dtNascFunc" type="text" class="mdl-textfield__input" runat="server" onkeypress="mascara(this, '##/##/####')"></asp:TextBox>
+            <asp:TextBox ID="dtNascFunc" type="date" class="mdl-textfield__input" runat="server" placeholder=" "></asp:TextBox>
             <label class="mdl-textfield__label" for="dtNascFunc">Nascimento</label>
           </div>
           <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--3-col mdl-cell-4-col-phone">
@@ -96,6 +97,7 @@
           <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--3-col mdl-cell-4-col-phone">
             <asp:TextBox ID="emailFunc" class="mdl-textfield__input" type="email" runat="server"></asp:TextBox>
             <label class="mdl-textfield__label" for="emailFunc">Email</label>
+            <span class="mdl-textfield__error">Insira um email Válido</span>
           </div>
           <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--3-col mdl-cell-4-col-phone">
             <asp:TextBox ID="cepFunc" type="text" class="mdl-textfield__input" runat="server" pattern="[0-9,-]*" onkeypress="mascara(this,'#####-###')" onblur="pesquisacep()"></asp:TextBox>
@@ -119,17 +121,14 @@
             <label class="mdl-textfield__label" for="ufFunc">U.F.</label>
           </div>
 
-          <!-- TODO -->
-          <!-- Watting for Db Master add residencia_func -->
-          <!-- <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--1-offset-desktop mdl-cell--10-col mdl-cell-4-col-phone">
+          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--1-offset-desktop mdl-cell--10-col mdl-cell-4-col-phone">
             <asp:TextBox ID="residenciaFunc" TextMode="multiline" class="mdl-textfield__input" rows="4" runat="server"></asp:TextBox>
             <label class="mdl-textfield__label" for="residenciaFunc">Residência</label>
-          </div> -->
-          <!-- END TODO -->
+          </div>
 
           <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--3-col mdl-cell--3-offset-desktop mdl-cell-4-col-phone">
-            <asp:TextBox ID="contratacaoFunc" type="text" class="mdl-textfield__input" pattern="[0-9,/]*" runat="server" onkeypress="mascara(this,'##/##/####')"></asp:TextBox>
-            <label class="mdl-textfield__label" for="emailFunc">Data de Contratação</label>
+            <asp:TextBox ID="contratacaoFunc" type="date" class="mdl-textfield__input" runat="server" placeholder=" "></asp:TextBox>
+            <label class="mdl-textfield__label" for="contatacaoFunc">Data de Contratação</label>
           </div>
 
           <div class="mdl-textfield mdl-cell mdl-cell--3-col mdl-cell-4-col-phone">
@@ -142,13 +141,14 @@
           </div>
 
           <!-- Cadastrando as informações de um Motorista -->
+
           <div class="mdl-grid mdl-cell mdl-cell--12-col" id="HabMot" style="display:none;" >
             <div class="titulo mdl-cell mdl-cell--12-col">
               <h2 class="mdl-card__title-text">Habilitação</h2>
             </div>
             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--8-col mdl-cell-4-col-phone">
               <asp:TextBox ID="nomeHabMot" type="text" class="mdl-textfield__input" runat="server" ></asp:TextBox>
-              <label class="mdl-textfield__label" for="SobrenomeMot">Nome</label>
+              <label class="mdl-textfield__label" for="nomeHabMot">Nome</label>
             </div>
             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--4-col mdl-cell-4-col-phone">
               <asp:TextBox ID="idHabMot" type="text" class="mdl-textfield__input" runat="server" ></asp:TextBox>
@@ -159,7 +159,7 @@
               <label class="mdl-textfield__label" for="registroHabMot">Registro</label>
             </div>
             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--4-col mdl-cell-4-col-phone">
-              <asp:TextBox ID="validadeHabMot" type="text" class="mdl-textfield__input" pattern="[0-9,/]*" runat="server" onkeypress="mascara(this,'##/##/####')"></asp:TextBox>
+              <asp:TextBox ID="validadeHabMot" type="date" placeholder=" " class="mdl-textfield__input" pattern="[0-9,/]*" runat="server" onkeypress="mascara(this,'##/##/####')"></asp:TextBox>
               <label class="mdl-textfield__label" for="validadeHabMot">Validade</label>
             </div>
             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--4-col mdl-cell-4-col-phone">
@@ -167,16 +167,15 @@
               <label class="mdl-textfield__label" for="localGeradoHabMot">Local Gerado</label>
             </div>
             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--4-col mdl-cell-4-col-phone">
-              <asp:TextBox ID="emissaoHabMot" type="text" class="mdl-textfield__input" runat="server" ></asp:TextBox>
+              <asp:TextBox ID="emissaoHabMot" type="date" placeholder=" " class="mdl-textfield__input" runat="server" ></asp:TextBox>
               <label class="mdl-textfield__label" for="emissaoHabMot">Emissão</label>
             </div>
           </div>
         </form>
       </div>
       <div class="mdl-card__actions mdl-card--border">
-        <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
-          Cadastrar
-        </a>
+        <asp:Button runat="server" Text="Cadastrar" OnClick="cadastrar" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+        </asp:Button>
         <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
           Cancelar
         </a>
@@ -191,8 +190,8 @@
         </ul>
       </div>
     </div>
-
   </div>
+  </form>
 
   <button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored mdl-color--red mdl-color-text--white" id="fabButton">
     <i class="material-icons">add</i>
@@ -203,6 +202,52 @@
     <div class="mdl-snackbar__text"></div>
     <button type="button" class="mdl-snackbar__action"></button>
   </div>
+
+
+  <!-- Sql Scripts -->
+  <asp:SqlDataSource ID="novoFuncionario" runat="server"
+   ConnectionString="<%$ ConnectionStrings:amaralguinchoConnectionString %>"
+   ProviderName="<%$ ConnectionStrings:amaralguinchoConnectionString.ProviderName %>"
+   InsertCommand="INSERT INTO funcionario
+    (id_cargo, nome_func, sobrenome_func, cpf_func, email_func, sx_func, tel_func, dtnasc_func, cep_func, bairro_func, residencia_func, uf_func, cid_func, dtcont_func)
+     VALUES
+     (@cargo, @nome, @sobrenome, @cpf, @email, @sexo, @telefone, @dataNasc, @cep, @bairro, @residencia, @uf, @cidade, @dataContratacao)"
+     SelectCommand="SELECT MAX(id_func) FROM funcionario">
+    <InsertParameters>
+      <asp:ControlParameter Name="nome" ControlID="nomeFunc" PropertyName="Text"/>
+      <asp:ControlParameter Name="sobrenome" ControlID="SobrenomeFunc" PropertyName="Text"/>
+      <asp:ControlParameter Name="sexo" ControlID="sexoFunc" PropertyName="SelectedValue"/>
+      <asp:ControlParameter Name="email" ControlID="emailFunc" PropertyName="Text"/>
+      <asp:ControlParameter Name="cpf" ControlID="cpfFunc" PropertyName="Text"/>
+      <asp:ControlParameter Name="telefone" ControlID="telFunc" PropertyName="Text"/>
+      <asp:ControlParameter Name="cep" ControlID="cepFunc" PropertyName="Text"/>
+      <asp:ControlParameter Name="residencia" ControlID="residenciaFunc" PropertyName="Text"/>
+      <asp:ControlParameter Name="bairro" ControlID="bairroFunc" PropertyName="Text"/>
+      <asp:ControlParameter Name="cidade" ControlID="cidadeFunc" PropertyName="Text"/>
+      <asp:ControlParameter Name="uf" ControlID="ufFunc" PropertyName="Text"/>
+      <asp:ControlParameter Name="cargo" ControlID="cargoFunc" PropertyName="SelectedValue" Type="Int16"/>
+      <asp:Parameter Name="dataNasc"/>
+      <asp:Parameter Name="dataContratacao"/>
+    </InsertParameters>
+  </asp:SqlDataSource>
+
+  <asp:SqlDataSource ID="novoMotorista" runat="server"
+   ConnectionString="<%$ ConnectionStrings:amaralguinchoConnectionString %>"
+   ProviderName="<%$ ConnectionStrings:amaralguinchoConnectionString.ProviderName %>"
+   InsertCommand="INSERT INTO motorista
+    (id_func, nome_hab, idhab_hab, nregistro_hab, validade_hab, local_hab, dtemissao_hab)
+    VALUES
+    (@id, @nomeHab, @idHab, @registroHab, @dtValidadeHab, @localHab, @dtEmissaoHab)">
+    <InsertParameters>
+      <asp:ControlParameter Name="nomeHab" ControlID="nomeHabMot" PropertyName="Text"/>
+      <asp:ControlParameter Name="idHab" ControlID="idHabMot" PropertyName="Text"/>
+      <asp:ControlParameter Name="registroHab" ControlID="registroHabMot" PropertyName="Text"/>
+      <asp:ControlParameter Name="localHab" ControlID="localGeradoHabMot" PropertyName="Text"/>
+      <asp:Parameter Name="dtEmissaoHab"/>
+      <asp:Parameter Name="dtValidadeHab"/>
+      <asp:Parameter Name="id"/>
+    </InsertParameters>
+  </asp:SqlDataSource>
 
   <script src="../scripts/cpf.min.js" charset="utf-8"></script>
 
@@ -279,7 +324,7 @@ function pesquisacep() {
 
 
           //Atualiza os campos com os valores.
-          residencia.value=(conteudo.logradouro);
+          residencia.value = (conteudo.logradouro);
           uf.value =  (conteudo.uf);
           cidade.value = (conteudo.localidade);
           bairro.value = (conteudo.bairro);
