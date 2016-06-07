@@ -19,11 +19,37 @@
         <h2 class="mdl-card__title-text">Funcionários Recentes</h2>
       </div>
       <div class="card-content mdl-grid mdl-cell mdl-cell--12-col">
+        <table class="mdl-data-table mdl-data-table--selectable mdl-js-data-table mdl-cell mdl-cell--12-col mdl-cell--8-tablet">
+          <tr class="funcionario1">
+            <td class="mdl-data-table__cell--non-numeric">
+              <img id="imgFunc1" runat="server" src="../images/profiles/generic.png" class="avatar"/>
+            </td>
+            <td class="mdl-data-table__cell--non-numeric">
+              <label id="nomeFunc1" runat="server" >Ainda Não Temos Dados Suficientes</label>
+            </td>
+          </tr>
+          <tr class="funcionario2">
+            <td class="mdl-data-table__cell--non-numeric">
+              <img id="imgFunc2" runat="server" src="../images/profiles/generic.png" class="avatar"/>
+            </td>
+            <td class="mdl-data-table__cell--non-numeric">
+              <label id="nomeFunc2" runat="server" >Ainda Não Temos Dados Suficientes</label>
+            </td>
+          </tr>
+          <tr class="funcionario3">
+            <td class="mdl-data-table__cell--non-numeric">
+              <img id="imgFunc3" runat="server" src="../images/profiles/generic.png" class="avatar"/>
+            </td>
+            <td class="mdl-data-table__cell--non-numeric">
+              <label id="nomeFunc3" runat="server">Ainda Não Temos Dados Suficientes</label>
+            </td>
+          </tr>
+        </table>
       </div>
       <div class="mdl-card__actions">
-        <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+        <!-- <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
           Ver Mais
-        </a>
+        </a> -->
       </div>
       <div class="mdl-card__menu">
         <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect" id="card-Func-options" UseSubmitBehavior="False">
@@ -41,12 +67,38 @@
         <h2 class="mdl-card__title-text">Sugestões</h2>
       </div>
       <div class="card-content mdl-grid mdl-cell mdl-cell--12-col">
+        <table class="mdl-data-table mdl-data-table--selectable mdl-js-data-table mdl-cell mdl-cell--12-col mdl-cell--8-tablet">
+          <tr class="funcionario1">
+            <td class="mdl-data-table__cell--non-numeric">
+              <img id="imgFuncSegestao1" runat="server" src="../images/profiles/generic.png" class="avatar"/>
+            </td>
+            <td class="mdl-data-table__cell--non-numeric">
+              <label id="nomeFuncSegestao1" runat="server" >Ainda Não Temos Dados Suficientes</label>
+            </td>
+          </tr>
+          <tr class="funcionario2">
+            <td class="mdl-data-table__cell--non-numeric">
+              <img id="imgFuncSegestao2" runat="server" src="../images/profiles/generic.png" class="avatar"/>
+            </td>
+            <td class="mdl-data-table__cell--non-numeric">
+              <label id="nomeFuncSegestao2" runat="server" >Ainda Não Temos Dados Suficientes</label>
+            </td>
+          </tr>
+          <tr class="funcionario3">
+            <td class="mdl-data-table__cell--non-numeric">
+              <img id="imgFuncSegestao3" runat="server" src="../images/profiles/generic.png" class="avatar"/>
+            </td>
+            <td class="mdl-data-table__cell--non-numeric">
+              <label id="nomeFuncSegestao3" runat="server">Ainda Não Temos Dados Suficientes</label>
+            </td>
+          </tr>
+        </table>
       </div>
-      <div class="mdl-card__actions">
+      <!-- <div class="mdl-card__actions">
         <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
           Ver Mais
         </a>
-      </div>
+      </div> -->
       <div class="mdl-card__menu">
         <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect" id="card-sugestao-options">
           <i class="material-icons">more_vert</i>
@@ -229,6 +281,13 @@
       <asp:Parameter Name="dataNasc"/>
       <asp:Parameter Name="dataContratacao"/>
     </InsertParameters>
+  </asp:SqlDataSource>
+
+  <asp:SqlDataSource
+  ID="lattestFuncionarios" runat="server"
+  ConnectionString="<%$ ConnectionStrings:amaralguinchoConnectionString %>"
+  ProviderName="<%$ ConnectionStrings:amaralguinchoConnectionString.ProviderName %>"
+  SelectCommand="SELECT img_func, nome_func, sobrenome_func, tel_func FROM funcionario WHERE id_cargo BETWEEN 1 and 2 ORDER BY id_func DESC LIMIT 3">
   </asp:SqlDataSource>
 
   <asp:SqlDataSource ID="novoMotorista" runat="server"
