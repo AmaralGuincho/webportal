@@ -9,7 +9,6 @@ using System.IO;
 
 public partial class pt_br_app_servico : System.Web.UI.Page
 {
-  int lastCliID;
 
     protected void Page_Load(object sender, EventArgs e)
     {
@@ -26,9 +25,10 @@ public partial class pt_br_app_servico : System.Web.UI.Page
       DataView lastInsertedCli =
         (DataView)cliente.Select(DataSourceSelectArguments.Empty);
 
-      lastCliID = Convert.ToInt32(lastInsertedCli.Table.Rows[0]["MAX(id_cli)"].ToString());
+      Session["cli"] = Convert.ToInt32(lastInsertedCli.Table.Rows[0]["MAX(id_cli)"].ToString());
     }
     protected void pesquisarCliente(object sender, EventArgs e){
+      try{
         DataView cliente = (DataView)clientePesq.Select(DataSourceSelectArguments.Empty);
 
         if(cliente.Table.Rows.Count > 0){
@@ -40,14 +40,22 @@ public partial class pt_br_app_servico : System.Web.UI.Page
           telCliPesq.Text = cliente.Table.Rows[0]["telefone_cli"].ToString();
           emailCliPesq.Text = cliente.Table.Rows[0]["cep_cli"].ToString();
           bairroCliPesq.Text = cliente.Table.Rows[0]["bairro_cli"].ToString();
-          cidadeCliPesq.Text = cliente.Table.Rows[0]["cidade_cli"].ToString();
+          cidadeCliPesq.Text = cliente.Table.Rows[0]["cid_cli"].ToString();
           ufCliPesq.Text = cliente.Table.Rows[0]["uf_cli"].ToString();
-          residenciaCliPesq.Text = cliente.Table.Rows[0]["residencia_cli"].ToString();
+          residenciaCliPesq.Text = cliente.Table.Rows[0]["endereco_cli"].ToString();
           //Setting Id cli as current cli
-          lastCliID = Convert.ToInt32(cliente.Table.Rows[0]["id_cliente"].ToString());
+          Session["cli"] = Convert.ToInt32(cliente.Table.Rows[0]["id_cli"].ToString());
         }else{
           Response.Write("<script>alert('Parece que esse cliente não foi registrado')</script>");
           pesqCliente.Text = String.Empty;
         }
+      }
+      catch(Exception ex){}
+    }
+
+    protected void novoVeiculo(object sender, EventArgs e){
+      //Setting Current cli as car owner
+      veiculo.InsertParameters["cliente"].DefaultValue = Session["cli"].ToString();
+      veiculo.Insert();
     }
 }

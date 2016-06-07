@@ -255,14 +255,19 @@
             <label class="mdl-textfield__label" for="modeloVeiculo">Modelo Veículo</label>
           </div>
           <div class="mdl-textfield mdl-js-textfield mdl-cell mdl-cell--2-col">
-            <asp:TextBox runat="server" class="mdl-textfield__input" type="text" id="placaVeiculo" pattern="[0-9,-]*" onkeydown="mascara(this,'###-####')"></asp:TextBox>
+            <asp:TextBox runat="server" class="mdl-textfield__input" type="text" id="placaVeiculo" pattern="[0-9,A-Z,-]*" onkeydown="mascara(this,'###-####')"></asp:TextBox>
             <label class="mdl-textfield__label" for="placaVeiculo">Placa</label>
             <span class="mdl-textfield__error">Tente ultilizar apenas números</span>
           </div>
           <div class="mdl-textfield mdl-js-textfield mdl-cell mdl-cell--3-col">
-            <asp:TextBox runat="server" class="mdl-textfield__input" type="text" id="anoVeiculo" pattern="[0-9,/]*" onkeypress="mascara(this,'####')"></asp:TextBox>
+            <asp:TextBox runat="server" class="mdl-textfield__input" type="text" id="anoVeiculo" pattern="[0-9]*"></asp:TextBox>
             <label class="mdl-textfield__label" for="anoVeiculo">Ano de Fabricação</label>
             <span class="mdl-textfield__error">Tente ultilizar apenas números</span>
+          </div>
+          <div class="mdl-textfield mdl-js-textfield mdl-cell mdl-cell--4-col">
+            <asp:TextBox runat="server" class="mdl-textfield__input" type="text" id="fabricanteVeiculo"></asp:TextBox>
+            <label class="mdl-textfield__label" for="fabricanteVeiculo">Fabricante</label>
+            <span class="mdl-textfield__error">Digite o Nome do fabricante</span>
           </div>
           <div class="mdl-textfield mdl-js-textfield mdl-cell mdl-cell--3-col">
             <asp:TextBox runat="server" class="mdl-textfield__input" type="text" id="corVeiculo"></asp:TextBox>
@@ -270,7 +275,7 @@
           </div>
         </div>
         <div class="mdl-card__actions">
-          <asp:Button Text="Ultilizar" id="btnNewVeiculo" runat="server" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+          <asp:Button Text="Ultilizar" id="btnNewVeiculo" runat="server" onclick="novoVeiculo" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
           </asp:Button>
           <a id="newCliCancelar" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" onclick="showCard('none','newVeiculo')">
             cancelar
@@ -302,7 +307,7 @@
         <div class="mdl-grid">
           <div class="mdl-textfield mdl-js-textfield mdl-cell mdl-cell--12-col">
             <asp:DropDownList ID="seguroServico" runat="server" class="dropdown">
-              <asp:ListItem Text="Bradesco" value="1"/>
+              <asp:ListItem Text="Bradesco" Value="1"/>
               <asp:ListItem Text="Sul América" Value="2"/>
               <asp:ListItem Text="itau" Value="3"/>
             </asp:DropDownList>
@@ -489,6 +494,23 @@
    <SelectParameters>
     <asp:ControlParameter Name="nome" ControlID="pesqCliente" PropertyName="Text"/>
    </SelectParameters>
+  </asp:SqlDataSource>
+
+  <asp:SqlDataSource ID="veiculo" runat="server"
+  ConnectionString="<%$ ConnectionStrings:amaralguinchoConnectionString %>"
+  ProviderName="<%$ ConnectionStrings:amaralguinchoConnectionString.ProviderName %>"
+  InsertCommand="INSERT INTO veiculo
+  (id_cli, fabricante_veiculo, modelo_veiculo, ano_veiculo, placa_veiculo, cor_veiculo)
+  VALUES
+  (@cliente, @fabricante, @modelo, @ano, @placa, @cor)">
+    <InsertParameters>
+      <asp:ControlParameter Name="fabricante" ControlID="fabricanteVeiculo" PropertyName="Text"/>
+      <asp:ControlParameter Name="modelo" ControlID="modeloVeiculo" PropertyName="Text"/>
+      <asp:ControlParameter Name="placa" ControlID="placaVeiculo" PropertyName="Text"/>
+      <asp:ControlParameter Name="cor" ControlID="corVeiculo" PropertyName="Text"/>
+      <asp:ControlParameter Name="ano" ControlID="anoVeiculo" PropertyName="Text"/>
+      <asp:Parameter Name="cliente"/>
+    </InsertParameters>
   </asp:SqlDataSource>
 
   <script src="../scripts/cpf.min.js" charset="utf-8"></script>
