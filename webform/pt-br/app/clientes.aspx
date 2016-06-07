@@ -19,12 +19,48 @@
         <h2 class="mdl-card__title-text">Clientes Recentes</h2>
       </div>
       <div class="card-content mdl-grid mdl-cell mdl-cell--12-col">
+        <table class="mdl-data-table mdl-data-table--selectable mdl-js-data-table mdl-cell mdl-cell--12-col mdl-cell--8-tablet">
+          <tr class="client1">
+            <td class="mdl-data-table__cell--non-numeric">
+              <img id="imgCli1" runat="server" src="../images/profiles/generic.png" class="avatar"/>
+            </td>
+            <td class="mdl-data-table__cell--non-numeric">
+              <label id="nomeCli1" runat="server">Ainda Não Temos Dados Suficientes</label>
+            </td>
+            <td class="mdl-cell mdl-cell--hide-phone">
+              <label id="telCli1" runat="server">--</label>
+            </td>
+          </tr>
+          <tr class="client2">
+            <td class="mdl-data-table__cell--non-numeric">
+              <img id="imgCli2" runat="server" src="../images/profiles/generic.png" class="avatar"/>
+            </td>
+            <td class="mdl-data-table__cell--non-numeric">
+              <label id="nomeCli2" runat="server">Ainda Não Temos Dados Suficientes</label>
+            </td>
+            <td class="mdl-cell mdl-cell--hide-phone">
+              <label id="telCli2"  runat="server">--</label>
+            </td>
+          </tr>
+          <tr class="client3">
+            <td class="mdl-data-table__cell--non-numeric">
+              <img id="imgCli3" runat="server" src="../images/profiles/generic.png" class="avatar"/>
+            </td>
+            <td class="mdl-data-table__cell--non-numeric">
+              <label id="nomeCli3" runat="server">Ainda Não Temos Dados Suficientes</label>
+            </td>
+            <td class="mdl-cell mdl-cell--hide-phone">
+              <label id="telCli3" runat="server">--</label>
+            </td>
+          </tr>
+        </table>
       </div>
-      <div class="mdl-card__actions">
+      <!-- TODO C# CODE TO GENERATE TABLES -->
+      <!-- <div class="mdl-card__actions">
         <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
           Ver Mais
         </a>
-      </div>
+      </div> -->
       <div class="mdl-card__menu">
         <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect" id="card-cli-options" UseSubmitBehavior="False">
           <i class="material-icons">more_vert</i>
@@ -41,12 +77,47 @@
         <h2 class="mdl-card__title-text">Sugestões</h2>
       </div>
       <div class="card-content mdl-grid mdl-cell mdl-cell--12-col">
+        <table class="mdl-data-table mdl-data-table--selectable mdl-js-data-table mdl-cell mdl-cell--12-col mdl-cell--8-tablet">
+          <tr class="client1">
+            <td class="mdl-data-table__cell--non-numeric">
+              <img id="imgCliSugestao1" runat="server" src="../images/profiles/generic.png" class="avatar"/>
+            </td>
+            <td class="mdl-data-table__cell--non-numeric">
+              <label id="nomeCliSugestao1" runat="server">Ainda Não Temos Dados Suficientes</label>
+            </td>
+            <td class="mdl-cell mdl-cell--hide-phone">
+              <label id="telCliSugestao1" runat="server">--</label>
+            </td>
+          </tr>
+          <tr class="client2">
+            <td class="mdl-data-table__cell--non-numeric">
+              <img id="imgCliSugestao2" runat="server" src="../images/profiles/generic.png" class="avatar"/>
+            </td>
+            <td class="mdl-data-table__cell--non-numeric">
+              <label id="nomeCliSugestao2" runat="server">Ainda Não Temos Dados Suficientes</label>
+            </td>
+            <td class="mdl-cell mdl-cell--hide-phone">
+              <label id="telCliSugestao2"  runat="server">--</label>
+            </td>
+          </tr>
+          <tr class="client3">
+            <td class="mdl-data-table__cell--non-numeric">
+              <img id="imgCliSugestao3" runat="server" src="../images/profiles/generic.png" class="avatar"/>
+            </td>
+            <td class="mdl-data-table__cell--non-numeric">
+              <label id="nomeCliSugestao3" runat="server">Ainda Não Temos Dados Suficientes</label>
+            </td>
+            <td class="mdl-cell mdl-cell--hide-phone">
+              <label id="telCliSugestao3" runat="server">--</label>
+            </td>
+          </tr>
+        </table>
       </div>
-      <div class="mdl-card__actions">
+      <!-- <div class="mdl-card__actions">
         <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
           Ver Mais
         </a>
-      </div>
+      </div> -->
       <div class="mdl-card__menu">
         <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect" id="card-sugestao-options">
           <i class="material-icons">more_vert</i>
@@ -156,9 +227,10 @@
     <button type="button" class="mdl-snackbar__action"></button>
   </div>
 
-  <asp:SqlDataSource ID="novoCliente" runat="server"
+  <asp:SqlDataSource ID="cliente" runat="server"
    ConnectionString="<%$ ConnectionStrings:amaralguinchoConnectionString %>"
    ProviderName="<%$ ConnectionStrings:amaralguinchoConnectionString.ProviderName %>"
+   SelectCommand="SELECT img_cli, nome_cli, sobrenome_cli, telefone_cli FROM cliente ORDER BY id_cli DESC LIMIT 3"
    InsertCommand="INSERT INTO cliente
     (nome_cli, sobrenome_cli, cpf_cli, email_cli, sx_cli, telefone_cli, dtnasc_cli, cep_cli, bairro_cli, cid_cli, uf_cli, endereco_cli)
      VALUES
