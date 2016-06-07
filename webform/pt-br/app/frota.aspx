@@ -4,6 +4,7 @@
   <style media="screen">
 
   </style>
+  <form runat="server">
   <div class="mdl-grid card-box">
 
     <div class="mdl-textfield mdl-js-textfield mdl-cell mdl-cell--12-col">
@@ -62,9 +63,9 @@
         <h2 class="mdl-card__title-text">Cadastrando um Novo Veículo</h2>
       </div>
       <div class="card-content mdl-grid mdl-cell mdl-cell--12-col">
-        <form class="mdl-cell mdl-cell--12-col mdl-grid" id="newClient" autocomplete="on" runat="server">
+        <form class="mdl-cell mdl-cell--12-col mdl-grid" id="newClient" autocomplete="off">
 
-          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--3-col mdl-cell-4-col-phone">
+          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--4-col mdl-cell-4-col-phone">
             <asp:TextBox ID="nomeFrota" type="text" class="mdl-textfield__input" runat="server" ></asp:TextBox>
             <label class="mdl-textfield__label" for="nomeFrota">Apelido(opcional)</label>
           </div>
@@ -72,9 +73,10 @@
             <asp:TextBox ID="modeloFrota" type="text" class="mdl-textfield__input" runat="server" ></asp:TextBox>
             <label class="mdl-textfield__label" for="modeloFrota">Modelo</label>
           </div>
-          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--2-col mdl-cell-4-col-phone">
-            <asp:TextBox ID="anoFrota" type="text" class="mdl-textfield__input" runat="server" onkeypress="mascara(this, '##/##/####')"></asp:TextBox>
+          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--4-col mdl-cell-4-col-phone">
+            <asp:TextBox ID="anoFrota" type="text" class="mdl-textfield__input" pattern="[0-9]*" runat="server"></asp:TextBox>
             <label class="mdl-textfield__label" for="anoFrota">Ano</label>
+            <span class="mdl-textfield__error">Digite apenas o ano</span>
           </div>
           <div class="mdl-textfield mdl-cell mdl-cell--4-col mdl-cell-4-col-phone">
             <label class="simpleLabeldd" for="tipoFrota">Tipo</label>
@@ -97,12 +99,16 @@
           </div>
 
           <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--3-col mdl-cell-4-col-phone">
+            <asp:TextBox ID="corFrota" type="text" class="mdl-textfield__input" runat="server"></asp:TextBox>
+            <label class="mdl-textfield__label" for="corFrota">Cor</label>
+          </div>
+
+          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--3-col mdl-cell-4-col-phone">
         </form>
       </div>
       <div class="mdl-card__actions mdl-card--border">
-        <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
-          Cadastrar
-        </a>
+        <asp:Button ID="cadastroFrota" OnClick="cadastro" Text="Cadastrar" runat="server" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+        </asp:Button>
         <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
           Cancelar
         </a>
@@ -117,6 +123,7 @@
         </ul>
       </div>
     </div>
+  </form>
 
   </div>
 
@@ -129,6 +136,24 @@
     <div class="mdl-snackbar__text"></div>
     <button type="button" class="mdl-snackbar__action"></button>
   </div>
+
+  <asp:SqlDataSource ID="frota" runat="server"
+  ConnectionString="<%$ ConnectionStrings:amaralguinchoConnectionString %>"
+  ProviderName="<%$ ConnectionStrings:amaralguinchoConnectionString.ProviderName %>"
+  InsertCommand="INSERT INTO frota
+  (nome_frota, modelo_frota, ano_frota, fabricante_frota, tipo_frota, placa_frota, cor_frota)
+  VALUES
+  (@nome, @modelo, @ano, @fabricante, @tipo, @placa, @cor)">
+    <InsertParameters>
+      <asp:ControlParameter Name="nome" ControlID="nomeFrota" PropertyName="Text"/>
+      <asp:ControlParameter Name="modelo" ControlID="modeloFrota" PropertyName="Text"/>
+      <asp:ControlParameter Name="ano" ControlID="anoFrota" PropertyName="Text"/>
+      <asp:ControlParameter Name="fabricante" ControlID="fabricanteFrota" PropertyName="Text"/>
+      <asp:ControlParameter Name="tipo" ControlID="tipoFrota" PropertyName="SelectedValue"/>
+      <asp:ControlParameter Name="placa" ControlID="placaFrota" PropertyName="Text"/>
+      <asp:ControlParameter Name="cor" ControlID="corFrota" PropertyName="Text"/>
+    </InsertParameters>
+  </asp:SqlDataSource>
 
   <script src="../scripts/cpf.min.js" charset="utf-8"></script>
 

@@ -11,4 +11,8 @@ public partial class pt_br_app_frota : System.Web.UI.Page
     {
 
     }
+    protected void cadastro(object sender, EventArgs e){
+      frota.Insert();
+      Response.Redirect("~/pt-br/app/home.aspx");
+    }
 }
