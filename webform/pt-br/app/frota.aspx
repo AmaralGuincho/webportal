@@ -19,12 +19,47 @@
         <h2 class="mdl-card__title-text">Veículos Recentes</h2>
       </div>
       <div class="card-content mdl-grid mdl-cell mdl-cell--12-col">
+        <table class="mdl-data-table mdl-data-table--selectable mdl-js-data-table mdl-cell mdl-cell--12-col mdl-cell--8-tablet">
+            <tr class="frota1">
+              <td class="mdl-data-table__cell--non-numeric">
+                <img runat="server" id="imgFrota1" src="" class="avatar"/>
+              </td>
+              <td class="mdl-data-table__cell--non-numeric">
+                <label id="nomeFrota1" runat="server">IVECO 3</label>
+              </td>
+              <td class="mdl-cell mdl-data-table__cell--non-numeric mdl-cell--hide-phone mdl-cell--hide-desktop">
+                <label id="statusFrota1" runat="server">Disponível</label>
+              </td>
+            </tr>
+            <tr class="frota2">
+              <td class="mdl-data-table__cell--non-numeric">
+                <img runat="server" id="imgFrota2" class="avatar"/>
+              </td>
+              <td class="mdl-data-table__cell--non-numeric">
+                <label id="nomeFrota2" runat="server">IVECO 1</label>
+              </td>
+              <td class="mdl-cell mdl-data-table__cell--non-numeric mdl-cell--hide-phone mdl-cell--hide-desktop">
+                <label id="statusFrota2" runat="server">Disponível</label>
+              </td>
+            </tr>
+            <tr class="frota3">
+              <td class="mdl-data-table__cell--non-numeric">
+                <img runat="server" id="imgFrota3" class="avatar"/>
+              </td>
+              <td class="mdl-data-table__cell--non-numeric">
+                <label id="nomeFrota3" runat="server">Mercedes 1</label>
+              </td>
+              <td class="mdl-cell mdl-data-table__cell--non-numeric mdl-cell--hide-phone mdl-cell--hide-desktop">
+                <label id="statusFrota3" runat="server">Em Serviço</label>
+              </td>
+            </tr>
+        </table>
       </div>
-      <div class="mdl-card__actions">
+      <!-- <div class="mdl-card__actions">
         <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
           Ver Mais
         </a>
-      </div>
+      </div> -->
       <div class="mdl-card__menu">
         <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect" id="card-cli-options" UseSubmitBehavior="False">
           <i class="material-icons">more_vert</i>
@@ -41,12 +76,47 @@
         <h2 class="mdl-card__title-text">Sugestões</h2>
       </div>
       <div class="card-content mdl-grid mdl-cell mdl-cell--12-col">
+        <table class="mdl-data-table mdl-data-table--selectable mdl-js-data-table mdl-cell mdl-cell--12-col mdl-cell--8-tablet">
+            <tr class="frota1">
+              <td class="mdl-data-table__cell--non-numeric">
+                <img runat="server" id="imgFrotaSugestao1" src="../images/profiles/generic.png" class="avatar"/>
+              </td>
+              <td class="mdl-data-table__cell--non-numeric">
+                <label id="nomeFrotaSugestao1" runat="server">Ainda Não temos dados Suficientes</label>
+              </td>
+              <td class="mdl-cell mdl-data-table__cell--non-numeric mdl-cell--hide-phone mdl-cell--hide-desktop">
+                <label id="statusFrotaSugestao1" runat="server">--</label>
+              </td>
+            </tr>
+            <tr class="frota2">
+              <td class="mdl-data-table__cell--non-numeric">
+                <img runat="server" id="imgFrotaSugestao2" src="../images/profiles/generic.png" class="avatar"/>
+              </td>
+              <td class="mdl-data-table__cell--non-numeric">
+                <label id="nomeFrotaSugestao2" runat="server">Ainda Não temos dados Suficientes</label>
+              </td>
+              <td class="mdl-cell mdl-data-table__cell--non-numeric mdl-cell--hide-phone mdl-cell--hide-desktop">
+                <label id="statusFrotaSugestao2" runat="server">--</label>
+              </td>
+            </tr>
+            <tr class="frota3">
+              <td class="mdl-data-table__cell--non-numeric">
+                <img runat="server" id="imgFrotaSugestao3" src="../images/profiles/generic.png" class="avatar"/>
+              </td>
+              <td class="mdl-data-table__cell--non-numeric">
+                <label id="nomeFrotaSugestao3" runat="server">Ainda Não temos dados Suficientes</label>
+              </td>
+              <td class="mdl-cell mdl-data-table__cell--non-numeric mdl-cell--hide-phone mdl-cell--hide-desktop">
+                <label id="statusFrotaSugestao3" runat="server">--</label>
+              </td>
+            </tr>
+        </table>
       </div>
-      <div class="mdl-card__actions">
+      <!-- <div class="mdl-card__actions">
         <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
           Ver Mais
         </a>
-      </div>
+      </div> -->
       <div class="mdl-card__menu">
         <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect" id="card-sugestao-options">
           <i class="material-icons">more_vert</i>
@@ -153,6 +223,13 @@
       <asp:ControlParameter Name="placa" ControlID="placaFrota" PropertyName="Text"/>
       <asp:ControlParameter Name="cor" ControlID="corFrota" PropertyName="Text"/>
     </InsertParameters>
+  </asp:SqlDataSource>
+
+  <asp:SqlDataSource
+  ID="lattestFrota" runat="server"
+  ConnectionString="<%$ ConnectionStrings:amaralguinchoConnectionString %>"
+  ProviderName="<%$ ConnectionStrings:amaralguinchoConnectionString.ProviderName %>"
+  SelectCommand="SELECT nome_frota, img_frota, placa_frota FROM frota ORDER BY id_frota DESC LIMIT 3">
   </asp:SqlDataSource>
 
   <script src="../scripts/cpf.min.js" charset="utf-8"></script>
