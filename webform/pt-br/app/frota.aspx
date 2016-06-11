@@ -14,12 +14,12 @@
     </div>
 
 
-    <div class="card mdl-card mdl-shadow--4dp mdl-cell mdl-cell--6-col-desktop mdl-cell--1-offset-tablet mdl-cell--6-col-tablet mdl-cell--4-col-phone mdl-grid" id="cardCli">
+    <div class="card mdl-card mdl-shadow--4dp mdl-cell mdl-cell--6-col-desktop mdl-cell--8-col-tablet mdl-cell--4-col-phone mdl-grid" id="cardCli">
       <div class="mdl-card__title mdl-cell mdl-cell--12-col">
         <h2 class="mdl-card__title-text">Veículos Recentes</h2>
       </div>
-      <div class="card-content mdl-grid mdl-cell mdl-cell--12-col">
-        <table class="mdl-data-table mdl-data-table--selectable mdl-js-data-table mdl-cell mdl-cell--12-col mdl-cell--8-tablet">
+      <div class="card-content mdl-grid mdl-cell mdl-cell--12-col-desktop mdl-cell--8-col-tablet mdl-cell-4-col-phone">
+        <table class="mdl-data-table mdl-data-table--selectable mdl-js-data-table mdl-cell mdl-cell--12-col-desktop mdl-cell--8-col-tablet">
             <tr class="frota1">
               <td class="mdl-data-table__cell--non-numeric">
                 <img runat="server" id="imgFrota1" src="" class="avatar"/>
@@ -71,7 +71,7 @@
       </div>
     </div>
 
-    <div class="card mdl-card mdl-shadow--4dp mdl-cell mdl-cell--6-col-desktop mdl-cell--1-offset-tablet mdl-cell--6-col-tablet mdl-cell--4-col-phone mdl-grid" id="sugestaoCli">
+    <div class="card mdl-card mdl-shadow--4dp mdl-cell mdl-cell--6-col-desktop mdl-cell--8-col-tablet mdl-cell--4-col-phone mdl-grid" id="sugestaoCli">
       <div class="mdl-card__title mdl-cell mdl-cell--12-col">
         <h2 class="mdl-card__title-text">Sugestões</h2>
       </div>
@@ -128,7 +128,7 @@
       </div>
     </div>
 
-    <div class="card mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col-desktop mdl-cell--1-offset-tablet mdl-cell--6-col-tablet mdl-cell--4-col-phone mdl-grid" id="addCli">
+    <div class="card mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col-desktop mdl-cell--8-col-tablet mdl-cell--4-col-phone mdl-grid" id="addCli">
       <div class="mdl-card__title mdl-cell mdl-cell--12-col">
         <h2 class="mdl-card__title-text">Cadastrando um Novo Veículo</h2>
       </div>
@@ -158,22 +158,20 @@
             </asp:DropDownList>
           </div>
 
-          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--3-col mdl-cell-4-col-phone">
+          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--3-col-desktop mdl-cell-4-col-phone">
             <asp:TextBox ID="fabricanteFrota" type="text" class="mdl-textfield__input" runat="server" ></asp:TextBox>
             <label class="mdl-textfield__label" for="fabricanteFrota">Fabricante</label>
           </div>
 
-          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--2-col mdl-cell-4-col-phone">
+          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--2-col-desktop mdl-cell-4-col-phone">
             <asp:TextBox ID="placaFrota" type="text" class="mdl-textfield__input" runat="server" onkeypress="mascara(this,'###-####')"></asp:TextBox>
             <label class="mdl-textfield__label" for="placaFrota">Placa</label>
           </div>
 
-          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--3-col mdl-cell-4-col-phone">
+          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--3-col-desktop mdl-cell-4-col-phone">
             <asp:TextBox ID="corFrota" type="text" class="mdl-textfield__input" runat="server"></asp:TextBox>
             <label class="mdl-textfield__label" for="corFrota">Cor</label>
           </div>
-
-          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--3-col mdl-cell-4-col-phone">
         </form>
       </div>
       <div class="mdl-card__actions mdl-card--border">
