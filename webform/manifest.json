@@ -1,0 +1,27 @@
+{
+  "manifest_version": 2,
+  "name": "Amaral Guincho",
+  "version": "1.0",
+
+  "default_locale": "pt-br",
+  "description": "A XXI century manager for Amaral Guincho",
+  "icons":{
+    "16": "pt-br/images/logotipo_flat.png",
+    "48": "pt-br/images/logotipo_flat.png",
+    "128": "pt-br/images/logotipo_flat.png"
+  },
+
+  "page_action": {
+    "default_icon": "pt-br/images/logotipo_flat.png"
+  },
+
+  "author": "io.Etep",
+  "background": {
+    "persistent": false
+  },
+  "homepage_url": "http://pt-br/index.html",
+  "ofline_enabled": false,
+  "ominibox":{
+    "keyword": "Amaral Guincho"
+  }
+}
