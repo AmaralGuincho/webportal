@@ -198,29 +198,31 @@
             <div class="titulo mdl-cell mdl-cell--12-col">
               <h2 class="mdl-card__title-text">Habilitação</h2>
             </div>
-            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--8-col mdl-cell-4-col-phone">
-              <asp:TextBox ID="nomeHabMot" type="text" class="mdl-textfield__input" runat="server" ></asp:TextBox>
-              <label class="mdl-textfield__label" for="nomeHabMot">Nome</label>
-            </div>
-            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--4-col mdl-cell-4-col-phone">
-              <asp:TextBox ID="idHabMot" type="text" class="mdl-textfield__input" runat="server" ></asp:TextBox>
-              <label class="mdl-textfield__label" for="idHabMot">Identidade</label>
-            </div>
-            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--4-col mdl-cell-4-col-phone">
-              <asp:TextBox ID="registroHabMot" type="text" class="mdl-textfield__input" runat="server" ></asp:TextBox>
-              <label class="mdl-textfield__label" for="registroHabMot">Registro</label>
-            </div>
-            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--4-col mdl-cell-4-col-phone">
-              <asp:TextBox ID="validadeHabMot" type="date" placeholder=" " class="mdl-textfield__input" pattern="[0-9,/]*" runat="server" onkeypress="mascara(this,'##/##/####')"></asp:TextBox>
-              <label class="mdl-textfield__label" for="validadeHabMot">Validade</label>
-            </div>
-            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--4-col mdl-cell-4-col-phone">
-              <asp:TextBox ID="localGeradoHabMot" type="text" class="mdl-textfield__input" runat="server" ></asp:TextBox>
-              <label class="mdl-textfield__label" for="localGeradoHabMot">Local Gerado</label>
-            </div>
-            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--4-col mdl-cell-4-col-phone">
-              <asp:TextBox ID="emissaoHabMot" type="date" placeholder=" " class="mdl-textfield__input" runat="server" ></asp:TextBox>
-              <label class="mdl-textfield__label" for="emissaoHabMot">Emissão</label>
+            <div class="card-content mdl-cell mdl-cell--12-col mdl-grid">
+              <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--4-col mdl-cell-4-col-phone">
+                <asp:TextBox ID="nomeHabMot" type="text" class="mdl-textfield__input" runat="server" ></asp:TextBox>
+                <label class="mdl-textfield__label" for="nomeHabMot">Nome</label>
+              </div>
+              <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--4-col mdl-cell-4-col-phone">
+                <asp:TextBox ID="idHabMot" type="text" class="mdl-textfield__input" runat="server" ></asp:TextBox>
+                <label class="mdl-textfield__label" for="idHabMot">Identidade</label>
+              </div>
+              <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--4-col mdl-cell-4-col-phone">
+                <asp:TextBox ID="registroHabMot" type="text" class="mdl-textfield__input" runat="server" ></asp:TextBox>
+                <label class="mdl-textfield__label" for="registroHabMot">Registro</label>
+              </div>
+              <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--4-col mdl-cell-4-col-phone">
+                <asp:TextBox ID="validadeHabMot" type="date" placeholder=" " class="mdl-textfield__input" pattern="[0-9,/]*" runat="server" onkeypress="mascara(this,'##/##/####')"></asp:TextBox>
+                <label class="mdl-textfield__label" for="validadeHabMot">Validade</label>
+              </div>
+              <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--4-col mdl-cell-4-col-phone">
+                <asp:TextBox ID="localGeradoHabMot" type="text" class="mdl-textfield__input" runat="server" ></asp:TextBox>
+                <label class="mdl-textfield__label" for="localGeradoHabMot">Local Gerado</label>
+              </div>
+              <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--4-col mdl-cell-4-col-phone">
+                <asp:TextBox ID="emissaoHabMot" type="date" placeholder=" " class="mdl-textfield__input" runat="server" ></asp:TextBox>
+                <label class="mdl-textfield__label" for="emissaoHabMot">Emissão</label>
+              </div>
             </div>
           </div>
         </form>
