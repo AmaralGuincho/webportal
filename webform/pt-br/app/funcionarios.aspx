@@ -14,12 +14,12 @@
     </div>
 
 
-    <div class="card mdl-card mdl-shadow--4dp mdl-cell mdl-cell--6-col-desktop mdl-cell--1-offset-tablet mdl-cell--6-col-tablet mdl-cell--4-col-phone mdl-grid" id="cardFunc">
+    <div class="card mdl-card mdl-shadow--4dp mdl-cell mdl-cell--6-col-desktop mdl-cell--8-col-tablet mdl-cell--4-col-phone mdl-grid" id="cardFunc">
       <div class="mdl-card__title mdl-cell mdl-cell--12-col">
         <h2 class="mdl-card__title-text">Funcionários Recentes</h2>
       </div>
       <div class="card-content mdl-grid mdl-cell mdl-cell--12-col">
-        <table class="mdl-data-table mdl-data-table--selectable mdl-js-data-table mdl-cell mdl-cell--12-col mdl-cell--8-tablet">
+        <table class="mdl-data-table mdl-data-table--selectable mdl-js-data-table mdl-cell mdl-cell--12-col">
           <tr class="funcionario1">
             <td class="mdl-data-table__cell--non-numeric">
               <img id="imgFunc1" runat="server" src="../images/profiles/generic.png" class="avatar"/>
@@ -62,7 +62,7 @@
       </div>
     </div>
 
-    <div class="card mdl-card mdl-shadow--4dp mdl-cell mdl-cell--6-col-desktop mdl-cell--1-offset-tablet mdl-cell--6-col-tablet mdl-cell--4-col-phone mdl-grid" id="sugestaoFunc">
+    <div class="card mdl-card mdl-shadow--4dp mdl-cell mdl-cell--6-col-desktop mdl-cell--8-col-tablet mdl-cell--4-col-phone mdl-grid" id="sugestaoFunc">
       <div class="mdl-card__title mdl-cell mdl-cell--12-col">
         <h2 class="mdl-card__title-text">Sugestões</h2>
       </div>
@@ -73,7 +73,7 @@
               <img id="imgFuncSegestao1" runat="server" src="../images/profiles/generic.png" class="avatar"/>
             </td>
             <td class="mdl-data-table__cell--non-numeric">
-              <label id="nomeFuncSegestao1" runat="server" >Ainda Não Temos Dados Suficientes</label>
+              <label id="nomeFuncSegestao1" runat="server" >Não existem dados suficientes</label>
             </td>
           </tr>
           <tr class="funcionario2">
@@ -81,7 +81,7 @@
               <img id="imgFuncSegestao2" runat="server" src="../images/profiles/generic.png" class="avatar"/>
             </td>
             <td class="mdl-data-table__cell--non-numeric">
-              <label id="nomeFuncSegestao2" runat="server" >Ainda Não Temos Dados Suficientes</label>
+              <label id="nomeFuncSegestao2" runat="server" >Não existem dados suficientes</label>
             </td>
           </tr>
           <tr class="funcionario3">
@@ -89,7 +89,7 @@
               <img id="imgFuncSegestao3" runat="server" src="../images/profiles/generic.png" class="avatar"/>
             </td>
             <td class="mdl-data-table__cell--non-numeric">
-              <label id="nomeFuncSegestao3" runat="server">Ainda Não Temos Dados Suficientes</label>
+              <label id="nomeFuncSegestao3" runat="server">Não existem dados suficientes</label>
             </td>
           </tr>
         </table>
@@ -110,60 +110,60 @@
       </div>
     </div>
 
-    <div class="card mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col-desktop mdl-cell--1-offset-tablet mdl-cell--6-col-tablet mdl-cell--4-col-phone mdl-grid" id="addFunc">
+    <div class="card mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col-desktop mdl-cell--8-col-tablet mdl-cell--4-col-phone mdl-grid" id="addFunc">
       <div class="mdl-card__title mdl-cell mdl-cell--12-col">
         <h2 class="mdl-card__title-text">Cadastrando um Novo Funcionário</h2>
       </div>
       <div class="card-content mdl-grid mdl-cell mdl-cell--12-col">
         <form class="mdl-cell mdl-cell--12-col mdl-grid" id="newFuncent" autocomplete="off">
 
-          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--3-col mdl-cell-4-col-phone">
+          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--3-col-desktop mdl-cell-4-col-phone">
             <asp:TextBox ID="nomeFunc" type="text" class="mdl-textfield__input" runat="server" ></asp:TextBox>
             <label class="mdl-textfield__label" for="nomeFunc">Nome</label>
           </div>
-          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--4-col mdl-cell-4-col-phone">
+          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--4-col-desktop mdl-cell-4-col-phone">
             <asp:TextBox ID="sobrenomeFunc" type="text" class="mdl-textfield__input" runat="server" ></asp:TextBox>
             <label class="mdl-textfield__label" for="SobrenomeFunc">Sobrenome</label>
           </div>
-          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--2-col mdl-cell-4-col-phone">
+          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--2-col-desktop mdl-cell-4-col-phone">
             <asp:TextBox ID="dtNascFunc" type="date" class="mdl-textfield__input" runat="server" placeholder=" "></asp:TextBox>
             <label class="mdl-textfield__label" for="dtNascFunc">Nascimento</label>
           </div>
-          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--3-col mdl-cell-4-col-phone">
+          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--3-col-desktop mdl-cell-4-col-phone">
             <asp:TextBox id="cpfFunc" type="text" class="mdl-textfield__input" runat="server" pattern="[0-9,.,-]*" onkeypress="mascara(this,'###.###.###-##')" onblur="validateCpf();"></asp:TextBox>
             <label class="mdl-textfield__label" for="cpfFunc">CPF</label>
             <span class="mdl-textfield__error">Ultilize apenas números</span>
           </div>
 
-          <div class="mdl-textfield mdl-cell mdl-cell--3-col mdl-cell-4-col-phone">
+          <div class="mdl-textfield mdl-cell mdl-cell--3-col-desktop mdl-cell-4-col-phone">
             <label class="simpleLabeldd" for="sexoFunc">Sexo</label>
             <asp:DropDownList ID="sexoFunc" runat="server" class="dropdown">
               <asp:ListItem Text="Masculino" Value="M"/>
               <asp:ListItem Text="Feminino" Value="F"/>
             </asp:DropDownList>
           </div>
-          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--3-col mdl-cell-4-col-phone">
+          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--3-col-desktop mdl-cell-4-col-phone">
             <asp:TextBox ID="telFunc" type="text" class="mdl-textfield__input" pattern="[0-9, ,-]*" runat="server" onkeypress="mascara(this,'## #####-####')"></asp:TextBox>
             <label class="mdl-textfield__label" for="telFunc">Telefone</label>
           </div>
-          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--3-col mdl-cell-4-col-phone">
+          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--3-col-desktop mdl-cell-4-col-phone">
             <asp:TextBox ID="emailFunc" class="mdl-textfield__input" type="email" runat="server"></asp:TextBox>
             <label class="mdl-textfield__label" for="emailFunc">Email</label>
             <span class="mdl-textfield__error">Insira um email Válido</span>
           </div>
-          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--3-col mdl-cell-4-col-phone">
+          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--3-col-desktop mdl-cell-4-col-phone">
             <asp:TextBox ID="cepFunc" type="text" class="mdl-textfield__input" runat="server" pattern="[0-9,-]*" onkeypress="mascara(this,'#####-###')" onblur="pesquisacep()"></asp:TextBox>
             <label class="mdl-textfield__label" for="cepFunc">CEP</label>
             <span class="mdl-textfield__error">Ultilize apenas números</span>
           </div>
 
           <!-- ADDED FULL ENDERECO -->
-          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--3-col mdl-cell--1-offset-desktop mdl-cell-4-col-phone">
+          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--3-col-desktop mdl-cell--1-offset-desktop mdl-cell-4-col-phone">
             <asp:TextBox ID="bairroFunc" type="text" class="mdl-textfield__input" runat="server" ></asp:TextBox>
             <label class="mdl-textfield__label" for="bairroFunc">Bairro</label>
           </div>
 
-          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--3-col mdl-cell-4-col-phone">
+          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--3-col-desktop mdl-cell-4-col-phone">
             <asp:TextBox ID="cidadeFunc" type="text" class="mdl-textfield__input" runat="server" ></asp:TextBox>
             <label class="mdl-textfield__label" for="cidadeFunc">Cidade</label>
           </div>
@@ -178,12 +178,12 @@
             <label class="mdl-textfield__label" for="residenciaFunc">Residência</label>
           </div>
 
-          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--3-col mdl-cell--3-offset-desktop mdl-cell-4-col-phone">
+          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--3-col-desktop mdl-cell--3-offset-desktop mdl-cell-4-col-phone">
             <asp:TextBox ID="contratacaoFunc" type="date" class="mdl-textfield__input" runat="server" placeholder=" "></asp:TextBox>
             <label class="mdl-textfield__label" for="contatacaoFunc">Data de Contratação</label>
           </div>
 
-          <div class="mdl-textfield mdl-cell mdl-cell--3-col mdl-cell-4-col-phone">
+          <div class="mdl-textfield mdl-cell mdl-cell--3-col-desktop mdl-cell-4-col-phone">
             <label class="simpleLabeldd" for="cargoFunc">Cargo</label>
             <asp:DropDownList ID="cargoFunc" runat="server" class="dropdown" onblur="habilitacao()">
               <asp:ListItem Text="Administrador" Value="1"/>
