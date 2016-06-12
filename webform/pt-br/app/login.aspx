@@ -24,7 +24,7 @@
     <!-- Add to homescreen for Chrome on Android -->
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="application-name" content="Amaral Guincho">
-    <link rel="icon" sizes="192x192" href="../images/icon-white.png">
+    <link rel="icon" sizes="192x192" href="../images/icon.png">
 
     <!-- Tile icon for Win8 (144x144 + tile color) -->
     <meta name="msapplication-TileImage" content="../images/icon-white.png">
