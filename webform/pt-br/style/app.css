@@ -192,6 +192,11 @@ margin-top:-15px;
   right:50px;
   z-index: 3;
 }
+
+.date{
+  margin-top:-5px;
+}
+
 @media (max-width: 720px) {
   #fabButton{
     bottom:10px;
