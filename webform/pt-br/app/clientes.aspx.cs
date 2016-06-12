@@ -63,5 +63,6 @@ public partial class pt_br_app_clientes : System.Web.UI.Page
 
 
       cliente.Insert();
+      Response.Redirect("home.aspx");
     }
 }
