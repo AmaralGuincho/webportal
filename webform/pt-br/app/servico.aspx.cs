@@ -45,6 +45,7 @@ public partial class pt_br_app_servico : System.Web.UI.Page
           residenciaCliPesq.Text = cliente.Table.Rows[0]["endereco_cli"].ToString();
           //Setting Id cli as current cli
           Session["cli"] = Convert.ToInt32(cliente.Table.Rows[0]["id_cli"].ToString());
+          pesqCliente.Text = String.Empty;
         }else{
           Response.Write("<script>alert('Parece que esse cliente não foi registrado')</script>");
           pesqCliente.Text = String.Empty;
@@ -55,11 +56,35 @@ public partial class pt_br_app_servico : System.Web.UI.Page
 
     protected void novoVeiculo(object sender, EventArgs e){
       //Setting Current cli as car owner
-      veiculo.InsertParameters["cliente"].DefaultValue = Session["cli"].ToString();
-      veiculo.Insert();
+      try{
+        if(!string.IsNullOrEmpty(Session["cli"] as string)){
+        veiculo.InsertParameters["cliente"].DefaultValue = Session["cli"].ToString();
+        veiculo.Insert();
+      }else{
+        Response.Write("<script>alert('Cadastre o cliente primeiro!');</script>");
+        modeloVeiculo.Text = String.Empty;
+        placaVeiculo.Text = String.Empty;
+        anoVeiculo.Text = String.Empty;
+        fabricanteVeiculo.Text = String.Empty;
+        corVeiculo.Text = String.Empty;
+      }
+      }catch(Exception ex){}
     }
 
     protected void newViagem(object sender, EventArgs e){
-      viagem.Insert();
+      try{
+        viagem.Insert();
+      }catch(Exception ex){}
+    }
+
+    protected void newSinistro(object sender, EventArgs e){
+      //try{
+        sinistro.Insert();
+        DataView lastSinistro =
+          (DataView)sinistro.Select(DataSourceSelectArguments.Empty);
+
+        Session["sinistro"] = Convert.ToInt32(lastSinistro.Table.Rows[0]["MAX(id_sinistro)"].ToString());
+
+      //}catch(Exception ex){}
     }
 }

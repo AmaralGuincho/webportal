@@ -1,23 +1,9 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="servico.aspx.cs" Inherits="pt_br_app_servico" MasterPageFile="~/pt-br/app/index.master"  EnableEventValidation="false" MaintainScrollPositionOnPostBack="True"%>
 
 <asp:Content ContentplaceholderID="indexBodyPlaceholder" runat="server">
-  <style media="screen">
-    #fabButton{
-      position:fixed;
-      bottom:20px;
-      right:50px;
-      z-index: 3;
-    }
-    @media (max-width: 720px) {
-      #fabButton{
-        bottom:10px;
-        right:10px;
-      }
-    }
-  </style>
 <form  runat="server">
   <div class="mdl-grid card-box">
-    <div class="card mdl-card mdl-shadow--4dp mdl-cell mdl-cell--6-col-desktop mdl-cell--1-offset-tablet mdl-cell--6-col-tablet mdl-cell--4-col-phone mdl-grid" id="cardCli">
+    <div class="card mdl-card mdl-shadow--4dp mdl-cell mdl-cell--6-col-desktop mdl-cell--8-col-tablet mdl-cell--4-col-phone mdl-grid" id="cardCli">
       <div class="mdl-card__title mdl-cell mdl-cell--12-col">
         <h2 class="mdl-card__title-text">Serviços Recentes</h2>
       </div>
@@ -39,7 +25,7 @@
       </div>
     </div>
 
-    <div class="card mdl-card mdl-shadow--4dp mdl-cell mdl-cell--6-col-desktop mdl-cell--1-offset-tablet mdl-cell--6-col-tablet mdl-cell--4-col-phone mdl-grid" id="sugestaoCli">
+    <div class="card mdl-card mdl-shadow--4dp mdl-cell mdl-cell--6-col-desktop mdl-cell--8-col-tablet mdl-cell--4-col-phone mdl-grid" id="sugestaoCli">
       <div class="mdl-card__title mdl-cell mdl-cell--12-col">
         <h2 class="mdl-card__title-text">Ordens de Serviço</h2>
       </div>
@@ -124,12 +110,6 @@
                 <asp:TextBox ID="emailCliPesq" type="text" class="mdl-textfield__input" runat="server"></asp:TextBox>
                 <label class="mdl-textfield__label" for="emailCliPesq">Email</label>
               </div>
-              <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--3-col mdl-cell-4-col-phone">
-                <asp:TextBox ID="cepCliPesq" type="text" class="mdl-textfield__input" runat="server" pattern="[0-9,-]*" onkeypress="mascara(this,'#####-###')" onblur="pesquisacep()"></asp:TextBox>
-                <label class="mdl-textfield__label" for="cepCliPesq">CEP</label>
-                <span class="mdl-textfield__error">Ultilize apenas números</span>
-              </div>
-
               <!-- ADDED FULL ENDERECO -->
               <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--3-col mdl-cell--1-offset-desktop mdl-cell-4-col-phone">
                 <asp:TextBox ID="bairroCliPesq" type="text" class="mdl-textfield__input" runat="server" ></asp:TextBox>
@@ -152,7 +132,7 @@
               </div>
           </div>
           <div class="mdl-card__actions mdl-card--border">
-            <asp:Button  runat="server" id="usarPesqCli" Text="Ultilizar" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+            <asp:Button  runat="server" id="usarPesqCli" Text="Ultilizar" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" autopostback="false">
             </asp:Button>
             <a onclick="showCard('none','searchCli');" id="pesqCliCancelar" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
               cancelar
@@ -282,37 +262,33 @@
           </a>
         </div>
       </div>
-
       <!-- fim veiculo -->
 
-      <div class="opcao mdl-cell mdl-cell--6-col">
-        <div class="mdl-card__title">
+      <!-- Tipo de Servico -->
+      <div class="opcao mdl-cell mdl-cell--12-col">
           <h2 class="mdl-card__title-text">Selecione o Tipo de Serviço</h2>
-        </div>
-        <div class="mdl-grid">
-          <div class="mdl-textfield mdl-js-textfield mdl-cell mdl-cell--12-col">
-            <asp:DropDownList ID="tipoServico" runat="server" class="dropdown mdl-cell mdl-cell--4-col">
-              <asp:ListItem Text="Retirada de Automovel" value="1"/>
-              <asp:ListItem Text="Transporte" Value="2"/>
-              <asp:ListItem Text="SOS-Guincho" Value="3"/>
+          <div class="mdl-textfield mdl-js-textfield mdl-cell mdl-cell--4-col">
+            <label class="simpleLabeldd" for="tipoServico">Tipo de Serviço</label>
+            <asp:DropDownList ID="tipoServico" runat="server" class="dropdown"
+             DataSourceID="servico" DataTextField="tipo_servico" DataValueField="id_servico">
+              <asp:ListItem Text="Servidor Fora fo Ar"/>
+              <asp:ListItem Text="Servidor Fora fo Ar"/>
+              <asp:ListItem Text="Servidor Fora fo Ar"/>
             </asp:DropDownList>
           </div>
-        </div>
       </div>
 
-      <div class="opcao mdl-cell mdl-cell--6-col">
-        <div class="mdl-card__title">
+      <div class="opcao mdl-cell mdl-cell--12-col">
           <h2 class="mdl-card__title-text">Selecione o Seguro</h2>
-        </div>
-        <div class="mdl-grid">
-          <div class="mdl-textfield mdl-js-textfield mdl-cell mdl-cell--12-col">
-            <asp:DropDownList ID="seguroServico" runat="server" class="dropdown">
-              <asp:ListItem Text="Bradesco" Value="1"/>
-              <asp:ListItem Text="Sul América" Value="2"/>
-              <asp:ListItem Text="itau" Value="3"/>
+          <div class="mdl-textfield mdl-js-textfield mdl-cell mdl-cell--3-col">
+            <label class="simpleLabeldd" for="seguroServico">Seguradora</label>
+            <asp:DropDownList ID="seguroServico" runat="server" class="dropdown"
+             DataSourceID="seguro" DataTextField="nome_seguro" DataValueField="id_seguro">
+              <asp:ListItem Text="Servidor Fora do Ar"/>
+              <asp:ListItem Text="Servidor Fora do Ar"/>
+              <asp:ListItem Text="Servidor Fora do Ar"/>
             </asp:DropDownList>
           </div>
-        </div>
       </div>
 
       <div class="opcao mdl-cell mdl-cell--12-col">
@@ -320,12 +296,13 @@
         <a ID="sinistroNovo" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" onclick="showCard('newSinistro','searchSinistro')">
           Criar um novo Sinistro
         </a>
-        <a ID="sinistroExistente" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" onclick="showCard('searchSinistro','newSinistro')">
+        <!--TODO Usar um serviço existente
+         <a ID="sinistroExistente" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" onclick="showCard('searchSinistro','newSinistro')">
           Usar um sinistro Existênte
-        </a>
+        </a> -->
       </div>
 
-      <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col" id="newSinistro" style="display:none;">
+      <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--6-col" id="newSinistro" style="display:none;">
         <div class="mdl-card__title">
           <h2 class="mdl-card__title-text">Novo Sinistro</h2>
         </div>
@@ -338,7 +315,8 @@
           </form>
         </div>
         <div class="mdl-card__actions">
-          <asp:Button Text="Ultilizar" id="sinistroNovo" runat="server" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+          <asp:Button Text="Ultilizar" id="sinistroNovo" runat="server"
+          OnClick="newSinistro" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
           </asp:Button>
           <a id="newCliCancelar" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" onclick="showCard('none','newSinistro')">
             cancelar
@@ -533,13 +511,37 @@
     </InsertParameters>
   </asp:SqlDataSource>
 
+  <asp:SqlDataSource ID="seguro" runat="server"
+    ConnectionString="<%$ ConnectionStrings:amaralguinchoConnectionString %>"
+    ProviderName="<%$ ConnectionStrings:amaralguinchoConnectionString.ProviderName %>"
+    SelectCommand="SELECT id_seguro, nome_seguro FROM seguro">
+  </asp:SqlDataSource>
+
+  <asp:SqlDataSource ID="servico" runat="server"
+    ConnectionString="<%$ ConnectionStrings:amaralguinchoConnectionString %>"
+    ProviderName="<%$ ConnectionStrings:amaralguinchoConnectionString.ProviderName %>"
+    SelectCommand="SELECT id_servico, tipo_servico FROM servico">
+  </asp:SqlDataSource>
+
+  <asp:SqlDataSource ID="sinistro" runat="server"
+    ConnectionString="<%$ ConnectionStrings:amaralguinchoConnectionString %>"
+    ProviderName="<%$ ConnectionStrings:amaralguinchoConnectionString.ProviderName %>"
+    InsertCommand="INSERT INTO sinistro (sinistro) VALUES (@sinistro)"
+    SelectCommand="SELECT MAX(id_sinistro) FROM sinistro">
+    <InsertParameters>
+      <asp:ControlParameter Name="sinistro" ControlID="numeroSinistro" PropertyName="Text"/>
+    </InsertParameters>
+  </asp:SqlDataSource>
+
   <script src="../scripts/cpf.min.js" charset="utf-8"></script>
   <script>
+  window.onload = dontHide();
+
     var dialog = document.querySelector('dialog');
     var showDialogButton = document.querySelector('#fabButton');
     if (! dialog.showModal) {
     dialogPolyfill.registerDialog(dialog);
-  }
+    }
     showDialogButton.addEventListener('click', function() {
     dialog.showModal();
   });
@@ -765,7 +767,39 @@ function pesquisacep() {
     if(reverseCard != 'none'){
       document.getElementById(reverseCard).style.display='none';
     }
+
   }
+
+  function dontHide() {
+    var nomeCliPesq = document.getElementById('<%=nomeCliPesq.ClientID%>');
+    var searchCliCard = document.getElementById('searchCli');
+    var placaVeiculo = document.getElementById('<%=placaVeiculo.ClientID%>');
+    var newVeiculoCard = document.getElementById('newVeiculo');
+    var newSinistroCard = document.getElementById('newSinistro');
+    var sinistro = document.getElementById('<%=numeroSinistro.ClientID%>');
+
+    if(nomeCliPesq.value != ''){
+      searchCliCard.style.display = "block";
+    }
+    else{
+      searchCliCard.style.display = "none";
+    }
+
+    if(placaVeiculo.value != ''){
+      newVeiculoCard.style.display = "block";
+    }
+    else{
+      newVeiculoCard.style.display = "none";
+    }
+
+    if(sinistro.value != ''){
+      newSinistroCard.style.display = "block";
+    }
+    else{
+      newSinistroCard.style.display = "none";
+    }
+
+  };
 
 
   </script>
