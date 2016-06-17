@@ -11,4 +11,10 @@ public partial class pt_br_app_seguro : System.Web.UI.Page
     {
 
     }
+
+    protected void cadastro_seguro(object sender, EventArgs e){
+      //singin up `seguro` to database
+      seguro.Insert();
+      Response.Redirect("~/pt-br/app/home.aspx");
+    }
 }
