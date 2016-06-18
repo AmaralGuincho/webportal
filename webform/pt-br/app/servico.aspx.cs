@@ -185,14 +185,14 @@ public partial class pt_br_app_servico : System.Web.UI.Page
       placaVeiculoConsulta.Text = (consulta.Table.Rows[0]["placa_veiculo"].ToString()).ToUpper();
       corVeiculoConsulta.Text = consulta.Table.Rows[0]["cor_veiculo"].ToString();
 
-      bairroViagemDestinoConsulta.Text = consulta.Table.Rows[0]["bairro_destino_viagem"].ToString();
-      bairroPartidaViagemConsulta.Text = consulta.Table.Rows[0]["bairro_partida_viagem"].ToString();
-      enderecoViagemDestinoConsulta.Text = consulta.Table.Rows[0]["endereco_destino_viagem"].ToString();
-      enderecoPartidaViagemConsulta.Text = consulta.Table.Rows[0]["endereco_partida_viagem"].ToString();
-      cidadeViagemDestinoConsulta.Text = consulta.Table.Rows[0]["cidade_destino_viagem"].ToString();
-      cidadePartidaViagemConsulta.Text = consulta.Table.Rows[0]["cidade_partida_viagem"].ToString();
-      ufViagemDestinoConsulta.Text = consulta.Table.Rows[0]["uf_destino_viagem"].ToString();
-      ufPartidaViagemConsulta.Text = consulta.Table.Rows[0]["uf_partida_viagem"].ToString();
+      bairroViagemConsultaDestino.Text = consulta.Table.Rows[0]["bairro_destino_viagem"].ToString();
+      bairroViagemConsultaPartida.Text = consulta.Table.Rows[0]["bairro_partida_viagem"].ToString();
+      enderecoViagemConsultaDestino.Text = consulta.Table.Rows[0]["endereco_destino_viagem"].ToString();
+      enderecoViagemConsultaPartida.Text = consulta.Table.Rows[0]["endereco_partida_viagem"].ToString();
+      cidadeViagemConsultaDestino.Text = consulta.Table.Rows[0]["cidade_destino_viagem"].ToString();
+      cidadeViagemConsultaPartida.Text = consulta.Table.Rows[0]["cidade_partida_viagem"].ToString();
+      ufViagemConsultaDestino.Text = consulta.Table.Rows[0]["uf_destino_viagem"].ToString();
+      ufViagemConsultaPartida.Text = consulta.Table.Rows[0]["uf_partida_viagem"].ToString();
       obsViagemConsulta.Text = consulta.Table.Rows[0]["obs_viagem"].ToString();
     }
 }
