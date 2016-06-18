@@ -9,7 +9,6 @@ using System.IO;
 
 public partial class pt_br_app_servico : System.Web.UI.Page
 {
-
     protected void Page_Load(object sender, EventArgs e)
     {
 
@@ -25,7 +24,7 @@ public partial class pt_br_app_servico : System.Web.UI.Page
       DataView lastInsertedCli =
         (DataView)cliente.Select(DataSourceSelectArguments.Empty);
 
-      Session["cli"] = Convert.ToInt32(lastInsertedCli.Table.Rows[0]["MAX(id_cli)"].ToString());
+      Session["cli"] = lastInsertedCli.Table.Rows[0]["MAX(id_cli)"].ToString();
     }
     protected void pesquisarCliente(object sender, EventArgs e){
       try{
@@ -44,7 +43,7 @@ public partial class pt_br_app_servico : System.Web.UI.Page
           ufCliPesq.Text = cliente.Table.Rows[0]["uf_cli"].ToString();
           residenciaCliPesq.Text = cliente.Table.Rows[0]["endereco_cli"].ToString();
           //Setting Id cli as current cli
-          Session["cli"] = Convert.ToInt32(cliente.Table.Rows[0]["id_cli"].ToString());
+          Session["cli"] = cliente.Table.Rows[0]["id_cli"].ToString();
           pesqCliente.Text = String.Empty;
         }else{
           Response.Write("<script>alert('Parece que esse cliente não foi registrado')</script>");
@@ -57,34 +56,56 @@ public partial class pt_br_app_servico : System.Web.UI.Page
     protected void novoVeiculo(object sender, EventArgs e){
       //Setting Current cli as car owner
       try{
-        if(!string.IsNullOrEmpty(Session["cli"] as string)){
+      if(!string.IsNullOrEmpty(Session["cli"] as string)){
         veiculo.InsertParameters["cliente"].DefaultValue = Session["cli"].ToString();
         veiculo.Insert();
+
+        DataView lastVeiculo =
+          (DataView)veiculo.Select(DataSourceSelectArguments.Empty);
+
+        Session["veiculo"] = lastVeiculo.Table.Rows[0]["MAX(id_veiculo)"].ToString();
       }else{
         Response.Write("<script>alert('Cadastre o cliente primeiro!');</script>");
-        modeloVeiculo.Text = String.Empty;
-        placaVeiculo.Text = String.Empty;
-        anoVeiculo.Text = String.Empty;
-        fabricanteVeiculo.Text = String.Empty;
-        corVeiculo.Text = String.Empty;
       }
       }catch(Exception ex){}
     }
 
     protected void newViagem(object sender, EventArgs e){
-      try{
-        viagem.Insert();
-      }catch(Exception ex){}
+       try{
+         viagem.Insert();
+
+         DataView lastViagem =
+           (DataView)viagem.Select(DataSourceSelectArguments.Empty);
+
+         Session["viagem"] = lastViagem.Table.Rows[0]["MAX(id_viagem)"].ToString();
+
+       }catch(Exception ex){}
     }
 
     protected void newSinistro(object sender, EventArgs e){
-      //try{
+      try{
         sinistro.Insert();
         DataView lastSinistro =
           (DataView)sinistro.Select(DataSourceSelectArguments.Empty);
 
-        Session["sinistro"] = Convert.ToInt32(lastSinistro.Table.Rows[0]["MAX(id_sinistro)"].ToString());
+        Session["sinistro"] = lastSinistro.Table.Rows[0]["MAX(id_sinistro)"].ToString();
 
-      //}catch(Exception ex){}
+      }catch(Exception ex){}
+    }
+
+    protected void newOs(object sender, EventArgs e){
+      os.InsertParameters["dtab"].DefaultValue =
+      DateTime.Now.ToString("yyyy/MM/dd HH:mm:ss");
+
+      os.Insert();
+      DataView lastOs =
+        (DataView)os.Select(DataSourceSelectArguments.Empty);
+
+      Session["os"] = lastOs.Table.Rows[0]["MAX(id_os)"].ToString();
+
+      viagemServico.Insert();
+
+      servicoOs.Insert();
+      Response.Redirect("~/pt_br/app/home.aspx");
     }
 }

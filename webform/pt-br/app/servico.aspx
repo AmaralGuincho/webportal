@@ -1,6 +1,20 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="servico.aspx.cs" Inherits="pt_br_app_servico" MasterPageFile="~/pt-br/app/index.master"  EnableEventValidation="false" MaintainScrollPositionOnPostBack="True"%>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="servico.aspx.cs" Inherits="pt_br_app_servico" MasterPageFile="~/pt-br/app/index.master"  EnableEventValidation="false" %>
 
 <asp:Content ContentplaceholderID="indexBodyPlaceholder" runat="server">
+<script type="text/javascript">
+    var xPos, yPos;
+    var prm = Sys.WebForms.PageRequestManager.getInstance();
+    prm.add_beginRequest(BeginRequestHandler);
+    prm.add_endRequest(EndRequestHandler);
+    function BeginRequestHandler(sender, args) {
+        xPos = $get('scrollDiv').scrollLeft;
+        yPos = $get('scrollDiv').scrollTop;
+    }
+    function EndRequestHandler(sender, args) {
+        $get('scrollDiv').scrollLeft = xPos;
+        $get('scrollDiv').scrollTop = yPos;
+    }
+</script>
 <form  runat="server">
   <div class="mdl-grid card-box">
     <div class="card mdl-card mdl-shadow--4dp mdl-cell mdl-cell--6-col-desktop mdl-cell--8-col-tablet mdl-cell--4-col-phone mdl-grid" id="cardCli">
@@ -268,8 +282,8 @@
       <div class="opcao mdl-cell mdl-cell--12-col">
           <h2 class="mdl-card__title-text">Selecione o Tipo de Serviço</h2>
           <div class="mdl-textfield mdl-js-textfield mdl-cell mdl-cell--4-col">
-            <label class="simpleLabeldd" for="tipoServico">Tipo de Serviço</label>
-            <asp:DropDownList ID="tipoServico" runat="server" class="dropdown"
+            <label class="simpleLabeldd" for="selectServico">Tipo de Serviço</label>
+            <asp:DropDownList ID="selectServico" runat="server" class="dropdown"
              DataSourceID="servico" DataTextField="tipo_servico" DataValueField="id_servico">
               <asp:ListItem Text="Servidor Fora fo Ar"/>
               <asp:ListItem Text="Servidor Fora fo Ar"/>
@@ -281,8 +295,8 @@
       <div class="opcao mdl-cell mdl-cell--12-col">
           <h2 class="mdl-card__title-text">Selecione o Seguro</h2>
           <div class="mdl-textfield mdl-js-textfield mdl-cell mdl-cell--3-col">
-            <label class="simpleLabeldd" for="seguroServico">Seguradora</label>
-            <asp:DropDownList ID="seguroServico" runat="server" class="dropdown"
+            <label class="simpleLabeldd" for="selectSeguro">Seguradora</label>
+            <asp:DropDownList ID="selectSeguro" runat="server" class="dropdown"
              DataSourceID="seguro" DataTextField="nome_seguro" DataValueField="id_seguro">
               <asp:ListItem Text="Servidor Fora do Ar"/>
               <asp:ListItem Text="Servidor Fora do Ar"/>
@@ -359,70 +373,112 @@
         </div>
         <div class="mdl-card__supporting-text">
           <h2 class="mdl-card__title-text">Local de Partida</h2>
-          <form action="#">
             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--12-col mdl-cell-4-col-phone">
               <input ID="cepViagemPartida" type="text" class="mdl-textfield__input" pattern="[0-9,-]*" onkeypress="mascara(this,'#####-###')" onblur="pesquisaCepPartida()"></asp:TextBox>
               <label class="mdl-textfield__label" for="cepViagemPartida">CEP</label>
               <span class="mdl-textfield__error">Ultilize apenas números</span>
             </div>
             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--4-col-desktop mdl-cell-4-col-phone">
-              <asp:TextBox ID="bairroViagemPartida" class="mdl-textfield__input" runat="server"></asp:TextBox>
+              <asp:TextBox ID="bairroViagemPartida" type="text" class="mdl-textfield__input" runat="server" placeholder=" "></asp:TextBox>
               <label class="mdl-textfield__label" for="bairroViagemPartida">Bairro</label>
             </div>
             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--4-col-desktop mdl-cell-4-col-phone">
-              <asp:TextBox ID="cidViagemPartida" class="mdl-textfield__input" runat="server"></asp:TextBox>
-              <label class="mdl-textfield__label" for="cidViagemPartida">Cidade</label>
+              <asp:TextBox ID="cidadeViagemPartida" class="mdl-textfield__input" runat="server" placeholder=" "></asp:TextBox>
+              <label class="mdl-textfield__label" for="cidadeViagemPartida">Cidade</label>
             </div>
             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--3-col-desktop mdl-cell-4-col-phone">
-              <asp:TextBox ID="ufViagemPartida" class="mdl-textfield__input" runat="server"></asp:TextBox>
+              <asp:TextBox ID="ufViagemPartida" class="mdl-textfield__input" runat="server" placeholder=" "></asp:TextBox>
               <label class="mdl-textfield__label" for="ufViagemPartida">Unidade Federativa</label>
             </div>
             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--10-col-desktop mdl-cell-4-col-phone">
-              <asp:TextBox ID="endViagemPartida" TextMode="multiline" class="mdl-textfield__input" rows="4" runat="server"></asp:TextBox>
-              <label class="mdl-textfield__label" for="endViagemPartida">Endereço</label>
+              <asp:TextBox ID="enderecoViagemPartida" TextMode="multiline" class="mdl-textfield__input" rows="4" runat="server" placeholder=" "></asp:TextBox>
+              <label class="mdl-textfield__label" for="enderecoViagemPartida">Endereço</label>
             </div>
-          </form>
           <h2 class="mdl-card__title-text">Local do Destino</h2>
-          <form action="#">
             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--12-col mdl-cell-4-col-phone">
               <input ID="cepViagemDestino" type="text" class="mdl-textfield__input" pattern="[0-9,-]*" onkeypress="mascara(this,'#####-###')" onblur="pesquisaCepDestino()"></asp:TextBox>
               <label class="mdl-textfield__label" for="cepViagemDestino">CEP</label>
               <span class="mdl-textfield__error">Ultilize apenas números</span>
             </div>
             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--4-col-desktop mdl-cell-4-col-phone">
-              <asp:TextBox ID="bairroViagemDestino" class="mdl-textfield__input" runat="server"></asp:TextBox>
+              <asp:TextBox ID="bairroViagemDestino" class="mdl-textfield__input" runat="server" placeholder=" "></asp:TextBox>
               <label class="mdl-textfield__label" for="bairroViagemDestino">Bairro</label>
             </div>
             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--4-col-desktop mdl-cell-4-col-phone">
-              <asp:TextBox ID="cidViagemDestino" class="mdl-textfield__input" runat="server"></asp:TextBox>
-              <label class="mdl-textfield__label" for="cidViagemDestino">Cidade</label>
+              <asp:TextBox ID="cidadeViagemDestino" class="mdl-textfield__input" runat="server" placeholder=" "></asp:TextBox>
+              <label class="mdl-textfield__label" for="cidadeViagemDestino">Cidade</label>
             </div>
             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--3-col-desktop mdl-cell-4-col-phone">
-              <asp:TextBox ID="ufViagemDestino" class="mdl-textfield__input" runat="server"></asp:TextBox>
+              <asp:TextBox ID="ufViagemDestino" class="mdl-textfield__input" runat="server" placeholder=" "></asp:TextBox>
               <label class="mdl-textfield__label" for="ufViagemDestino">Unidade Federativa</label>
             </div>
             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--10-col-desktop mdl-cell-4-col-phone">
-              <asp:TextBox ID="endViagemDestino" TextMode="multiline" class="mdl-textfield__input" rows="4" runat="server"></asp:TextBox>
-              <label class="mdl-textfield__label" for="endViagemDestino">Endereço</label>
+              <asp:TextBox ID="enderecoViagemDestino" TextMode="multiline" class="mdl-textfield__input" rows="4" runat="server" placeholder=" "></asp:TextBox>
+              <label class="mdl-textfield__label" for="enderecoViagemDestino">Endereço</label>
             </div>
-          </form>
+          <h2 class="mdl-card__title-text">Observações</h2>
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--12-col-desktop mdl-cell-4-col-phone">
+              <asp:TextBox ID="obsViagem" runat="server" class="mdl-textfield__input mdl-cell mdl-cell--12-col"
+               TextMode="multiline" rows="4"></asp:TextBox>
+              <label class="mdl-textfield__label" for="obsViagem">Observações</label>
+            </div>
+          <h2 class="mdl-card__title-text">Motorista</h2>
+            <div class="mdl-textfield mdl-js-textfield mdl-cell mdl-cell--3-col">
+              <label class="simpleLabeldd" for="selectMotorista">Nome do Motorista</label>
+              <asp:DropDownList ID="selectMotorista" runat="server" class="dropdown"
+               DataSourceID="motorista" DataTextField="nome_func" DataValueField="id_mot">
+                <asp:ListItem Text="Servidor Fora do Ar"/>
+                <asp:ListItem Text="Servidor Fora do Ar"/>
+                <asp:ListItem Text="Servidor Fora do Ar"/>
+              </asp:DropDownList>
+            </div>
+          <h2 class="mdl-card__title-text">Frota</h2>
+            <div class="mdl-textfield mdl-js-textfield mdl-cell mdl-cell--3-col">
+              <label class="simpleLabeldd" for="selectFrota">Veículo</label>
+              <asp:DropDownList ID="selectFrota" runat="server" class="dropdown"
+               DataSourceID="frota" DataTextField="nome_frota" DataValueField="id_frota">
+                <asp:ListItem Text="Servidor Fora do Ar"/>
+                <asp:ListItem Text="Servidor Fora do Ar"/>
+                <asp:ListItem Text="Servidor Fora do Ar"/>
+              </asp:DropDownList>
+            </div>
         </div>
         <div class="mdl-card__actions">
-          <asp:Button Text="Adicionar" id="registrarViagem" onclick="newViagem" runat="server" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+          <asp:Button ID="registrarViagem" OnClick="newViagem" runat="server" Text="adicionar" type="text" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
           </asp:Button>
           <a id="newCliCancelar" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" onclick="showCard('none','newViagem')">
             cancelar
           </a>
         </div>
       </div>
+      <div class="opcao mdl-cell mdl-cell--12-col">
+          <h2 class="mdl-card__title-text">Agendamento</h2>
+          <div class="mdl-textfield mdl-js-textfield mdl-cell mdl-cell--4-col">
+            <label class="mdl-textfield__label" for="agendamentoOS">Data e Hora</label>
+            <asp:TextBox runat="server" ID="agendamentoOS" type="datetime-local"
+            class="mdl-textfield__input mdl-cell mdl-cell--12-col"
+            placeholder=""></asp:TextBox>
+          </div>
+      </div>
+      <div class="opcao mdl-cell mdl-cell--12-col">
+          <h2 class="mdl-card__title-text">Status</h2>
+          <div class="mdl-textfield mdl-js-textfield mdl-cell mdl-cell--4-col">
+            <label class="simpleLabeldd" for="statusOs">Status</label>
+            <asp:DropDownList ID="statusOs" runat="server" class="dropdown">
+              <asp:ListItem Text="Aberto"/>
+              <asp:ListItem Text="Fechado"/>
+              <asp:ListItem Text="Recusado"/>
+            </asp:DropDownList>
+          </div>
+      </div>
       <!-- FINAL DO CONTEUDO DO CARTAO -->
     </div>
 
       <div class="mdl-layout-spacer"></div>
       <div class="mdl-card__actions mdl-card--border">
-        <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
-          Abrir Ordem de Serviço
-        </a>
+        <asp:Button id="registrarOs" runat="server" OnClick="newOs" Text="Abrir Ordem de Serviço"
+         class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+        </asp:Button>
       </div>
     </div>
   </div>
@@ -480,7 +536,8 @@
   InsertCommand="INSERT INTO veiculo
   (id_cli, fabricante_veiculo, modelo_veiculo, ano_veiculo, placa_veiculo, cor_veiculo)
   VALUES
-  (@cliente, @fabricante, @modelo, @ano, @placa, @cor)">
+  (@cliente, @fabricante, @modelo, @ano, @placa, @cor)"
+  SelectCommand="SELECT MAX(id_veiculo) FROM veiculo">
     <InsertParameters>
       <asp:ControlParameter Name="fabricante" ControlID="fabricanteVeiculo" PropertyName="Text"/>
       <asp:ControlParameter Name="modelo" ControlID="modeloVeiculo" PropertyName="Text"/>
@@ -492,22 +549,29 @@
   </asp:SqlDataSource>
 
   <asp:SqlDataSource ID="viagem" runat="server"
-  ConnectionString="<%$ ConnectionStrings:amaralguinchoConnectionString %>"
-  ProviderName="<%$ ConnectionStrings:amaralguinchoConnectionString.ProviderName %>"
-  InsertCommand="INSERT INTO viagem
-  (enderecoS_viagem, cidadeS_viagem, ufS_viagem, enderecoC_viagem, cidadeC_viagem, ufC_viagem)
-  VALUES
-   (@enderecoSaida, @cidadeSaida, @ufSaida, @enderecoChegada, @cidadeChegada, @ufChegada)"
-   SelectCommand="SELECT MAX(id_viagem) from viagem">
+    ConnectionString="<%$ ConnectionStrings:amaralguinchoConnectionString %>"
+    ProviderName="<%$ ConnectionStrings:amaralguinchoConnectionString.ProviderName %>"
+    SelectCommand="SELECT MAX(id_viagem) FROM viagem"
+    InsertCommand="INSERT INTO viagem
+    (id_mot, id_frota, bairro_destino_viagem, bairro_partida_viagem,
+    endereco_destino_viagem, endereco_partida_viagem, cidade_destino_viagem,
+    cidade_partida_viagem, uf_destino_viagem, uf_partida_viagem, obs_viagem)
+    VALUES
+    (@idMot, @idFrota, @bairroDestinoViagem, @bairroPartidaViagem,
+    @enderecoDestinoViagem, @enderecoPartidaViagem, @cidadeDestinoViagem,
+    @cidadePartidaViagem, @ufDestinoViagem, @ufPartidaViagem, @obsViagem)">
     <InsertParameters>
-      <asp:ControlParameter Name="bairroSaida" ControlID="bairroViagemPartida" PropertyName="Text"/>
-      <asp:ControlParameter Name="cidadeSaida" ControlID="cidViagemPartida" PropertyName="Text"/>
-      <asp:ControlParameter Name="ufSaida" ControlID="ufViagemPartida" PropertyName="Text"/>
-      <asp:ControlParameter Name="enderecoSaida" ControlID="endViagemDestino" PropertyName="Text"/>
-      <asp:ControlParameter Name="bairroChegada" ControlID="bairroViagemDestino" PropertyName="Text"/>
-      <asp:ControlParameter Name="cidadeChegada" ControlID="cidViagemDestino" PropertyName="Text"/>
-      <asp:ControlParameter Name="ufChegada" ControlID="ufViagemDestino" PropertyName="Text"/>
-      <asp:ControlParameter Name="enderecoChegada" ControlID="endViagemDestino" PropertyName="Text"/>
+      <asp:ControlParameter Name="idMot" ControlID="selectMotorista" PropertyName="SelectedValue"/>
+      <asp:ControlParameter Name="idFrota" ControlID="selectFrota" PropertyName="SelectedValue"/>
+      <asp:ControlParameter Name="bairroDestinoViagem" ControlID="bairroViagemDestino" PropertyName="Text"/>
+      <asp:ControlParameter Name="bairroPartidaViagem" ControlID="bairroViagemPartida" PropertyName="Text"/>
+      <asp:ControlParameter Name="enderecoDestinoViagem" ControlID="enderecoViagemDestino" PropertyName="Text"/>
+      <asp:ControlParameter Name="enderecoPartidaViagem" ControlID="enderecoViagemPartida" PropertyName="Text"/>
+      <asp:ControlParameter Name="cidadeDestinoViagem" ControlID="cidadeViagemDestino" PropertyName="Text"/>
+      <asp:ControlParameter Name="cidadePartidaViagem" ControlID="cidadeViagemPartida" PropertyName="Text"/>
+      <asp:ControlParameter Name="ufDestinoViagem" ControlID="ufViagemDestino" PropertyName="Text"/>
+      <asp:ControlParameter Name="ufPartidaViagem" ControlID="ufViagemPartida" PropertyName="Text"/>
+      <asp:ControlParameter Name="obsViagem" ControlID="obsViagem" PropertyName="Text"/>
     </InsertParameters>
   </asp:SqlDataSource>
 
@@ -530,6 +594,58 @@
     SelectCommand="SELECT MAX(id_sinistro) FROM sinistro">
     <InsertParameters>
       <asp:ControlParameter Name="sinistro" ControlID="numeroSinistro" PropertyName="Text"/>
+    </InsertParameters>
+  </asp:SqlDataSource>
+
+  <asp:SqlDataSource ID="motorista" runat="server"
+    ConnectionString="<%$ ConnectionStrings:amaralguinchoConnectionString %>"
+    ProviderName="<%$ ConnectionStrings:amaralguinchoConnectionString.ProviderName %>"
+    SelectCommand="SELECT id_mot, nome_func FROM motoristaOnly">
+  </asp:SqlDataSource>
+
+  <asp:SqlDataSource ID="frota" runat="server"
+    ConnectionString="<%$ ConnectionStrings:amaralguinchoConnectionString %>"
+    ProviderName="<%$ ConnectionStrings:amaralguinchoConnectionString.ProviderName %>"
+    SelectCommand="SELECT nome_frota, id_frota FROM frota">
+  </asp:SqlDataSource>
+
+  <asp:SqlDataSource ID="os" runat="server"
+    ConnectionString="<%$ ConnectionStrings:amaralguinchoConnectionString %>"
+    ProviderName="<%$ ConnectionStrings:amaralguinchoConnectionString.ProviderName %>"
+    InsertCommand="INSERT INTO ordem_de_servico
+    (id_func, id_veiculo, dtab_os, agendamento_os, status_os)
+    VALUES
+    (@idFunc, @idVeiculo, @dtab, @agendamentoOs, @status)"
+    SelectCommand="SELECT MAX(id_os) FROM ordem_de_servico">
+    <InsertParameters>
+      <asp:ControlParameter Name="status" ControlID="statusOs" PropertyName="Text"/>
+      <asp:ControlParameter Name="agendamentoOs" ControlID="agendamentoOs" PropertyName="Text"/>
+      <asp:Parameter Name="dtab"/>
+      <asp:SessionParameter Name="idFunc" SessionField="log" />
+      <asp:SessionParameter Name="idVeiculo" SessionField="veiculo" />
+    </InsertParameters>
+  </asp:SqlDataSource>
+
+  <asp:SqlDataSource ID="viagemServico" runat="server"
+    ConnectionString="<%$ ConnectionStrings:amaralguinchoConnectionString %>"
+    ProviderName="<%$ ConnectionStrings:amaralguinchoConnectionString.ProviderName %>"
+    InsertCommand="INSERT INTO viagem_servico (id_viagem, id_os)
+    VALUES(@viagem, @OS)">
+    <InsertParameters>
+      <asp:SessionParameter SessionField="os" Name="os"/>
+      <asp:SessionParameter SessionField="viagem" Name="viagem"/>
+    </InsertParameters>
+  </asp:SqlDataSource>
+
+  <asp:SqlDataSource ID="servicoOs" runat="server"
+    ConnectionString="<%$ ConnectionStrings:amaralguinchoConnectionString %>"
+    ProviderName="<%$ ConnectionStrings:amaralguinchoConnectionString.ProviderName %>"
+    InsertCommand="INSERT INTO servico_os(id_servico, id_os, id_sinistro)
+    VALUES(@servico, @OS, @sinistro)">
+    <InsertParameters>
+      <asp:SessionParameter SessionField="os" Name="os"/>
+      <asp:ControlParameter Name="servico" ControlID="selectServico" PropertyName="SelectedValue"/>
+      <asp:SessionParameter SessionField="sinistro" Name="sinistro"/>
     </InsertParameters>
   </asp:SqlDataSource>
 
@@ -602,9 +718,9 @@ function pesquisaCepPartida() {
 
   function meu_callbackViagemPartida(conteudo) {
       if (!("erro" in conteudo)) {
-        var endereco = document.getElementById('<%=endViagemPartida.ClientID%>');
+        var endereco = document.getElementById('<%=enderecoViagemPartida.ClientID%>');
         var uf = document.getElementById('<%=ufViagemPartida.ClientID%>');
-        var cidade = document.getElementById('<%=cidViagemPartida.ClientID%>');
+        var cidade = document.getElementById('<%=cidadeViagemPartida.ClientID%>');
         var bairro = document.getElementById('<%=bairroViagemPartida.ClientID%>');
           //Atualiza os campos com os valores.
           endereco.value=(conteudo.logradouro);
@@ -614,9 +730,9 @@ function pesquisaCepPartida() {
       }
       else {
           //CEP não Encontrado.
-          var endereco = document.getElementById('<%=endViagemPartida.ClientID%>');
+          var endereco = document.getElementById('<%=enderecoViagemPartida.ClientID%>');
           var uf = document.getElementById('<%=ufViagemPartida.ClientID%>');
-          var cidade = document.getElementById('<%=cidViagemPartida.ClientID%>');
+          var cidade = document.getElementById('<%=cidadeViagemPartida.ClientID%>');
           var bairro = document.getElementById('<%=bairroViagemPartida.ClientID%>');
           endereco.value="desconhecido";
           bairro.value= "desconhecido";
@@ -736,9 +852,9 @@ function pesquisacep() {
 
     function meu_callbackViagemDestino(conteudo) {
         if (!("erro" in conteudo)) {
-          var endereco = document.getElementById('<%=endViagemDestino.ClientID%>');
+          var endereco = document.getElementById('<%=enderecoViagemDestino.ClientID%>');
           var uf = document.getElementById('<%=ufViagemDestino.ClientID%>');
-          var cidade = document.getElementById('<%=cidViagemDestino.ClientID%>');
+          var cidade = document.getElementById('<%=cidadeViagemDestino.ClientID%>');
           var bairro = document.getElementById('<%=bairroViagemDestino.ClientID%>');
             //Atualiza os campos com os valores.
             endereco.value=(conteudo.logradouro);
@@ -748,9 +864,9 @@ function pesquisacep() {
         }
         else {
             //CEP não Encontrado.
-            var endereco = document.getElementById('<%=endViagemDestino.ClientID%>');
+            var endereco = document.getElementById('<%=enderecoViagemDestino.ClientID%>');
             var uf = document.getElementById('<%=ufViagemDestino.ClientID%>');
-            var cidade = document.getElementById('<%=cidViagemDestino.ClientID%>');
+            var cidade = document.getElementById('<%=cidadeViagemDestino.ClientID%>');
             var bairro = document.getElementById('<%=bairroViagemDestino.ClientID%>');
             endereco.value="desconhecido";
             bairro.value= "desconhecido";
