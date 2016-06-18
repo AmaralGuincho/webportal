@@ -19,14 +19,49 @@
   <div class="mdl-grid card-box">
     <div class="card mdl-card mdl-shadow--4dp mdl-cell mdl-cell--6-col-desktop mdl-cell--8-col-tablet mdl-cell--4-col-phone mdl-grid" id="cardCli">
       <div class="mdl-card__title mdl-cell mdl-cell--12-col">
-        <h2 class="mdl-card__title-text">Serviços Recentes</h2>
+        <h2 class="mdl-card__title-text">Ordens de Serviço</h2>
       </div>
       <div class="card-content mdl-grid mdl-cell mdl-cell--12-col">
+        <table class="mdl-data-table mdl-data-table--selectable mdl-js-data-table mdl-cell mdl-cell--12-col mdl-cell--8-tablet">
+          <tr class="os1">
+            <td class="mdl-data-table__cell--non-numeric">
+              <i class="material-icons md-38 mdl-color-text--red-200">directions</i>
+            </td>
+            <td class="os-code">
+              <label id="osID1" runat="server">Sem Dados</label>
+            </td>
+            <td class="os-date mdl-cell">
+              <asp:Button ID="openOe1" Text="Abrir" runat="server" OnClick="showOs" Class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"/>
+            </td>
+          </tr>
+          <tr class="os2">
+            <td class="mdl-data-table__cell--non-numeric">
+              <i class="material-icons md-38 mdl-color-text--red-200">directions</i>
+            </td>
+            <td class="os-code">
+              <label id="osID2" runat="server">Sem Dados</label>
+            </td>
+            <td class="os-date mdl-cell">
+              <asp:Button ID="openOe2" Text="Abrir" runat="server" Class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"/>
+            </td>
+          </tr>
+          <tr class="os3">
+            <td class="mdl-data-table__cell--non-numeric">
+              <i class="material-icons md-38 mdl-color-text--red-200">directions</i>
+            </td>
+            <td class="os-code">
+              <label id="osID3" runat="server">Sem Dados</label>
+            </td>
+            <td class="os-date mdl-cell">
+              <asp:Button ID="openOe3" Text="Abrir" runat="server" Class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"/>
+            </td>
+          </tr>
+        </table>
       </div>
       <div class="mdl-card__actions">
-        <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+        <!-- <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
           Ver Mais
-        </a>
+        </a> -->
       </div>
       <div class="mdl-card__menu">
         <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect" id="card-cli-options" UseSubmitBehavior="False">
@@ -41,14 +76,65 @@
 
     <div class="card mdl-card mdl-shadow--4dp mdl-cell mdl-cell--6-col-desktop mdl-cell--8-col-tablet mdl-cell--4-col-phone mdl-grid" id="sugestaoCli">
       <div class="mdl-card__title mdl-cell mdl-cell--12-col">
-        <h2 class="mdl-card__title-text">Ordens de Serviço</h2>
+        <h2 class="mdl-card__title-text">Serviços Recentes</h2>
       </div>
       <div class="card-content mdl-grid mdl-cell mdl-cell--12-col">
+        <table class="mdl-data-table mdl-data-table--selectable mdl-js-data-table mdl-cell mdl-cell--12-col mdl-cell--8-tablet">
+          <thead>
+            <tr>
+              <th class="mdl-data-table__cell--non-numeric">
+                <label>Tipo de Servico</label>
+              </th>
+              <th class="mdl-data-table__cell--non-numeric">
+                <label>Código Os</label>
+              </th>
+              <th class="mdl-data-table__cell--non-numeric">
+                <label></label>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+            <td class="mdl-data-table__cell--non-numeric">
+              <label runat="server" id="codigoServico1">#idServico</label>
+            </td>
+            <td class="mdl-data-table__cell--non-numeric">
+              <label runat="server" id="codigoOS1">#idOs</label>
+            </td>
+            <td class="mdl-data-tavle__cell">
+              <asp:Button ID="openServicoOs1" Text="Abrir" runat="server" Class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"/>
+            </td>
+          </tr>
+          <tr>
+            <td class="mdl-data-table__cell--non-numeric">
+              <label runat="server" id="codigoServico2">#idServico</label>
+            </td>
+            <td class="mdl-data-table__cell--non-numeric">
+              <label runat="server" id="codigoOS2">#idOs</label>
+            </td>
+            <td class="mdl-data-tavle__cell">
+              <asp:Button ID="openServicoOs2" Text="Abrir" runat="server" Class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"/>
+            </td>
+        </tr>
+        <tr>
+          <td class="mdl-data-table__cell--non-numeric">
+            <label runat="server" id="codigoServico3">#idServico</label>
+          </td>
+          <td class="mdl-data-table__cell--non-numeric">
+            <label runat="server" id="codigoOS3">#idOs</label>
+          </td>
+          <td class="mdl-data-tavle__cell">
+            <asp:Button ID="openServicoOs3" Text="Abrir" runat="server" Class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"/>
+          </td>
+        </tr>
+      </tbody>
+        </table>
       </div>
+
       <div class="mdl-card__actions">
-        <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+        <!-- <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
           Ver Mais
-        </a>
+        </a> -->
       </div>
       <div class="mdl-card__menu">
         <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect" id="card-sugestao-options">
@@ -60,7 +146,7 @@
         </ul>
       </div>
     </div>
-
+    <!-- NovaOS -->
     <div class="card mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col-desktop  mdl-cell--8-col-tablet mdl-cell--4-col-phone mdl-grid" id="novoServico">
       <div class="mdl-card__title mdl-cell mdl-cell--12-col">
         <h2 class="mdl-card__title-text">Abrindo um Serviço</h2>
@@ -647,6 +733,32 @@
       <asp:ControlParameter Name="servico" ControlID="selectServico" PropertyName="SelectedValue"/>
       <asp:SessionParameter SessionField="sinistro" Name="sinistro"/>
     </InsertParameters>
+  </asp:SqlDataSource>
+
+  <asp:SqlDataSource
+  ID="lattestOs" runat="server"
+  ConnectionString="<%$ ConnectionStrings:amaralguinchoConnectionString %>"
+  ProviderName="<%$ ConnectionStrings:amaralguinchoConnectionString.ProviderName %>"
+  SelectCommand="SELECT id_os, dtab_os FROM ordem_de_servico WHERE (status_os = 'Aberto') ORDER BY id_os DESC LIMIT 3">
+  </asp:SqlDataSource>
+
+  <asp:SqlDataSource
+  ID="lattestServicoOs" runat="server"
+  ConnectionString="<%$ ConnectionStrings:amaralguinchoConnectionString %>"
+  ProviderName="<%$ ConnectionStrings:amaralguinchoConnectionString.ProviderName %>"
+  SelectCommand="
+  SELECT servico_os.id_os, servico.tipo_servico FROM servico_os INNER JOIN servico
+  on servico_os.id_servico = servico.id_servico
+   ORDER BY id_os DESC LIMIT 3  ">
+  </asp:SqlDataSource>
+
+  <asp:SqlDataSource ID="consultaOS" runat="server"
+    ConnectionString="<%$ ConnectionStrings:amaralguinchoConnectionString %>"
+    ProviderName="<%$ ConnectionStrings:amaralguinchoConnectionString.ProviderName %>"
+    SelectCommand="SELECT * FROM ordem_de_servico WHERE id_os = @ConsultaOs">
+    <SelectParameters>
+      <asp:Parameter name="consultaos"/>
+    </SelectParameters>
   </asp:SqlDataSource>
 
   <script src="../scripts/cpf.min.js" charset="utf-8"></script>
