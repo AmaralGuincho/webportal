@@ -157,7 +157,42 @@ public partial class pt_br_app_servico : System.Web.UI.Page
     }catch(Exception ex){}
     }
 
-    // protected void showOs(object sender,EventArgs e){
-    //   consultaOS.SelectParameters["consultaOs"].DefaultValue =
-    // }
+    protected void showOs(object sender,EventArgs e){
+      DataView osAberta;
+      osAberta = (DataView)lattestOs.Select(DataSourceSelectArguments.Empty);
+
+      consultaOS.SelectParameters["consultaOs"].DefaultValue =
+      osAberta.Table.Rows[0]["id_os"].ToString();
+
+      DataView consulta = (DataView)consultaOS.Select(DataSourceSelectArguments.Empty);
+      // Cliente
+      nomeCliConsulta.Text = consulta.Table.Rows[0]["nome_cli"].ToString();
+      sobrenomeCliConsulta.Text = consulta.Table.Rows[0]["sobrenome_cli"].ToString();
+      cpfCliConsulta.Text = consulta.Table.Rows[0]["cpf_cli"].ToString();
+      emailCliConsulta.Text = consulta.Table.Rows[0]["email_cli"].ToString();
+      sexoCliConsulta.SelectedValue = consulta.Table.Rows[0]["sx_cli"].ToString();
+      telefoneCliConsulta.Text = consulta.Table.Rows[0]["telefone_cli"].ToString();
+      dtNascCliConsulta.Text = Convert.ToDateTime(consulta.Table.Rows[0]["dtnasc_cli"].ToString()).ToString("dd/MM/yyyy");
+      bairroCliConsulta.Text = consulta.Table.Rows[0]["bairro_cli"].ToString();
+      cidadeCliConsulta.Text = consulta.Table.Rows[0]["cid_cli"].ToString();
+      ufCliConsulta.Text = consulta.Table.Rows[0]["uf_cli"].ToString();
+      residenciaCliConsulta.Text = consulta.Table.Rows[0]["endereco_cli"].ToString();
+
+      // Veículo
+      fabricanteVeiculoConsulta.Text = consulta.Table.Rows[0]["fabricante_veiculo"].ToString();
+      modeloVeiculoConsulta.Text = consulta.Table.Rows[0]["modelo_veiculo"].ToString();
+      anoVeiculoConsulta.Text = consulta.Table.Rows[0]["ano_veiculo"].ToString();
+      placaVeiculoConsulta.Text = (consulta.Table.Rows[0]["placa_veiculo"].ToString()).ToUpper();
+      corVeiculoConsulta.Text = consulta.Table.Rows[0]["cor_veiculo"].ToString();
+
+      bairroViagemDestinoConsulta.Text = consulta.Table.Rows[0]["bairro_destino_viagem"].ToString();
+      bairroPartidaViagemConsulta.Text = consulta.Table.Rows[0]["bairro_partida_viagem"].ToString();
+      enderecoViagemDestinoConsulta.Text = consulta.Table.Rows[0]["endereco_destino_viagem"].ToString();
+      enderecoPartidaViagemConsulta.Text = consulta.Table.Rows[0]["endereco_partida_viagem"].ToString();
+      cidadeViagemDestinoConsulta.Text = consulta.Table.Rows[0]["cidade_destino_viagem"].ToString();
+      cidadePartidaViagemConsulta.Text = consulta.Table.Rows[0]["cidade_partida_viagem"].ToString();
+      ufViagemDestinoConsulta.Text = consulta.Table.Rows[0]["uf_destino_viagem"].ToString();
+      ufPartidaViagemConsulta.Text = consulta.Table.Rows[0]["uf_partida_viagem"].ToString();
+      obsViagemConsulta.Text = consulta.Table.Rows[0]["obs_viagem"].ToString();
+    }
 }

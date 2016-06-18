@@ -153,16 +153,16 @@
         <h2 class="mdl-card__title-text">Consultando um Serviço</h2>
       </div>
       <!-- Consulta cliente -->
-      <div class="opcao mdl-cell mdl-cell--12-col">
+      <div class="opcao mdl-cell mdl-cell--1-offset mdl-cell--12-col">
         <h2 class="mdl-card__title-text">Aberta Por:</h2>
-        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--3-col mdl-cell-4-col-phone">
+        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--11-col-desktop mdl-cell--6-col-tablet mdl-cell-4-col-phone">
           <asp:TextBox ID="funAberturaOs" type="text" class="mdl-textfield__input" runat="server"></asp:TextBox>
           <label class="mdl-textfield__label" for="funAberturaOs">Nome</label>
         </div>
         <h2 class="mdl-card__title-text">Às:</h2>
-        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--3-col mdl-cell-4-col-phone">
+        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--11-col-desktop mdl-cell--6-col-tablet mdl-cell-4-col-phone">
           <asp:TextBox ID="dataAberturaOs" type="text" class="mdl-textfield__input" runat="server"></asp:TextBox>
-          <label class="mdl-textfield__label" for="dataAberturaOs">Nome</label>
+          <label class="mdl-textfield__label" for="dataAberturaOs">Data</label>
         </div>
       </div>
 
@@ -177,8 +177,8 @@
                 <label class="mdl-textfield__label" for="nomeCliConsulta">Nome</label>
               </div>
               <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--4-col mdl-cell-4-col-phone">
-                <asp:TextBox ID="SobrenomeCliConsulta" type="text" class="mdl-textfield__input" runat="server" ></asp:TextBox>
-                <label class="mdl-textfield__label" for="SobrenomeCliConsulta">Sobrenome</label>
+                <asp:TextBox ID="sobrenomeCliConsulta" type="text" class="mdl-textfield__input" runat="server" ></asp:TextBox>
+                <label class="mdl-textfield__label" for="sobrenomeCliConsulta">Sobrenome</label>
               </div>
               <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--2-col mdl-cell-4-col-phone">
                 <asp:TextBox ID="dtNascCliConsulta" type="text" class="mdl-textfield__input" runat="server" onkeypress="mascara(this, '##/##/####')"></asp:TextBox>
@@ -198,8 +198,8 @@
                 </asp:DropDownList>
               </div>
               <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--3-col mdl-cell-4-col-phone">
-                <asp:TextBox ID="telCliConsulta" type="text" class="mdl-textfield__input" pattern="[0-9, ,-]*" runat="server" onkeypress="mascara(this,'## #####-###')"></asp:TextBox>
-                <label class="mdl-textfield__label" for="telCliConsulta">Telefone</label>
+                <asp:TextBox ID="telefoneCliConsulta" type="text" class="mdl-textfield__input" pattern="[0-9, ,-]*" runat="server" onkeypress="mascara(this,'## #####-###')"></asp:TextBox>
+                <label class="mdl-textfield__label" for="telefoneCliConsulta">Telefone</label>
               </div>
               <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--3-col mdl-cell-4-col-phone">
                 <asp:TextBox ID="emailCliConsulta" type="text" class="mdl-textfield__input" runat="server"></asp:TextBox>
@@ -1018,7 +1018,44 @@
   <asp:SqlDataSource ID="consultaOS" runat="server"
     ConnectionString="<%$ ConnectionStrings:amaralguinchoConnectionString %>"
     ProviderName="<%$ ConnectionStrings:amaralguinchoConnectionString.ProviderName %>"
-    SelectCommand="SELECT * FROM ordem_de_servico WHERE id_os = @ConsultaOs">
+    SelectCommand="
+    SELECT
+    cliente.nome_cli, cliente.sobrenome_cli, cliente.cpf_cli, cliente.email_cli,
+    cliente.sx_cli, cliente.telefone_cli,cliente.dtnasc_cli, cliente.cep_cli,
+    cliente.bairro_cli, cliente.cid_cli, cliente.uf_cli, cliente.endereco_cli,
+    veiculo.fabricante_veiculo, veiculo.modelo_veiculo, veiculo.ano_veiculo,
+    veiculo.placa_veiculo, veiculo.cor_veiculo,
+    viagem.bairro_destino_viagem, viagem.bairro_partida_viagem,
+    viagem.endereco_destino_viagem, viagem.endereco_partida_viagem,
+    viagem.cidade_destino_viagem, viagem.cidade_partida_viagem,
+    viagem.uf_destino_viagem, viagem.uf_partida_viagem, viagem.obs_viagem,
+    sinistro.sinistro,
+    os.dtab_os, os.agendamento_os, os.status_os,
+    servico.id_servico,
+    motorista.id_mot
+    FROM servico_os
+    INNER JOIN viagem_servico ON
+      servico_os.id_os = viagem_servico.id_os
+        INNER JOIN ordem_de_servico os ON
+          viagem_servico.id_os = os.id_os
+          INNER JOIN funcionario ON
+            os.id_func = funcionario.id_func
+            INNER JOIN veiculo ON
+              os.id_veiculo = veiculo.id_veiculo
+              INNER JOIN cliente ON
+                veiculo.id_cli = cliente.id_cli
+                INNER JOIN viagem ON
+                  viagem_servico.id_viagem = viagem.id_viagem
+                  INNER JOIN motorista ON
+                    viagem.id_mot = motorista.id_mot
+                    INNER JOIN frota ON
+                      viagem.id_frota = frota.id_frota
+                    INNER JOIN servico ON
+                      servico_os.id_servico = servico.id_servico
+                    INNER JOIN sinistro ON
+                      servico_os.id_sinistro = sinistro.id_sinistro
+    WHERE os.id_os = (@consultaOS) AND
+          os.id_func = funcionario.id_func">
     <SelectParameters>
       <asp:Parameter name="consultaos"/>
     </SelectParameters>
