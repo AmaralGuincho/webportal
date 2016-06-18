@@ -11,6 +11,52 @@ public partial class pt_br_app_servico : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+      //Importing `ordem de Servico` FROM database
+      DataView osAberta;
+      osAberta = (DataView)lattestOs.Select(DataSourceSelectArguments.Empty);
+
+      //Checking if DataView is Empty
+      if(osAberta.Table.Rows.Count > 0){
+        //Getting DataView Info into html file
+        osID1.InnerHtml = "#" + osAberta.Table.Rows[0]["id_os"].ToString();
+
+        if(osAberta.Table.Rows.Count > 1){
+          //Getting DataView Info into html file
+          osID2.InnerHtml = "#" + osAberta.Table.Rows[1]["id_os"].ToString();
+
+          if(osAberta.Table.Rows.Count > 2){
+            //Getting DataView Info into html file
+            osID3.InnerHtml = "#" + osAberta.Table.Rows[2]["id_os"].ToString();
+          }else{
+            osID3.InnerHtml = "--";
+          }
+        }else{
+          osID2.InnerHtml = "--";
+
+          osID3.InnerHtml = "--";
+        }
+      }else{
+        osID1.InnerHtml = "--";
+
+        osID2.InnerHtml = "--";
+
+        osID3.InnerHtml = "--";
+      }
+
+      DataView recentServicoOs = (DataView)lattestServicoOs.Select(DataSourceSelectArguments.Empty);
+      if (recentServicoOs.Table.Rows.Count > 0) {
+        codigoServico1.InnerHtml = recentServicoOs.Table.Rows[0]["tipo_servico"].ToString();
+        codigoOS1.InnerHtml = "# " + recentServicoOs.Table.Rows[0]["id_os"].ToString();
+      }
+      if (recentServicoOs.Table.Rows.Count > 1) {
+        codigoServico2.InnerHtml = recentServicoOs.Table.Rows[1]["tipo_servico"].ToString();
+        codigoOS2.InnerHtml = "# " + recentServicoOs.Table.Rows[1]["id_os"].ToString();
+      }
+      if (recentServicoOs.Table.Rows.Count > 2) {
+        codigoServico3.InnerHtml = recentServicoOs.Table.Rows[2]["tipo_servico"].ToString();
+        codigoOS3.InnerHtml = "# " + recentServicoOs.Table.Rows[2]["id_os"].ToString();
+      }
+
 
     }
 
@@ -94,6 +140,7 @@ public partial class pt_br_app_servico : System.Web.UI.Page
     }
 
     protected void newOs(object sender, EventArgs e){
+      try{
       os.InsertParameters["dtab"].DefaultValue =
       DateTime.Now.ToString("yyyy/MM/dd HH:mm:ss");
 
@@ -107,5 +154,10 @@ public partial class pt_br_app_servico : System.Web.UI.Page
 
       servicoOs.Insert();
       Response.Redirect("~/pt_br/app/home.aspx");
+    }catch(Exception ex){}
     }
+
+    // protected void showOs(object sender,EventArgs e){
+    //   consultaOS.SelectParameters["consultaOs"].DefaultValue =
+    // }
 }
