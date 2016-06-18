@@ -587,16 +587,23 @@
   ConnectionString="<%$ ConnectionStrings:amaralguinchoConnectionString %>"
   ProviderName="<%$ ConnectionStrings:amaralguinchoConnectionString.ProviderName %>"
   SelectCommand="
-  SELECT vs.id_servico, vgm.cidadeC_viagem, mot.nome_func,
-   frta.nome_frota, frta.placa_frota
-    FROM viagem_servico vs
-     INNER JOIN viagem vgm on
-      vs.id_viagem = vgm.id_viagem
-       INNER JOIN motoristaOnly mot on
-        vgm.id_mot = mot.id_mot
-          INNER JOIN frota frta on
-            vgm.id_frota = frta.id_frota
-              ORDER BY vs.id_servico DESC LIMIT 3">
+  SELECT servico.tipo_servico, viagem.cidade_destino_viagem, motoristaOnly.nome_func,
+   frota.nome_frota, frota.placa_frota
+   FROM servico_os INNER JOIN viagem_servico ON
+        servico_os.id_os = viagem_servico.id_os
+        INNER JOIN servico on
+        servico_os.id_servico = servico.id_servico
+        INNER JOIN viagem on
+        viagem_servico.id_viagem = viagem.id_viagem
+        INNER JOIN motoristaOnly on
+        viagem.id_mot = motoristaOnly.id_mot
+        INNER JOIN ordem_de_servico ON
+        servico_os.id_os = ordem_de_servico.id_os
+        INNER JOIN funcionario on
+        ordem_de_servico.id_func = funcionario.id_func
+        INNER JOIN frota on
+        viagem.id_frota = frota.id_frota
+              ORDER BY servico.id_servico DESC LIMIT 3">
   </asp:SqlDataSource>
 
   <asp:SqlDataSource
