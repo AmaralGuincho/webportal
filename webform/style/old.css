@@ -12,18 +12,18 @@ a{
 }
 
 ul{
-  list-style: none;
   margin:0em;
   margin-left:0;
+  width:100%;
 }
 
 li{
-  display:inline;
+  display:inline-block;
   position:relative;
   top:-1.5em;
   margin-left:10%;
   /*margin-right:10%;*/
-  padding:5px;
+  /*padding:5px;*/
 }
 
 li>a{
@@ -119,19 +119,11 @@ nav{
 
   ul{
     margin: 0;
+    width:100%;
   }
 
   ul>li{
     display:inline-block;
-    margin:0;
-  }
-
-  ul>li:first-child{
-    margin-left:0;
-  }
-
-  ul>li:nth-child(3){
-    margin-left:-45px;
   }
 
   ul>a{

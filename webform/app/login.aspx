@@ -75,12 +75,13 @@
 	        color:#177ac4;
 	        background-color:transparent;
 	        border:1px solid #177ac4;
-	        border-radius:100px;
+	        border-radius:8px;
 
 	        padding: .3em 2.4em;
-	        margin:5px;
+	        margin:15px;
             margin-right:auto;
             margin-left:auto;
+            margin-top: 50px;
 
 	        background-size: 200% 100%;
 	        background-image: linear-gradient(to right, transparent 50%, #177ac4 50%);
@@ -124,7 +125,7 @@
     </nav>
     <content>
         <form runat="server">
-            <h1>Bem-Vindo de Volta!</h1>
+            <h1>Bem-Vindo</h1>
             <div class="group">
                 <asp:TextBox ID="txtUsername" runat="server" CssClass="input" placeholder="Nome de Usuario" type="email"></asp:TextBox>
                 <span class="highlight"></span>
