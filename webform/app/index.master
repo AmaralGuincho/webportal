@@ -1,4 +1,4 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="index.master.cs" Inherits="pt_br_app_index" %>
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="index.master.cs" Inherits="app_index" %>
 
 <!DOCTYPE html>
 
@@ -34,7 +34,7 @@
     <!-- Material Design Lite -->
     <link href="https://code.getmdl.io/1.1.3/material.cyan-light_blue.min.css" rel="stylesheet" />
     <!--Stylesheet-->
-    <link href="~/pt-br/style/app.css" rel="stylesheet" />
+    <link href="~/style/app.css" rel="stylesheet" />
 
     <style>
       #view-source{

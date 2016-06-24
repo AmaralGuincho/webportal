@@ -11,7 +11,7 @@ using System.Data;
 
 
 
-public partial class Web_websites_login : System.Web.UI.Page
+public partial class websites_login : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
@@ -45,7 +45,7 @@ public partial class Web_websites_login : System.Web.UI.Page
             }
             //Guardando o id do Funcionario
             Session["log"] = dvFunc.Table.Rows[0]["id_func"].ToString();
-            Response.Redirect("~/pt-br/app/home.aspx");
+            Response.Redirect("~/app/home.aspx");
         }
         //Falha na Autênticação
         else{

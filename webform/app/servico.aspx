@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="servico.aspx.cs" Inherits="pt_br_app_servico" MasterPageFile="~/pt-br/app/index.master"  EnableEventValidation="false" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="servico.aspx.cs" Inherits="app_servico" MasterPageFile="~/app/index.master"  EnableEventValidation="false" %>
 
 <asp:Content ContentplaceholderID="indexBodyPlaceholder" runat="server">
 <script type="text/javascript">

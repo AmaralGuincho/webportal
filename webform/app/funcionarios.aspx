@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="funcionarios.aspx.cs" Inherits="pt_br_app_funcionarios" MasterPageFile="~/pt-br/app/index.master" EnableEventValidation="false" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="funcionarios.aspx.cs" Inherits="app_funcionarios" MasterPageFile="~/app/index.master" EnableEventValidation="false" %>
 
 <asp:Content ContentplaceholderID="indexBodyPlaceholder" runat="server">
   <style media="screen">

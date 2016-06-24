@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="settings.aspx.cs" Inherits="pt_br_app_settings" MasterPageFile="~/pt-br/app/index.master" EnableEventValidation="false" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="settings.aspx.cs" Inherits="app_settings" MasterPageFile="~/app/index.master" EnableEventValidation="false" %>
 
 <asp:Content ContentplaceholderID="indexBodyPlaceholder" runat="server">
   <div class="mdl-grid card-box">

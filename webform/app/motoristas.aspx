@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="motoristas.aspx.cs" Inherits="pt_br_app_motoristas" MasterPageFile="~/pt-br/app/index.master" EnableEventValidation="false" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="motoristas.aspx.cs" Inherits="app_motoristas" MasterPageFile="~/app/index.master" EnableEventValidation="false" %>
 
 <asp:Content ContentplaceholderID="indexBodyPlaceholder" runat="server">
   <form runat="server">

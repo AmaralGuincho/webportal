@@ -5,7 +5,7 @@
 
     void Application_BeginRequest(object sender, EventArgs e)
     {
-       // this.Response.Redirect("~/pt-br/app/index.aspx");
+       // this.Response.Redirect("~/app/index.aspx");
     }
 
     void Application_Start(object sender, EventArgs e)

@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 //Using System.data Reference
 using System.Data;
 
-public partial class pt_br_app_home : System.Web.UI.Page
+public partial class app_home : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {//Preventing solution to crash

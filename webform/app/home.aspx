@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="home.aspx.cs" Inherits="pt_br_app_home" MasterPageFile="~/pt-br/app/index.master" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="home.aspx.cs" Inherits="app_home" MasterPageFile="~/app/index.master" %>
 
 <asp:Content ContentplaceholderID="indexBodyPlaceholder" runat="server">
   <style media="screen">

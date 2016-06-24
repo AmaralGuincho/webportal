@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 //Usign Data reference
 using System.Data;
 
-public partial class pt_br_app_index : System.Web.UI.MasterPage
+public partial class app_index : System.Web.UI.MasterPage
 {
     protected void Page_Load(object sender, EventArgs e)
     {
@@ -15,7 +15,7 @@ public partial class pt_br_app_index : System.Web.UI.MasterPage
         //Verifying if user have a elegible log
         if(Session["log"] == null){
           //User does not have a elegible log
-          Response.Redirect("~/pt-br/index.html");
+          Response.Redirect("~/index.html");
         }else{
           //User is Authenticated!
           //Creating a new DataView

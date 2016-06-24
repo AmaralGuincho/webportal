@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 using System.Data;
 using System.IO;
 
-public partial class pt_br_app_frota : System.Web.UI.Page
+public partial class app_frota : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
@@ -78,6 +78,6 @@ public partial class pt_br_app_frota : System.Web.UI.Page
     }
     protected void cadastro(object sender, EventArgs e){
       frota.Insert();
-      Response.Redirect("~/pt-br/app/home.aspx");
+      Response.Redirect("~/app/home.aspx");
     }
 }

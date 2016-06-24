@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 using System.Data;
 using System.IO;
 
-public partial class pt_br_app_clientes : System.Web.UI.Page
+public partial class app_clientes : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {

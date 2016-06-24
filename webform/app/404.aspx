@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="404.aspx.cs" Inherits="pt_br_404" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="404.aspx.cs" Inherits="error_404" %>
 
 <!DOCTYPE html>
 
@@ -9,7 +9,7 @@
     <link href="../images/icon.png" rel="icon" />
 
     <!-- Material Desing Lite-->
-    <link href="~/pt-br/style/material.min.css" rel="stylesheet" />
+    <link href="~/style/material.min.css" rel="stylesheet" />
     <!--Material Design Icons-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
         rel="stylesheet" />

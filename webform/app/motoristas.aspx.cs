@@ -6,7 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data;
 
-public partial class pt_br_app_motoristas : System.Web.UI.Page
+public partial class app_motoristas : System.Web.UI.Page
 {
   protected void Page_Load(object sender, EventArgs e)
   {
@@ -85,6 +85,6 @@ public partial class pt_br_app_motoristas : System.Web.UI.Page
       //Inserindo Habilitação
       novoMotorista.Insert();
 
-    Response.Redirect("~/pt-br/app/home.aspx");
+    Response.Redirect("~/app/home.aspx");
   }
 }
