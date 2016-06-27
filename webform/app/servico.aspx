@@ -7,9 +7,22 @@
     shellTitle.innerHTML = 'Home';
 }
 </script>
+<style media="screen">
+  .title{
+    margin-bottom: 0;
+  }
+  .card{
+    background-color: rgba(244, 244, 244, 0.78);
+  }
+  .opcao{
+    padding:20px;
+    background-color: #FFF;
+  }
+
+</style>
 <form  runat="server">
   <div class="mdl-grid card-box">
-    <div class="card mdl-card mdl-shadow--4dp mdl-cell mdl-cell--6-col-desktop mdl-cell--8-col-tablet mdl-cell--4-col-phone mdl-grid" id="cardCli">
+    <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--6-col-desktop mdl-cell--8-col-tablet mdl-cell--4-col-phone mdl-grid" id="cardCli">
       <div class="mdl-card__title mdl-cell mdl-cell--12-col">
         <h2 class="mdl-card__title-text">Ordens de Serviço</h2>
       </div>
@@ -66,7 +79,7 @@
       </div>
     </div>
 
-    <div class="card mdl-card mdl-shadow--4dp mdl-cell mdl-cell--6-col-desktop mdl-cell--8-col-tablet mdl-cell--4-col-phone mdl-grid" id="sugestaoCli">
+    <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--6-col-desktop mdl-cell--8-col-tablet mdl-cell--4-col-phone mdl-grid" id="sugestaoCli">
       <div class="mdl-card__title mdl-cell mdl-cell--12-col">
         <h2 class="mdl-card__title-text">Serviços Recentes</h2>
       </div>
@@ -139,490 +152,97 @@
       </div>
     </div>
 
-    <!-- Consultar OS -->
-    <div class="card mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col-desktop  mdl-cell--8-col-tablet mdl-cell--4-col-phone mdl-grid" id="showOs" >
-      <div class="mdl-card__title mdl-cell mdl-cell--12-col">
-        <h2 class="mdl-card__title-text">Consultando um Serviço</h2>
-      </div>
-      <!-- Consulta cliente -->
-      <div class="opcao mdl-cell mdl-cell--1-offset mdl-cell--12-col">
-        <h2 class="mdl-card__title-text">Aberta Por:</h2>
-        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--11-col-desktop mdl-cell--6-col-tablet mdl-cell-4-col-phone">
-          <asp:TextBox ID="funAberturaOs" type="text" class="mdl-textfield__input" runat="server"></asp:TextBox>
-          <label class="mdl-textfield__label" for="funAberturaOs">Nome</label>
-        </div>
-        <h2 class="mdl-card__title-text">Às:</h2>
-        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--11-col-desktop mdl-cell--6-col-tablet mdl-cell-4-col-phone">
-          <asp:TextBox ID="dataAberturaOs" type="text" class="mdl-textfield__input" runat="server"></asp:TextBox>
-          <label class="mdl-textfield__label" for="dataAberturaOs">Data</label>
-        </div>
-      </div>
-
-      <div class="card-content mdl-grid mdl-cell mdl-cell--12-col">
-        <div class="card mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col-desktop mdl-cell--8-col-tablet mdl-cell--4-col-phone mdl-grid" id="consultaCli">
-          <div class="mdl-card__title mdl-cell mdl-cell--12-col">
-            <h2 class="mdl-card__title-text">Consultando um Cliente</h2>
-          </div>
-          <div class="card-content mdl-grid mdl-cell mdl-cell--12-col">
-              <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--3-col mdl-cell-4-col-phone">
-                <asp:TextBox ID="nomeCliConsulta" type="text" class="mdl-textfield__input" runat="server"></asp:TextBox>
-                <label class="mdl-textfield__label" for="nomeCliConsulta">Nome</label>
-              </div>
-              <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--4-col mdl-cell-4-col-phone">
-                <asp:TextBox ID="sobrenomeCliConsulta" type="text" class="mdl-textfield__input" runat="server" ></asp:TextBox>
-                <label class="mdl-textfield__label" for="sobrenomeCliConsulta">Sobrenome</label>
-              </div>
-              <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--2-col mdl-cell-4-col-phone">
-                <asp:TextBox ID="dtNascCliConsulta" type="text" class="mdl-textfield__input" runat="server" onkeypress="mascara(this, '##/##/####')"></asp:TextBox>
-                <label class="mdl-textfield__label" for="dtNascCliConsulta">Nascimento</label>
-              </div>
-              <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--3-col mdl-cell-4-col-phone">
-                <asp:TextBox id="cpfCliConsulta" type="text" class="mdl-textfield__input" runat="server" pattern="[0-9,.,-]*" onkeypress="mascara(this,'###.###.###-##')" onblur="validateCpf();"></asp:TextBox>
-                <label class="mdl-textfield__label" for="cpfCliConsulta">CPF</label>
-                <span class="mdl-textfield__error">Ultilize apenas números</span>
-              </div>
-
-              <div class="mdl-textfield mdl-cell mdl-cell--3-col mdl-cell-4-col-phone">
-                <label class="simpleLabeldd" for="sexoCliConsulta">Sexo</label>
-                <asp:DropDownList ID="sexoCliConsulta" runat="server" class="dropdown">
-                  <asp:ListItem Text="Masculino" Value="M"/>
-                  <asp:ListItem Text="Feminino" Value="F"/>
-                </asp:DropDownList>
-              </div>
-              <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--3-col mdl-cell-4-col-phone">
-                <asp:TextBox ID="telefoneCliConsulta" type="text" class="mdl-textfield__input" pattern="[0-9, ,-]*" runat="server" onkeypress="mascara(this,'## #####-###')"></asp:TextBox>
-                <label class="mdl-textfield__label" for="telefoneCliConsulta">Telefone</label>
-              </div>
-              <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--3-col mdl-cell-4-col-phone">
-                <asp:TextBox ID="emailCliConsulta" type="text" class="mdl-textfield__input" runat="server"></asp:TextBox>
-                <label class="mdl-textfield__label" for="emailCliConsulta">Email</label>
-              </div>
-              <!-- ADDED FULL ENDERECO -->
-              <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--3-col mdl-cell--1-offset-desktop mdl-cell-4-col-phone">
-                <asp:TextBox ID="bairroCliConsulta" type="text" class="mdl-textfield__input" runat="server" ></asp:TextBox>
-                <label class="mdl-textfield__label" for="bairroCliConsulta">Bairro</label>
-              </div>
-
-              <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--3-col mdl-cell-4-col-phone">
-                <asp:TextBox ID="cidadeCliConsulta" type="text" class="mdl-textfield__input" runat="server" ></asp:TextBox>
-                <label class="mdl-textfield__label" for="cidadeCliConsulta">Cidade</label>
-              </div>
-
-              <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--4-col mdl-cell-4-col-phone">
-                <asp:TextBox ID="ufCliConsulta" type="text" class="mdl-textfield__input" runat="server" ></asp:TextBox>
-                <label class="mdl-textfield__label" for="ufCliConsulta">U.F.</label>
-              </div>
-
-              <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--1-offset-desktop mdl-cell--10-col mdl-cell-4-col-phone">
-                <asp:TextBox ID="residenciaCliConsulta" TextMode="multiline" class="mdl-textfield__input" rows="4" runat="server"></asp:TextBox>
-                <label class="mdl-textfield__label" for="residenciaCliConsulta">Residência</label>
-              </div>
-          </div>
-        </div>
-        <!-- End ConsultaCliente -->
-        <!-- Consulta veiculo -->
-        <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col" id="consultaVeiculo">
-          <div class="mdl-card__title">
-            <h2 class="mdl-card__title-text">Novo Veículo</h2>
-          </div>
-          <div class="mdl-card__supporting-text mdl-grid">
-            <div class="mdl-textfield mdl-js-textfield mdl-cell mdl-cell--4-col">
-              <asp:TextBox runat="server" class="mdl-textfield__input" type="text" id="modeloVeiculoConsulta"></asp:TextBox>
-              <label class="mdl-textfield__label" for="modeloVeiculoConsulta">Consultando o Veículo</label>
-            </div>
-            <div class="mdl-textfield mdl-js-textfield mdl-cell mdl-cell--2-col">
-              <asp:TextBox runat="server" class="mdl-textfield__input" type="text" id="placaVeiculoConsulta" pattern="[0-9,A-Z,-]*" onkeydown="mascara(this,'###-####')"></asp:TextBox>
-              <label class="mdl-textfield__label" for="placaVeiculoConsulta">Placa</label>
-              <span class="mdl-textfield__error">Tente ultilizar apenas números</span>
-            </div>
-            <div class="mdl-textfield mdl-js-textfield mdl-cell mdl-cell--3-col">
-              <asp:TextBox runat="server" class="mdl-textfield__input" type="text" id="anoVeiculoConsulta" pattern="[0-9]*"></asp:TextBox>
-              <label class="mdl-textfield__label" for="anoVeiculoConsulta">Ano de Fabricação</label>
-              <span class="mdl-textfield__error">Tente ultilizar apenas números</span>
-            </div>
-            <div class="mdl-textfield mdl-js-textfield mdl-cell mdl-cell--4-col">
-              <asp:TextBox runat="server" class="mdl-textfield__input" type="text" id="fabricanteVeiculoConsulta"></asp:TextBox>
-              <label class="mdl-textfield__label" for="fabricanteVeiculoConsulta">Fabricante</label>
-              <span class="mdl-textfield__error">Digite o Nome do fabricante</span>
-            </div>
-            <div class="mdl-textfield mdl-js-textfield mdl-cell mdl-cell--3-col">
-              <asp:TextBox runat="server" class="mdl-textfield__input" type="text" id="corVeiculoConsulta"></asp:TextBox>
-              <label class="mdl-textfield__label" for="corVeiculoConsulta">Cor</label>
-            </div>
-          </div>
-        </div>
-        <!-- End Consulta Veículo -->
-        <!-- ConsultaTipoServico -->
-        <div class="opcao mdl-cell mdl-cell--12-col">
-            <h2 class="mdl-card__title-text">Consultando o Tipo de Serviço</h2>
-            <div class="mdl-textfield mdl-js-textfield mdl-cell mdl-cell--4-col">
-              <label class="simpleLabeldd" for="selectServicoConsulta">Tipo de Serviço</label>
-              <asp:DropDownList ID="selectServicoConsulta" runat="server" class="dropdown"
-               DataSourceID="servico" DataTextField="tipo_servico" DataValueField="id_servico">
-                <asp:ListItem Text="Servidor Fora fo Ar"/>
-                <asp:ListItem Text="Servidor Fora fo Ar"/>
-                <asp:ListItem Text="Servidor Fora fo Ar"/>
-              </asp:DropDownList>
-            </div>
-        </div>
-        <!-- End Consulta Tipo Servico -->
-        <!-- Consultando o Seguro -->
-        <div class="opcao mdl-cell mdl-cell--12-col">
-            <h2 class="mdl-card__title-text">Consultando o Seguro</h2>
-            <div class="mdl-textfield mdl-js-textfield mdl-cell mdl-cell--3-col">
-              <label class="simpleLabeldd" for="selectSeguroConsulta">Seguradora</label>
-              <asp:DropDownList ID="selectSeguroConsulta" runat="server" class="dropdown"
-               DataSourceID="seguro" DataTextField="nome_seguro" DataValueField="id_seguro">
-                <asp:ListItem Text="Servidor Fora do Ar"/>
-                <asp:ListItem Text="Servidor Fora do Ar"/>
-                <asp:ListItem Text="Servidor Fora do Ar"/>
-              </asp:DropDownList>
-            </div>
-        </div>
-        <!-- Consulta Sinistro -->
-        <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--6-col" id="consultaSinistro">
-          <div class="mdl-card__title">
-            <h2 class="mdl-card__title-text">Consultando Sinistro</h2>
-          </div>
-          <div class="mdl-card__supporting-text">
-            <form action="#">
-              <div class="mdl-textfield mdl-js-textfield">
-                <asp:TextBox runat="server" class="mdl-textfield__input" type="text" id="numeroSinistroConsulta"></asp:TextBox>
-                <label class="mdl-textfield__label" for="numeroSinistroConsulta">Número do Sinistro</label>
-              </div>
-            </form>
-          </div>
-        </div>
-        <!-- End Consulta Sinistro -->
-        <!-- Consulta Viagem -->
-        <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col" id="consultaViagem">
-          <div class="mdl-card__title">
-            <h2 class="mdl-card__title-text">Consultando uma Viagem</h2>
-          </div>
-          <div class="mdl-card__supporting-text">
-            <h2 class="mdl-card__title-text">Local de Partida</h2>
-              <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--12-col mdl-cell-4-col-phone">
-                <input ID="cepViagemConsultaPartida" type="text" class="mdl-textfield__input" pattern="[0-9,-]*" onkeypress="mascara(this,'#####-###')" onblur="pesquisaCepPartida()"></asp:TextBox>
-                <label class="mdl-textfield__label" for="cepViagemConsultaPartida">CEP</label>
-                <span class="mdl-textfield__error">Ultilize apenas números</span>
-              </div>
-              <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--4-col-desktop mdl-cell-4-col-phone">
-                <asp:TextBox ID="bairroViagemConsultaPartida" type="text" class="mdl-textfield__input" runat="server" placeholder=" "></asp:TextBox>
-                <label class="mdl-textfield__label" for="bairroViagemConsultaPartida">Bairro</label>
-              </div>
-              <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--4-col-desktop mdl-cell-4-col-phone">
-                <asp:TextBox ID="cidadeViagemConsultaPartida" class="mdl-textfield__input" runat="server" placeholder=" "></asp:TextBox>
-                <label class="mdl-textfield__label" for="cidadeViagemConsultaPartida">Cidade</label>
-              </div>
-              <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--3-col-desktop mdl-cell-4-col-phone">
-                <asp:TextBox ID="ufViagemConsultaPartida" class="mdl-textfield__input" runat="server" placeholder=" "></asp:TextBox>
-                <label class="mdl-textfield__label" for="ufViagemConsultaPartida">Unidade Federativa</label>
-              </div>
-              <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--10-col-desktop mdl-cell-4-col-phone">
-                <asp:TextBox ID="enderecoViagemConsultaPartida" TextMode="multiline" class="mdl-textfield__input" rows="4" runat="server" placeholder=" "></asp:TextBox>
-                <label class="mdl-textfield__label" for="enderecoViagemConsultaPartida">Endereço</label>
-              </div>
-            <h2 class="mdl-card__title-text">Local do Destino</h2>
-              <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--12-col mdl-cell-4-col-phone">
-                <input ID="cepViagemConsultaDestino" type="text" class="mdl-textfield__input" pattern="[0-9,-]*" onkeypress="mascara(this,'#####-###')" onblur="pesquisaCepDestino()"></asp:TextBox>
-                <label class="mdl-textfield__label" for="cepViagemConsultaDestino">CEP</label>
-                <span class="mdl-textfield__error">Ultilize apenas números</span>
-              </div>
-              <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--4-col-desktop mdl-cell-4-col-phone">
-                <asp:TextBox ID="bairroViagemConsultaDestino" class="mdl-textfield__input" runat="server" placeholder=" "></asp:TextBox>
-                <label class="mdl-textfield__label" for="bairroViagemConsultaDestino">Bairro</label>
-              </div>
-              <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--4-col-desktop mdl-cell-4-col-phone">
-                <asp:TextBox ID="cidadeViagemConsultaDestino" class="mdl-textfield__input" runat="server" placeholder=" "></asp:TextBox>
-                <label class="mdl-textfield__label" for="cidadeViagemConsultaDestino">Cidade</label>
-              </div>
-              <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--3-col-desktop mdl-cell-4-col-phone">
-                <asp:TextBox ID="ufViagemConsultaDestino" class="mdl-textfield__input" runat="server" placeholder=" "></asp:TextBox>
-                <label class="mdl-textfield__label" for="ufViagemConsultaDestino">Unidade Federativa</label>
-              </div>
-              <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--10-col-desktop mdl-cell-4-col-phone">
-                <asp:TextBox ID="enderecoViagemConsultaDestino" TextMode="multiline" class="mdl-textfield__input" rows="4" runat="server" placeholder=" "></asp:TextBox>
-                <label class="mdl-textfield__label" for="enderecoViagemConsultaDestino">Endereço</label>
-              </div>
-            <h2 class="mdl-card__title-text">Observações</h2>
-              <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--12-col-desktop mdl-cell-4-col-phone">
-                <asp:TextBox ID="obsViagemConsulta" runat="server" class="mdl-textfield__input mdl-cell mdl-cell--12-col"
-                 TextMode="multiline" rows="4"></asp:TextBox>
-                <label class="mdl-textfield__label" for="obsViagem">Observações</label>
-              </div>
-            <h2 class="mdl-card__title-text">Motorista</h2>
-              <div class="mdl-textfield mdl-js-textfield mdl-cell mdl-cell--3-col">
-                <label class="simpleLabeldd" for="selectMotoristaConsulta">Nome do Motorista</label>
-                <asp:DropDownList ID="selectMotoristaConsulta" runat="server" class="dropdown"
-                 DataSourceID="motorista" DataTextField="nome_func" DataValueField="id_mot">
-                  <asp:ListItem Text="Servidor Fora do Ar"/>
-                  <asp:ListItem Text="Servidor Fora do Ar"/>
-                  <asp:ListItem Text="Servidor Fora do Ar"/>
-                </asp:DropDownList>
-              </div>
-            <h2 class="mdl-card__title-text">Frota</h2>
-              <div class="mdl-textfield mdl-js-textfield mdl-cell mdl-cell--3-col">
-                <label class="simpleLabeldd" for="selectFrotaConsulta">Veículo</label>
-                <asp:DropDownList ID="selectFrotaConsulta" runat="server" class="dropdown"
-                 DataSourceID="frota" DataTextField="nome_frota" DataValueField="id_frota">
-                  <asp:ListItem Text="Servidor Fora do Ar"/>
-                  <asp:ListItem Text="Servidor Fora do Ar"/>
-                  <asp:ListItem Text="Servidor Fora do Ar"/>
-                </asp:DropDownList>
-              </div>
-            </div>
-          </div>
-          <!-- End CosultaViagem -->
-          <!-- Consulta Agendamento -->
-
-        <div class="opcao mdl-cell mdl-cell--12-col">
-          <h2 class="mdl-card__title-text">Agendamento</h2>
-          <div class="mdl-textfield mdl-js-textfield mdl-cell mdl-cell--4-col">
-            <label class="mdl-textfield__label" for="agendamentoOSConsulta">Data e Hora</label>
-            <asp:TextBox runat="server" ID="agendamentoOSConsulta" type="datetime-local"
-            class="mdl-textfield__input mdl-cell mdl-cell--12-col"
-            placeholder=""></asp:TextBox>
-          </div>
-        </div>
-        <!-- Consulta Status -->
-        <div class="opcao mdl-cell mdl-cell--12-col">
-            <h2 class="mdl-card__title-text">Status</h2>
-            <div class="mdl-textfield mdl-js-textfield mdl-cell mdl-cell--4-col">
-              <label class="simpleLabeldd" for="statusOsConsulta">Status</label>
-              <asp:DropDownList ID="statusOsConsulta" runat="server" class="dropdown">
-                <asp:ListItem Text="Aberto"/>
-                <asp:ListItem Text="Fechado"/>
-                <asp:ListItem Text="Recusado"/>
-              </asp:DropDownList>
-            </div>
-        </div>
-        <!-- end consulta -->
-      </div>
-    </div>
-  </div>
-
     <!-- NovaOS -->
-    <div class="card mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col-desktop  mdl-cell--8-col-tablet mdl-cell--4-col-phone mdl-grid" id="novoServico">
+    <div class="card mdl-card mdl-cell mdl-shadow--2dp mdl-cell--12-col-desktop mdl-cell--8-col-tablet mdl-cell--4-col-phone mdl-grid" id="novoServico">
       <div class="mdl-card__title mdl-cell mdl-cell--12-col">
-        <h2 class="mdl-card__title-text">Abrindo um Serviço</h2>
+        <h2 class="mdl-card__title-text">Novo Serviço</h2>
       </div>
       <div class="card-content mdl-grid mdl-cell mdl-cell--12-col">
 
-        <div class="opcao mdl-cell mdl-cell--12-col">
-          <h2 class="mdl-card__title-text">Escolha um tipo de Cliente</h2>
-          <a ID="clienteExistente" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" onclick="showCard('searchCli','newCli');">
-            Cliente Existente
-          </a>
-          <a ID="clienteNovo" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" onclick="showCard('newCli','searchCli');">
-            Novo Cliente
-          </a>
-        </div>
-
-        <div class="card mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col-desktop mdl-cell--8-col-tablet mdl-cell--4-col-phone mdl-grid" id="searchCli" style="display:none;">
-          <div class="mdl-card__title mdl-cell mdl-cell--12-col">
-            <h2 class="mdl-card__title-text">Pesquisar um Cliente</h2>
-          </div>
-          <div class="card-content mdl-grid mdl-cell mdl-cell--12-col">
-              <div class="mdl-cell mdl-cell--12-col">
-                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--7-col mdl-cell--1-offset-desktop mdl-cell-4-col-phone">
-                  <asp:TextBox ID="pesqCliente" type="text" class="mdl-textfield__input" runat="server" onblur="pesquisarCliente" ></asp:TextBox>
-                  <label class="mdl-textfield__label" for="pesqCliente">Nome da Pesquisa</label>
-                </div>
-                <asp:Button runat="server" id="btnPesqCli" OnClick="pesquisarCliente" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" Text="Pesquisar"></asp:Button>
-
-              </div>
-
-              <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--3-col mdl-cell-4-col-phone">
-                <asp:TextBox ID="nomeCliPesq" type="text" class="mdl-textfield__input" runat="server" onblur="pesquisarCliente" ></asp:TextBox>
-                <label class="mdl-textfield__label" for="nomeCliPesq">Nome</label>
-              </div>
-              <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--4-col mdl-cell-4-col-phone">
-                <asp:TextBox ID="SobrenomeCliPesq" type="text" class="mdl-textfield__input" runat="server" ></asp:TextBox>
-                <label class="mdl-textfield__label" for="SobrenomeCliPesq">Sobrenome</label>
-              </div>
-              <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--2-col mdl-cell-4-col-phone">
-                <asp:TextBox ID="dtNascCliPesq" type="text" class="mdl-textfield__input" runat="server" onkeypress="mascara(this, '##/##/####')"></asp:TextBox>
-                <label class="mdl-textfield__label" for="dtNascCliPesq">Nascimento</label>
-              </div>
-              <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--3-col mdl-cell-4-col-phone">
-                <asp:TextBox id="cpfCliPesq" type="text" class="mdl-textfield__input" runat="server" pattern="[0-9,.,-]*" onkeypress="mascara(this,'###.###.###-##')" onblur="validateCpf();"></asp:TextBox>
-                <label class="mdl-textfield__label" for="cpfCliPesq">CPF</label>
-                <span class="mdl-textfield__error">Ultilize apenas números</span>
-              </div>
-
-              <div class="mdl-textfield mdl-cell mdl-cell--3-col mdl-cell-4-col-phone">
-                <label class="simpleLabeldd" for="sexoCliPesq">Sexo</label>
-                <asp:DropDownList ID="sexoCliPesq" runat="server" class="dropdown">
-                  <asp:ListItem Text="Masculino" Value="M"/>
-                  <asp:ListItem Text="Feminino" Value="F"/>
-                </asp:DropDownList>
-              </div>
-              <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--3-col mdl-cell-4-col-phone">
-                <asp:TextBox ID="telCliPesq" type="text" class="mdl-textfield__input" pattern="[0-9, ,-]*" runat="server" onkeypress="mascara(this,'## #####-###')"></asp:TextBox>
-                <label class="mdl-textfield__label" for="telCliPesq">Telefone</label>
-              </div>
-              <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--3-col mdl-cell-4-col-phone">
-                <asp:TextBox ID="emailCliPesq" type="text" class="mdl-textfield__input" runat="server"></asp:TextBox>
-                <label class="mdl-textfield__label" for="emailCliPesq">Email</label>
-              </div>
-              <!-- ADDED FULL ENDERECO -->
-              <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--3-col mdl-cell--1-offset-desktop mdl-cell-4-col-phone">
-                <asp:TextBox ID="bairroCliPesq" type="text" class="mdl-textfield__input" runat="server" ></asp:TextBox>
-                <label class="mdl-textfield__label" for="bairroCliPesq">Bairro</label>
-              </div>
-
-              <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--3-col mdl-cell-4-col-phone">
-                <asp:TextBox ID="cidadeCliPesq" type="text" class="mdl-textfield__input" runat="server" ></asp:TextBox>
-                <label class="mdl-textfield__label" for="cidadeCliPesq">Cidade</label>
-              </div>
-
-              <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--4-col mdl-cell-4-col-phone">
-                <asp:TextBox ID="ufCliPesq" type="text" class="mdl-textfield__input" runat="server" ></asp:TextBox>
-                <label class="mdl-textfield__label" for="ufCliPesq">U.F.</label>
-              </div>
-
-              <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--1-offset-desktop mdl-cell--10-col mdl-cell-4-col-phone">
-                <asp:TextBox ID="residenciaCliPesq" TextMode="multiline" class="mdl-textfield__input" rows="4" runat="server"></asp:TextBox>
-                <label class="mdl-textfield__label" for="residenciaCliPesq">Residência</label>
-              </div>
-          </div>
-          <div class="mdl-card__actions mdl-card--border">
-            <asp:Button  runat="server" id="usarPesqCli" Text="Ultilizar" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" autopostback="false">
-            </asp:Button>
-            <a onclick="showCard('none','searchCli');" id="pesqCliCancelar" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
-              cancelar
-            </a>
-          </div>
-        </div>
-
-        <div class="card mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col-desktop mdl-cell--8-col-tablet mdl-cell--4-col-phone mdl-grid" id="newCli" style="display:none;">
-          <div class="mdl-card__title mdl-cell mdl-cell--12-col">
-            <h2 class="mdl-card__title-text">Cadastrando um Novo Cliente</h2>
+        <div class=" mdl-card mdl-cell mdl-cell--12-col-desktop mdl-cell--8-col-tablet mdl-cell--4-col-phone mdl-grid mdl-card--border mdl-shadow--1dp" id="newCli">
+          <div class="title mdl-card__title mdl-cell mdl-cell--12-col">
+            <h3 class="mdl-card__title-text">Cliente</h2>
           </div>
           <div class="card-content mdl-grid mdl-cell mdl-cell--12-col">
               <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--3-col mdl-cell-4-col-phone">
                 <asp:TextBox ID="nomeCli" type="text" class="mdl-textfield__input" runat="server" ></asp:TextBox>
                 <label class="mdl-textfield__label" for="nomeCli">Nome</label>
               </div>
+
               <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--4-col mdl-cell-4-col-phone">
                 <asp:TextBox ID="SobrenomeCli" type="text" class="mdl-textfield__input" runat="server" ></asp:TextBox>
                 <label class="mdl-textfield__label" for="SobrenomeCli">Sobrenome</label>
               </div>
+
               <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--2-col mdl-cell-4-col-phone">
-                <asp:TextBox ID="dtNascCli" type="text" class="mdl-textfield__input" runat="server" onkeypress="mascara(this, '##/##/####')"></asp:TextBox>
-                <label class="mdl-textfield__label" for="dtNascCli">Nascimento</label>
-              </div>
-              <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--3-col mdl-cell-4-col-phone">
                 <asp:TextBox id="cpfCli" type="text" class="mdl-textfield__input" runat="server" pattern="[0-9,.,-]*" onkeypress="mascara(this,'###.###.###-##')" onblur="validateCpf();"></asp:TextBox>
                 <label class="mdl-textfield__label" for="cpfCli">CPF</label>
                 <span class="mdl-textfield__error">Ultilize apenas números</span>
               </div>
 
-              <div class="mdl-textfield mdl-cell mdl-cell--3-col mdl-cell-4-col-phone">
-                <label class="simpleLabeldd" for="sexoCli">Sexo</label>
-                <asp:DropDownList ID="sexoCli" runat="server" class="dropdown">
-                  <asp:ListItem Text="Masculino" Value="M"/>
-                  <asp:ListItem Text="Feminino" Value="F"/>
-                </asp:DropDownList>
-              </div>
               <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--3-col mdl-cell-4-col-phone">
                 <asp:TextBox ID="telCli" type="text" class="mdl-textfield__input" pattern="[0-9, ,-]*" runat="server" onkeypress="mascara(this,'## #####-###')"></asp:TextBox>
                 <label class="mdl-textfield__label" for="telCli">Telefone</label>
               </div>
-              <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--3-col mdl-cell-4-col-phone">
-                <asp:TextBox ID="emailCli" type="text" class="mdl-textfield__input" runat="server"></asp:TextBox>
-                <label class="mdl-textfield__label" for="emailCli">Email</label>
-              </div>
-              <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--3-col mdl-cell-4-col-phone">
-                <asp:TextBox ID="cepCli" type="text" class="mdl-textfield__input" runat="server" pattern="[0-9,-]*" onkeypress="mascara(this,'#####-###')" onblur="pesquisacep()"></asp:TextBox>
-                <label class="mdl-textfield__label" for="cepCli">CEP</label>
-                <span class="mdl-textfield__error">Ultilize apenas números</span>
-              </div>
-
-              <!-- ADDED FULL ENDERECO -->
-              <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--3-col mdl-cell--1-offset-desktop mdl-cell-4-col-phone">
-                <asp:TextBox ID="bairroCli" type="text" class="mdl-textfield__input" runat="server" ></asp:TextBox>
-                <label class="mdl-textfield__label" for="bairroCli">Bairro</label>
-              </div>
-
-              <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--3-col mdl-cell-4-col-phone">
-                <asp:TextBox ID="cidadeCli" type="text" class="mdl-textfield__input" runat="server" ></asp:TextBox>
-                <label class="mdl-textfield__label" for="cidadeCli">Cidade</label>
-              </div>
-
-              <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--4-col mdl-cell-4-col-phone">
-                <asp:TextBox ID="ufCli" type="text" class="mdl-textfield__input" runat="server" ></asp:TextBox>
-                <label class="mdl-textfield__label" for="ufCli">U.F.</label>
-              </div>
-
-              <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--1-offset-desktop mdl-cell--10-col mdl-cell-4-col-phone">
-                <asp:TextBox ID="residenciaCli" TextMode="multiline" class="mdl-textfield__input" rows="4" runat="server"></asp:TextBox>
-                <label class="mdl-textfield__label" for="residenciaCli">Residência</label>
-              </div>
-
           </div>
-          <div class="mdl-card__actions mdl-card--border">
-            <asp:Button  runat="server" ID="novoCliente" Text="Cadastrar e Ultilizar"  OnClick="cadastrarCliente" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+          <!-- <div class="mdl-card__actions">
+            <asp:Button  runat="server" ID="novoCliente" Text="Cadastrar e Ultilizar" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
             </asp:Button>
             <a id="newCliCancelar" onclick="showCard('none','newCli')" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
               cancelar
             </a>
-          </div>
+          </div> -->
         </div>
-
       <!-- Fim cliente -->
 
       <!-- inicio veiculo -->
-      <div class="opcao mdl-cell mdl-cell--12-col">
-        <h2 class="mdl-card__title-text">Veículo</h2>
-        <a onclick="showCard('newVeiculo','none')" ID="clienteExistente" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
-          Adicionar um Veículo
-        </a>
-      </div>
-
-      <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col" id="newVeiculo" style="display:none;">
-        <div class="mdl-card__title">
-          <h2 class="mdl-card__title-text">Novo Veículo</h2>
+      <div class=" mdl-card mdl-cell mdl-cell--12-col mdl-card--border" id="newVeiculo">
+        <div class="title mdl-card__title">
+          <h2 class="mdl-card__title-text">Veículo</h2>
         </div>
         <div class="mdl-card__supporting-text mdl-grid">
-          <div class="mdl-textfield mdl-js-textfield mdl-cell mdl-cell--4-col">
+          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--4-col">
             <asp:TextBox runat="server" class="mdl-textfield__input" type="text" id="modeloVeiculo"></asp:TextBox>
             <label class="mdl-textfield__label" for="modeloVeiculo">Modelo Veículo</label>
           </div>
-          <div class="mdl-textfield mdl-js-textfield mdl-cell mdl-cell--2-col">
+
+          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--2-col">
             <asp:TextBox runat="server" class="mdl-textfield__input" type="text" id="placaVeiculo" pattern="[0-9,A-Z,-]*" onkeydown="mascara(this,'###-####')"></asp:TextBox>
             <label class="mdl-textfield__label" for="placaVeiculo">Placa</label>
             <span class="mdl-textfield__error">Tente ultilizar apenas números</span>
           </div>
-          <div class="mdl-textfield mdl-js-textfield mdl-cell mdl-cell--3-col">
+
+          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--3-col">
             <asp:TextBox runat="server" class="mdl-textfield__input" type="text" id="anoVeiculo" pattern="[0-9]*"></asp:TextBox>
             <label class="mdl-textfield__label" for="anoVeiculo">Ano de Fabricação</label>
             <span class="mdl-textfield__error">Tente ultilizar apenas números</span>
           </div>
-          <div class="mdl-textfield mdl-js-textfield mdl-cell mdl-cell--4-col">
+
+          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--4-col">
             <asp:TextBox runat="server" class="mdl-textfield__input" type="text" id="fabricanteVeiculo"></asp:TextBox>
             <label class="mdl-textfield__label" for="fabricanteVeiculo">Fabricante</label>
             <span class="mdl-textfield__error">Digite o Nome do fabricante</span>
           </div>
-          <div class="mdl-textfield mdl-js-textfield mdl-cell mdl-cell--3-col">
+
+          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--3-col">
             <asp:TextBox runat="server" class="mdl-textfield__input" type="text" id="corVeiculo"></asp:TextBox>
             <label class="mdl-textfield__label" for="corVeiculo">Cor</label>
           </div>
         </div>
-        <div class="mdl-card__actions">
+        <!-- <div class="mdl-card__actions">
           <asp:Button Text="Ultilizar" id="btnNewVeiculo" runat="server" onclick="novoVeiculo" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
           </asp:Button>
           <a id="newCliCancelar" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" onclick="showCard('none','newVeiculo')">
             cancelar
           </a>
-        </div>
+        </div> -->
       </div>
       <!-- fim veiculo -->
 
       <!-- Tipo de Servico -->
-      <div class="opcao mdl-cell mdl-cell--12-col">
+      <div class=" opcao mdl-cell mdl-cell--6-col-desktop mdl-cell--12-col-tablet">
           <h2 class="mdl-card__title-text">Selecione o Tipo de Serviço</h2>
-          <div class="mdl-textfield mdl-js-textfield mdl-cell mdl-cell--4-col">
+          <div class="mdl-textfield mdl-js-textfield mdl-cell mdl-cell--8-col-desktop mdl-cell--4-col-tablet">
             <label class="simpleLabeldd" for="selectServico">Tipo de Serviço</label>
             <asp:DropDownList ID="selectServico" runat="server" class="dropdown"
              DataSourceID="servico" DataTextField="tipo_servico" DataValueField="id_servico">
@@ -633,9 +253,9 @@
           </div>
       </div>
 
-      <div class="opcao mdl-cell mdl-cell--12-col">
+      <div class=" opcao mdl-cell mdl-cell--6-col-desktop mdl-cell--12-col-tablet">
           <h2 class="mdl-card__title-text">Selecione o Seguro</h2>
-          <div class="mdl-textfield mdl-js-textfield mdl-cell mdl-cell--3-col">
+          <div class="mdl-textfield mdl-js-textfield mdl-cell mdl-cell--8-col-desktop mdl-cell--4-col-tablet">
             <label class="simpleLabeldd" for="selectSeguro">Seguradora</label>
             <asp:DropDownList ID="selectSeguro" runat="server" class="dropdown"
              DataSourceID="seguro" DataTextField="nome_seguro" DataValueField="id_seguro">
@@ -644,39 +264,6 @@
               <asp:ListItem Text="Servidor Fora do Ar"/>
             </asp:DropDownList>
           </div>
-      </div>
-
-      <div class="opcao mdl-cell mdl-cell--12-col">
-        <h2 class="mdl-card__title-text">Selecione um Sinistro</h2>
-        <a ID="sinistroNovo" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" onclick="showCard('newSinistro','searchSinistro')">
-          Criar um novo Sinistro
-        </a>
-        <!--TODO Usar um serviço existente
-         <a ID="sinistroExistente" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" onclick="showCard('searchSinistro','newSinistro')">
-          Usar um sinistro Existênte
-        </a> -->
-      </div>
-
-      <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--6-col" id="newSinistro" style="display:none;">
-        <div class="mdl-card__title">
-          <h2 class="mdl-card__title-text">Novo Sinistro</h2>
-        </div>
-        <div class="mdl-card__supporting-text">
-          <form action="#">
-            <div class="mdl-textfield mdl-js-textfield">
-              <asp:TextBox runat="server" class="mdl-textfield__input" type="text" id="numeroSinistro"></asp:TextBox>
-              <label class="mdl-textfield__label" for="numeroSinistro">Número do Sinistro</label>
-            </div>
-          </form>
-        </div>
-        <div class="mdl-card__actions">
-          <asp:Button Text="Ultilizar" id="sinistroNovo" runat="server"
-          OnClick="newSinistro" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
-          </asp:Button>
-          <a id="newCliCancelar" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" onclick="showCard('none','newSinistro')">
-            cancelar
-          </a>
-        </div>
       </div>
 
       <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col" id="searchSinistro" style="display:none;">
@@ -701,14 +288,7 @@
         </div>
       </div>
 
-      <div class="opcao mdl-cell mdl-cell--12-col">
-        <h2 class="mdl-card__title-text">Viagem</h2>
-        <a ID="sinistroExistente" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" onclick="showCard('newViagem','none')">
-          Adicionar uma Viagem
-        </a>
-      </div>
-
-      <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col" id="newViagem" style="display:none;">
+      <div class="mdl-card mdl-cell mdl-cell--12-col" id="newViagem">
         <div class="mdl-card__title">
           <h2 class="mdl-card__title-text">Adicionando uma Viagem</h2>
         </div>
@@ -763,44 +343,59 @@
                TextMode="multiline" rows="4"></asp:TextBox>
               <label class="mdl-textfield__label" for="obsViagem">Observações</label>
             </div>
-          <h2 class="mdl-card__title-text">Motorista</h2>
-            <div class="mdl-textfield mdl-js-textfield mdl-cell mdl-cell--3-col">
-              <label class="simpleLabeldd" for="selectMotorista">Nome do Motorista</label>
-              <asp:DropDownList ID="selectMotorista" runat="server" class="dropdown"
-               DataSourceID="motorista" DataTextField="nome_func" DataValueField="id_mot">
-                <asp:ListItem Text="Servidor Fora do Ar"/>
-                <asp:ListItem Text="Servidor Fora do Ar"/>
-                <asp:ListItem Text="Servidor Fora do Ar"/>
-              </asp:DropDownList>
-            </div>
-          <h2 class="mdl-card__title-text">Frota</h2>
-            <div class="mdl-textfield mdl-js-textfield mdl-cell mdl-cell--3-col">
-              <label class="simpleLabeldd" for="selectFrota">Veículo</label>
-              <asp:DropDownList ID="selectFrota" runat="server" class="dropdown"
-               DataSourceID="frota" DataTextField="nome_frota" DataValueField="id_frota">
-                <asp:ListItem Text="Servidor Fora do Ar"/>
-                <asp:ListItem Text="Servidor Fora do Ar"/>
-                <asp:ListItem Text="Servidor Fora do Ar"/>
-              </asp:DropDownList>
-            </div>
+
         </div>
-        <div class="mdl-card__actions">
+        <!-- <div class="mdl-card__actions">
           <asp:Button ID="registrarViagem" OnClick="newViagem" runat="server" Text="adicionar" type="text" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
           </asp:Button>
           <a id="newCliCancelar" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" onclick="showCard('none','newViagem')">
             cancelar
           </a>
-        </div>
+        </div> -->
       </div>
-      <div class="opcao mdl-cell mdl-cell--12-col">
-          <h2 class="mdl-card__title-text">Agendamento</h2>
-          <div class="mdl-textfield mdl-js-textfield mdl-cell mdl-cell--4-col">
-            <label class="mdl-textfield__label" for="agendamentoOS">Data e Hora</label>
-            <asp:TextBox runat="server" ID="agendamentoOS" type="datetime-local"
-            class="mdl-textfield__input mdl-cell mdl-cell--12-col"
-            placeholder=""></asp:TextBox>
+
+      <div class=" opcao mdl-cell mdl-cell--6-col-desktop mdl-cell--12-col-tablet">
+          <h2 class="mdl-card__title-text">Selecione o Motorista</h2>
+          <div class="mdl-textfield mdl-js-textfield mdl-cell mdl-cell--8-col-desktop mdl-cell--4-col-tablet">
+            <label class="simpleLabeldd" for="selectMotorista">Nome do Motorista</label>
+            <asp:DropDownList ID="selectMotorista" runat="server" class="dropdown"
+             DataSourceID="motorista" DataTextField="nome_func" DataValueField="id_mot">
+              <asp:ListItem Text="Servidor Fora do Ar"/>
+              <asp:ListItem Text="Servidor Fora do Ar"/>
+              <asp:ListItem Text="Servidor Fora do Ar"/>
+            </asp:DropDownList>
           </div>
       </div>
+
+      <div class=" opcao mdl-cell mdl-cell--6-col-desktop mdl-cell--12-col-tablet">
+          <h2 class="mdl-card__title-text">Selecione a Viatura</h2>
+          <div class="mdl-textfield mdl-js-textfield mdl-cell mdl-cell--8-col-desktop mdl-cell--4-col-tablet">
+            <label class="simpleLabeldd" for="selectFrota">Veículo</label>
+            <asp:DropDownList ID="selectFrota" runat="server" class="dropdown"
+             DataSourceID="frota" DataTextField="nome_frota" DataValueField="id_frota">
+              <asp:ListItem Text="Servidor Fora do Ar"/>
+              <asp:ListItem Text="Servidor Fora do Ar"/>
+              <asp:ListItem Text="Servidor Fora do Ar"/>
+            </asp:DropDownList>
+          </div>
+      </div>
+
+      <div class=" opcao mdl-cell mdl-cell--6-col-desktop mdl-cell--12-col-tablet">
+          <h2 class="mdl-card__title-text">Sinistro</h2>
+          <div class="mdl-textfield mdl-textfield--floating-label mdl-js-textfield mdl-cell mdl-cell--8-col-desktop mdl-cell--4-col-tablet">
+            <asp:TextBox runat="server" class="mdl-textfield__input" type="text" id="numeroSinistro"></asp:TextBox>
+            <label class="mdl-textfield__label" for="numeroSinistro">Número do Sinistro</label>
+          </div>
+      </div>
+
+      <div class=" opcao mdl-cell mdl-cell--6-col-desktop mdl-cell--12-col-tablet">
+          <h2 class="mdl-card__title-text">Agendamento</h2>
+          <div class="mdl-textfield mdl-textfield--floating-label mdl-js-textfield mdl-cell mdl-cell--8-col-desktop mdl-cell--4-col-tablet">
+            <asp:TextBox runat="server" ID="agendamentoOS" type="datetime-local" class="mdl-textfield__input" placeholder=" "></asp:TextBox>
+            <label class="mdl-textfield__label" for="agendamentoOS">Data e Hora</label>
+          </div>
+      </div>
+
       <div class="opcao mdl-cell mdl-cell--12-col">
           <h2 class="mdl-card__title-text">Status</h2>
           <div class="mdl-textfield mdl-js-textfield mdl-cell mdl-cell--4-col">
@@ -859,16 +454,6 @@
       <asp:ControlParameter Name="endereco" ControlID="residenciaCli" PropertyName="Text"/>
       <asp:Parameter Name="dataNasc"/>
     </InsertParameters>
-  </asp:SqlDataSource>
-
-  <asp:SqlDataSource ID="clientePesq" runat="server"
-   ConnectionString="<%$ ConnectionStrings:amaralguinchoConnectionString %>"
-   ProviderName="<%$ ConnectionStrings:amaralguinchoConnectionString.ProviderName %>"
-   SelectCommand="SELECT id_cli, nome_cli, sobrenome_cli, cpf_cli, email_cli, sx_cli, telefone_cli, dtnasc_cli, cep_cli, bairro_cli, cid_cli, uf_cli, endereco_cli
-   FROM cliente WHERE (nome_cli=@nome)">
-   <SelectParameters>
-    <asp:ControlParameter Name="nome" ControlID="pesqCliente" PropertyName="Text"/>
-   </SelectParameters>
   </asp:SqlDataSource>
 
   <asp:SqlDataSource ID="veiculo" runat="server"
@@ -1146,78 +731,6 @@ function pesquisaCepPartida() {
 
   }
 
-  function validateCpf() {
-    if(CPF.validate(document.getElementById('<%=cpfCli.ClientID%>').value) != true){
-      alert("O CPF inserido não existe!");
-    }
-  }
-
-function pesquisacep() {
-    var valor = document.getElementById('<%=cepCli.ClientID%>').value;
-    //Nova variável "cep" somente com dígitos.
-    var cep = valor.replace(/\D/g, '');
-
-    //Verifica se campo cep possui valor informado.
-    if (cep != "") {
-
-        //Expressão regular para validar o CEP.
-        var validacep = /^[0-9]{8}$/;
-
-        //Valida o formato do CEP.
-        if(validacep.test(cep)) {
-
-
-            //Cria um elemento javascript.
-            var script = document.createElement('script');
-
-            //Sincroniza com o callback.
-            script.src = '//viacep.com.br/ws/'+ cep + '/json/?callback=meu_callback';
-
-            //Insere script no documento e carrega o conteúdo.
-            document.body.appendChild(script);
-
-        } //end if.
-        else {
-            //cep é inválido.
-            alert("Formato de CEP inválido.");
-        }
-    } //end if.
-    else {
-        //cep sem valor, limpa formulário.
-        valor = "";
-    }
-  }
-
-  function meu_callback(conteudo) {
-      if (!("erro" in conteudo)) {
-        var residencia = document.getElementById('<%=residenciaCli.ClientID%>');
-        var uf = document.getElementById('<%=ufCli.ClientID%>');
-        var cidade = document.getElementById('<%=cidadeCli.ClientID%>');
-        var bairro = document.getElementById('<%=bairroCli.ClientID%>');
-
-
-          //Atualiza os campos com os valores.
-          residencia.value=(conteudo.logradouro);
-          uf.value =  (conteudo.uf);
-          cidade.value = (conteudo.localidade);
-          bairro.value = (conteudo.bairro);
-      }
-      else {
-          //CEP não Encontrado.
-          var residencia = document.getElementById('<%=residenciaCli.ClientID%>');
-          var uf = document.getElementById('<%=ufCli.ClientID%>');
-          var cidade = document.getElementById('<%=cidadeCli.ClientID%>');
-          var bairro = document.getElementById('<%=bairroCli.ClientID%>');
-
-
-            //Atualiza os campos com os valores.
-            residencia.value="Não Encontrado";
-            uf.value =  "Não Encontrado";
-            cidade.value = "Não Encontrado";
-            bairro.value = "Não Encontrado";
-      }
-  }
-
   function pesquisaCepDestino() {
       var valor = document.getElementById('cepViagemDestino').value;
       //Nova variável "cep" somente com dígitos.
@@ -1289,38 +802,6 @@ function pesquisacep() {
     }
 
   }
-
-  function dontHide() {
-    var nomeCliPesq = document.getElementById('<%=nomeCliPesq.ClientID%>');
-    var searchCliCard = document.getElementById('searchCli');
-    var placaVeiculo = document.getElementById('<%=placaVeiculo.ClientID%>');
-    var newVeiculoCard = document.getElementById('newVeiculo');
-    var newSinistroCard = document.getElementById('newSinistro');
-    var sinistro = document.getElementById('<%=numeroSinistro.ClientID%>');
-
-    if(nomeCliPesq.value != ''){
-      searchCliCard.style.display = "block";
-    }
-    else{
-      searchCliCard.style.display = "none";
-    }
-
-    if(placaVeiculo.value != ''){
-      newVeiculoCard.style.display = "block";
-    }
-    else{
-      newVeiculoCard.style.display = "none";
-    }
-
-    if(sinistro.value != ''){
-      newSinistroCard.style.display = "block";
-    }
-    else{
-      newSinistroCard.style.display = "none";
-    }
-
-  };
-
 
   </script>
 </asp:Content>
