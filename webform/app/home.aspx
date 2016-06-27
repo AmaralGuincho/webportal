@@ -535,7 +535,11 @@
     <div class="mdl-snackbar__text"></div>
     <button type="button" class="mdl-snackbar__action"></button>
   </div>
-
+  <script type="text/javascript">
+    window.onload = function shellName() {
+      document.getElementById('shellTitle').innerHTML = 'inbox';
+    }
+  </script>
   <!-- Sql Interacions -->
   <asp:SqlDataSource
   ID="lattestClientes" runat="server"
