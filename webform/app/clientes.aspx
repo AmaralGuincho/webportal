@@ -255,6 +255,11 @@
   <script src="../scripts/cpf.min.js" charset="utf-8"></script>
 
   <script>
+    window.onload = function shellName() {
+      var shellTitle = document.getElementById("shellTitle");
+      shellTitle.innerHTML = 'Clientes';
+    }
+
     var dialog = document.querySelector('dialog');
     var showDialogButton = document.querySelector('#fabButton');
     if (! dialog.showModal) {

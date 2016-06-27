@@ -253,5 +253,10 @@
       t.value += input.substring(0,1);
     }
   }
+
+  window.onload = function shellName() {
+    var shellTitle = document.getElementById("shellTitle");
+    shellTitle.innerHTML = 'Frota';
+  }
   </script>
 </asp:Content>

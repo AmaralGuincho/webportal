@@ -1,17 +1,17 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="settings.aspx.cs" Inherits="app_settings" MasterPageFile="~/app/index.master" EnableEventValidation="false" %>
 
 <asp:Content ContentplaceholderID="indexBodyPlaceholder" runat="server">
-  <div class="mdl-grid card-box">
-    <form action="#" runat="server">
-    <div class="mdl-card mdl-shadow--8dp mdl-cell mdl-cell--12-col mdl-grid">
+<form action="#" runat="server">
+  <div class="mdl-grid  mdl-cell--12-col card-box">
+    <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col-desktop mdl-grid">
       <div class="mdl-card__title mdl-cell mdl-cell-12-col">
         <h2 class="mdl-card__title-text">Ajustes</h2>
       </div>
-      <div class="mdl-card__supporting-text mdl-cell mdl-cell--12-col">
+      <div class="mdl-card__supporting-text mdl-cell mdl-cell--12-col-desktop">
         Seus Ajustes
       </div>
-      <div class="card-content mdl-card--border mdl-grid mdl-cell mdl-cell--12-col">
-        <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect mdl-cell mdl-cell--2-offset-desktop mdl-cell--2-offset-tablet mdl-cell--8-col-desktop mdl-cell--8-col-tablet" for="enviosEstatisticas">
+      <div class="card-content mdl-card--border mdl-grid mdl-cell mdl-cell--12-col-desktop">
+        <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect mdl-cell mdl-cell--2-offset-desktop mdl-cell--2-offset-tablet mdl-cell--12-col-desktop mdl-cell--8-col-tablet" for="enviosEstatisticas">
           <input type="checkbox" id="enviosEstatisticas" class="mdl-switch__input" checked>
           <span class="mdl-switch__label">Permitir Envio de diagnósticos para o melhoramento do programa</span>
         </label>
@@ -38,10 +38,9 @@
         </asp:Button>
       </div>
     </div>
-    </form>
-
 
   </div>
+  </form>
 
   <button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored mdl-color--red mdl-color-text--white" id="fabButton">
     <i class="material-icons">add</i>
@@ -66,6 +65,10 @@
 <script type="text/javascript">
   function showScreen(card) {
     document.getElementById(card).style.display='block';
+  }
+  window.onload = function shellName() {
+    var shellTitle = document.getElementById("shellTitle");
+    shellTitle.innerHTML = 'Ajustes';
   }
 </script>
 </asp:Content>

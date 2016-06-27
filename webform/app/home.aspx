@@ -622,17 +622,7 @@
   ProviderName="<%$ ConnectionStrings:amaralguinchoConnectionString.ProviderName %>"
   SelectCommand="
   SELECT id_os, id_servico FROM servico_os
-   ORDER BY id_os DESC LIMIT 3  ">
+   ORDER BY id_os DESC LIMIT 3 ">
   </asp:SqlDataSource>
-
-  <script type="text/javascript">
-  function mascara(t,mask){
-    var i = t.value.length;
-    var output = mask.substring(1,0);
-    var input = mask.substring(i);
-    if(input.substring(0,1) != output){
-      t.value += input.substring(0,1);
-    }
-  </script>
 
 </asp:Content>

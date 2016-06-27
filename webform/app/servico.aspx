@@ -2,18 +2,10 @@
 
 <asp:Content ContentplaceholderID="indexBodyPlaceholder" runat="server">
 <script type="text/javascript">
-    var xPos, yPos;
-    var prm = Sys.WebForms.PageRequestManager.getInstance();
-    prm.add_beginRequest(BeginRequestHandler);
-    prm.add_endRequest(EndRequestHandler);
-    function BeginRequestHandler(sender, args) {
-        xPos = $get('scrollDiv').scrollLeft;
-        yPos = $get('scrollDiv').scrollTop;
-    }
-    function EndRequestHandler(sender, args) {
-        $get('scrollDiv').scrollLeft = xPos;
-        $get('scrollDiv').scrollTop = yPos;
-    }
+  window.onload = function shellName() {
+    var shellTitle = document.getElementById("shellTitle");
+    shellTitle.innerHTML = 'Home';
+}
 </script>
 <form  runat="server">
   <div class="mdl-grid card-box">
