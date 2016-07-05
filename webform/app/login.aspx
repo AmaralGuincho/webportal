@@ -5,7 +5,6 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <link rel="icon" href="images/icon.png"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta charset="utf-8" />
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600' rel='stylesheet' type='text/css'/>
     <link rel="stylesheet" href="../style/old.css" />
@@ -31,6 +30,8 @@
     <meta name="msapplication-TileColor" content="#FFF">
     <link rel="shortcut icon" href="../images/icon-white.png">
 
+    <!-- Web Application Manifest -->
+    <link rel="manifest" href="../manifest.json">
 </head>
 <body>
     <style>
@@ -116,8 +117,12 @@
     </style>
     <nav>
         <ul>
-            <a href="../index.html"><img src="../images/icon.png" /></a>
-            <li>Amaral Guincho</li>
+            <li>
+              <a href="../index.html" id="mainLogo">
+                <img src="../images/icon.png" />
+                <span>Amaral Guincho</span>
+              </a>
+            </li>
             <li><a href="../index.html">Home</a></li>
             <li><a onclick="join();">Cadastre-se</a></li>
             <li><a href="http://amaralguincho.com.br">Contato</a></li>

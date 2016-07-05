@@ -11,62 +11,39 @@ a{
   color:inherit;
 }
 
-ul{
-  margin:0em;
-  margin-left:0;
-  width:100%;
-}
-
-li{
-  display:inline-block;
-  position:relative;
-  top:-1.5em;
-  margin-left:10%;
-  /*margin-right:10%;*/
-  /*padding:5px;*/
-}
-
-li>a{
-  transition: text 6s ease-out 0.15s, color 2s ease-out 0.15s;
-  color:#000000;
-  text-decoration: none;
-}
-
-  li>a:hover{
-    color:#e70d0d;
-    transition: text 0.3s ease-in 0.15s, color 0.15s ease-in 0.15s;
-  }
-
-  li>a:active{
-    color:#0d85e7;
-  }
-
-
-
-ul>li:nth-child(2) {
-  position:relative;
-  top:-23px;
-
-  color:rgb(204, 33, 33);
-  margin-left:0;
-  margin-right:2%;
-  font-size:22px;
-}
-
-ul>a{
-  height:40px;
-  margin-left:0em;
-}
-
-
 nav{
   background-color:rgba(255, 255, 255, 0.81);
   margin:0;
   padding:.2em;
   color:rgb(51, 51, 54);
-  height:60px;;
+  height:60px;
   font-size: 1em;
   font-weight: 300;
+}
+
+ul{
+  display: block;
+  width:900px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+ul > li{
+  display:inline-block;
+  margin-left: 7em;
+  cursor:pointer;
+}
+
+#mainLogo > span{
+  font-size:25px;
+  color: #e23535;
+  margin-left: -200px;
+}
+
+a > img{
+  position:absolute;
+  top:3px;
+  margin-left: -270px;
 }
 
 .copyrights{
@@ -99,17 +76,11 @@ nav{
 
 
 @media (max-width: 910px) {
-    .fb{
-      display:none;
-    }
 
-    ul>a:first-child{
-     margin-right: 50px;
-    }
+  ul > li{
+    margin-left: 80px
+  }
 
-    ul>li:nth-child(2){
-      display:none;
-    }
 }
 
 @media(max-width: 725px){
@@ -118,21 +89,19 @@ nav{
   }
 
   ul{
-    margin: 0;
-    width:100%;
+    width: 80%;
   }
 
-  ul>li{
-    display:inline-block;
+  ul > li{
+    margin-left: 40px
   }
 
-  ul>a{
-    margin-left:-40px;
-    margin-right:0;
+  li:first-child{
+    margin-left: -70px;
   }
 
-  ul{
-    margin:0
+  #mainLogo{
+    display: none;
   }
 
   content>img{
