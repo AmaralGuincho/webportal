@@ -207,6 +207,17 @@ h2{
   margin-top:-5px;
 }
 
+.pageLoad{
+  display: block;
+}
+
+.pageLoad > div{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 30%;
+}
+
 @media (max-width: 720px) {
   #fabButton{
     bottom:10px;

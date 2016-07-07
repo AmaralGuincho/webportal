@@ -58,6 +58,9 @@
 
 </head>
 <body>
+  <div class="pageLoad">
+    <div class="mdl-spinner mdl-js-spinner is-active"></div>
+  </div>
   <div class="layout mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header">
       <header class="header mdl-layout__header mdl-color--grey-100 mdl-color-text--grey-600">
           <div class="mdl-layout__header-row">
@@ -124,10 +127,17 @@
           </asp:ContentPlaceHolder>
       </main>
   </div>
-
+  
     <!-- Material Design Scripts src -->
     <script defer src="https://code.getmdl.io/1.1.3/material.min.js"></script>
     <script type="text/javascript">
+      var moldura = document.querySelector('.layout');
+      var loadingScreen = document.querySelector('.pageLoad');
+      moldura.style.display = 'none';
+      window.onload = function() {
+        moldura.style.display = 'flex';
+        loadingScreen.style.display = 'none';
+      }
     </script>
 
     <asp:SqlDataSource ID="getUsuario" runat="server" ConnectionString="<%$ ConnectionStrings:amaralguinchoConnectionString %>" ProviderName="<%$ ConnectionStrings:amaralguinchoConnectionString.ProviderName %>" SelectCommand="SELECT nome_func, img_func, email_func FROM funcionario WHERE (id_func = @idfunc)">
