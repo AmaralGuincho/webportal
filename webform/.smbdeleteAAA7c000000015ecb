@@ -1,0 +1,16 @@
+{
+  "name": "Amaral Guincho",
+  "short_name": "Guincho",
+  "display":"standalone",
+  "version": "1.0",
+  "start_url": "/",
+  "theme_color": "#353b60",
+  "background_color": "#ffffff",
+  "icons": [
+    {
+      "src":"images/icon.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    }
+  ]
+}
