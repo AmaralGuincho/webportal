@@ -843,7 +843,7 @@
 
     viagem.id_mot, viagem.id_frota,
 
-    motoristaOnly.id_mot,
+    motoristaOnly.id_mot as 'idMotorista', motoristaOnly.nome_func as 'nomeMotorista',
 
     viagem.bairro_destino_viagem, viagem.bairro_partida_viagem,
     viagem.endereco_destino_viagem, viagem.endereco_partida_viagem,
@@ -878,13 +878,14 @@
       INNER JOIN frota ON
         viagem.id_frota = frota.id_frota
       INNER JOIN servico ON
-        servico_os.id_os = os.id_os
+        servico_os.id_servico = servico.id_servico
       INNER JOIN sinistro ON
         servico_os.id_sinistro = sinistro.id_sinistro
       INNER JOIN seguro ON
         servico_os.id_seguro = seguro.id_seguro
 
-    WHERE os.id_os = (@idConsulta) LIMIT 1">
+    WHERE
+    os.id_os = (@idConsulta)">
     <SelectParameters>
       <asp:Parameter name="idConsulta"/>
     </SelectParameters>

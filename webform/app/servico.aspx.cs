@@ -63,7 +63,7 @@ public partial class app_servico : System.Web.UI.Page
     }
 
     protected void newOs(object sender, EventArgs e){
-      try{
+      // try{
         // Inserindo o cliente
         cliente.Insert();
         //obtendo o id do cliente inserido
@@ -129,8 +129,10 @@ public partial class app_servico : System.Web.UI.Page
 
         //General Respose
         Response.Redirect("servico.aspx");
-      }
-      catch(Exception ex){}
+      // }
+      // catch(Exception ex){
+      //   Response.Write("<script>alert('Ocorreu um erro');</script>");
+      // }
     }
 
     protected void abrirOs1(object sender, EventArgs e){
@@ -146,7 +148,7 @@ public partial class app_servico : System.Web.UI.Page
     }
 
     public void pesqOS(int numeroOrdem){
-      try{
+      // try{
         Session["pesqOS"] = true;
 
         //importando o id da os no qual o botão foi pressionado
@@ -218,7 +220,9 @@ public partial class app_servico : System.Web.UI.Page
         //StatusOS
         statusOsConsulta.Text = consulta.Table.Rows[0]["status_os"].ToString();
 
-      }catch(Exception ex){}
+      // }catch(Exception ex){
+      //   Response.Write("<script>alert('Ocorreu um erro');</script>");
+      // }
     }
 
     protected void showOs(object sender,EventArgs e){
