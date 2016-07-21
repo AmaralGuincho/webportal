@@ -1,0 +1,149 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="index.master.cs" Inherits="app_index" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>Amaral Guincho</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="Mobile Plataform for Amaral Guincho">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, maximum-scale=1.0"/>
+    <link href="../images/icon.png" rel="icon" />
+
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Amaral Guincho">
+    <link rel="apple-touch-icon" href="../images/icon-white.png">
+
+    <!-- Add to homescreen for Chrome on Android -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="application-name" content="Amaral Guincho">
+    <link rel="icon" sizes="192x192" href="../images/icon.png">
+
+    <!-- Tile icon for Win8 (144x144 + tile color) -->
+    <meta name="msapplication-TileImage" content="../images/icon-white.png">
+    <meta name="msapplication-TileColor" content="#FFF">
+    <link rel="shortcut icon" href="../images/icon-white.png">
+
+    <!-- Roboto Font -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italiic,light,bolditalic,black,medium&apm;lang=en" rel="stylesheet" />
+    <!-- Google Material Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+    <!-- Material Design Lite -->
+    <link href="https://code.getmdl.io/1.1.3/material.cyan-light_blue.min.css" rel="stylesheet" />
+    <!--Stylesheet-->
+    <link href="~/style/app.css" rel="stylesheet" />
+
+    <style>
+      #view-source{
+        position: fixed;
+        display: block;
+        right: 0;
+        bottom: 0;
+        margin-right: 40px;
+        margin-bottom: 40px;
+        z-index:900;
+      }
+      .mdl-layout__drawer-button{
+        display: flex;
+        align-items:center;
+        padding-left: 15px;
+      }
+    </style>
+
+    <asp:ContentPlaceHolder id="indexHeadPlaceholder" runat="server">
+    </asp:ContentPlaceHolder>
+
+</head>
+<body>
+  <div class="pageLoad">
+    <div class="mdl-spinner mdl-js-spinner is-active"></div>
+  </div>
+  <div class="layout mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header">
+      <header class="header mdl-layout__header mdl-color--grey-100 mdl-color-text--grey-600">
+          <div class="mdl-layout__header-row">
+              <span class="mdl-layout-title" id="shellTitle">Home</span>
+              <div class="mdl-layout-spacer"></div>
+              <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" id="options">
+                  <i class="material-icons">more_vert</i>
+              </button>
+              <ul class="mdl-menu mdl-js-menu mdl-js-ripple-effect mdl-menu--bottom-right" for="options">
+                  <li class="mdl-menu__item">Sobre</li>
+                  <li class="mdl-menu__item">Ajuda</li>
+                  <li class="mdl-menu__item"><a href="../index.html" class="mdl-menu__item">Sair</a></li>
+              </ul>
+          </div>
+      </header>
+      <div class="drawer mdl-layout__drawer mdl-color--blue-grey-900 mdl-color-text--blue-grey-50">
+          <header class="drawer-header">
+              <img class="avatar" runat="server" id="profileImage" src="https://github.com/caiobep.png"/>
+              <span id="nome" runat="server">nome</span>
+              <span id="email" runat="server">nome@email.com</span>
+              <div class="mdl-layout-spacer"></div>
+          </header>
+          <nav class="navigation mdl-navigation mdl-color--blue-grey-800">
+              <!-- <a class="mdl-navigation__link is-active" href="home.aspx" is-active><i class="mdl-color-text--blue-grey-400 material-icons">home</i>Home</a> -->
+              <a class="mdl-navigation__link" href="home.aspx"><i class="mdl-color-text--blue-grey-400 material-icons">inbox</i>Inbox</a>
+              <a class="mdl-navigation__link" href="servico.aspx"><i class="mdl-color-text--blue-grey-400 material-icons">description</i>Serviço</a>
+              <a class="mdl-navigation__link" href="motoristas.aspx"><i class="mdl-color-text--blue-grey-400 material-icons">assignment_ind</i>Motoristas</a>
+              <a class="mdl-navigation__link" href="frota.aspx"><i class="mdl-color-text--blue-grey-400 material-icons">local_shipping</i>Frota</a>
+              <a class="mdl-navigation__link" href="clientes.aspx"><i class="mdl-color-text--blue-grey-400 material-icons">face</i>Clientes</a>
+              <a class="mdl-navigation__link" href="seguro.aspx"><i class="mdl-color-text--blue-grey-400 material-icons">perm_contact_calendar</i>Seguro</a>
+              <a class="mdl-navigation__link" href="funcionarios.aspx"><i class="mdl-color-text--blue-grey-400 material-icons">people</i>Funcionários</a>
+              <!-- <a class="mdl-navigation__link" href="#" disabled><i class="mdl-color-text--blue-grey-400 material-icons">pie_chart</i>Estatisticas</a> -->
+              <!-- <a class="mdl-navigation__link" href="#" disabled><i class="mdl-color-text--blue-grey-400 material-icons">monetization_on</i>Financeiro</a> -->
+              <a class="mdl-navigation__link" href="settings.aspx"><i class="mdl-color-text--blue-grey-400 material-icons">settings</i>Ajustes</a>
+              <div class="mdl-layout-spacer"></div>
+              <a class="mdl-navigation__link" href="../index.html"><i class="mdl-color-text--blue-grey-400 material-icons">power_settings_new</i>Sair</a>
+          </nav>
+      </div>
+
+      <div id="over-card" hidden>
+        <div class="mdl-card mdl-shadow--2dp">
+          <div class="mdl-card__title">
+            <h2 class="mdl-card__title-text">Over All</h2>
+          </div>
+          <div class="mdl-card__supporting-text">
+
+          </div>
+          <div class="mdl-card__actions mdl-card--border">
+            <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+
+            </a>
+          </div>
+          <div class="mdl-card__menu">
+            <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
+              <i class="material-icons">share</i>
+            </button>
+
+          </div>
+        </div>
+      </div>
+
+      <main class="mdl-layout__content mdl-color--grey-100">
+          <asp:ContentPlaceHolder ID="indexBodyPlaceholder" runat="server">
+          </asp:ContentPlaceHolder>
+      </main>
+  </div>
+  
+    <!-- Material Design Scripts src -->
+    <script defer src="https://code.getmdl.io/1.1.3/material.min.js"></script>
+    <script type="text/javascript">
+      var moldura = document.querySelector('.layout');
+      var loadingScreen = document.querySelector('.pageLoad');
+      moldura.style.display = 'none';
+      window.onload = function() {
+        moldura.style.display = 'flex';
+        loadingScreen.style.display = 'none';
+      }
+    </script>
+
+    <asp:SqlDataSource ID="getUsuario" runat="server" ConnectionString="<%$ ConnectionStrings:amaralguinchoConnectionString %>" ProviderName="<%$ ConnectionStrings:amaralguinchoConnectionString.ProviderName %>" SelectCommand="SELECT nome_func, img_func, email_func FROM funcionario WHERE (id_func = @idfunc)">
+      <SelectParameters>
+        <asp:SessionParameter Name="idfunc" SessionField="log" />
+      </SelectParameters>
+    </asp:SqlDataSource>
+</body>
+</html>
