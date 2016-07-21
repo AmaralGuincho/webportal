@@ -21,7 +21,7 @@
         <h2 class="mdl-card__title-text">Ordens de Serviço Abertas</h2>
       </div>
       <div class="card-content mdl-grid mdl-cell mdl-cell--12-col">
-        <table class="mdl-data-table mdl-data-table--selectable mdl-js-data-table mdl-cell mdl-cell--12-col-desktop mdl-cell--8-tablet">
+        <table class="mdl-data-table mdl-data-table--selectable mdl-js-data-table mdl-cell mdl-cell--12-col">
           <tr class="os1">
             <td class="mdl-data-table__cell--non-numeric">
               <i class="material-icons md-38 mdl-color-text--red-200">directions</i>
@@ -75,10 +75,10 @@
 
     <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--6-col-desktop mdl-cell--8-col-tablet mdl-cell--4-col-phone mdl-grid" id="servicoRecente">
       <div class="mdl-card__title mdl-cell mdl-cell--12-col">
-        <h2 class="mdl-card__title-text">Serviços Recentes</h2>
+        <h2 class="mdl-card__title-text">Serviços Fechados Recentemente</h2>
       </div>
       <div class="card-content mdl-grid mdl-cell mdl-cell--12-col">
-        <table class="mdl-data-table mdl-data-table--selectable mdl-js-data-table mdl-cell mdl-cell--12-col-desktop mdl-cell--8-tablet">
+        <table class="mdl-data-table mdl-data-table--selectable mdl-js-data-table mdl-cell mdl-cell--12-col">
           <thead>
             <tr>
               <th class="mdl-data-table__cell--non-numeric">
@@ -101,7 +101,7 @@
               <label runat="server" id="codigoOS1">#idOs</label>
             </td>
             <td class="mdl-data-tavle__cell">
-              <asp:Button ID="openServicoOs1" Text="Abrir" runat="server" Class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"/>
+              <asp:Button ID="openServicoOs1" Text="Abrir" onclick="abrirOs4" runat="server" Class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"/>
             </td>
           </tr>
           <tr>
@@ -112,7 +112,7 @@
               <label runat="server" id="codigoOS2">#idOs</label>
             </td>
             <td class="mdl-data-tavle__cell">
-              <asp:Button ID="openServicoOs2" Text="Abrir" runat="server" Class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"/>
+              <asp:Button ID="openServicoOs2" Text="Abrir" onclick="abrirOs5" runat="server" Class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"/>
             </td>
         </tr>
         <tr>
@@ -123,7 +123,7 @@
             <label runat="server" id="codigoOS3">#idOs</label>
           </td>
           <td class="mdl-data-tavle__cell">
-            <asp:Button ID="openServicoOs3" Text="Abrir" runat="server" Class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"/>
+            <asp:Button ID="openServicoOs3" Text="Abrir" onclick="abrirOs6" runat="server" Class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"/>
           </td>
         </tr>
       </tbody>
@@ -190,7 +190,7 @@
       <!-- Fim cliente -->
 
       <!-- inicio veiculo -->
-      <div class=" mdl-card mdl-cell mdl-cell--12-col-desktop mdl-card--border" id="newVeiculo">
+      <div class=" mdl-card mdl-cell mdl-cell--12-col mdl-card--border" id="newVeiculo">
         <div class="title mdl-card__title">
           <h2 class="mdl-card__title-text">Veículo</h2>
         </div>
@@ -464,7 +464,7 @@
       <!-- Fim cliente -->
 
       <!-- inicio veiculo -->
-      <div class=" mdl-card mdl-cell mdl-cell--12-col-desktop mdl-card--border" id="newVeiculo">
+      <div class=" mdl-card mdl-cell mdl-cell--12-col-desktop mdl-cell--8-col-tablet mdl-card--border" id="newVeiculo">
         <div class="title mdl-card__title">
           <h2 class="mdl-card__title-text">Veículo</h2>
         </div>
@@ -644,7 +644,8 @@
       <div class="mdl-layout-spacer"></div>
       <div class="mdl-card__actions mdl-card--border">
         <asp:Button id="PesqregistrarOs" runat="server" Text="Atualizar Ordem de Serviço"
-         class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+         class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"
+         onclick="updateOs">
         </asp:Button>
       </div>
 
@@ -683,13 +684,28 @@
    InsertCommand="INSERT INTO cliente
     (nome_cli, sobrenome_cli, cpf_cli, telefone_cli)
      VALUES
-     (@nome, @sobrenome, @cpf, @telefone)">
+     (@nome, @sobrenome, @cpf, @telefone)"
+   UpdateCommand="
+    UPDATE cliente SET
+      nome_cli = @nome,
+      sobrenome_cli = @sobrenome,
+      cpf_cli = @cpf,
+      telefone_cli = @telefone
+    WHERE
+      id_cli = @idCli">
     <InsertParameters>
       <asp:ControlParameter Name="nome" ControlID="nomeCli" PropertyName="Text"/>
       <asp:ControlParameter Name="sobrenome" ControlID="SobrenomeCli" PropertyName="Text"/>
       <asp:ControlParameter Name="cpf" ControlID="cpfCli" PropertyName="Text"/>
       <asp:ControlParameter Name="telefone" ControlID="telCli" PropertyName="Text"/>
     </InsertParameters>
+    <UpdateParameters>
+      <asp:ControlParameter Name="nome" ControlID="nomeCliConsulta" PropertyName="Text"/>
+      <asp:ControlParameter Name="sobrenome" ControlID="SobrenomeCliConsulta" PropertyName="Text"/>
+      <asp:ControlParameter Name="cpf" ControlID="cpfCliConsulta" PropertyName="Text"/>
+      <asp:ControlParameter Name="telefone" ControlID="telefoneCliConsulta" PropertyName="Text"/>
+      <asp:Parameter Name="idCli"/>
+    </UpdateParameters>
   </asp:SqlDataSource>
 
   <asp:SqlDataSource ID="veiculo" runat="server"
@@ -699,7 +715,16 @@
   (id_cli, fabricante_veiculo, modelo_veiculo, ano_veiculo, placa_veiculo, cor_veiculo)
   VALUES
   (@cliente, @fabricante, @modelo, @ano, @placa, @cor)"
-  SelectCommand="SELECT MAX(id_veiculo) FROM veiculo">
+  SelectCommand="SELECT MAX(id_veiculo) FROM veiculo"
+  UpdateCommand="
+  UPDATE veiculo SET
+   fabricante_veiculo = @fabricante,
+   modelo_veiculo = @modelo,
+   ano_veiculo = @ano,
+   placa_veiculo = @placa,
+   cor_veiculo = @cor
+  WHERE
+  id_veiculo = @idVeiculo">
     <InsertParameters>
       <asp:ControlParameter Name="fabricante" ControlID="fabricanteVeiculo" PropertyName="Text"/>
       <asp:ControlParameter Name="modelo" ControlID="modeloVeiculo" PropertyName="Text"/>
@@ -708,6 +733,14 @@
       <asp:ControlParameter Name="ano" ControlID="anoVeiculo" PropertyName="Text"/>
       <asp:Parameter Name="cliente"/>
     </InsertParameters>
+    <UpdateParameters>
+      <asp:ControlParameter Name="fabricante" ControlID="fabricanteVeiculoConsulta" PropertyName="Text"/>
+      <asp:ControlParameter Name="modelo" ControlID="modeloVeiculoConsulta" PropertyName="Text"/>
+      <asp:ControlParameter Name="placa" ControlID="placaVeiculoConsulta" PropertyName="Text"/>
+      <asp:ControlParameter Name="cor" ControlID="corVeiculoConsulta" PropertyName="Text"/>
+      <asp:ControlParameter Name="ano" ControlID="anoVeiculoConsulta" PropertyName="Text"/>
+      <asp:Parameter Name="idVeiculo"/>
+    </UpdateParameters>
   </asp:SqlDataSource>
 
   <asp:SqlDataSource ID="viagem" runat="server"
@@ -721,7 +754,22 @@
     VALUES
     (@idMot, @idFrota, @bairroDestinoViagem, @bairroPartidaViagem,
     @enderecoDestinoViagem, @enderecoPartidaViagem, @cidadeDestinoViagem,
-    @cidadePartidaViagem, @ufDestinoViagem, @ufPartidaViagem, @obsViagem)">
+    @cidadePartidaViagem, @ufDestinoViagem, @ufPartidaViagem, @obsViagem)"
+    UpdateCommand = "
+    UPDATE viagem SET
+      id_mot = @idMot,
+      id_frota = @idFrota,
+      bairro_destino_viagem = @bairroDestinoViagem,
+      bairro_partida_viagem = @bairroPartidaViagem,
+      endereco_destino_viagem = @enderecoDestinoViagem,
+      endereco_partida_viagem = @enderecoPartidaViagem,
+      cidade_destino_viagem = @cidadeDestinoViagem,
+      cidade_partida_viagem = @cidadePartidaViagem,
+      uf_destino_viagem = @ufDestinoViagem,
+      uf_partida_viagem = @ufPartidaViagem,
+      obs_viagem = @obsViagem
+  WHERE
+    id_viagem = @idViagem">
     <InsertParameters>
       <asp:ControlParameter Name="idMot" ControlID="selectMotorista" PropertyName="SelectedValue"/>
       <asp:ControlParameter Name="idFrota" ControlID="selectFrota" PropertyName="SelectedValue"/>
@@ -735,14 +783,28 @@
       <asp:ControlParameter Name="ufPartidaViagem" ControlID="ufViagemPartida" PropertyName="Text"/>
       <asp:ControlParameter Name="obsViagem" ControlID="obsViagem" PropertyName="Text"/>
     </InsertParameters>
+    <UpdateParameters>
+      <asp:ControlParameter Name="idMot" ControlID="selectMotoristaConsulta" PropertyName="SelectedValue"/>
+      <asp:ControlParameter Name="idFrota" ControlID="selectFrotaConsulta" PropertyName="SelectedValue"/>
+      <asp:ControlParameter Name="bairroDestinoViagem" ControlID="bairroViagemDestinoConsulta" PropertyName="Text"/>
+      <asp:ControlParameter Name="bairroPartidaViagem" ControlID="bairroViagemPartidaConsulta" PropertyName="Text"/>
+      <asp:ControlParameter Name="enderecoDestinoViagem" ControlID="enderecoViagemDestinoConsulta" PropertyName="Text"/>
+      <asp:ControlParameter Name="enderecoPartidaViagem" ControlID="enderecoViagemPartidaConsulta" PropertyName="Text"/>
+      <asp:ControlParameter Name="cidadeDestinoViagem" ControlID="cidadeViagemDestinoConsulta" PropertyName="Text"/>
+      <asp:ControlParameter Name="cidadePartidaViagem" ControlID="cidadeViagemPartidaConsulta" PropertyName="Text"/>
+      <asp:ControlParameter Name="ufDestinoViagem" ControlID="ufViagemDestinoConsulta" PropertyName="Text"/>
+      <asp:ControlParameter Name="ufPartidaViagem" ControlID="ufViagemPartidaConsulta" PropertyName="Text"/>
+      <asp:ControlParameter Name="obsViagem" ControlID="obsViagemConsulta" PropertyName="Text"/>
+      <asp:Parameter Name="idViagem" />
+    </UpdateParameters>
   </asp:SqlDataSource>
-
+ <!-- TODO update -->
   <asp:SqlDataSource ID="seguro" runat="server"
     ConnectionString="<%$ ConnectionStrings:amaralguinchoConnectionString %>"
     ProviderName="<%$ ConnectionStrings:amaralguinchoConnectionString.ProviderName %>"
     SelectCommand="SELECT id_seguro, nome_seguro FROM seguro">
   </asp:SqlDataSource>
-
+<!-- TODO update -->
   <asp:SqlDataSource ID="servico" runat="server"
     ConnectionString="<%$ ConnectionStrings:amaralguinchoConnectionString %>"
     ProviderName="<%$ ConnectionStrings:amaralguinchoConnectionString.ProviderName %>"
@@ -753,10 +815,18 @@
     ConnectionString="<%$ ConnectionStrings:amaralguinchoConnectionString %>"
     ProviderName="<%$ ConnectionStrings:amaralguinchoConnectionString.ProviderName %>"
     InsertCommand="INSERT INTO sinistro (sinistro) VALUES (@sinistro)"
-    SelectCommand="SELECT MAX(id_sinistro) FROM sinistro">
+    SelectCommand="SELECT MAX(id_sinistro) FROM sinistro"
+    UpdateCommand="UPDATE sinistro SET
+    sinistro = @sinistro
+    WHERE
+    id_sinistro = @idSinistro">
     <InsertParameters>
       <asp:ControlParameter Name="sinistro" ControlID="numeroSinistro" PropertyName="Text"/>
     </InsertParameters>
+    <UpdateParameters>
+      <asp:Parameter Name="idSinistro"/>
+      <asp:ControlParameter Name="sinistro" ControlID="numeroSinistroConsulta" PropertyName="Text"/>
+    </UpdateParameters>
   </asp:SqlDataSource>
 
   <asp:SqlDataSource ID="motorista" runat="server"
@@ -774,11 +844,17 @@
   <asp:SqlDataSource ID="os" runat="server"
     ConnectionString="<%$ ConnectionStrings:amaralguinchoConnectionString %>"
     ProviderName="<%$ ConnectionStrings:amaralguinchoConnectionString.ProviderName %>"
+    SelectCommand="SELECT MAX(id_os) FROM ordem_de_servico"
     InsertCommand="INSERT INTO ordem_de_servico
     (id_func, id_veiculo, dtab_os, agendamento_os, status_os)
     VALUES
     (@idFunc, @idVeiculo, @dtab, @agendamentoOs, @status)"
-    SelectCommand="SELECT MAX(id_os) FROM ordem_de_servico">
+    UpdateCommand="
+    UPDATE ordem_de_servico SET
+      agendamento_os = @agendamentOos,
+      status_os = @statusOs
+    WHERE
+      id_os = @idOS">
     <InsertParameters>
       <asp:ControlParameter Name="status" ControlID="statusOs" PropertyName="Text"/>
       <asp:Parameter Name="agendamentoOs"/>
@@ -786,6 +862,11 @@
       <asp:Parameter Name="idVeiculo"/>
       <asp:SessionParameter Name="idFunc" SessionField="log" />
     </InsertParameters>
+    <UpdateParameters>
+      <asp:ControlParameter Name="statusOs" ControlID="statusOsConsulta" PropertyName="Text"/>
+      <asp:Parameter Name="agendamentoOs"/>
+      <asp:Parameter Name="idOS"/>
+    </UpdateParameters>
   </asp:SqlDataSource>
 
   <asp:SqlDataSource ID="viagemServico" runat="server"
@@ -803,13 +884,23 @@
     ConnectionString="<%$ ConnectionStrings:amaralguinchoConnectionString %>"
     ProviderName="<%$ ConnectionStrings:amaralguinchoConnectionString.ProviderName %>"
     InsertCommand="INSERT INTO servico_os(id_servico, id_os, id_sinistro, id_seguro)
-    VALUES(@servico, @OS, @sinistro, @seguro)">
+    VALUES(@servico, @OS, @sinistro, @seguro)"
+    UpdateCommand="
+    UPDATE servico_os SET
+      id_servico = @idServico,
+      id_seguro = @idSeguro
+    WHERE id_os = @idOS">
     <InsertParameters>
       <asp:Parameter Name="os"/>
       <asp:Parameter Name="sinistro"/>
       <asp:ControlParameter Name="servico" ControlID="selectServico" PropertyName="SelectedValue"/>
-      <asp:ControlParameter Name="seguro" ControlID="selectSeguroConsulta" PropertyName="SelectedValue"/>
+      <asp:ControlParameter Name="seguro" ControlID="selectSeguro" PropertyName="SelectedValue"/>
     </InsertParameters>
+    <UpdateParameters>
+      <asp:ControlParameter Name="idSeguro" ControlID="selectSeguroConsulta" PropertyName="SelectedValue"/>
+      <asp:ControlParameter Name="idServico" ControlID="selectServicoConsulta" PropertyName="SelectedValue"/>
+      <asp:Parameter Name="idOS"/>
+    </UpdateParameters>
   </asp:SqlDataSource>
 
   <asp:SqlDataSource
@@ -824,9 +915,14 @@
   ConnectionString="<%$ ConnectionStrings:amaralguinchoConnectionString %>"
   ProviderName="<%$ ConnectionStrings:amaralguinchoConnectionString.ProviderName %>"
   SelectCommand="
-  SELECT servico_os.id_os, servico.tipo_servico FROM servico_os INNER JOIN servico
-  on servico_os.id_servico = servico.id_servico
-   ORDER BY id_os DESC LIMIT 3  ">
+  SELECT os.id_os, os.dtab_os, servico.tipo_servico
+  FROM ordem_de_servico os
+  INNER JOIN servico_os on
+   os.id_os = servico_os.id_os
+  INNER JOIN servico on
+    servico_os.id_servico = servico.id_servico
+
+   WHERE (status_os = 'Fechado') ORDER BY dtab_os DESC LIMIT 3">
   </asp:SqlDataSource>
 
   <asp:SqlDataSource ID="consultaOS" runat="server"
@@ -834,10 +930,11 @@
     ProviderName="<%$ ConnectionStrings:amaralguinchoConnectionString.ProviderName %>"
     SelectCommand="
     SELECT
-    cliente.nome_cli, cliente.sobrenome_cli, cliente.cpf_cli, cliente.telefone_cli,
+    cliente.id_cli, cliente.nome_cli, cliente.sobrenome_cli, cliente.cpf_cli,
+    cliente.telefone_cli,
 
-    veiculo.fabricante_veiculo, veiculo.modelo_veiculo, veiculo.ano_veiculo,
-    veiculo.placa_veiculo, veiculo.cor_veiculo,
+    veiculo.id_veiculo, veiculo.fabricante_veiculo, veiculo.modelo_veiculo,
+    veiculo.ano_veiculo, veiculo.placa_veiculo, veiculo.cor_veiculo,
 
     funcionario.id_func, funcionario.nome_func, funcionario.sobrenome_func,
 
@@ -845,7 +942,7 @@
 
     motoristaOnly.id_mot as 'idMotorista', motoristaOnly.nome_func as 'nomeMotorista',
 
-    viagem.bairro_destino_viagem, viagem.bairro_partida_viagem,
+    viagem.id_viagem, viagem.bairro_destino_viagem, viagem.bairro_partida_viagem,
     viagem.endereco_destino_viagem, viagem.endereco_partida_viagem,
     viagem.cidade_destino_viagem, viagem.cidade_partida_viagem,
     viagem.uf_destino_viagem, viagem.uf_partida_viagem, viagem.obs_viagem,

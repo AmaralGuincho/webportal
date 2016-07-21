@@ -63,7 +63,7 @@ public partial class app_servico : System.Web.UI.Page
     }
 
     protected void newOs(object sender, EventArgs e){
-      // try{
+      try{
         // Inserindo o cliente
         cliente.Insert();
         //obtendo o id do cliente inserido
@@ -127,12 +127,12 @@ public partial class app_servico : System.Web.UI.Page
         servicoOs.InsertParameters["sinistro"].DefaultValue = ultimoSinistroID;
         servicoOs.Insert();
 
-        //General Respose
+        //General Response
         Response.Redirect("servico.aspx");
-      // }
-      // catch(Exception ex){
-      //   Response.Write("<script>alert('Ocorreu um erro');</script>");
-      // }
+      }
+      catch(Exception ex){
+        Response.Write("<script>alert('Ocorreu um erro');</script>");
+      }
     }
 
     protected void abrirOs1(object sender, EventArgs e){
@@ -147,13 +147,100 @@ public partial class app_servico : System.Web.UI.Page
       pesqOS(2);
     }
 
+
+    protected void abrirOs4(object sender, EventArgs e){
+      closedOS(0);
+    }
+
+    protected void abrirOs5(object sender, EventArgs e){
+      closedOS(1);
+    }
+
+    protected void abrirOs6(object sender, EventArgs e){
+      closedOS(2);
+    }
+
+    public void closedOS(int numeroOrdem){
+      Session["pesqOS"] = true;
+
+      DataView osFechada;
+      osFechada = (DataView)lattestServicoOs.Select(DataSourceSelectArguments.Empty);
+      consultaOS.SelectParameters["idConsulta"].DefaultValue =
+       osFechada.Table.Rows[numeroOrdem]["id_os"].ToString();
+
+      //Carreganndo os Dados de consulta
+      DataView consulta = (DataView)consultaOS.Select(DataSourceSelectArguments.Empty);
+
+      //Preenchendo os campos
+
+      //Condições de Abertura
+      string nomeFuncionario = consulta.Table.Rows[0]["nome_func"].ToString();
+      string sobrenomeFuncionario = consulta.Table.Rows[0]["sobrenome_func"].ToString();
+      abertoPor.Text = (nomeFuncionario + " " + sobrenomeFuncionario);
+
+      dataAbertura.Text = Convert.ToDateTime(consulta.Table.Rows[0]["dtab_os"]).ToString();
+
+      //Cliente
+      nomeCliConsulta.Text = consulta.Table.Rows[0]["nome_cli"].ToString();
+      sobrenomeCliConsulta.Text = consulta.Table.Rows[0]["sobrenome_cli"].ToString();
+      cpfCliConsulta.Text = consulta.Table.Rows[0]["cpf_cli"].ToString();
+      telefoneCliConsulta.Text = consulta.Table.Rows[0]["telefone_cli"].ToString();
+
+      //Veículo
+      fabricanteVeiculoConsulta.Text = consulta.Table.Rows[0]["fabricante_veiculo"].ToString();
+      modeloVeiculoConsulta.Text = consulta.Table.Rows[0]["modelo_veiculo"].ToString();
+      anoVeiculoConsulta.Text = consulta.Table.Rows[0]["ano_veiculo"].ToString();
+      placaVeiculoConsulta.Text = (consulta.Table.Rows[0]["placa_veiculo"].ToString()).ToUpper();
+      corVeiculoConsulta.Text = consulta.Table.Rows[0]["cor_veiculo"].ToString();
+
+      //Servico
+      selectServicoConsulta.SelectedIndex = Convert.ToInt32(consulta.Table.Rows[0]["id_servico"]) - 1;
+
+      //Seguro
+      selectSeguroConsulta.SelectedIndex = Convert.ToInt32(consulta.Table.Rows[0]["id_seguro"]) - 1;
+
+      //Viagem
+      bairroViagemDestinoConsulta.Text = consulta.Table.Rows[0]["bairro_destino_viagem"].ToString();
+      bairroViagemPartidaConsulta.Text = consulta.Table.Rows[0]["bairro_partida_viagem"].ToString();
+      enderecoViagemDestinoConsulta.Text = consulta.Table.Rows[0]["endereco_destino_viagem"].ToString();
+      enderecoViagemPartidaConsulta.Text = consulta.Table.Rows[0]["endereco_partida_viagem"].ToString();
+      cidadeViagemDestinoConsulta.Text = consulta.Table.Rows[0]["cidade_destino_viagem"].ToString();
+      cidadeViagemPartidaConsulta.Text = consulta.Table.Rows[0]["cidade_partida_viagem"].ToString();
+      ufViagemDestinoConsulta.Text = consulta.Table.Rows[0]["uf_destino_viagem"].ToString();
+      ufViagemPartidaConsulta.Text = consulta.Table.Rows[0]["uf_partida_viagem"].ToString();
+      obsViagemConsulta.Text = consulta.Table.Rows[0]["obs_viagem"].ToString();
+
+      //Motorista
+      selectMotoristaConsulta.SelectedIndex = Convert.ToInt32(consulta.Table.Rows[0]["id_mot"]) - 1;
+
+      //Viatura (Frota)
+      selectFrotaConsulta.SelectedIndex = Convert.ToInt32(consulta.Table.Rows[0]["id_frota"]) - 1;
+
+      //Sinistro
+      numeroSinistroConsulta.Text = consulta.Table.Rows[0]["sinistro"].ToString();
+
+      //Agendamento
+      if(consulta.Table.Rows[0]["agendamento_os"].ToString() != String.Empty){
+        agendamentoOSConsulta.Text = Convert.ToDateTime(consulta.Table.Rows[0]["agendamento_os"]).ToString();
+      }else{
+        agendamentoOSConsulta.Text = "Sem Agendamento";
+      }
+
+      //StatusOS
+      statusOsConsulta.Text = consulta.Table.Rows[0]["status_os"].ToString();
+
+    }
+
     public void pesqOS(int numeroOrdem){
-      // try{
+      try{
         Session["pesqOS"] = true;
 
         //importando o id da os no qual o botão foi pressionado
         DataView osAberta;
         osAberta = (DataView)lattestOs.Select(DataSourceSelectArguments.Empty);
+
+        //seção com o id_OS para realizar a consulta
+        Session["currentOs"] = osAberta.Table.Rows[numeroOrdem]["id_os"].ToString();
 
         //Usando o id da os pressionada como Paremetro de pesquisa
         consultaOS.SelectParameters["idConsulta"].DefaultValue =
@@ -220,9 +307,9 @@ public partial class app_servico : System.Web.UI.Page
         //StatusOS
         statusOsConsulta.Text = consulta.Table.Rows[0]["status_os"].ToString();
 
-      // }catch(Exception ex){
-      //   Response.Write("<script>alert('Ocorreu um erro');</script>");
-      // }
+      }catch(Exception ex){
+        Response.Write("<script>alert('Ocorreu um erro');</script>");
+      }
     }
 
     protected void showOs(object sender,EventArgs e){
@@ -231,7 +318,107 @@ public partial class app_servico : System.Web.UI.Page
       //
       // consultaOS.SelectParameters["consultaOs"].DefaultValue =
       // osAberta.Table.Rows[0]["id_os"].ToString();
-      //
-      //
+    }
+
+    protected void updateCliente(){
+      //Buscando o id da OS
+      var idOS = Session["currentOs"].ToString();
+
+      //Buscando a OS
+      consultaOS.SelectParameters["idConsulta"].DefaultValue = idOS;
+      DataView consulta = (DataView)consultaOS.Select(DataSourceSelectArguments.Empty);
+
+      //Realizando o `update` no cliente selecionado em `consultaOS`
+      cliente.UpdateParameters["idCli"].DefaultValue =
+        consulta.Table.Rows[0]["id_cli"].ToString();
+
+      // Solicitando Alteração p/ o MySQL
+      cliente.Update();
+    }
+
+    protected void updateVeiculo(){
+      //Buscando o id da OS
+      var idOS = Session["currentOs"].ToString();
+
+      //Buscando a OS
+      consultaOS.SelectParameters["idConsulta"].DefaultValue = idOS;
+      DataView consulta = (DataView)consultaOS.Select(DataSourceSelectArguments.Empty);
+
+      // Realizando o update no veículo selacionado em `consultaOS`
+      veiculo.UpdateParameters["idVeiculo"].DefaultValue =
+        consulta.Table.Rows[0]["id_veiculo"].ToString();
+
+      // Solicitando Alteração p/ o MySQL
+      veiculo.Update();
+    }
+
+    protected void updateViagem(){
+      var idOS = Session["currentOs"].ToString();
+
+      //Buscando a OS
+      consultaOS.SelectParameters["idConsulta"].DefaultValue = idOS;
+      DataView consulta = (DataView)consultaOS.Select(DataSourceSelectArguments.Empty);
+
+      viagem.UpdateParameters["idViagem"].DefaultValue =
+        consulta.Table.Rows[0]["id_viagem"].ToString();
+
+      viagem.Update();
+    }
+
+    protected void updateSinistro(){
+      //Buscando o id da OS
+      var idOS = Session["currentOs"].ToString();
+
+      //Buscando a OS
+      consultaOS.SelectParameters["idConsulta"].DefaultValue = idOS;
+      DataView consulta = (DataView)consultaOS.Select(DataSourceSelectArguments.Empty);
+
+      // Realizando o update no veículo selacionado em `consultaOS`
+      sinistro.UpdateParameters["idSinistro"].DefaultValue =
+        consulta.Table.Rows[0]["id_sinistro"].ToString();
+
+      // Solicitando Alteração p/ o MySQL
+      sinistro.Update();
+    }
+
+    protected void updateOrdemServico(){
+      //Buscando o id da OS
+      var idOS = Session["currentOs"].ToString();
+
+      // Realizando o update no veículo selacionado em `consultaOS`
+      os.UpdateParameters["idOS"].DefaultValue = idOS;
+      if(agendamentoOS.Text != String.Empty){
+        DateTime agendamento = Convert.ToDateTime(agendamentoOSConsulta.Text);
+        os.InsertParameters["agendamentoOs"].DefaultValue = agendamento.ToString("yyyy-MM-dd HH:mm");
+      }else{
+        os.InsertParameters["agendamentoOs"].DefaultValue = String.Empty;
+      }
+
+      // Solicitando Alteração p/ o MySQL
+      os.Update();
+    }
+
+    protected void updateServico(){
+      //Buscando o id da OS
+      var idOS = Session["currentOs"].ToString();
+
+      // Realizando o update no veículo selacionado em `consultaOS`
+      servicoOs.UpdateParameters["idOS"].DefaultValue = idOS;
+
+      servicoOs.Update();
+    }
+
+    protected void updateOs(object sender,EventArgs e){
+      try{
+        updateCliente();
+        updateVeiculo();
+        updateViagem();
+        updateSinistro();
+        updateOrdemServico();
+        updateServico();
+        Response.Redirect("servico.aspx");
+      }catch(Exception ex){
+        Response.Write("<script>alert('Ocorreu um erro');</script>");
+      }
     }
 }
