@@ -41,27 +41,27 @@
           <tbody>
             <tr class="viagem-1">
               <td class="mdl-data-table__cell--non-numeric">
-                <label runat="server" id="codigoServicoProgresso1">--</label>
+                <label runat="server" id="codigoServicoProgresso1">código</label>
               </td>
               <td class="mdl-data-table__cell--non-numeric">
-                <label runat="server" id="cidadeServicoProgresso1">--</label>
+                <label runat="server" id="cidadeServicoProgresso1">Cidade</label>
               </td>
               <td class="mdl-data-table__cell--non-numeric mdl-cell--hide-phone">
-                <label runat="server" id="nomeMotoristaServicoProgresso1">--</label>
+                <label runat="server" id="nomeMotoristaServicoProgresso1">Motorista</label>
               </td>
               <td class="mdl-data-table__cel--non-numeric mdl-cell--hide-phone">
-                <label runat="server" id="nomeFrotaServicoProgresso1">--</label>
+                <label runat="server" id="nomeFrotaServicoProgresso1">Frota</label>
               </td>
             </tr>
             <tr class="viagem-2">
               <td class="mdl-data-table__cell--non-numeric">
-                <label runat="server" id="codigoServicoProgresso2">--</label>
+                <label runat="server" id="codigoServicoProgresso2">código</label>
               </td>
               <td class="mdl-data-table__cell--non-numeric">
-                <label runat="server" id="cidadeServicoProgresso2">--</label>
+                <label runat="server" id="cidadeServicoProgresso2">Cidade</label>
               </td>
               <td class="mdl-data-table__cell--non-numeric mdl-cell--hide-phone">
-                <label runat="server" id="nomeMotoristaServicoProgresso2">--</label>
+                <label runat="server" id="nomeMotoristaServicoProgresso2">Motorista</label>
               </td>
               <td class="mdl-data-table__cel--non-numeric mdl-cell--hide-phone">
                 <label runat="server" id="nomeFrotaServicoProgresso2">Frota</label>
@@ -69,16 +69,16 @@
           </tr>
           <tr class="viagem-3">
             <td class="mdl-data-table__cell--non-numeric">
-              <label runat="server" id="codigoServicoProgresso3">--</label>
+              <label runat="server" id="codigoServicoProgresso3">código</label>
             </td>
             <td class="mdl-data-table__cell--non-numeric">
-              <label runat="server" id="cidadeServicoProgresso3">--</label>
+              <label runat="server" id="cidadeServicoProgresso3">Cidade</label>
             </td>
             <td class="mdl-data-table__cell--non-numeric mdl-cell--hide-phone">
-              <label runat="server" id="nomeMotoristaServicoProgresso3">--</label>
+              <label runat="server" id="nomeMotoristaServicoProgresso3">Motorista</label>
             </td>
             <td class="mdl-data-table__cel--non-numeric mdl-cell--hide-phone">
-              <label runat="server" id="nomeFrotaServicoProgresso3">--</label>
+              <label runat="server" id="nomeFrotaServicoProgresso3">Frota</label>
             </td>
           </tr>
         </tbody>
@@ -216,7 +216,7 @@
               <img id="imgFunc1" runat="server" src="../images/profiles/generic.png" class="avatar"/>
             </td>
             <td class="mdl-data-table__cell--non-numeric">
-              <label id="nomeFunc1" runat="server">Theo Amaral</label>
+              <label id="nomeFunc1" runat="server" >Theo Amaral</label>
             </td>
           </tr>
           <tr class="funcionario2">
@@ -224,7 +224,7 @@
               <img id="imgFunc2" runat="server" src="../images/profiles/generic.png" class="avatar"/>
             </td>
             <td class="mdl-data-table__cell--non-numeric">
-              <label id="nomeFunc2" runat="server">Theo Amaral</label>
+              <label id="nomeFunc2" runat="server" >Theo Amaral</label>
             </td>
           </tr>
           <tr class="funcionario3">
@@ -261,35 +261,35 @@
         <table class="mdl-data-table mdl-data-table--selectable mdl-js-data-table mdl-cell mdl-cell--12-col mdl-cell--8-tablet">
           <tr>
             <td class="mdl-data-table__cell--non-numeric">
-              <label runat="server" id="nomeCliVeiculo1">--</label>
+              <label runat="server" id="nomeCliVeiculo1">#Nome_cli</label>
             </td>
             <td class="mdl-data-table__cell--non-numeric">
-              <label runat="server" id="modeloVeiculo1">--</label>
+              <label runat="server" id="modeloVeiculo1">#modeloVei</label>
             </td>
             <td class="mdl-data-table__cell--non-numeric">
-              <label runat="server" id="placaVeiculo1">--</label>
+              <label runat="server" id="placaVeiculo1">#placa</label>
             </td>
           </tr>
           <tr>
             <td class="mdl-data-table__cell--non-numeric">
-              <label runat="server" id="nomeCliVeiculo2">--</label>
+              <label runat="server" id="nomeCliVeiculo2">#Nome_cli</label>
             </td>
             <td class="mdl-data-table__cell--non-numeric">
-              <label runat="server" id="modeloVeiculo2">--</label>
+              <label runat="server" id="modeloVeiculo2">#modeloVei</label>
             </td>
             <td class="mdl-data-table__cell--non-numeric">
-              <label runat="server" id="placaVeiculo2">--</label>
+              <label runat="server" id="placaVeiculo2">#placa</label>
             </td>
         </tr>
         <tr>
           <td class="mdl-data-table__cell--non-numeric">
-            <label runat="server" id="nomeCliVeiculo3">--</label>
+            <label runat="server" id="nomeCliVeiculo3">#Nome_cli</label>
           </td>
           <td class="mdl-data-table__cell--non-numeric">
-            <label runat="server" id="modeloVeiculo3">--</label>
+            <label runat="server" id="modeloVeiculo3">#modeloVei</label>
           </td>
           <td class="mdl-data-table__cell--non-numeric">
-            <label runat="server" id="placaVeiculo3">--</label>
+            <label runat="server" id="placaVeiculo3">#placa</label>
           </td>
         </tr>
         </table>
@@ -423,26 +423,26 @@
         <table class="mdl-data-table mdl-data-table--selectable mdl-js-data-table mdl-cell mdl-cell--12-col mdl-cell--8-tablet">
           <tr>
             <td class="mdl-data-table__cell--non-numeric">
-              <label runat="server" id="nomeCliSinistro1">--</label>
+              <label runat="server" id="nomeCliSinistro1">NomeCli</label>
             </td>
             <td class="mdl-data-table__cell--non-numeric">
-              <label runat="server" id="codigoSinistro1">--</label>
+              <label runat="server" id="codigoSinistro1">#sinistro</label>
             </td>
           </tr>
           <tr>
             <td class="mdl-data-table__cell--non-numeric">
-              <label runat="server" id="nomeCliSinistro2">--</label>
+              <label runat="server" id="nomeCliSinistro2">NomeCli</label>
             </td>
             <td class="mdl-data-table__cell--non-numeric">
-              <label runat="server" id="codigoSinistro2">--</label>
+              <label runat="server" id="codigoSinistro2">#sinistro</label>
             </td>
         </tr>
         <tr>
           <td class="mdl-data-table__cell--non-numeric">
-            <label runat="server" id="nomeCliSinistro3">--</label>
+            <label runat="server" id="nomeCliSinistro3">NomeCli</label>
           </td>
           <td class="mdl-data-table__cell--non-numeric">
-            <label runat="server" id="codigoSinistro3">--</label>
+            <label runat="server" id="codigoSinistro3">#sinistro</label>
           </td>
         </tr>
         </table>
@@ -482,26 +482,26 @@
           <tbody>
             <tr>
             <td class="mdl-data-table__cell--non-numeric">
-              <label runat="server" id="codigoServico1">--</label>
+              <label runat="server" id="codigoServico1">#idServico</label>
             </td>
             <td class="mdl-data-table__cell--non-numeric">
-              <label runat="server" id="codigoOS1">--</label>
+              <label runat="server" id="codigoOS1">#idOs</label>
             </td>
           </tr>
           <tr>
             <td class="mdl-data-table__cell--non-numeric">
-              <label runat="server" id="codigoServico2">--</label>
+              <label runat="server" id="codigoServico2">#idServico</label>
             </td>
             <td class="mdl-data-table__cell--non-numeric">
-              <label runat="server" id="codigoOS2">--</label>
+              <label runat="server" id="codigoOS2">#idOs</label>
             </td>
         </tr>
         <tr>
           <td class="mdl-data-table__cell--non-numeric">
-            <label runat="server" id="codigoServico3">--</label>
+            <label runat="server" id="codigoServico3">#idServico</label>
           </td>
           <td class="mdl-data-table__cell--non-numeric">
-            <label runat="server" id="codigoOS3">--</label>
+            <label runat="server" id="codigoOS3">#idOs</label>
           </td>
         </tr>
       </tbody>
