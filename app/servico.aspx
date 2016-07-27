@@ -832,7 +832,17 @@
   <asp:SqlDataSource ID="motorista" runat="server"
     ConnectionString="<%$ ConnectionStrings:amaralguinchoConnectionString %>"
     ProviderName="<%$ ConnectionStrings:amaralguinchoConnectionString.ProviderName %>"
-    SelectCommand="SELECT id_mot, nome_func FROM motoristaOnly">
+    SelectCommand="
+    SELECT t1.id_mot, t1.nome_func FROM motoristaOnly t1
+      WHERE NOT EXISTS(
+        SELECT t2.id_mot, t2.nome_func FROM motoristaOnly t2
+          INNER JOIN viagem on viagem.id_mot = t2.id_mot
+          INNER JOIN viagem_servico on viagem_servico.id_viagem = viagem.id_viagem
+          RIGHT JOIN ordem_de_servico on ordem_de_servico.id_os = viagem_servico.id_os
+        WHERE ordem_de_servico.status_os = 'aberto' AND
+        t1.id_mot = t2.id_mot
+    );
+">
   </asp:SqlDataSource>
 
   <asp:SqlDataSource ID="frota" runat="server"
