@@ -64,7 +64,7 @@
                 <label runat="server" id="nomeMotoristaServicoProgresso2">--</label>
               </td>
               <td class="mdl-data-table__cel--non-numeric mdl-cell--hide-phone">
-                <label runat="server" id="nomeFrotaServicoProgresso2">Frota</label>
+                <label runat="server" id="nomeFrotaServicoProgresso2">--</label>
               </td>
           </tr>
           <tr class="viagem-3">
