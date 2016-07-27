@@ -66,9 +66,8 @@
   function showScreen(card) {
     document.getElementById(card).style.display='block';
   }
-  window.onload = function shellName() {
-    var shellTitle = document.getElementById("shellTitle");
-    shellTitle.innerHTML = 'Ajustes';
-  }
+  var shellTitle = document.getElementById("shellTitle");
+  window.onload = shellTitle.innerHTML = 'Ajustes';
+
 </script>
 </asp:Content>

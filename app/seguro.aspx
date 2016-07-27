@@ -437,9 +437,7 @@
     <button type="button" class="mdl-snackbar__action"></button>
   </div>
   <script type="text/javascript">
-  window.onload = function shellName() {
-    var shellTitle = document.getElementById("shellTitle");
-    shellTitle.innerHTML = 'Home';
-  }
+  var shellTitle = document.getElementById("shellTitle");
+  window.onload = shellTitle.innerHTML = 'Seguro';
   </script>
 </asp:Content>

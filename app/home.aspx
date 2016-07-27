@@ -536,9 +536,8 @@
     <button type="button" class="mdl-snackbar__action"></button>
   </div>
   <script type="text/javascript">
-    window.onload = function shellName() {
-      document.getElementById('shellTitle').innerHTML = 'inbox';
-    }
+    var shellTitle = document.getElementById("shellTitle");
+    window.onload = shellTitle.innerHTML = 'Inbox';
   </script>
   <!-- Sql Interacions -->
   <asp:SqlDataSource
