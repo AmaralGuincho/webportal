@@ -57,11 +57,20 @@ public partial class app_funcionarios : System.Web.UI.Page
       //Checking if Habilitacão is required
 
       //Converting Date
-      novoFuncionario.InsertParameters["dataNasc"].DefaultValue =
-        Convert.ToDateTime(dtNascFunc.Text).ToString("yyyy/MM/dd");
+      if(dtNascFunc.Text != String.Empty){
+        novoFuncionario.InsertParameters["dataNasc"].DefaultValue =
+          Convert.ToDateTime(dtNascFunc.Text).ToString("yyyy/MM/dd");
+      } else{
+        novoFuncionario.InsertParameters["dataNasc"].DefaultValue = null;
+      }
 
-      novoFuncionario.InsertParameters["dataContratacao"].DefaultValue =
-        Convert.ToDateTime(contratacaoFunc.Text).ToString("yyyy/MM/dd");
+      if(contratacaoFunc.Text != String.Empty){
+        novoFuncionario.InsertParameters["dataContratacao"].DefaultValue =
+          Convert.ToDateTime(contratacaoFunc.Text).ToString("yyyy/MM/dd");
+      } else{
+        novoFuncionario.InsertParameters["dataContratacao"].DefaultValue = null;
+
+      }
 
       //Inserindo Funcionario
       novoFuncionario.Insert();
