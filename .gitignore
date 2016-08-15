@@ -1,2 +1,3 @@
 # Dont commit those files
 *.DS_Store
+*.smbdelete*
