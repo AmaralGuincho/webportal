@@ -855,7 +855,20 @@
   <asp:SqlDataSource ID="frota" runat="server"
     ConnectionString="<%$ ConnectionStrings:amaralguinchoConnectionString %>"
     ProviderName="<%$ ConnectionStrings:amaralguinchoConnectionString.ProviderName %>"
-    SelectCommand="SELECT nome_frota, id_frota FROM frota">
+    SelectCommand="
+    SELECT f1.id_frota, f1.nome_frota, f1.placa_frota FROM frota f1
+      WHERE NOT EXISTS(
+        SELECT f2.id_frota, f2.nome_frota, f2.placa_frota from frota f2
+          INNER JOIN  viagem on
+            viagem.id_frota = f2.id_frota
+          INNER JOIN viagem_servico on
+            viagem_servico.id_viagem = viagem.id_viagem
+          RIGHT JOIN ordem_de_servico on
+            ordem_de_servico.id_os = viagem_servico.id_os
+
+        WHERE ordem_de_servico.status_os = 'aberto' AND
+        f1.id_frota = f2.id_frota
+    );">
   </asp:SqlDataSource>
 
   <asp:SqlDataSource ID="os" runat="server"
@@ -1007,6 +1020,8 @@
 
   <script src="../scripts/cpf.min.js" charset="utf-8"></script>
   <script>
+  // var searchTool = document.getElementById('searchTool');
+  var searchDiv = document.getElementById('searchDiv');
   var isPesq = '<%=Session["pesqOS"]%>';
   var shellTitle = document.getElementById("shellTitle");
 
@@ -1014,6 +1029,11 @@
   window.onload = showCard('none','pesqServico');
   window.onload = shellTitle.innerHTML = 'Ordem de Serviço';
   window.onload = checkPesq();
+  // window.onload = searchDiv.classList.remove("hidden");
+
+  // searchTool.addEventListener("onkeypress", () => {
+  //
+  // });
 
   function checkPesq() {
     if(isPesq == 'True') {
