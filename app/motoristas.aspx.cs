@@ -54,11 +54,19 @@ public partial class app_motoristas : System.Web.UI.Page
     //Checking if Habilitacão is required
 
     //Converting Date
-    novoFuncionario.InsertParameters["dataNasc"].DefaultValue =
-      Convert.ToDateTime(dtNascFunc.Text).ToString("yyyy/MM/dd");
+    if(dtNascFunc.Text != String.Empty){
+      novoFuncionario.InsertParameters["dataNasc"].DefaultValue =
+        Convert.ToDateTime(dtNascFunc.Text).ToString("yyyy/MM/dd");
+    } else{
+      novoFuncionario.InsertParameters["dataNasc"].DefaultValue = null;
+    }
 
-    novoFuncionario.InsertParameters["dataContratacao"].DefaultValue =
-      Convert.ToDateTime(contratacaoFunc.Text).ToString("yyyy/MM/dd");
+    if(contratacaoFunc.Text != String.Empty){
+      novoFuncionario.InsertParameters["dataContratacao"].DefaultValue =
+        Convert.ToDateTime(contratacaoFunc.Text).ToString("yyyy/MM/dd");
+    } else{
+      novoFuncionario.InsertParameters["dataContratacao"].DefaultValue = null;
+    }
 
     novoFuncionario.InsertParameters["cargo"].DefaultValue = "3";
 
@@ -76,12 +84,19 @@ public partial class app_motoristas : System.Web.UI.Page
       novoMotorista.InsertParameters["id"].DefaultValue =
       ultimoFuncionario.ToString();
 
-      novoMotorista.InsertParameters["dtEmissaoHab"].DefaultValue =
-        Convert.ToDateTime(emissaoHabMot.Text).ToString("yyyy/MM/dd");
+      if(emissaoHabMot.Text != String.Empty){
+        novoMotorista.InsertParameters["dtEmissaoHab"].DefaultValue =
+          Convert.ToDateTime(emissaoHabMot.Text).ToString("yyyy/MM/dd");
+      } else{
+        novoMotorista.InsertParameters["dtEmissaoHab"].DefaultValue = "0000/00/00";
+      }
 
-      novoMotorista.InsertParameters["dtValidadeHab"].DefaultValue =
-        Convert.ToDateTime(validadeHabMot.Text).ToString("yyyy/MM/dd");
-
+      if(validadeHabMot.Text != String.Empty){
+        novoMotorista.InsertParameters["dtValidadeHab"].DefaultValue =
+          Convert.ToDateTime(validadeHabMot.Text).ToString("yyyy/MM/dd");
+      } else{
+        novoMotorista.InsertParameters["dtValidadeHab"].DefaultValue = "0000/00/00";
+      }
       //Inserindo Habilitação
       novoMotorista.Insert();
 
