@@ -73,7 +73,7 @@
           <div class="card-content mdl-grid mdl-cell mdl-cell--12-col">
             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--4-col mdl-cell-4-col-phone">
               <asp:TextBox ID="nomeSeguro" type="text" class="mdl-textfield__input" runat="server" ></asp:TextBox>
-              <label class="mdl-textfield__label" for="nomeSeguro">Nome do Seguro</label>
+              <label class="mdl-textfield__label" for="nomeSeguro">Assistência 24hrs</label>
             </div>
             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--4-col mdl-cell-4-col-phone">
               <asp:TextBox ID="nomeAmigavel" type="text" class="mdl-textfield__input" runat="server" ></asp:TextBox>
