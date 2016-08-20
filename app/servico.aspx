@@ -245,7 +245,7 @@
           <div class="mdl-textfield mdl-js-textfield mdl-cell mdl-cell--8-col-desktop mdl-cell--4-col-tablet">
             <label class="simpleLabeldd" for="selectSeguro">Seguradora</label>
             <asp:DropDownList ID="selectSeguro" runat="server" class="dropdown"
-             DataSourceID="seguro" DataTextField="nome_seguro" DataValueField="id_seguro">
+             DataSourceID="seguro" DataTextField="nome_amigavel" DataValueField="id_seguro">
               <asp:ListItem Text="Servidor Fora do Ar"/>
               <asp:ListItem Text="Servidor Fora do Ar"/>
               <asp:ListItem Text="Servidor Fora do Ar"/>
@@ -519,7 +519,7 @@
           <div class="mdl-textfield mdl-js-textfield mdl-cell mdl-cell--8-col-desktop mdl-cell--4-col-tablet">
             <label class="simpleLabeldd" for="selectSeguroConsulta">Seguradora</label>
             <asp:DropDownList ID="selectSeguroConsulta" runat="server" class="dropdown"
-             DataSourceID="seguro" DataTextField="nome_seguro" DataValueField="id_seguro">
+             DataSourceID="seguro" DataTextField="nome_amigavel" DataValueField="id_seguro">
               <asp:ListItem Text="Servidor Fora do Ar"/>
               <asp:ListItem Text="Servidor Fora do Ar"/>
               <asp:ListItem Text="Servidor Fora do Ar"/>
@@ -802,7 +802,7 @@
   <asp:SqlDataSource ID="seguro" runat="server"
     ConnectionString="<%$ ConnectionStrings:amaralguinchoConnectionString %>"
     ProviderName="<%$ ConnectionStrings:amaralguinchoConnectionString.ProviderName %>"
-    SelectCommand="SELECT id_seguro, nome_seguro FROM seguro">
+    SelectCommand="SELECT id_seguro, nome_seguro, nome_amigavel FROM seguro">
   </asp:SqlDataSource>
 <!-- TODO update -->
   <asp:SqlDataSource ID="servico" runat="server"
