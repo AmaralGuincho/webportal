@@ -153,6 +153,27 @@
       </div>
       <div class="card-content mdl-grid mdl-cell mdl-cell--12-col">
 
+        <div class=" opcao mdl-cell mdl-cell--6-col-desktop mdl-cell--12-col-tablet">
+            <h2 class="mdl-card__title-text">Sinistro</h2>
+            <div class="mdl-textfield mdl-textfield--floating-label mdl-js-textfield mdl-cell mdl-cell--8-col-desktop mdl-cell--4-col-tablet">
+              <asp:TextBox runat="server" class="mdl-textfield__input" type="text" id="numeroSinistro"></asp:TextBox>
+              <label class="mdl-textfield__label" for="numeroSinistro">Número do Sinistro</label>
+            </div>
+        </div>
+
+        <div class=" opcao mdl-cell mdl-cell--6-col-desktop mdl-cell--12-col-tablet">
+            <h2 class="mdl-card__title-text">Selecione o Seguro</h2>
+            <div class="mdl-textfield mdl-js-textfield mdl-cell mdl-cell--8-col-desktop mdl-cell--4-col-tablet">
+              <label class="simpleLabeldd" for="selectSeguro">Seguradora</label>
+              <asp:DropDownList ID="selectSeguro" runat="server" class="dropdown"
+               DataSourceID="seguro" DataTextField="nome_amigavel" DataValueField="id_seguro">
+                <asp:ListItem Text="Servidor Fora do Ar"/>
+                <asp:ListItem Text="Servidor Fora do Ar"/>
+                <asp:ListItem Text="Servidor Fora do Ar"/>
+              </asp:DropDownList>
+            </div>
+        </div>
+
         <div class=" mdl-card mdl-cell mdl-cell--12-col-desktop mdl-cell--8-col-tablet mdl-cell--4-col-phone mdl-grid mdl-card--border mdl-shadow--1dp" id="newCli">
           <div class="title mdl-card__title mdl-cell mdl-cell--12-col">
             <h3 class="mdl-card__title-text">Cliente</h2>
@@ -236,19 +257,6 @@
               <asp:ListItem Text="Servidor Fora fo Ar"/>
               <asp:ListItem Text="Servidor Fora fo Ar"/>
               <asp:ListItem Text="Servidor Fora fo Ar"/>
-            </asp:DropDownList>
-          </div>
-      </div>
-
-      <div class=" opcao mdl-cell mdl-cell--6-col-desktop mdl-cell--12-col-tablet">
-          <h2 class="mdl-card__title-text">Selecione o Seguro</h2>
-          <div class="mdl-textfield mdl-js-textfield mdl-cell mdl-cell--8-col-desktop mdl-cell--4-col-tablet">
-            <label class="simpleLabeldd" for="selectSeguro">Seguradora</label>
-            <asp:DropDownList ID="selectSeguro" runat="server" class="dropdown"
-             DataSourceID="seguro" DataTextField="nome_amigavel" DataValueField="id_seguro">
-              <asp:ListItem Text="Servidor Fora do Ar"/>
-              <asp:ListItem Text="Servidor Fora do Ar"/>
-              <asp:ListItem Text="Servidor Fora do Ar"/>
             </asp:DropDownList>
           </div>
       </div>
@@ -358,14 +366,6 @@
               <asp:ListItem Text="Servidor Fora do Ar"/>
               <asp:ListItem Text="Servidor Fora do Ar"/>
             </asp:DropDownList>
-          </div>
-      </div>
-
-      <div class=" opcao mdl-cell mdl-cell--6-col-desktop mdl-cell--12-col-tablet">
-          <h2 class="mdl-card__title-text">Sinistro</h2>
-          <div class="mdl-textfield mdl-textfield--floating-label mdl-js-textfield mdl-cell mdl-cell--8-col-desktop mdl-cell--4-col-tablet">
-            <asp:TextBox runat="server" class="mdl-textfield__input" type="text" id="numeroSinistro"></asp:TextBox>
-            <label class="mdl-textfield__label" for="numeroSinistro">Número do Sinistro</label>
           </div>
       </div>
 
