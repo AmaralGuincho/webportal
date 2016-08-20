@@ -603,7 +603,7 @@
           <div class="mdl-textfield mdl-js-textfield mdl-cell mdl-cell--8-col-desktop mdl-cell--4-col-tablet">
             <label class="simpleLabeldd" for="selectFrotaConsulta">Veículo</label>
             <asp:DropDownList ID="selectFrotaConsulta" runat="server" class="dropdown"
-             DataSourceID="frota" DataTextField="nome_frota" DataValueField="id_frota">
+             DataSourceID="allFrota" DataTextField="nome_frota" DataValueField="id_frota">
               <asp:ListItem Text="Servidor Fora do Ar"/>
               <asp:ListItem Text="Servidor Fora do Ar"/>
               <asp:ListItem Text="Servidor Fora do Ar"/>
@@ -850,6 +850,12 @@
     ProviderName="<%$ ConnectionStrings:amaralguinchoConnectionString.ProviderName %>"
     SelectCommand="
     SELECT id_mot, nome_func FROM motoristaOnly">
+  </asp:SqlDataSource>
+
+  <asp:SqlDataSource ID="allFrota" runat="server"
+    ConnectionString="<%$ ConnectionStrings:amaralguinchoConnectionString %>"
+    ProviderName="<%$ ConnectionStrings:amaralguinchoConnectionString.ProviderName %>"
+    SelectCommand="SELECT * from FROTA">
   </asp:SqlDataSource>
 
   <asp:SqlDataSource ID="frota" runat="server"
