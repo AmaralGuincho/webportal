@@ -153,6 +153,27 @@
       </div>
       <div class="card-content mdl-grid mdl-cell mdl-cell--12-col">
 
+        <div class=" opcao mdl-cell mdl-cell--6-col-desktop mdl-cell--12-col-tablet">
+            <h2 class="mdl-card__title-text">Sinistro</h2>
+            <div class="mdl-textfield mdl-textfield--floating-label mdl-js-textfield mdl-cell mdl-cell--8-col-desktop mdl-cell--4-col-tablet">
+              <asp:TextBox runat="server" class="mdl-textfield__input" type="text" id="numeroSinistro"></asp:TextBox>
+              <label class="mdl-textfield__label" for="numeroSinistro">Número do Sinistro</label>
+            </div>
+        </div>
+
+        <div class=" opcao mdl-cell mdl-cell--6-col-desktop mdl-cell--12-col-tablet">
+            <h2 class="mdl-card__title-text">Selecione o Seguro</h2>
+            <div class="mdl-textfield mdl-js-textfield mdl-cell mdl-cell--8-col-desktop mdl-cell--4-col-tablet">
+              <label class="simpleLabeldd" for="selectSeguro">Seguradora</label>
+              <asp:DropDownList ID="selectSeguro" runat="server" class="dropdown"
+               DataSourceID="seguro" DataTextField="nome_amigavel" DataValueField="id_seguro">
+                <asp:ListItem Text="Servidor Fora do Ar"/>
+                <asp:ListItem Text="Servidor Fora do Ar"/>
+                <asp:ListItem Text="Servidor Fora do Ar"/>
+              </asp:DropDownList>
+            </div>
+        </div>
+
         <div class=" mdl-card mdl-cell mdl-cell--12-col-desktop mdl-cell--8-col-tablet mdl-cell--4-col-phone mdl-grid mdl-card--border mdl-shadow--1dp" id="newCli">
           <div class="title mdl-card__title mdl-cell mdl-cell--12-col">
             <h3 class="mdl-card__title-text">Cliente</h2>
@@ -236,19 +257,6 @@
               <asp:ListItem Text="Servidor Fora fo Ar"/>
               <asp:ListItem Text="Servidor Fora fo Ar"/>
               <asp:ListItem Text="Servidor Fora fo Ar"/>
-            </asp:DropDownList>
-          </div>
-      </div>
-
-      <div class=" opcao mdl-cell mdl-cell--6-col-desktop mdl-cell--12-col-tablet">
-          <h2 class="mdl-card__title-text">Selecione o Seguro</h2>
-          <div class="mdl-textfield mdl-js-textfield mdl-cell mdl-cell--8-col-desktop mdl-cell--4-col-tablet">
-            <label class="simpleLabeldd" for="selectSeguro">Seguradora</label>
-            <asp:DropDownList ID="selectSeguro" runat="server" class="dropdown"
-             DataSourceID="seguro" DataTextField="nome_seguro" DataValueField="id_seguro">
-              <asp:ListItem Text="Servidor Fora do Ar"/>
-              <asp:ListItem Text="Servidor Fora do Ar"/>
-              <asp:ListItem Text="Servidor Fora do Ar"/>
             </asp:DropDownList>
           </div>
       </div>
@@ -358,14 +366,6 @@
               <asp:ListItem Text="Servidor Fora do Ar"/>
               <asp:ListItem Text="Servidor Fora do Ar"/>
             </asp:DropDownList>
-          </div>
-      </div>
-
-      <div class=" opcao mdl-cell mdl-cell--6-col-desktop mdl-cell--12-col-tablet">
-          <h2 class="mdl-card__title-text">Sinistro</h2>
-          <div class="mdl-textfield mdl-textfield--floating-label mdl-js-textfield mdl-cell mdl-cell--8-col-desktop mdl-cell--4-col-tablet">
-            <asp:TextBox runat="server" class="mdl-textfield__input" type="text" id="numeroSinistro"></asp:TextBox>
-            <label class="mdl-textfield__label" for="numeroSinistro">Número do Sinistro</label>
           </div>
       </div>
 
@@ -519,7 +519,7 @@
           <div class="mdl-textfield mdl-js-textfield mdl-cell mdl-cell--8-col-desktop mdl-cell--4-col-tablet">
             <label class="simpleLabeldd" for="selectSeguroConsulta">Seguradora</label>
             <asp:DropDownList ID="selectSeguroConsulta" runat="server" class="dropdown"
-             DataSourceID="seguro" DataTextField="nome_seguro" DataValueField="id_seguro">
+             DataSourceID="seguro" DataTextField="nome_amigavel" DataValueField="id_seguro">
               <asp:ListItem Text="Servidor Fora do Ar"/>
               <asp:ListItem Text="Servidor Fora do Ar"/>
               <asp:ListItem Text="Servidor Fora do Ar"/>
@@ -603,7 +603,7 @@
           <div class="mdl-textfield mdl-js-textfield mdl-cell mdl-cell--8-col-desktop mdl-cell--4-col-tablet">
             <label class="simpleLabeldd" for="selectFrotaConsulta">Veículo</label>
             <asp:DropDownList ID="selectFrotaConsulta" runat="server" class="dropdown"
-             DataSourceID="frota" DataTextField="nome_frota" DataValueField="id_frota">
+             DataSourceID="allFrota" DataTextField="nome_frota" DataValueField="id_frota">
               <asp:ListItem Text="Servidor Fora do Ar"/>
               <asp:ListItem Text="Servidor Fora do Ar"/>
               <asp:ListItem Text="Servidor Fora do Ar"/>
@@ -802,7 +802,7 @@
   <asp:SqlDataSource ID="seguro" runat="server"
     ConnectionString="<%$ ConnectionStrings:amaralguinchoConnectionString %>"
     ProviderName="<%$ ConnectionStrings:amaralguinchoConnectionString.ProviderName %>"
-    SelectCommand="SELECT id_seguro, nome_seguro FROM seguro">
+    SelectCommand="SELECT id_seguro, nome_seguro, nome_amigavel FROM seguro">
   </asp:SqlDataSource>
 <!-- TODO update -->
   <asp:SqlDataSource ID="servico" runat="server"
@@ -852,10 +852,29 @@
     SELECT id_mot, nome_func FROM motoristaOnly">
   </asp:SqlDataSource>
 
+  <asp:SqlDataSource ID="allFrota" runat="server"
+    ConnectionString="<%$ ConnectionStrings:amaralguinchoConnectionString %>"
+    ProviderName="<%$ ConnectionStrings:amaralguinchoConnectionString.ProviderName %>"
+    SelectCommand="SELECT * from FROTA">
+  </asp:SqlDataSource>
+
   <asp:SqlDataSource ID="frota" runat="server"
     ConnectionString="<%$ ConnectionStrings:amaralguinchoConnectionString %>"
     ProviderName="<%$ ConnectionStrings:amaralguinchoConnectionString.ProviderName %>"
-    SelectCommand="SELECT nome_frota, id_frota FROM frota">
+    SelectCommand="
+    SELECT f1.id_frota, f1.nome_frota, f1.placa_frota FROM frota f1
+      WHERE NOT EXISTS(
+        SELECT f2.id_frota, f2.nome_frota, f2.placa_frota from frota f2
+          INNER JOIN  viagem on
+            viagem.id_frota = f2.id_frota
+          INNER JOIN viagem_servico on
+            viagem_servico.id_viagem = viagem.id_viagem
+          RIGHT JOIN ordem_de_servico on
+            ordem_de_servico.id_os = viagem_servico.id_os
+
+        WHERE ordem_de_servico.status_os = 'aberto' AND
+        f1.id_frota = f2.id_frota
+    );">
   </asp:SqlDataSource>
 
   <asp:SqlDataSource ID="os" runat="server"
@@ -1007,6 +1026,8 @@
 
   <script src="../scripts/cpf.min.js" charset="utf-8"></script>
   <script>
+  // var searchTool = document.getElementById('searchTool');
+  var searchDiv = document.getElementById('searchDiv');
   var isPesq = '<%=Session["pesqOS"]%>';
   var shellTitle = document.getElementById("shellTitle");
 
@@ -1014,6 +1035,11 @@
   window.onload = showCard('none','pesqServico');
   window.onload = shellTitle.innerHTML = 'Ordem de Serviço';
   window.onload = checkPesq();
+  // window.onload = searchDiv.classList.remove("hidden");
+
+  // searchTool.addEventListener("onkeypress", () => {
+  //
+  // });
 
   function checkPesq() {
     if(isPesq == 'True') {

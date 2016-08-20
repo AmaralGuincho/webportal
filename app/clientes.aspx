@@ -150,8 +150,8 @@
             <label class="mdl-textfield__label" for="dtNascCli">Nascimento</label>
           </div>
           <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--3-col-desktop mdl-cell-4-col-phone">
-            <asp:TextBox id="cpfCli" type="text" class="mdl-textfield__input" runat="server" pattern="[0-9,.,-]*" onkeypress="mascara(this,'###.###.###-##')" onblur="validateCpf();"></asp:TextBox>
-            <label class="mdl-textfield__label" for="cpfCli">CPF</label>
+            <asp:TextBox id="cpfCli" type="text" class="mdl-textfield__input" runat="server" pattern="[0-9,.,-]*"></asp:TextBox>
+            <label class="mdl-textfield__label" for="cpfCli">CPF/CNPJ</label>
             <span class="mdl-textfield__error">Ultilize apenas números</span>
           </div>
 

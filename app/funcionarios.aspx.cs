@@ -87,11 +87,19 @@ public partial class app_funcionarios : System.Web.UI.Page
         novoMotorista.InsertParameters["id"].DefaultValue =
         ultimoFuncionario.ToString();
 
-        novoMotorista.InsertParameters["dtEmissaoHab"].DefaultValue =
-          Convert.ToDateTime(emissaoHabMot.Text).ToString("yyyy/MM/dd");
+        if(emissaoHabMot.Text != String.Empty){
+          novoMotorista.InsertParameters["dtEmissaoHab"].DefaultValue =
+            Convert.ToDateTime(emissaoHabMot.Text).ToString("yyyy/MM/dd");
+        } else{
+          novoMotorista.InsertParameters["dtEmissaoHab"].DefaultValue = "0000/00/00";
+        }
 
-        novoMotorista.InsertParameters["dtValidadeHab"].DefaultValue =
-          Convert.ToDateTime(validadeHabMot.Text).ToString("yyyy/MM/dd");
+        if(validadeHabMot.Text != String.Empty){
+          novoMotorista.InsertParameters["dtValidadeHab"].DefaultValue =
+            Convert.ToDateTime(validadeHabMot.Text).ToString("yyyy/MM/dd");
+        } else{
+          novoMotorista.InsertParameters["dtValidadeHab"].DefaultValue = "0000/00/00";
+        }
 
         //Inserindo Habilitação
         novoMotorista.Insert();
