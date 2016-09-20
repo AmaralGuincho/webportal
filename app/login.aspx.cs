@@ -15,7 +15,9 @@ public partial class websites_login : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-
+      if(Session["log"] != null){
+        Response.Redirect("home.aspx");
+      }
     }
 
     protected void loginSubmit_Click(object sender, EventArgs e)
