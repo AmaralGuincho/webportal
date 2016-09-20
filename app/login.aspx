@@ -4,7 +4,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <link rel="icon" href="images/icon.png"/>
+    <link rel="icon" href="images/icon.ico"/>
     <meta charset="utf-8" />
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600' rel='stylesheet' type='text/css'/>
     <link rel="stylesheet" href="../style/old.css" />
@@ -12,7 +12,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="description" content="Mobile Plataform for Amaral Guincho">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, maximum-scale=1.0"/>
-    <link href="../images/icon.png" rel="icon" />
+    <link href="../images/icon.ico" rel="icon" />
 
     <!-- Add to homescreen for Safari on iOS -->
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -23,7 +23,7 @@
     <!-- Add to homescreen for Chrome on Android -->
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="application-name" content="Amaral Guincho">
-    <link rel="icon" sizes="192x192" href="../images/icon.png">
+    <link rel="icon" sizes="192x192" href="../images/icon.ico">
 
     <!-- Tile icon for Win8 (144x144 + tile color) -->
     <meta name="msapplication-TileImage" content="../images/icon-white.png">
