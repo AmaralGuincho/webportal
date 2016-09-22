@@ -222,7 +222,7 @@
           </div>
 
           <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--2-col">
-            <asp:TextBox runat="server" class="mdl-textfield__input" type="text" id="placaVeiculo" pattern="[0-9,A-Z,-]*" onkeydown="mascara(this,'###-####')"></asp:TextBox>
+            <asp:TextBox runat="server" class="mdl-textfield__input" type="text" id="placaVeiculo" pattern="[0-9,A-Z,-]*" onkeydown="mascara(this,'###-####')" onkeypress="this.value = this.value.toUpperCase();"></asp:TextBox>
             <label class="mdl-textfield__label" for="placaVeiculo">Placa</label>
             <span class="mdl-textfield__error">Tente ultilizar apenas números</span>
           </div>
@@ -1161,7 +1161,7 @@
 
   function placaMask(e){
     var upperCaseLetter = e.toUpperCase();
-    return upperCaseLetter;
+    return upperCaseLetter
   }
   </script>
 </asp:Content>
