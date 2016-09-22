@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -9,8 +9,9 @@ using System.Data;
 
 public partial class app_index : System.Web.UI.MasterPage
 {
-    protected void Page_Load(object sender, EventArgs e)
-    {
+  protected void Page_Load(object sender, EventArgs e)
+  {
+    if(!IsPostBack){
       try{
         //Verifying if user have a elegible log
         if(Session["log"] == null){
@@ -36,6 +37,15 @@ public partial class app_index : System.Web.UI.MasterPage
             profileImage.Attributes["src"] = usuario.Table.Rows[0]["img_func"].ToString();
           }
         }
-      }catch(Exception ex){}
+        }catch(Exception ex){}
+      }
     }
-}
+
+    protected void logoff(object sender, EventArgs e){
+      // Taking user out of the page
+      Response.Redirect("../index.html");
+
+      // Loging out User
+      Session["log"] = null;
+    }
+  }

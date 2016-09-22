@@ -1158,5 +1158,10 @@
       document.getElementById(reverseCard).style.display='none';
     }
   }
+
+  function placaMask(e){
+    var upperCaseLetter = e.toUpperCase();
+    return upperCaseLetter;
+  }
   </script>
 </asp:Content>
