@@ -20,21 +20,28 @@ public partial class app_index : System.Web.UI.MasterPage
         }else{
           //User is Authenticated!
           //Creating a new DataView
-          DataView usuario;
+          DataView user;
           // Putting MySql's information inside our `Usuario` DataView
-          usuario = (DataView)getUsuario.Select(DataSourceSelectArguments.Empty);
+          user = (DataView)getUsuario.Select(DataSourceSelectArguments.Empty);
+
+          // User data to be shown
+          String userName = user.Table.Rows[0]["nome_func"].ToString();
+          String userFullName = userName + " " + user.Table.Rows[0]["sobrenome_func"].ToString();
+          String userMail = user.Table.Rows[0]["email_func"].ToString();
 
           //Displaying user information on screen
-          nome.InnerHtml = usuario.Table.Rows[0]["nome_func"].ToString();
-          email.InnerHtml = usuario.Table.Rows[0]["email_func"].ToString();
+          nome.InnerHtml = userName.ToString();
+          email.InnerHtml = userMail.ToString();
+          // Greeting The user
+          Session["serverMessage"] = "Logado como" + userFullName;
 
           //Checking if user does have a profile photo
-          if(usuario.Table.Rows[0]["img_func"].ToString() == String.Empty){
+          if(user.Table.Rows[0]["img_func"].ToString() == String.Empty){
             //using a generic profile photo
             profileImage.Attributes["src"] = "../images/profiles/generic.png";
           }else{
             //Using the profile photo if the user does have one
-            profileImage.Attributes["src"] = usuario.Table.Rows[0]["img_func"].ToString();
+            profileImage.Attributes["src"] = user.Table.Rows[0]["img_func"].ToString();
           }
         }
         }catch(Exception ex){}
