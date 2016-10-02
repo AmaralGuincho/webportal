@@ -1,11 +1,12 @@
 {
   "name": "Amaral Guincho",
-  "short_name": "Guincho",
-  "display":"standalone",
+  "short_name": "AGuincho",
+  "display": "fullscreen",
+  "orientation": "portrait",
   "version": "1.0",
-  "start_url": "/",
-  "theme_color": "#353b60",
-  "background_color": "#ffffff",
+  "start_url": "app/home.aspx",
+  "theme_color": "#F5F5F5",
+  "background_color": "white",
   "icons": [
     {
       "src":"images/icon.png",

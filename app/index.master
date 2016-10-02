@@ -20,6 +20,7 @@
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="application-name" content="Amaral Guincho">
   <link rel="icon" href="../images/icon.ico">
+  <link rel="manifest" href="~/manifest.json"/>
 
   <!-- Tile icon for Win8 (144x144 + tile color) -->
   <meta name="msapplication-TileImage" content="../images/icon-white.png">
@@ -60,7 +61,7 @@
   <div class="layout mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header">
     <header class="header mdl-layout__header mdl-color--grey-100 mdl-color-text--grey-600">
       <div class="mdl-layout__header-row">
-        <span class="mdl-layout-title" id="shellTitle">Home</span>
+        <span class="mdl-layout-title" id="shellTitle">Amaral Guincho</span>
         <div class="mdl-layout-spacer"></div>
         <div class="hidden mdl-textfield mdl-js-textfield mdl-textfield--expandable" id="searchDiv">
           <label class="mdl-button mdl-js-button mdl-button--icon" for="searchTool">
@@ -98,6 +99,7 @@
       <a class="mdl-navigation__link" href="clientes.aspx"><i class="mdl-color-text--blue-grey-400 material-icons">face</i>Clientes</a>
       <a class="mdl-navigation__link" href="seguro.aspx"><i class="mdl-color-text--blue-grey-400 material-icons">perm_contact_calendar</i>Seguro</a>
       <a class="mdl-navigation__link" href="funcionarios.aspx"><i class="mdl-color-text--blue-grey-400 material-icons">people</i>Funcionários</a>
+      <a class="mdl-navigation__link" href="search.aspx"><i class="mdl-color-text--blue-grey-400 material-icons">search</i>Pesquisa</a>
       <!-- <a class="mdl-navigation__link" href="#" disabled><i class="mdl-color-text--blue-grey-400 material-icons">pie_chart</i>Estatisticas</a> -->
       <!-- <a class="mdl-navigation__link" href="#" disabled><i class="mdl-color-text--blue-grey-400 material-icons">monetization_on</i>Financeiro</a> -->
       <a class="mdl-navigation__link" href="settings.aspx"><i class="mdl-color-text--blue-grey-400 material-icons">settings</i>Ajustes</a>
