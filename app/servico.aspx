@@ -855,7 +855,7 @@
   <asp:SqlDataSource ID="allFrota" runat="server"
     ConnectionString="<%$ ConnectionStrings:amaralguinchoConnectionString %>"
     ProviderName="<%$ ConnectionStrings:amaralguinchoConnectionString.ProviderName %>"
-    SelectCommand="SELECT * from FROTA">
+    SelectCommand="SELECT * FROM frota">
   </asp:SqlDataSource>
 
   <asp:SqlDataSource ID="frota" runat="server"
