@@ -22,8 +22,6 @@ public partial class app_index : System.Web.UI.MasterPage
    string userMail = user.Table.Rows[0]["email_func"].ToString();
    string image = user.Table.Rows[0]["img_func"].ToString();
 
-   Session["userFullName"] = userFullName;
-
    switch (info){
       case "name":
         return userName;
@@ -64,6 +62,9 @@ public partial class app_index : System.Web.UI.MasterPage
           string image = getUserInfo("image");
           string genericImage = "../images/profiles/generic.png";
 
+          Session["userFullName"] = getUserInfo("userFullName");
+
+
 
           //Displaying user information on screen
           nome.InnerHtml = name;
@@ -82,7 +83,7 @@ public partial class app_index : System.Web.UI.MasterPage
       }
     }
 
-    protected void logoff(object sender, EventArgs e){
+    protected void quit(object sender, EventArgs e){
       // Taking user out of the page
       Response.Redirect("../index.html");
 

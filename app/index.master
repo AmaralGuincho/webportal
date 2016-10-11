@@ -104,7 +104,7 @@
       <!-- <a class="mdl-navigation__link" href="#" disabled><i class="mdl-color-text--blue-grey-400 material-icons">monetization_on</i>Financeiro</a> -->
       <a class="mdl-navigation__link" href="settings.aspx"><i class="mdl-color-text--blue-grey-400 material-icons">settings</i>Ajustes</a>
       <div class="mdl-layout-spacer"></div>
-      <a class="mdl-navigation__link" runat="server" href="../index.html" OnClick="logoff"><i class="mdl-color-text--blue-grey-400 material-icons">power_settings_new</i>Sair</a>
+      <a class="mdl-navigation__link" runat="server" href="../index.html" onclick="logoff();"><i class="mdl-color-text--blue-grey-400 material-icons">power_settings_new</i>Sair</a>
     </nav>
   </div>
 
