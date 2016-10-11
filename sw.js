@@ -9,11 +9,9 @@ self.addEventListener('install', function(e) {
             return cache.addAll([
                 './',
                 './style/app.css',
+                './material/*',
                 './scripts/*',
-                './offline.html',
-                'https://fonts.googleapis.com/css?family=Roboto:regular,bold,italiic,light,bolditalic,black,medium&apm;lang=en',
-                'https://fonts.googleapis.com/icon?family=Material+Icons',
-                'https://code.getmdl.io/1.1.3/material.cyan-light_blue.min.css'
+                './offline.html'
             ]).then(function() {
                 self.skipWaiting();
             });
