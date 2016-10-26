@@ -52,6 +52,8 @@ public partial class app_settings : System.Web.UI.Page
     sqlFuncionario.UpdateParameters["emailFunc"].DefaultValue = emailFunc.Text.ToString();
     sqlFuncionario.UpdateParameters["residenciaFunc"].DefaultValue = residenciaFunc.Text.ToString();
     sqlFuncionario.UpdateParameters["bairroFunc"].DefaultValue = bairroFunc.Text.ToString();
+    sqlFuncionario.UpdateParameters["cidadeFunc"].DefaultValue = cidadeFunc.Text.ToString();
+    sqlFuncionario.UpdateParameters["ufFunc"].DefaultValue = ufFunc.Text.ToString();
     sqlFuncionario.UpdateParameters["idCargo"].DefaultValue = cargoFunc.SelectedValue;
     sqlFuncionario.UpdateParameters["sxFunc"].DefaultValue = sexoFunc.SelectedValue;
 
