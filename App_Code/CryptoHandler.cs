@@ -6,14 +6,30 @@ using System.Data;
 
 public class cryptoHandler{
   // Getting Cryptography
-  Cryptography Crypto = new Cryptography("helloWorld");
+  CsharpCryptography Crypto = new CsharpCryptography("helloWorld");
 
-  public DataTable decryptDataView(dataView){
+  public DataTable decryptDataView(DataView dataView) {
     //  Converting DataView into DataTable
     DataTable EncryptedTable = dataView.ToTable();
     //  getting table rows count
-   tableRows = EncryptedTable.Table.Rows.Count;
-   // Creating a new Table to handle Encrypted Values
-   DataTable UncryptedTable = new DataTable;
+    int tableRows = EncryptedTable.Rows.Count;
+    // getting table coulumns count
+    int tableColumns = EncryptedTable.Columns.Count;
+
+    // Creating a new Table to handle Encrypted Values
+    DataTable UncryptedTable = new DataTable();
+
+    //copying each table row
+    for (int i=0; tableRows < i; i++) {
+      // copying each table column
+      for (int j=0; tableColumns < j; i++) {
+        UncryptedTable.Rows[i][j] = EncryptedTable.Rows[i][j];
+        // Unincrypting data
+        UncryptedTable.Rows[i][j] = Crypto.Decrypt(EncryptedTable.Rows[i][j].ToString());
+      }
+    }
+    // Return Uncrypted Table
+    return UncryptedTable;
   }
+
 }

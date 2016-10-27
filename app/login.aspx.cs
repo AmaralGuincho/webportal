@@ -8,11 +8,11 @@ using System.Web.Security;
 //Referencia do .net Data
 using System.Data;
 
-
-
-
 public partial class websites_login : System.Web.UI.Page
 {
+  // Generating a Decryptor
+  CsharpCryptography Crypto = new CsharpCryptography("ETEP");
+
     protected void Page_Load(object sender, EventArgs e)
     {
       if(!IsPostBack){
@@ -24,13 +24,23 @@ public partial class websites_login : System.Web.UI.Page
 
     protected void loginSubmit_Click(object sender, EventArgs e)
     {
-       try{
+      //  try{
         //Declarando as Variaveis
         DataView dvLogin, dvFunc;
         Session["log"] = null;
         Session["admin"] = null;
 
+        //Getting UI Data
+        string login = txtUsername.Text;
+        string password = txtPassword.Text;
+
+        string encryptedLogin = Crypto.Encrypt(login);
+        string encryptedPassword = Crypto.Encrypt(password);
+
         //Verificando o Login
+        SqlLogin.SelectParameters["LOGIN"].DefaultValue = encryptedLogin;
+        SqlLogin.SelectParameters["SENHA"].DefaultValue = encryptedPassword;
+
         dvLogin = (DataView)SqlLogin.Select(DataSourceSelectArguments.Empty);
 
         //Verificando o Usuário
@@ -58,10 +68,10 @@ public partial class websites_login : System.Web.UI.Page
           txtPassword.Text = String.Empty;
           Response.Write("<script>alert('Login ou senha incorretos!');</script>");
         }
-      }
-      catch(Exception ex){
+      // }
+      // catch(Exception ex){
         //ERRO NA CONEXÃO COM O BANCO DE DADOS
-        Response.Write("<script>function dbError() {if (confirm('Ocorreu um erro no banco de dados interno. Você pode detalhar o erro para nossos desenvolvedores?')) {window.open('mailto:ioetep@gmail.com?subject=Erro+no+Banco+de+Dados&body=Por+favor+detalhe+o+que+estava+fazendo+ao+se+deparar+com+o+erro');}else{alert('Uma menssagem de erro genérica foi enviada ao Desenvolvedor');}} dbError();</script>");
-      }
+        // Response.Write("<script>function dbError() {if (confirm('Ocorreu um erro no banco de dados interno. Você pode detalhar o erro para nossos desenvolvedores?')) {window.open('mailto:ioetep@gmail.com?subject=Erro+no+Banco+de+Dados&body=Por+favor+detalhe+o+que+estava+fazendo+ao+se+deparar+com+o+erro');}else{alert('Uma menssagem de erro genérica foi enviada ao Desenvolvedor');}} dbError();</script>");
+      // }
     }
 }

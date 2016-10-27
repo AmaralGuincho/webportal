@@ -144,8 +144,8 @@
             <asp:button text="Entrar" runat="server" CssClass="button" OnClick="loginSubmit_Click" />
             <asp:SqlDataSource ID="SqlLogin" runat="server" ConnectionString="<%$ ConnectionStrings:amaralguinchoConnectionString %>" ProviderName="<%$ ConnectionStrings:amaralguinchoConnectionString.ProviderName %>" SelectCommand="SELECT id_login, username_login, password_login, id_func FROM login WHERE (username_login = @LOGIN) AND (password_login = @SENHA)">
                 <SelectParameters>
-                    <asp:ControlParameter ControlID="txtUsername" Name="LOGIN" PropertyName="Text" />
-                    <asp:ControlParameter ControlID="txtPassword" Name="SENHA" PropertyName="Text" />
+                    <asp:Parameter Name="LOGIN" />
+                    <asp:Parameter Name="SENHA" />
                 </SelectParameters>
             </asp:SqlDataSource>
             <asp:SqlDataSource ID="SqlFunc" runat="server" ConnectionString="<%$ ConnectionStrings:amaralguinchoConnectionString %>" ProviderName="<%$ ConnectionStrings:amaralguinchoConnectionString.ProviderName %>" SelectCommand="SELECT id_func, id_cargo, nome_func, sobrenome_func, dtnasc_func, cep_func, cpf_func, dtcont_func, sx_func, tel_func, email_func, uf_func, cid_func, img_func FROM funcionario WHERE (id_func = @ID)">
