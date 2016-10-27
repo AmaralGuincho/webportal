@@ -24,7 +24,7 @@ public partial class websites_login : System.Web.UI.Page
 
     protected void loginSubmit_Click(object sender, EventArgs e)
     {
-      //  try{
+       try{
         //Declarando as Variaveis
         DataView dvLogin, dvFunc;
         Session["log"] = null;
@@ -68,10 +68,10 @@ public partial class websites_login : System.Web.UI.Page
           txtPassword.Text = String.Empty;
           Response.Write("<script>alert('Login ou senha incorretos!');</script>");
         }
-      // }
-      // catch(Exception ex){
-        //ERRO NA CONEXÃO COM O BANCO DE DADOS
-        // Response.Write("<script>function dbError() {if (confirm('Ocorreu um erro no banco de dados interno. Você pode detalhar o erro para nossos desenvolvedores?')) {window.open('mailto:ioetep@gmail.com?subject=Erro+no+Banco+de+Dados&body=Por+favor+detalhe+o+que+estava+fazendo+ao+se+deparar+com+o+erro');}else{alert('Uma menssagem de erro genérica foi enviada ao Desenvolvedor');}} dbError();</script>");
-      // }
+      }
+      catch(Exception ex){
+        ERRO NA CONEXÃO COM O BANCO DE DADOS
+        Response.Write("<script>function dbError() {if (confirm('Ocorreu um erro no banco de dados interno. Você pode detalhar o erro para nossos desenvolvedores?')) {window.open('mailto:ioetep@gmail.com?subject=Erro+no+Banco+de+Dados&body=Por+favor+detalhe+o+que+estava+fazendo+ao+se+deparar+com+o+erro');}else{alert('Uma menssagem de erro genérica foi enviada ao Desenvolvedor');}} dbError();</script>");
+      }
     }
 }
