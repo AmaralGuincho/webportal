@@ -498,69 +498,69 @@
 @vigilante40km,@vigilanteMais40km,@vigilanteHoraTrabalhada,
 @endereco, @nomeAmigavel, @emailRepresentante)">
     <InsertParameters>
-      <asp:ControlParameter Name="nomeSeguro" ControlID="nomeSeguro" PropertyName="Text"/>
-      <asp:ControlParameter Name="codPrestador" ControlID="codPrestador" PropertyName="Text"/>
-      <asp:ControlParameter Name="cgc" ControlID="cgc" PropertyName="Text"/>
-      <asp:ControlParameter Name="setorCadastroTel" ControlID="setorCadastroTel" PropertyName="Text"/>
-      <asp:ControlParameter Name="setorPagtoTel" ControlID="setorPagtoTel" PropertyName="Text"/>
-      <asp:ControlParameter Name="fechamentoServicosTel" ControlID="fechamentoServicosTel" PropertyName="Text"/>
-      <asp:ControlParameter Name="casosAndamentoTel" ControlID="casosAndamentoTel" PropertyName="Text"/>
-      <asp:ControlParameter Name="cordenadorRegiao" ControlID="cordenadorRegiao" PropertyName="Text"/>
-      <asp:ControlParameter Name="passeio40km" ControlID="passeio40km" PropertyName="Text"/>
-      <asp:ControlParameter Name="passeioMaior40km" ControlID="passeioMaior40km" PropertyName="Text"/>
-      <asp:ControlParameter Name="passeioHoraTrabalhada" ControlID="passeioHoraTrabalhada" PropertyName="Text"/>
-      <asp:ControlParameter Name="passeioHoraParada" ControlID="passeioHoraParada" PropertyName="Text"/>
-      <asp:ControlParameter Name="ull40km" ControlID="ull40km" PropertyName="Text"/>
-      <asp:ControlParameter Name="ullMaior40km" ControlID="ullMaior40km" PropertyName="Text"/>
-      <asp:ControlParameter Name="ullHoraTrabalhada" ControlID="ullHoraTrabalhada" PropertyName="Text"/>
-      <asp:ControlParameter Name="ullHoraParada" ControlID="ullHoraParada" PropertyName="Text"/>
-      <asp:ControlParameter Name="moto40km" ControlID="moto40km" PropertyName="Text"/>
-      <asp:ControlParameter Name="motoMaior40km" ControlID="motoMaior40km" PropertyName="Text"/>
-      <asp:ControlParameter Name="motoHoraTrabalhada" ControlID="motoHoraTrabalhada" PropertyName="Text"/>
-      <asp:ControlParameter Name="motoHoraParada" ControlID="motoHoraParada" PropertyName="Text"/>
-      <asp:ControlParameter Name="garagem40km" ControlID="garagem40km" PropertyName="Text"/>
-      <asp:ControlParameter Name="garagemMaior40km" ControlID="garagemMaior40km" PropertyName="Text"/>
-      <asp:ControlParameter Name="garagemHoraTrabalhada" ControlID="garagemHoraTrabalhada" PropertyName="Text"/>
-      <asp:ControlParameter Name="garagemHoraParada" ControlID="garagemHoraParada" PropertyName="Text"/>
-      <asp:ControlParameter Name="re40km" ControlID="re40km" PropertyName="Text"/>
-      <asp:ControlParameter Name="reMaior40km" ControlID="reMaior40km" PropertyName="Text"/>
-      <asp:ControlParameter Name="reHoraTrabalhada" ControlID="reHoraTrabalhada" PropertyName="Text"/>
-      <asp:ControlParameter Name="reHoraParada" ControlID="reHoraParada" PropertyName="Text"/>
-      <asp:ControlParameter Name="patins40km" ControlID="patins40km" PropertyName="Text"/>
-      <asp:ControlParameter Name="patinsMaior40km" ControlID="patinsMaior40km" PropertyName="Text"/>
-      <asp:ControlParameter Name="patinsHoraTrabalhada" ControlID="patinsHoraTrabalhada" PropertyName="Text"/>
-      <asp:ControlParameter Name="patinsHoraParada" ControlID="patinsHoraParada" PropertyName="Text"/>
-      <asp:ControlParameter Name="cl40km" ControlID="cl40km" PropertyName="Text"/>
-      <asp:ControlParameter Name="clMaior40km" ControlID="clMaior40km" PropertyName="Text"/>
-      <asp:ControlParameter Name="clHoraTrabalhada" ControlID="clHoraTrabalhada" PropertyName="Text"/>
-      <asp:ControlParameter Name="clHoraParada" ControlID="clHoraParada" PropertyName="Text"/>
-      <asp:ControlParameter Name="sospsd40km" ControlID="sospsd40km" PropertyName="Text"/>
-      <asp:ControlParameter Name="sospsdMaior40km" ControlID="sospsdMaior40km" PropertyName="Text"/>
-      <asp:ControlParameter Name="sospsdHoraTrabalhada" ControlID="sospsdHoraTrabalhada" PropertyName="Text"/>
-      <asp:ControlParameter Name="sospsdHoraParada" ControlID="sospsdHoraParada" PropertyName="Text"/>
-      <asp:ControlParameter Name="xtrpsd40km" ControlID="xtrpsd40km" PropertyName="Text"/>
-      <asp:ControlParameter Name="xtrpsdMaior40km" ControlID="xtrpsdMaior40km" PropertyName="Text"/>
-      <asp:ControlParameter Name="xtrpsdHoraTrabalhada" ControlID="xtrpsdHoraTrabalhada" PropertyName="Text"/>
-      <asp:ControlParameter Name="xtrpsdHoraParada" ControlID="xtrpsdHoraParada" PropertyName="Text"/>
-      <asp:ControlParameter Name="scrmec40km" ControlID="scrmec40km" PropertyName="Text"/>
-      <asp:ControlParameter Name="scrmecMais40km" ControlID="scrmecMais40km" PropertyName="Text"/>
-      <asp:ControlParameter Name="kmRodado" ControlID="kmRodado" PropertyName="Text"/>
-      <asp:ControlParameter Name="kmParado" ControlID="kmParado" PropertyName="Text"/>
-      <asp:ControlParameter Name="saidaNacional40km" ControlID="saidaNacional40km" PropertyName="Text"/>
-      <asp:ControlParameter Name="saidaNacionalMais40km" ControlID="saidaNacionalMais40km" PropertyName="Text"/>
-      <asp:ControlParameter Name="saidaImportado40km" ControlID="saidaImportado40km" PropertyName="Text"/>
-      <asp:ControlParameter Name="saidaImportadoMais40km" ControlID="saidaImportadoMais40km" PropertyName="Text"/>
-      <asp:ControlParameter Name="saidaConfeccao40km" ControlID="saidaConfeccao40km" PropertyName="Text"/>
-      <asp:ControlParameter Name="saidaConfeccaoMais40km" ControlID="saidaConfeccaoMais40km" PropertyName="Text"/>
-      <asp:ControlParameter Name="saida40km" ControlID="saida40km" PropertyName="Text"/>
-      <asp:ControlParameter Name="saidaMais40km" ControlID="saidaMais40km" PropertyName="Text"/>
-      <asp:ControlParameter Name="saidaHoraTrabalhada" ControlID="saidaHoraTrabalhada" PropertyName="Text"/>
-      <asp:ControlParameter Name="vigilante40km" ControlID="vigilante40km" PropertyName="Text"/>
-      <asp:ControlParameter Name="vigilanteMais40km" ControlID="vigilanteMais40km" PropertyName="Text"/>
-      <asp:ControlParameter Name="vigilanteHoraTrabalhada" ControlID="vigilanteHoraTrabalhada" PropertyName="Text"/>
-      <asp:ControlParameter Name="endereco" ControlID="endereco" PropertyName="Text"/>
-      <asp:ControlParameter Name="emailRepresentante" ControlID="emailRepresentante" PropertyName="Text"/>
-      <asp:ControlParameter Name="nomeAmigavel" ControlID="nomeAmigavel" PropertyName="Text"/>
+      <asp:Parameter Name="nomeSeguro"/>
+      <asp:Parameter Name="codPrestador"/>
+      <asp:Parameter Name="cgc"/>
+      <asp:Parameter Name="setorCadastroTel"/>
+      <asp:Parameter Name="setorPagtoTel"/>
+      <asp:Parameter Name="fechamentoServicosTel"/>
+      <asp:Parameter Name="casosAndamentoTel"/>
+      <asp:Parameter Name="cordenadorRegiao"/>
+      <asp:Parameter Name="passeio40km"/>
+      <asp:Parameter Name="passeioMaior40km"/>
+      <asp:Parameter Name="passeioHoraTrabalhada"/>
+      <asp:Parameter Name="passeioHoraParada"/>
+      <asp:Parameter Name="ull40km"/>
+      <asp:Parameter Name="ullMaior40km"/>
+      <asp:Parameter Name="ullHoraTrabalhada"/>
+      <asp:Parameter Name="ullHoraParada"/>
+      <asp:Parameter Name="moto40km"/>
+      <asp:Parameter Name="motoMaior40km"/>
+      <asp:Parameter Name="motoHoraTrabalhada"/>
+      <asp:Parameter Name="motoHoraParada"/>
+      <asp:Parameter Name="garagem40km"/>
+      <asp:Parameter Name="garagemMaior40km"/>
+      <asp:Parameter Name="garagemHoraTrabalhada"/>
+      <asp:Parameter Name="garagemHoraParada"/>
+      <asp:Parameter Name="re40km"/>
+      <asp:Parameter Name="reMaior40km"/>
+      <asp:Parameter Name="reHoraTrabalhada"/>
+      <asp:Parameter Name="reHoraParada"/>
+      <asp:Parameter Name="patins40km"/>
+      <asp:Parameter Name="patinsMaior40km"/>
+      <asp:Parameter Name="patinsHoraTrabalhada"/>
+      <asp:Parameter Name="patinsHoraParada"/>
+      <asp:Parameter Name="cl40km"/>
+      <asp:Parameter Name="clMaior40km"/>
+      <asp:Parameter Name="clHoraTrabalhada"/>
+      <asp:Parameter Name="clHoraParada"/>
+      <asp:Parameter Name="sospsd40km"/>
+      <asp:Parameter Name="sospsdMaior40km"/>
+      <asp:Parameter Name="sospsdHoraTrabalhada"/>
+      <asp:Parameter Name="sospsdHoraParada"/>
+      <asp:Parameter Name="xtrpsd40km"/>
+      <asp:Parameter Name="xtrpsdMaior40km"/>
+      <asp:Parameter Name="xtrpsdHoraTrabalhada"/>
+      <asp:Parameter Name="xtrpsdHoraParada"/>
+      <asp:Parameter Name="scrmec40km"/>
+      <asp:Parameter Name="scrmecMais40km"/>
+      <asp:Parameter Name="kmRodado"/>
+      <asp:Parameter Name="kmParado"/>
+      <asp:Parameter Name="saidaNacional40km"/>
+      <asp:Parameter Name="saidaNacionalMais40km"/>
+      <asp:Parameter Name="saidaImportado40km"/>
+      <asp:Parameter Name="saidaImportadoMais40km"/>
+      <asp:Parameter Name="saidaConfeccao40km"/>
+      <asp:Parameter Name="saidaConfeccaoMais40km"/>
+      <asp:Parameter Name="saida40km"/>
+      <asp:Parameter Name="saidaMais40km"/>
+      <asp:Parameter Name="saidaHoraTrabalhada"/>
+      <asp:Parameter Name="vigilante40km"/>
+      <asp:Parameter Name="vigilanteMais40km"/>
+      <asp:Parameter Name="vigilanteHoraTrabalhada"/>
+      <asp:Parameter Name="endereco"/>
+      <asp:Parameter Name="emailRepresentante"/>
+      <asp:Parameter Name="nomeAmigavel"/>
     </InsertParameters>
   </asp:SqlDataSource>
 
