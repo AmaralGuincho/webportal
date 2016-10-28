@@ -8,6 +8,7 @@ using System.Data;
 
 public partial class app_motoristas : System.Web.UI.Page
 {
+  CsharpCryptography Crypto = new CsharpCryptography("ETEP");
   protected void Page_Load(object sender, EventArgs e)
   {
     //Importing Enployes from sql statement
@@ -17,25 +18,25 @@ public partial class app_motoristas : System.Web.UI.Page
         if (recentMotoristas.Table.Rows[0]["img_func"].ToString() == String.Empty) {
           imgMot1.Attributes["src"] = "../images/profiles/generic.png";
         }else{
-          imgMot1.Attributes["src"] = recentMotoristas.Table.Rows[0]["img_func"].ToString();
+          imgMot1.Attributes["src"] = Crypto.Decrypt(recentMotoristas.Table.Rows[0]["img_func"].ToString());
         }
-        nomeMot1.InnerHtml = recentMotoristas.Table.Rows[0]["nome_func"].ToString() + " " + recentMotoristas.Table.Rows[0]["sobrenome_func"].ToString();
+        nomeMot1.InnerHtml = Crypto.Decrypt(recentMotoristas.Table.Rows[0]["nome_func"].ToString()) + " " + Crypto.Decrypt(recentMotoristas.Table.Rows[0]["sobrenome_func"].ToString());
         //Checking 2nd Row
         if(recentMotoristas.Table.Rows.Count > 1){
           if (recentMotoristas.Table.Rows[1]["img_func"].ToString() == String.Empty) {
             imgMot2.Attributes["src"] = "../images/profiles/generic.png";
           }else{
-            imgMot2.Attributes["src"] = recentMotoristas.Table.Rows[1]["img_func"].ToString();
+            imgMot2.Attributes["src"] = Crypto.Decrypt(recentMotoristas.Table.Rows[1]["img_func"].ToString());
           }
-          nomeMot2.InnerHtml = recentMotoristas.Table.Rows[1]["nome_func"].ToString() + " " + recentMotoristas.Table.Rows[1]["sobrenome_func"].ToString();
+          nomeMot2.InnerHtml = Crypto.Decrypt(recentMotoristas.Table.Rows[1]["nome_func"].ToString()) + " " + Crypto.Decrypt(recentMotoristas.Table.Rows[1]["sobrenome_func"].ToString());
           //Checking 3rd Row
           if(recentMotoristas.Table.Rows.Count > 2){
             if (recentMotoristas.Table.Rows[2]["img_func"].ToString() == String.Empty) {
               imgMot3.Attributes["src"] = "../images/profiles/generic.png";
             }else{
-              imgMot3.Attributes["src"] = recentMotoristas.Table.Rows[2]["img_func"].ToString();
+              imgMot3.Attributes["src"] = Crypto.Decrypt(recentMotoristas.Table.Rows[2]["img_func"].ToString());
             }
-            nomeMot3.InnerHtml = recentMotoristas.Table.Rows[2]["nome_func"].ToString() + " " + recentMotoristas.Table.Rows[2]["sobrenome_func"].ToString();
+            nomeMot3.InnerHtml = Crypto.Decrypt(recentMotoristas.Table.Rows[2]["nome_func"].ToString()) + " " + Crypto.Decrypt(recentMotoristas.Table.Rows[2]["sobrenome_func"].ToString());
           }else{
             nomeMot3.InnerHtml = "--";
           }

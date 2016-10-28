@@ -9,6 +9,7 @@ using System.IO;
 
 public partial class app_servico : System.Web.UI.Page
 {
+  CsharpCryptography Crypto = new CsharpCryptography("ETEP");
     protected void Page_Load(object sender, EventArgs e)
     {
       Session["pesqOS"] = false;
@@ -47,15 +48,15 @@ public partial class app_servico : System.Web.UI.Page
 
       DataView recentServicoOs = (DataView)lattestServicoOs.Select(DataSourceSelectArguments.Empty);
       if (recentServicoOs.Table.Rows.Count > 0) {
-        codigoServico1.InnerHtml = recentServicoOs.Table.Rows[0]["tipo_servico"].ToString();
+        codigoServico1.InnerHtml = Crypto.Decrypt(recentServicoOs.Table.Rows[0]["tipo_servico"].ToString());
         codigoOS1.InnerHtml = "# " + recentServicoOs.Table.Rows[0]["id_os"].ToString();
       }
       if (recentServicoOs.Table.Rows.Count > 1) {
-        codigoServico2.InnerHtml = recentServicoOs.Table.Rows[1]["tipo_servico"].ToString();
+        codigoServico2.InnerHtml = Crypto.Decrypt(recentServicoOs.Table.Rows[1]["tipo_servico"].ToString());
         codigoOS2.InnerHtml = "# " + recentServicoOs.Table.Rows[1]["id_os"].ToString();
       }
       if (recentServicoOs.Table.Rows.Count > 2) {
-        codigoServico3.InnerHtml = recentServicoOs.Table.Rows[2]["tipo_servico"].ToString();
+        codigoServico3.InnerHtml = Crypto.Decrypt(recentServicoOs.Table.Rows[2]["tipo_servico"].ToString());
         codigoOS3.InnerHtml = "# " + recentServicoOs.Table.Rows[2]["id_os"].ToString();
       }
 
@@ -174,24 +175,24 @@ public partial class app_servico : System.Web.UI.Page
       //Preenchendo os campos
 
       //Condições de Abertura
-      string nomeFuncionario = consulta.Table.Rows[0]["nome_func"].ToString();
-      string sobrenomeFuncionario = consulta.Table.Rows[0]["sobrenome_func"].ToString();
+      string nomeFuncionario = Crypto.Decrypt(consulta.Table.Rows[0]["nome_func"].ToString());
+      string sobrenomeFuncionario = Crypto.Decrypt(consulta.Table.Rows[0]["sobrenome_func"].ToString());
       abertoPor.Text = (nomeFuncionario + " " + sobrenomeFuncionario);
 
       dataAbertura.Text = Convert.ToDateTime(consulta.Table.Rows[0]["dtab_os"]).ToString();
 
       //Cliente
-      nomeCliConsulta.Text = consulta.Table.Rows[0]["nome_cli"].ToString();
-      sobrenomeCliConsulta.Text = consulta.Table.Rows[0]["sobrenome_cli"].ToString();
-      cpfCliConsulta.Text = consulta.Table.Rows[0]["cpf_cli"].ToString();
-      telefoneCliConsulta.Text = consulta.Table.Rows[0]["telefone_cli"].ToString();
+      nomeCliConsulta.Text = Crypto.Decrypt(consulta.Table.Rows[0]["nome_cli"].ToString());
+      sobrenomeCliConsulta.Text = Crypto.Decrypt(consulta.Table.Rows[0]["sobrenome_cli"].ToString());
+      cpfCliConsulta.Text = Crypto.Decrypt(consulta.Table.Rows[0]["cpf_cli"].ToString());
+      telefoneCliConsulta.Text = Crypto.Decrypt(consulta.Table.Rows[0]["telefone_cli"].ToString());
 
       //Veículo
-      fabricanteVeiculoConsulta.Text = consulta.Table.Rows[0]["fabricante_veiculo"].ToString();
-      modeloVeiculoConsulta.Text = consulta.Table.Rows[0]["modelo_veiculo"].ToString();
-      anoVeiculoConsulta.Text = consulta.Table.Rows[0]["ano_veiculo"].ToString();
-      placaVeiculoConsulta.Text = (consulta.Table.Rows[0]["placa_veiculo"].ToString()).ToUpper();
-      corVeiculoConsulta.Text = consulta.Table.Rows[0]["cor_veiculo"].ToString();
+      fabricanteVeiculoConsulta.Text = Crypto.Decrypt(consulta.Table.Rows[0]["fabricante_veiculo"].ToString());
+      modeloVeiculoConsulta.Text = Crypto.Decrypt(consulta.Table.Rows[0]["modelo_veiculo"].ToString());
+      anoVeiculoConsulta.Text = Crypto.Decrypt(consulta.Table.Rows[0]["ano_veiculo"].ToString());
+      placaVeiculoConsulta.Text = (Crypto.Decrypt(consulta.Table.Rows[0]["placa_veiculo"].ToString())).ToUpper();
+      corVeiculoConsulta.Text = Crypto.Decrypt(consulta.Table.Rows[0]["cor_veiculo"].ToString());
 
       //Servico
       selectServicoConsulta.SelectedIndex = Convert.ToInt32(consulta.Table.Rows[0]["id_servico"]) - 1;
@@ -200,15 +201,15 @@ public partial class app_servico : System.Web.UI.Page
       selectSeguroConsulta.SelectedIndex = Convert.ToInt32(consulta.Table.Rows[0]["id_seguro"]) - 1;
 
       //Viagem
-      bairroViagemDestinoConsulta.Text = consulta.Table.Rows[0]["bairro_destino_viagem"].ToString();
-      bairroViagemPartidaConsulta.Text = consulta.Table.Rows[0]["bairro_partida_viagem"].ToString();
-      enderecoViagemDestinoConsulta.Text = consulta.Table.Rows[0]["endereco_destino_viagem"].ToString();
-      enderecoViagemPartidaConsulta.Text = consulta.Table.Rows[0]["endereco_partida_viagem"].ToString();
-      cidadeViagemDestinoConsulta.Text = consulta.Table.Rows[0]["cidade_destino_viagem"].ToString();
-      cidadeViagemPartidaConsulta.Text = consulta.Table.Rows[0]["cidade_partida_viagem"].ToString();
-      ufViagemDestinoConsulta.Text = consulta.Table.Rows[0]["uf_destino_viagem"].ToString();
-      ufViagemPartidaConsulta.Text = consulta.Table.Rows[0]["uf_partida_viagem"].ToString();
-      obsViagemConsulta.Text = consulta.Table.Rows[0]["obs_viagem"].ToString();
+      bairroViagemDestinoConsulta.Text = Crypto.Decrypt(consulta.Table.Rows[0]["bairro_destino_viagem"].ToString());
+      bairroViagemPartidaConsulta.Text = Crypto.Decrypt(consulta.Table.Rows[0]["bairro_partida_viagem"].ToString());
+      enderecoViagemDestinoConsulta.Text = Crypto.Decrypt(consulta.Table.Rows[0]["endereco_destino_viagem"].ToString());
+      enderecoViagemPartidaConsulta.Text = Crypto.Decrypt(consulta.Table.Rows[0]["endereco_partida_viagem"].ToString());
+      cidadeViagemDestinoConsulta.Text = Crypto.Decrypt(consulta.Table.Rows[0]["cidade_destino_viagem"].ToString());
+      cidadeViagemPartidaConsulta.Text = Crypto.Decrypt(consulta.Table.Rows[0]["cidade_partida_viagem"].ToString());
+      ufViagemDestinoConsulta.Text = Crypto.Decrypt(consulta.Table.Rows[0]["uf_destino_viagem"].ToString());
+      ufViagemPartidaConsulta.Text = Crypto.Decrypt(consulta.Table.Rows[0]["uf_partida_viagem"].ToString());
+      obsViagemConsulta.Text = Crypto.Decrypt(consulta.Table.Rows[0]["obs_viagem"].ToString());
 
       //Motorista
       selectMotoristaConsulta.SelectedIndex = Convert.ToInt32(consulta.Table.Rows[0]["id_mot"]) - 1;
@@ -217,17 +218,17 @@ public partial class app_servico : System.Web.UI.Page
       selectFrotaConsulta.SelectedIndex = Convert.ToInt32(consulta.Table.Rows[0]["id_frota"]) - 1;
 
       //Sinistro
-      numeroSinistroConsulta.Text = consulta.Table.Rows[0]["sinistro"].ToString();
+      numeroSinistroConsulta.Text = Crypto.Decrypt(consulta.Table.Rows[0]["sinistro"].ToString());
 
       //Agendamento
       if(consulta.Table.Rows[0]["agendamento_os"].ToString() != String.Empty){
-        agendamentoOSConsulta.Text = Convert.ToDateTime(consulta.Table.Rows[0]["agendamento_os"]).ToString();
+        agendamentoOSConsulta.Text = Crypto.Decrypt(Convert.ToDateTime(consulta.Table.Rows[0]["agendamento_os"]).ToString());
       }else{
         agendamentoOSConsulta.Text = "Sem Agendamento";
       }
 
       //StatusOS
-      statusOsConsulta.Text = consulta.Table.Rows[0]["status_os"].ToString();
+      statusOsConsulta.Text = Crypto.Decrypt(consulta.Table.Rows[0]["status_os"].ToString());
 
     }
 
@@ -252,24 +253,24 @@ public partial class app_servico : System.Web.UI.Page
         //Preenchendo os campos
 
         //Condições de Abertura
-        string nomeFuncionario = consulta.Table.Rows[0]["nome_func"].ToString();
-        string sobrenomeFuncionario = consulta.Table.Rows[0]["sobrenome_func"].ToString();
+        string nomeFuncionario = Crypto.Decrypt(consulta.Table.Rows[0]["nome_func"].ToString());
+        string sobrenomeFuncionario = Crypto.Decrypt(consulta.Table.Rows[0]["sobrenome_func"].ToString());
         abertoPor.Text = (nomeFuncionario + " " + sobrenomeFuncionario);
 
-        dataAbertura.Text = Convert.ToDateTime(consulta.Table.Rows[0]["dtab_os"]).ToString();
+        dataAbertura.Text = Crypto.Decrypt(Convert.ToDateTime(consulta.Table.Rows[0]["dtab_os"]).ToString());
 
         //Cliente
-        nomeCliConsulta.Text = consulta.Table.Rows[0]["nome_cli"].ToString();
-        sobrenomeCliConsulta.Text = consulta.Table.Rows[0]["sobrenome_cli"].ToString();
-        cpfCliConsulta.Text = consulta.Table.Rows[0]["cpf_cli"].ToString();
-        telefoneCliConsulta.Text = consulta.Table.Rows[0]["telefone_cli"].ToString();
+        nomeCliConsulta.Text = Crypto.Decrypt(consulta.Table.Rows[0]["nome_cli"].ToString());
+        sobrenomeCliConsulta.Text = Crypto.Decrypt(consulta.Table.Rows[0]["sobrenome_cli"].ToString());
+        cpfCliConsulta.Text = Crypto.Decrypt(consulta.Table.Rows[0]["cpf_cli"].ToString());
+        telefoneCliConsulta.Text = Crypto.Decrypt(consulta.Table.Rows[0]["telefone_cli"].ToString());
 
         //Veículo
-        fabricanteVeiculoConsulta.Text = consulta.Table.Rows[0]["fabricante_veiculo"].ToString();
-        modeloVeiculoConsulta.Text = consulta.Table.Rows[0]["modelo_veiculo"].ToString();
-        anoVeiculoConsulta.Text = consulta.Table.Rows[0]["ano_veiculo"].ToString();
-        placaVeiculoConsulta.Text = (consulta.Table.Rows[0]["placa_veiculo"].ToString()).ToUpper();
-        corVeiculoConsulta.Text = consulta.Table.Rows[0]["cor_veiculo"].ToString();
+        fabricanteVeiculoConsulta.Text = Crypto.Decrypt(consulta.Table.Rows[0]["fabricante_veiculo"].ToString());
+        modeloVeiculoConsulta.Text = Crypto.Decrypt(consulta.Table.Rows[0]["modelo_veiculo"].ToString());
+        anoVeiculoConsulta.Text = Crypto.Decrypt(consulta.Table.Rows[0]["ano_veiculo"].ToString());
+        placaVeiculoConsulta.Text = (Crypto.Decrypt(consulta.Table.Rows[0]["placa_veiculo"].ToString())).ToUpper();
+        corVeiculoConsulta.Text = Crypto.Decrypt(consulta.Table.Rows[0]["cor_veiculo"].ToString());
 
         //Servico
         selectServicoConsulta.SelectedIndex = Convert.ToInt32(consulta.Table.Rows[0]["id_servico"]) - 1;
@@ -278,15 +279,15 @@ public partial class app_servico : System.Web.UI.Page
         selectSeguroConsulta.SelectedIndex = Convert.ToInt32(consulta.Table.Rows[0]["id_seguro"]) - 1;
 
         //Viagem
-        bairroViagemDestinoConsulta.Text = consulta.Table.Rows[0]["bairro_destino_viagem"].ToString();
-        bairroViagemPartidaConsulta.Text = consulta.Table.Rows[0]["bairro_partida_viagem"].ToString();
-        enderecoViagemDestinoConsulta.Text = consulta.Table.Rows[0]["endereco_destino_viagem"].ToString();
-        enderecoViagemPartidaConsulta.Text = consulta.Table.Rows[0]["endereco_partida_viagem"].ToString();
-        cidadeViagemDestinoConsulta.Text = consulta.Table.Rows[0]["cidade_destino_viagem"].ToString();
-        cidadeViagemPartidaConsulta.Text = consulta.Table.Rows[0]["cidade_partida_viagem"].ToString();
-        ufViagemDestinoConsulta.Text = consulta.Table.Rows[0]["uf_destino_viagem"].ToString();
-        ufViagemPartidaConsulta.Text = consulta.Table.Rows[0]["uf_partida_viagem"].ToString();
-        obsViagemConsulta.Text = consulta.Table.Rows[0]["obs_viagem"].ToString();
+        bairroViagemDestinoConsulta.Text = Crypto.Decrypt(consulta.Table.Rows[0]["bairro_destino_viagem"].ToString());
+        bairroViagemPartidaConsulta.Text = Crypto.Decrypt(consulta.Table.Rows[0]["bairro_partida_viagem"].ToString());
+        enderecoViagemDestinoConsulta.Text = Crypto.Decrypt(consulta.Table.Rows[0]["endereco_destino_viagem"].ToString());
+        enderecoViagemPartidaConsulta.Text = Crypto.Decrypt(consulta.Table.Rows[0]["endereco_partida_viagem"].ToString());
+        cidadeViagemDestinoConsulta.Text = Crypto.Decrypt(consulta.Table.Rows[0]["cidade_destino_viagem"].ToString());
+        cidadeViagemPartidaConsulta.Text = Crypto.Decrypt(consulta.Table.Rows[0]["cidade_partida_viagem"].ToString());
+        ufViagemDestinoConsulta.Text = Crypto.Decrypt(consulta.Table.Rows[0]["uf_destino_viagem"].ToString());
+        ufViagemPartidaConsulta.Text = Crypto.Decrypt(consulta.Table.Rows[0]["uf_partida_viagem"].ToString());
+        obsViagemConsulta.Text = Crypto.Decrypt(consulta.Table.Rows[0]["obs_viagem"].ToString());
 
         //Motorista
         selectMotoristaConsulta.SelectedIndex = Convert.ToInt32(consulta.Table.Rows[0]["id_mot"]) - 1;
@@ -295,17 +296,17 @@ public partial class app_servico : System.Web.UI.Page
         selectFrotaConsulta.SelectedIndex = Convert.ToInt32(consulta.Table.Rows[0]["id_frota"]) - 1;
 
         //Sinistro
-        numeroSinistroConsulta.Text = consulta.Table.Rows[0]["sinistro"].ToString();
+        numeroSinistroConsulta.Text = Crypto.Decrypt(consulta.Table.Rows[0]["sinistro"].ToString());
 
         //Agendamento
         if(consulta.Table.Rows[0]["agendamento_os"].ToString() != String.Empty){
-          agendamentoOSConsulta.Text = Convert.ToDateTime(consulta.Table.Rows[0]["agendamento_os"]).ToString();
+          agendamentoOSConsulta.Text = Crypto.Decrypt(Convert.ToDateTime(consulta.Table.Rows[0]["agendamento_os"]).ToString());
         }else{
           agendamentoOSConsulta.Text = "Sem Agendamento";
         }
 
         //StatusOS
-        statusOsConsulta.Text = consulta.Table.Rows[0]["status_os"].ToString();
+        statusOsConsulta.Text = Crypto.Decrypt(consulta.Table.Rows[0]["status_os"].ToString());
 
       }catch(Exception ex){
         Response.Write("<script>alert('Ocorreu um erro');</script>");

@@ -9,6 +9,7 @@ using System.Data;
 
 public partial class app_index : System.Web.UI.MasterPage
 {
+  CsharpCryptography Crypto = new CsharpCryptography("ETEP");
   public string getUserInfo(string info){
     //Creating a new DataView
     // Putting MySql's information inside our `Usuario` DataView
@@ -16,10 +17,10 @@ public partial class app_index : System.Web.UI.MasterPage
 
     // User data to be shown
    string userId = user.Table.Rows[0]["id_func"].ToString();
-   string userName = user.Table.Rows[0]["nome_func"].ToString();
-   string userLastName = user.Table.Rows[0]["sobrenome_func"].ToString();
+   string userName = Crypto.Decrypt(user.Table.Rows[0]["nome_func"].ToString());
+   string userLastName = Crypto.Decrypt(user.Table.Rows[0]["sobrenome_func"].ToString());
    string userFullName = userName + " " + userLastName;
-   string userMail = user.Table.Rows[0]["email_func"].ToString();
+   string userMail = Crypto.Decrypt(user.Table.Rows[0]["email_func"].ToString());
    string image = user.Table.Rows[0]["img_func"].ToString();
 
    switch (info){
