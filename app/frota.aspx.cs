@@ -79,6 +79,14 @@ public partial class app_frota : System.Web.UI.Page
       }
     }
     protected void cadastro(object sender, EventArgs e){
+      // Encrypting Data
+      frota.InsertParameters["nome"].DefaultValue = Crypto.Encrypt(nomeFrota.Text);
+      frota.InsertParameters["modelo"].DefaultValue = Crypto.Encrypt(modeloFrota.Text);
+      frota.InsertParameters["ano"].DefaultValue = Crypto.Encrypt(anoFrota.Text);
+      frota.InsertParameters["fabricante"].DefaultValue = Crypto.Encrypt(fabricanteFrota.Text);
+      frota.InsertParameters["tipo"].DefaultValue = Crypto.Encrypt(tipoFrota.SelectedValue);
+      frota.InsertParameters["placa"].DefaultValue = Crypto.Encrypt(placaFrota.Text);
+      frota.InsertParameters["cor"].DefaultValue = Crypto.Encrypt(corFrota.Text);
       frota.Insert();
       Response.Redirect("~/app/home.aspx");
     }
