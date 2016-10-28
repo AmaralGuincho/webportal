@@ -9,8 +9,9 @@ using System.Data;
 
 public partial class app_home : System.Web.UI.Page
 {
+    CsharpCryptography Crypto = new CsharpCryptography("ETEP");
 
-  private void loadRecentCliente(){
+    private void loadRecentCliente(){
     //Importing SqlDataSources to DataView
     DataView recentClientes;
     recentClientes = (DataView)lattestClientes.Select(DataSourceSelectArguments.Empty);
@@ -23,10 +24,10 @@ public partial class app_home : System.Web.UI.Page
       if(recentClientes.Table.Rows[0]["img_cli"].ToString() == String.Empty){
         imgCli1.Attributes["src"] = "../images/profiles/generic.png";
       }else{
-        imgCli1.Attributes["src"] = recentClientes.Table.Rows[0]["img_cli"].ToString();
+        imgCli1.Attributes["src"] = Crypto.Decrypt(recentClientes.Table.Rows[0]["img_cli"].ToString());
       }
-      nomeCli1.InnerHtml = recentClientes.Table.Rows[0]["nome_cli"].ToString() + " " +recentClientes.Table.Rows[0]["sobrenome_cli"].ToString();
-      telCli1.InnerHtml = recentClientes.Table.Rows[0]["telefone_cli"].ToString();
+      nomeCli1.InnerHtml = Crypto.Decrypt(recentClientes.Table.Rows[0]["nome_cli"].ToString()) + " " + Crypto.Decrypt(recentClientes.Table.Rows[0]["sobrenome_cli"].ToString());
+      telCli1.InnerHtml = Crypto.Decrypt(recentClientes.Table.Rows[0]["telefone_cli"].ToString());
 
       //Checking if 2nd Row is Empty
       if(recentClientes.Table.Rows.Count > 1){
@@ -35,10 +36,10 @@ public partial class app_home : System.Web.UI.Page
         if(recentClientes.Table.Rows[1]["img_cli"].ToString() == String.Empty){
           imgCli2.Attributes["src"] = "../images/profiles/generic.png";
         }else{
-          imgCli2.Attributes["src"] = recentClientes.Table.Rows[1]["img_cli"].ToString();
+          imgCli2.Attributes["src"] = Crypto.Decrypt(recentClientes.Table.Rows[1]["img_cli"].ToString());
         }
-        nomeCli2.InnerHtml = recentClientes.Table.Rows[1]["nome_cli"].ToString() + " " +recentClientes.Table.Rows[1]["sobrenome_cli"].ToString();
-        telCli2.InnerHtml = recentClientes.Table.Rows[1]["telefone_cli"].ToString();
+        nomeCli2.InnerHtml = Crypto.Decrypt(recentClientes.Table.Rows[1]["nome_cli"].ToString()) + " " + Crypto.Decrypt(recentClientes.Table.Rows[1]["sobrenome_cli"].ToString());
+        telCli2.InnerHtml = Crypto.Decrypt(recentClientes.Table.Rows[1]["telefone_cli"].ToString());
 
         //Checking if 3rd Row is Empty
         if(recentClientes.Table.Rows.Count > 2){
@@ -47,10 +48,10 @@ public partial class app_home : System.Web.UI.Page
           if(recentClientes.Table.Rows[2]["img_cli"].ToString() == String.Empty){
             imgCli3.Attributes["src"] = "../images/profiles/generic.png";
           }else{
-            imgCli3.Attributes["src"] = recentClientes.Table.Rows[2]["img_cli"].ToString();
+            imgCli3.Attributes["src"] = Crypto.Decrypt(recentClientes.Table.Rows[2]["img_cli"].ToString());
           }
-          nomeCli3.InnerHtml = recentClientes.Table.Rows[2]["nome_cli"].ToString() + " " +recentClientes.Table.Rows[2]["sobrenome_cli"].ToString();
-          telCli3.InnerHtml = recentClientes.Table.Rows[2]["telefone_cli"].ToString();
+          nomeCli3.InnerHtml = Crypto.Decrypt(recentClientes.Table.Rows[2]["nome_cli"].ToString()) + " " + Crypto.Decrypt(recentClientes.Table.Rows[2]["sobrenome_cli"].ToString());
+          telCli3.InnerHtml = Crypto.Decrypt(recentClientes.Table.Rows[2]["telefone_cli"].ToString());
         }
       }
     }
@@ -108,14 +109,14 @@ public partial class app_home : System.Web.UI.Page
       if(recentFrota.Table.Rows[0]["img_frota"].ToString() == String.Empty){
         imgFrota1.Attributes["src"] = "../images/profiles/generic.png";
       }else{
-        imgFrota1.Attributes["src"] = recentFrota.Table.Rows[0]["img_frota"].ToString();
+        imgFrota1.Attributes["src"] = Crypto.Decrypt(recentFrota.Table.Rows[0]["img_frota"].ToString());
       }
       //Checking if it got a nickname
       if(recentFrota.Table.Rows[0]["nome_frota"].ToString() == String.Empty){
-        nomeFrota1.InnerHtml = recentFrota.Table.Rows[0]["placa_frota"].ToString();
+        nomeFrota1.InnerHtml = Crypto.Decrypt(recentFrota.Table.Rows[0]["placa_frota"].ToString());
       }else{
         //if not, use `placa` instead
-        nomeFrota1.InnerHtml = recentFrota.Table.Rows[0]["nome_frota"].ToString();
+        nomeFrota1.InnerHtml = Crypto.Decrypt(recentFrota.Table.Rows[0]["nome_frota"].ToString());
       }
       //Checking if Row 2 Does Exists
       if(recentFrota.Table.Rows.Count > 1){
@@ -123,28 +124,28 @@ public partial class app_home : System.Web.UI.Page
         if(recentFrota.Table.Rows[1]["img_frota"].ToString() == String.Empty){
           imgFrota2.Attributes["src"] = "../images/profiles/generic.png";
         }else{
-          imgFrota2.Attributes["src"] = recentFrota.Table.Rows[1]["img_frota"].ToString();
+          imgFrota2.Attributes["src"] = Crypto.Decrypt(recentFrota.Table.Rows[1]["img_frota"].ToString());
         }
         //Checking if it got a nickname
         if(recentFrota.Table.Rows[1]["nome_frota"].ToString() == String.Empty){
-          nomeFrota2.InnerHtml = recentFrota.Table.Rows[1]["placa_frota"].ToString();
+          nomeFrota2.InnerHtml = Crypto.Decrypt(recentFrota.Table.Rows[1]["placa_frota"].ToString());
         }else{
           //if not, use `placa` instead
-          nomeFrota2.InnerHtml = recentFrota.Table.Rows[1]["nome_frota"].ToString();
+          nomeFrota2.InnerHtml = Crypto.Decrypt(recentFrota.Table.Rows[1]["nome_frota"].ToString());
         }
         if(recentFrota.Table.Rows.Count > 2){
           //Checking weather it have got a picture or not
           if(recentFrota.Table.Rows[2]["img_frota"].ToString() == String.Empty){
             imgFrota3.Attributes["src"] = "../images/profiles/generic.png";
           }else{
-            imgFrota3.Attributes["src"] = recentFrota.Table.Rows[2]["img_frota"].ToString();
+            imgFrota3.Attributes["src"] = Crypto.Decrypt(recentFrota.Table.Rows[2]["img_frota"].ToString());
           }
           //Checking if it got a nickname
           if(recentFrota.Table.Rows[2]["nome_frota"].ToString() == String.Empty){
-            nomeFrota3.InnerHtml = recentFrota.Table.Rows[2]["placa_frota"].ToString();
+            nomeFrota3.InnerHtml = Crypto.Decrypt(recentFrota.Table.Rows[2]["placa_frota"].ToString());
           }else{
             //if not, use `placa` instead
-            nomeFrota3.InnerHtml = recentFrota.Table.Rows[2]["nome_frota"].ToString();
+            nomeFrota3.InnerHtml = Crypto.Decrypt(recentFrota.Table.Rows[2]["nome_frota"].ToString());
           }
         }else{
           nomeFrota3.InnerHtml = "--";
@@ -174,25 +175,25 @@ public partial class app_home : System.Web.UI.Page
       if (recentFuncionarios.Table.Rows[0]["img_func"].ToString() == String.Empty) {
         imgFunc1.Attributes["src"] = "../images/profiles/generic.png";
       }else{
-        imgFunc1.Attributes["src"] = recentFuncionarios.Table.Rows[0]["img_func"].ToString();
+        imgFunc1.Attributes["src"] = Crypto.Decrypt(recentFuncionarios.Table.Rows[0]["img_func"].ToString());
       }
-      nomeFunc1.InnerHtml = recentFuncionarios.Table.Rows[0]["nome_func"].ToString() + " " + recentFuncionarios.Table.Rows[0]["sobrenome_func"].ToString();
+      nomeFunc1.InnerHtml = Crypto.Decrypt(recentFuncionarios.Table.Rows[0]["nome_func"].ToString()) + " " + Crypto.Decrypt(recentFuncionarios.Table.Rows[0]["sobrenome_func"].ToString());
       //Checking 2nd Row
       if(recentFuncionarios.Table.Rows.Count > 1){
         if (recentFuncionarios.Table.Rows[1]["img_func"].ToString() == String.Empty) {
           imgFunc2.Attributes["src"] = "../images/profiles/generic.png";
         }else{
-          imgFunc2.Attributes["src"] = recentFuncionarios.Table.Rows[1]["img_func"].ToString();
+          imgFunc2.Attributes["src"] = Crypto.Decrypt(recentFuncionarios.Table.Rows[1]["img_func"].ToString());
         }
-        nomeFunc2.InnerHtml = recentFuncionarios.Table.Rows[1]["nome_func"].ToString() + " " + recentFuncionarios.Table.Rows[1]["sobrenome_func"].ToString();
+        nomeFunc2.InnerHtml = Crypto.Decrypt(recentFuncionarios.Table.Rows[1]["nome_func"].ToString()) + " " + Crypto.Decrypt(recentFuncionarios.Table.Rows[1]["sobrenome_func"].ToString());
         //Checking 3rd Row
         if(recentFuncionarios.Table.Rows.Count > 2){
           if (recentFuncionarios.Table.Rows[2]["img_func"].ToString() == String.Empty) {
             imgFunc3.Attributes["src"] = "../images/profiles/generic.png";
           }else{
-            imgFunc3.Attributes["src"] = recentFuncionarios.Table.Rows[2]["img_func"].ToString();
+            imgFunc3.Attributes["src"] = Crypto.Decrypt(recentFuncionarios.Table.Rows[2]["img_func"].ToString());
           }
-          nomeFunc3.InnerHtml = recentFuncionarios.Table.Rows[2]["nome_func"].ToString() + " " + recentFuncionarios.Table.Rows[2]["sobrenome_func"].ToString();
+          nomeFunc3.InnerHtml = Crypto.Decrypt(recentFuncionarios.Table.Rows[2]["nome_func"].ToString()) + " " + Crypto.Decrypt(recentFuncionarios.Table.Rows[2]["sobrenome_func"].ToString());
         }else{
           nomeFunc3.InnerHtml = "--";
         }
@@ -216,25 +217,25 @@ public partial class app_home : System.Web.UI.Page
       if (recentMotoristas.Table.Rows[0]["img_func"].ToString() == String.Empty) {
         imgMot1.Attributes["src"] = "../images/profiles/generic.png";
       }else{
-        imgMot1.Attributes["src"] = recentMotoristas.Table.Rows[0]["img_func"].ToString();
+        imgMot1.Attributes["src"] = Crypto.Decrypt(recentMotoristas.Table.Rows[0]["img_func"].ToString());
       }
-      nomeMot1.InnerHtml = recentMotoristas.Table.Rows[0]["nome_func"].ToString() + " " + recentMotoristas.Table.Rows[0]["sobrenome_func"].ToString();
+      nomeMot1.InnerHtml = Crypto.Decrypt(recentMotoristas.Table.Rows[0]["nome_func"].ToString()) + " " + Crypto.Decrypt(recentMotoristas.Table.Rows[0]["sobrenome_func"].ToString());
       //Checking 2nd Row
       if(recentMotoristas.Table.Rows.Count > 1){
         if (recentMotoristas.Table.Rows[1]["img_func"].ToString() == String.Empty) {
           imgMot2.Attributes["src"] = "../images/profiles/generic.png";
         }else{
-          imgMot2.Attributes["src"] = recentMotoristas.Table.Rows[1]["img_func"].ToString();
+          imgMot2.Attributes["src"] = Crypto.Decrypt(recentMotoristas.Table.Rows[1]["img_func"].ToString());
         }
-        nomeMot2.InnerHtml = recentMotoristas.Table.Rows[1]["nome_func"].ToString() + " " + recentMotoristas.Table.Rows[1]["sobrenome_func"].ToString();
+        nomeMot2.InnerHtml = Crypto.Decrypt(recentMotoristas.Table.Rows[1]["nome_func"].ToString()) + " " + Crypto.Decrypt(recentMotoristas.Table.Rows[1]["sobrenome_func"].ToString());
         //Checking 3rd Row
         if(recentMotoristas.Table.Rows.Count > 2){
           if (recentMotoristas.Table.Rows[2]["img_func"].ToString() == String.Empty) {
             imgMot3.Attributes["src"] = "../images/profiles/generic.png";
           }else{
-            imgMot3.Attributes["src"] = recentMotoristas.Table.Rows[2]["img_func"].ToString();
+            imgMot3.Attributes["src"] = Crypto.Decrypt(recentMotoristas.Table.Rows[2]["img_func"].ToString());
           }
-          nomeMot3.InnerHtml = recentMotoristas.Table.Rows[2]["nome_func"].ToString() + " " + recentMotoristas.Table.Rows[2]["sobrenome_func"].ToString();
+          nomeMot3.InnerHtml = Crypto.Decrypt(recentMotoristas.Table.Rows[2]["nome_func"].ToString()) + " " + Crypto.Decrypt(recentMotoristas.Table.Rows[2]["sobrenome_func"].ToString());
         }else{
           nomeMot3.InnerHtml = "--";
         }
@@ -253,35 +254,37 @@ public partial class app_home : System.Web.UI.Page
     //Importing now going trips from DB
     DataView recentViagemProgresso = (DataView)lattestOnGoingTrip.Select(DataSourceSelectArguments.Empty);
     if (recentViagemProgresso.Table.Rows.Count > 0) {
-      codigoServicoProgresso1.InnerHtml = recentViagemProgresso.Table.Rows[0]["tipo_servico"].ToString();
-      cidadeServicoProgresso1.InnerHtml = recentViagemProgresso.Table.Rows[0]["cidade_destino_viagem"].ToString();
-      nomeMotoristaServicoProgresso1.InnerHtml = recentViagemProgresso.Table.Rows[0]["nome_func"].ToString();
+      codigoServicoProgresso1.InnerHtml = Crypto.Decrypt(recentViagemProgresso.Table.Rows[0]["tipo_servico"].ToString());
+      cidadeServicoProgresso1.InnerHtml = Crypto.Decrypt(recentViagemProgresso.Table.Rows[0]["cidade_destino_viagem"].ToString());
+      nomeMotoristaServicoProgresso1.InnerHtml = Crypto.Decrypt(recentViagemProgresso.Table.Rows[0]["nome_func"].ToString());
+
       if(recentViagemProgresso.Table.Rows[0]["nome_frota"].ToString() == String.Empty){
-        nomeFrotaServicoProgresso1.InnerHtml = recentViagemProgresso.Table.Rows[0]["placa_frota"].ToString();
+        nomeFrotaServicoProgresso1.InnerHtml = Crypto.Decrypt(recentViagemProgresso.Table.Rows[0]["placa_frota"].ToString());
+
       }else{
-        nomeFrotaServicoProgresso1.InnerHtml = recentViagemProgresso.Table.Rows[0]["nome_frota"].ToString();
+        nomeFrotaServicoProgresso1.InnerHtml = Crypto.Decrypt(recentViagemProgresso.Table.Rows[0]["nome_frota"].ToString());
       }
     }
 
     if (recentViagemProgresso.Table.Rows.Count > 1) {
-      codigoServicoProgresso2.InnerHtml = recentViagemProgresso.Table.Rows[1]["tipo_servico"].ToString();
-      cidadeServicoProgresso2.InnerHtml = recentViagemProgresso.Table.Rows[1]["cidade_destino_viagem"].ToString();
-      nomeMotoristaServicoProgresso2.InnerHtml = recentViagemProgresso.Table.Rows[1]["nome_func"].ToString();
+      codigoServicoProgresso2.InnerHtml = Crypto.Decrypt(recentViagemProgresso.Table.Rows[1]["tipo_servico"].ToString());
+      cidadeServicoProgresso2.InnerHtml = Crypto.Decrypt(recentViagemProgresso.Table.Rows[1]["cidade_destino_viagem"].ToString());
+      nomeMotoristaServicoProgresso2.InnerHtml = Crypto.Decrypt(recentViagemProgresso.Table.Rows[1]["nome_func"].ToString());
       if(recentViagemProgresso.Table.Rows[1]["nome_frota"].ToString() == String.Empty){
-        nomeFrotaServicoProgresso2.InnerHtml = recentViagemProgresso.Table.Rows[1]["placa_frota"].ToString();
+        nomeFrotaServicoProgresso2.InnerHtml = Crypto.Decrypt(recentViagemProgresso.Table.Rows[1]["placa_frota"].ToString());
       }else{
-        nomeFrotaServicoProgresso2.InnerHtml = recentViagemProgresso.Table.Rows[1]["nome_frota"].ToString();
+        nomeFrotaServicoProgresso2.InnerHtml = Crypto.Decrypt(recentViagemProgresso.Table.Rows[1]["nome_frota"].ToString());
       }
     }
 
     if (recentViagemProgresso.Table.Rows.Count > 2) {
-      codigoServicoProgresso3.InnerHtml = recentViagemProgresso.Table.Rows[2]["tipo_servico"].ToString();
-      cidadeServicoProgresso3.InnerHtml = recentViagemProgresso.Table.Rows[2]["cidade_destino_viagem"].ToString();
-      nomeMotoristaServicoProgresso3.InnerHtml = recentViagemProgresso.Table.Rows[2]["nome_func"].ToString();
+      codigoServicoProgresso3.InnerHtml = Crypto.Decrypt(recentViagemProgresso.Table.Rows[2]["tipo_servico"].ToString());
+      cidadeServicoProgresso3.InnerHtml = Crypto.Decrypt(recentViagemProgresso.Table.Rows[2]["cidade_destino_viagem"].ToString());
+      nomeMotoristaServicoProgresso3.InnerHtml = Crypto.Decrypt(recentViagemProgresso.Table.Rows[2]["nome_func"].ToString());
       if(recentViagemProgresso.Table.Rows[2]["nome_frota"].ToString() == String.Empty){
-        nomeFrotaServicoProgresso3.InnerHtml = recentViagemProgresso.Table.Rows[2]["placa_frota"].ToString();
+        nomeFrotaServicoProgresso3.InnerHtml = Crypto.Decrypt(recentViagemProgresso.Table.Rows[2]["placa_frota"].ToString());
       }else{
-        nomeFrotaServicoProgresso3.InnerHtml = recentViagemProgresso.Table.Rows[2]["nome_frota"].ToString();
+        nomeFrotaServicoProgresso3.InnerHtml = Crypto.Decrypt(recentViagemProgresso.Table.Rows[2]["nome_frota"].ToString());
       }
     }
   }
@@ -290,18 +293,18 @@ public partial class app_home : System.Web.UI.Page
     //IMPORTING lattestSinistro
     DataView recentSinistro = (DataView)lattestSinistro.Select(DataSourceSelectArguments.Empty);
     if (recentSinistro.Table.Rows.Count > 0) {
-      nomeCliSinistro1.InnerHtml = recentSinistro.Table.Rows[0]["nome_cli"].ToString();
-      codigoSinistro1.InnerHtml = recentSinistro.Table.Rows[0]["sinistro"].ToString();
+      nomeCliSinistro1.InnerHtml = Crypto.Decrypt(recentSinistro.Table.Rows[0]["nome_cli"].ToString());
+      codigoSinistro1.InnerHtml = Crypto.Decrypt(recentSinistro.Table.Rows[0]["sinistro"].ToString());
     }
 
     if (recentSinistro.Table.Rows.Count > 1) {
-      nomeCliSinistro2.InnerHtml = recentSinistro.Table.Rows[1]["nome_cli"].ToString();
-      codigoSinistro2.InnerHtml = recentSinistro.Table.Rows[1]["sinistro"].ToString();
+      nomeCliSinistro2.InnerHtml = Crypto.Decrypt(recentSinistro.Table.Rows[1]["nome_cli"].ToString());
+      codigoSinistro2.InnerHtml = Crypto.Decrypt(recentSinistro.Table.Rows[1]["sinistro"].ToString());
     }
 
     if (recentSinistro.Table.Rows.Count > 2) {
-      nomeCliSinistro3.InnerHtml = recentSinistro.Table.Rows[2]["nome_cli"].ToString();
-      codigoSinistro3.InnerHtml = recentSinistro.Table.Rows[2]["sinistro"].ToString();
+      nomeCliSinistro3.InnerHtml = Crypto.Decrypt(recentSinistro.Table.Rows[2]["nome_cli"].ToString());
+      codigoSinistro3.InnerHtml = Crypto.Decrypt(recentSinistro.Table.Rows[2]["sinistro"].ToString());
     }
   }
 
@@ -326,19 +329,19 @@ public partial class app_home : System.Web.UI.Page
     //IMPORTING lattestVeiculo
     DataView recentVeiculo = (DataView)lattestVeiculo.Select(DataSourceSelectArguments.Empty);
     if(recentVeiculo.Table.Rows.Count > 0){
-      nomeCliVeiculo1.InnerHtml = recentVeiculo.Table.Rows[0]["nome_cli"].ToString();
-      modeloVeiculo1.InnerHtml = recentVeiculo.Table.Rows[0]["modelo_veiculo"].ToString() + " " + recentVeiculo.Table.Rows[0]["cor_veiculo"].ToString();
-      placaVeiculo1.InnerHtml = recentVeiculo.Table.Rows[0]["placa_Veiculo"].ToString();
+      nomeCliVeiculo1.InnerHtml = Crypto.Decrypt(recentVeiculo.Table.Rows[0]["nome_cli"].ToString());
+      modeloVeiculo1.InnerHtml = Crypto.Decrypt(recentVeiculo.Table.Rows[0]["modelo_veiculo"].ToString()) + " " + Crypto.Decrypt(recentVeiculo.Table.Rows[0]["cor_veiculo"].ToString());
+      placaVeiculo1.InnerHtml = Crypto.Decrypt(recentVeiculo.Table.Rows[0]["placa_Veiculo"].ToString());
     }
     if(recentVeiculo.Table.Rows.Count > 1){
-      nomeCliVeiculo2.InnerHtml = recentVeiculo.Table.Rows[1]["nome_cli"].ToString();
-      modeloVeiculo2.InnerHtml = recentVeiculo.Table.Rows[1]["modelo_veiculo"].ToString() + " " + recentVeiculo.Table.Rows[1]["cor_veiculo"].ToString();
-      placaVeiculo2.InnerHtml = recentVeiculo.Table.Rows[1]["placa_Veiculo"].ToString();
+      nomeCliVeiculo2.InnerHtml = Crypto.Decrypt(recentVeiculo.Table.Rows[1]["nome_cli"].ToString());
+      modeloVeiculo2.InnerHtml = Crypto.Decrypt(recentVeiculo.Table.Rows[1]["modelo_veiculo"].ToString()) + " " + Crypto.Decrypt(recentVeiculo.Table.Rows[1]["cor_veiculo"].ToString());
+      placaVeiculo2.InnerHtml = Crypto.Decrypt(recentVeiculo.Table.Rows[1]["placa_Veiculo"].ToString());
     }
     if(recentVeiculo.Table.Rows.Count > 2){
-      nomeCliVeiculo3.InnerHtml = recentVeiculo.Table.Rows[2]["nome_cli"].ToString();
-      modeloVeiculo3.InnerHtml = recentVeiculo.Table.Rows[2]["modelo_veiculo"].ToString() + " " + recentVeiculo.Table.Rows[2]["cor_veiculo"].ToString();
-      placaVeiculo3.InnerHtml = recentVeiculo.Table.Rows[2]["placa_Veiculo"].ToString();
+      nomeCliVeiculo3.InnerHtml = Crypto.Decrypt(recentVeiculo.Table.Rows[2]["nome_cli"].ToString());
+      modeloVeiculo3.InnerHtml = Crypto.Decrypt(recentVeiculo.Table.Rows[2]["modelo_veiculo"].ToString()) + " " + Crypto.Decrypt(recentVeiculo.Table.Rows[2]["cor_veiculo"].ToString());
+      placaVeiculo3.InnerHtml = Crypto.Decrypt(recentVeiculo.Table.Rows[2]["placa_Veiculo"].ToString());
     }
 
   }
