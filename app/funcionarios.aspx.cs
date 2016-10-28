@@ -10,6 +10,7 @@ using System.IO;
 
 public partial class app_funcionarios : System.Web.UI.Page
 {
+    CsharpCryptography Crypto = new CsharpCryptography("ETEP");
     protected void Page_Load(object sender, EventArgs e)
     {
       //Importing Enployes from sql statement
@@ -19,25 +20,25 @@ public partial class app_funcionarios : System.Web.UI.Page
           if (recentFuncionarios.Table.Rows[0]["img_func"].ToString() == String.Empty) {
             imgFunc1.Attributes["src"] = "../images/profiles/generic.png";
           }else{
-            imgFunc1.Attributes["src"] = recentFuncionarios.Table.Rows[0]["img_func"].ToString();
+            imgFunc1.Attributes["src"] = Crypto.Decrypt(recentFuncionarios.Table.Rows[0]["img_func"].ToString());
           }
-          nomeFunc1.InnerHtml = recentFuncionarios.Table.Rows[0]["nome_func"].ToString() + " " + recentFuncionarios.Table.Rows[0]["sobrenome_func"].ToString();
+          nomeFunc1.InnerHtml = Crypto.Decrypt(recentFuncionarios.Table.Rows[0]["nome_func"].ToString()) + " " + Crypto.Decrypt(recentFuncionarios.Table.Rows[0]["sobrenome_func"].ToString());
           //Checking 2nd Row
           if(recentFuncionarios.Table.Rows.Count > 1){
             if (recentFuncionarios.Table.Rows[1]["img_func"].ToString() == String.Empty) {
               imgFunc2.Attributes["src"] = "../images/profiles/generic.png";
             }else{
-              imgFunc2.Attributes["src"] = recentFuncionarios.Table.Rows[1]["img_func"].ToString();
+              imgFunc2.Attributes["src"] = Crypto.Decrypt(recentFuncionarios.Table.Rows[1]["img_func"].ToString());
             }
-            nomeFunc2.InnerHtml = recentFuncionarios.Table.Rows[1]["nome_func"].ToString() + " " + recentFuncionarios.Table.Rows[1]["sobrenome_func"].ToString();
+            nomeFunc2.InnerHtml = Crypto.Decrypt(recentFuncionarios.Table.Rows[1]["nome_func"].ToString()) + " " + Crypto.Decrypt(recentFuncionarios.Table.Rows[1]["sobrenome_func"].ToString());
             //Checking 3rd Row
             if(recentFuncionarios.Table.Rows.Count > 2){
               if (recentFuncionarios.Table.Rows[2]["img_func"].ToString() == String.Empty) {
                 imgFunc3.Attributes["src"] = "../images/profiles/generic.png";
               }else{
-                imgFunc3.Attributes["src"] = recentFuncionarios.Table.Rows[2]["img_func"].ToString();
+                imgFunc3.Attributes["src"] = Crypto.Decrypt(recentFuncionarios.Table.Rows[2]["img_func"].ToString());
               }
-              nomeFunc3.InnerHtml = recentFuncionarios.Table.Rows[2]["nome_func"].ToString() + " " + recentFuncionarios.Table.Rows[2]["sobrenome_func"].ToString();
+              nomeFunc3.InnerHtml = Crypto.Decrypt(recentFuncionarios.Table.Rows[2]["nome_func"].ToString()) + " " + Crypto.Decrypt(recentFuncionarios.Table.Rows[2]["sobrenome_func"].ToString());
             }else{
               nomeFunc3.InnerHtml = "--";
             }
