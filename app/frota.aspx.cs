@@ -9,6 +9,8 @@ using System.IO;
 
 public partial class app_frota : System.Web.UI.Page
 {
+    CsharpCryptography Crypto = new CsharpCryptography("ETEP");
+
     protected void Page_Load(object sender, EventArgs e)
     {
       // Putting Sql data into a DataView
@@ -19,14 +21,14 @@ public partial class app_frota : System.Web.UI.Page
         if(recentFrota.Table.Rows[0]["img_frota"].ToString() == String.Empty){
           imgFrota1.Attributes["src"] = "../images/profiles/generic.png";
         }else{
-          imgFrota1.Attributes["src"] = recentFrota.Table.Rows[0]["img_frota"].ToString();
+          imgFrota1.Attributes["src"] = Crypto.Decrypt(recentFrota.Table.Rows[0]["img_frota"].ToString());
         }
         //Checking if it got a nickname
         if(recentFrota.Table.Rows[0]["nome_frota"].ToString() == String.Empty){
-          nomeFrota1.InnerHtml = recentFrota.Table.Rows[0]["placa_frota"].ToString();
+          nomeFrota1.InnerHtml = Crypto.Decrypt(recentFrota.Table.Rows[0]["placa_frota"].ToString());
         }else{
           //if not, use `placa` instead
-          nomeFrota1.InnerHtml = recentFrota.Table.Rows[0]["nome_frota"].ToString();
+          nomeFrota1.InnerHtml = Crypto.Decrypt(recentFrota.Table.Rows[0]["nome_frota"].ToString());
         }
           //Checking if Row 2 Does Exists
           if(recentFrota.Table.Rows.Count > 1){
@@ -34,28 +36,28 @@ public partial class app_frota : System.Web.UI.Page
             if(recentFrota.Table.Rows[1]["img_frota"].ToString() == String.Empty){
               imgFrota2.Attributes["src"] = "../images/profiles/generic.png";
             }else{
-              imgFrota2.Attributes["src"] = recentFrota.Table.Rows[1]["img_frota"].ToString();
+              imgFrota2.Attributes["src"] = Crypto.Decrypt(recentFrota.Table.Rows[1]["img_frota"].ToString());
             }
             //Checking if it got a nickname
             if(recentFrota.Table.Rows[1]["nome_frota"].ToString() == String.Empty){
-              nomeFrota2.InnerHtml = recentFrota.Table.Rows[1]["placa_frota"].ToString();
+              nomeFrota2.InnerHtml = Crypto.Decrypt(recentFrota.Table.Rows[1]["placa_frota"].ToString());
             }else{
               //if not, use `placa` instead
-              nomeFrota2.InnerHtml = recentFrota.Table.Rows[1]["nome_frota"].ToString();
+              nomeFrota2.InnerHtml = Crypto.Decrypt(recentFrota.Table.Rows[1]["nome_frota"].ToString());
             }
             if(recentFrota.Table.Rows.Count > 2){
               //Checking weather it have got a picture or not
               if(recentFrota.Table.Rows[2]["img_frota"].ToString() == String.Empty){
                 imgFrota3.Attributes["src"] = "../images/profiles/generic.png";
               }else{
-                imgFrota3.Attributes["src"] = recentFrota.Table.Rows[2]["img_frota"].ToString();
+                imgFrota3.Attributes["src"] = Crypto.Decrypt(recentFrota.Table.Rows[2]["img_frota"].ToString());
               }
               //Checking if it got a nickname
               if(recentFrota.Table.Rows[2]["nome_frota"].ToString() == String.Empty){
-                nomeFrota3.InnerHtml = recentFrota.Table.Rows[2]["placa_frota"].ToString();
+                nomeFrota3.InnerHtml = Crypto.Decrypt(recentFrota.Table.Rows[2]["placa_frota"].ToString());
               }else{
                 //if not, use `placa` instead
-                nomeFrota3.InnerHtml = recentFrota.Table.Rows[2]["nome_frota"].ToString();
+                nomeFrota3.InnerHtml = Crypto.Decrypt(recentFrota.Table.Rows[2]["nome_frota"].ToString());
               }
             }else{
               nomeFrota3.InnerHtml = "--";
