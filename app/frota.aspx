@@ -213,13 +213,13 @@
   VALUES
   (@nome, @modelo, @ano, @fabricante, @tipo, @placa, @cor)">
     <InsertParameters>
-      <asp:ControlParameter Name="nome" ControlID="nomeFrota" PropertyName="Text"/>
-      <asp:ControlParameter Name="modelo" ControlID="modeloFrota" PropertyName="Text"/>
-      <asp:ControlParameter Name="ano" ControlID="anoFrota" PropertyName="Text"/>
-      <asp:ControlParameter Name="fabricante" ControlID="fabricanteFrota" PropertyName="Text"/>
-      <asp:ControlParameter Name="tipo" ControlID="tipoFrota" PropertyName="SelectedValue"/>
-      <asp:ControlParameter Name="placa" ControlID="placaFrota" PropertyName="Text"/>
-      <asp:ControlParameter Name="cor" ControlID="corFrota" PropertyName="Text"/>
+      <asp:Parameter Name="nome"/>
+      <asp:Parameter Name="modelo"/>
+      <asp:Parameter Name="ano"/>
+      <asp:Parameter Name="fabricante"/>
+      <asp:Parameter Name="tipo"/>
+      <asp:Parameter Name="placa"/>
+      <asp:Parameter Name="cor"/>
     </InsertParameters>
   </asp:SqlDataSource>
 
