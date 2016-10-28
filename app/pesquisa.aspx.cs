@@ -8,7 +8,7 @@ using System.Data;
 
 public partial class app_pesquisa : System.Web.UI.Page
 {
-    Criptografia cripto = new Criptografia("ETEP");
+    CsharpCryptography Crypto = new CsharpCryptography("ETEP");
 
     protected void Page_Load(object sender, EventArgs e)
     {
@@ -38,11 +38,11 @@ public partial class app_pesquisa : System.Web.UI.Page
 
             linha["id_veiculo"] = listaPlaca.Table.Rows[i]["id_veiculo"].ToString();
             linha["id_cli"] = listaPlaca.Table.Rows[i]["id_cli"].ToString();
-            linha["fabricante_veiculo"] = cripto.Decrypt(listaPlaca.Table.Rows[i]["fabricante_veiculo"].ToString());
-            linha["modelo_veiculo"] = cripto.Decrypt(listaPlaca.Table.Rows[i]["modelo_veiculo"].ToString());
-            linha["ano_veiculo"] = cripto.Decrypt(listaPlaca.Table.Rows[i]["ano_veiculo"].ToString());
-            linha["placa_veiculo"] = cripto.Decrypt(listaPlaca.Table.Rows[i]["placa_veiculo"].ToString());
-            linha["cor_veiculo"] = cripto.Decrypt(listaPlaca.Table.Rows[i]["cor_veiculo"].ToString());
+            linha["fabricante_veiculo"] = Crypto.Decrypt(listaPlaca.Table.Rows[i]["fabricante_veiculo"].ToString());
+            linha["modelo_veiculo"] = Crypto.Decrypt(listaPlaca.Table.Rows[i]["modelo_veiculo"].ToString());
+            linha["ano_veiculo"] = Crypto.Decrypt(listaPlaca.Table.Rows[i]["ano_veiculo"].ToString());
+            linha["placa_veiculo"] = Crypto.Decrypt(listaPlaca.Table.Rows[i]["placa_veiculo"].ToString());
+            linha["cor_veiculo"] = Crypto.Decrypt(listaPlaca.Table.Rows[i]["cor_veiculo"].ToString());
 
             novaTabela.Rows.Add(linha);
         }
