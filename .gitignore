@@ -1,3 +1,4 @@
 # Dont commit those files
 *.DS_Store
 *.smbdelete*
+Web.config
