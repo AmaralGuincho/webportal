@@ -268,18 +268,18 @@
      (@cargo, @nome, @sobrenome, @cpf, @email, @sexo, @telefone, @dataNasc, @cep, @bairro, @residencia, @uf, @cidade, @dataContratacao)"
      SelectCommand="SELECT MAX(id_func) FROM funcionario">
     <InsertParameters>
-      <asp:ControlParameter Name="nome" ControlID="nomeFunc" PropertyName="Text"/>
-      <asp:ControlParameter Name="sobrenome" ControlID="SobrenomeFunc" PropertyName="Text"/>
-      <asp:ControlParameter Name="sexo" ControlID="sexoFunc" PropertyName="SelectedValue"/>
-      <asp:ControlParameter Name="email" ControlID="emailFunc" PropertyName="Text"/>
-      <asp:ControlParameter Name="cpf" ControlID="cpfFunc" PropertyName="Text"/>
-      <asp:ControlParameter Name="telefone" ControlID="telFunc" PropertyName="Text"/>
-      <asp:ControlParameter Name="cep" ControlID="cepFunc" PropertyName="Text"/>
-      <asp:ControlParameter Name="residencia" ControlID="residenciaFunc" PropertyName="Text"/>
-      <asp:ControlParameter Name="bairro" ControlID="bairroFunc" PropertyName="Text"/>
-      <asp:ControlParameter Name="cidade" ControlID="cidadeFunc" PropertyName="Text"/>
-      <asp:ControlParameter Name="uf" ControlID="ufFunc" PropertyName="Text"/>
-      <asp:ControlParameter Name="cargo" ControlID="cargoFunc" PropertyName="SelectedValue" Type="Int16"/>
+      <asp:Parameter Name="nome"/>
+      <asp:Parameter Name="sobrenome"/>
+      <asp:Parameter Name="sexo"/>
+      <asp:Parameter Name="email"/>
+      <asp:Parameter Name="cpf"/>
+      <asp:Parameter Name="telefone"/>
+      <asp:Parameter Name="cep"/>
+      <asp:Parameter Name="residencia"/>
+      <asp:Parameter Name="bairro"/>
+      <asp:Parameter Name="cidade"/>
+      <asp:Parameter Name="uf"/>
+      <asp:Parameter Name="cargo"/>
       <asp:Parameter Name="dataNasc"/>
       <asp:Parameter Name="dataContratacao"/>
     </InsertParameters>

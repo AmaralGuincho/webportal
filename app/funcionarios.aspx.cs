@@ -55,19 +55,30 @@ public partial class app_funcionarios : System.Web.UI.Page
     }
 
     protected void cadastrar(object sender, EventArgs e){
-      //Checking if Habilitacão is required
-
+      // Getting data from ui
+      novoFuncionario.InsertParameters["nome"].DefaultValue = Crypto.Encrypt(nomeFunc.Text);
+      novoFuncionario.InsertParameters["sobrenome"].DefaultValue = Crypto.Encrypt(sobrenomeFunc.Text);
+      novoFuncionario.InsertParameters["sexo"].DefaultValue = Crypto.Encrypt(sexoFunc.Text);
+      novoFuncionario.InsertParameters["email"].DefaultValue = Crypto.Encrypt(emailFunc.Text);
+      novoFuncionario.InsertParameters["cpf"].DefaultValue = Crypto.Encrypt(cpfFunc.Text);
+      novoFuncionario.InsertParameters["telefone"].DefaultValue = Crypto.Encrypt(telFunc.Text);
+      novoFuncionario.InsertParameters["cep"].DefaultValue = Crypto.Encrypt(cepFunc.Text);
+      novoFuncionario.InsertParameters["residencia"].DefaultValue = Crypto.Encrypt(residenciaFunc.Text);
+      novoFuncionario.InsertParameters["bairro"].DefaultValue = Crypto.Encrypt(bairroFunc.Text);
+      novoFuncionario.InsertParameters["cidade"].DefaultValue = Crypto.Encrypt(cidadeFunc.Text);
+      novoFuncionario.InsertParameters["uf"].DefaultValue = Crypto.Encrypt(ufFunc.Text);
+      novoFuncionario.InsertParameters["cargo"].DefaultValue = cargoFunc.SelectedValue;
       //Converting Date
       if(dtNascFunc.Text != String.Empty){
         novoFuncionario.InsertParameters["dataNasc"].DefaultValue =
-          Convert.ToDateTime(dtNascFunc.Text).ToString("yyyy/MM/dd");
+          Crypto.Encrypt(Convert.ToDateTime(dtNascFunc.Text).ToString("yyyy/MM/dd"));
       } else{
         novoFuncionario.InsertParameters["dataNasc"].DefaultValue = null;
       }
 
       if(contratacaoFunc.Text != String.Empty){
         novoFuncionario.InsertParameters["dataContratacao"].DefaultValue =
-          Convert.ToDateTime(contratacaoFunc.Text).ToString("yyyy/MM/dd");
+          Crypto.Encrypt(Convert.ToDateTime(contratacaoFunc.Text).ToString("yyyy/MM/dd"));
       } else{
         novoFuncionario.InsertParameters["dataContratacao"].DefaultValue = null;
 
@@ -90,17 +101,22 @@ public partial class app_funcionarios : System.Web.UI.Page
 
         if(emissaoHabMot.Text != String.Empty){
           novoMotorista.InsertParameters["dtEmissaoHab"].DefaultValue =
-            Convert.ToDateTime(emissaoHabMot.Text).ToString("yyyy/MM/dd");
+            Crypto.Encrypt(Convert.ToDateTime(emissaoHabMot.Text).ToString("yyyy/MM/dd"));
         } else{
-          novoMotorista.InsertParameters["dtEmissaoHab"].DefaultValue = "0000/00/00";
+          novoMotorista.InsertParameters["dtEmissaoHab"].DefaultValue = null;
         }
 
         if(validadeHabMot.Text != String.Empty){
           novoMotorista.InsertParameters["dtValidadeHab"].DefaultValue =
-            Convert.ToDateTime(validadeHabMot.Text).ToString("yyyy/MM/dd");
+            Crypto.Encrypt(Convert.ToDateTime(validadeHabMot.Text).ToString("yyyy/MM/dd"));
         } else{
-          novoMotorista.InsertParameters["dtValidadeHab"].DefaultValue = "0000/00/00";
+          novoMotorista.InsertParameters["dtValidadeHab"].DefaultValue = null;
         }
+
+        novoMotorista.InsertParameters["nomeHab"].DefaultValue = Crypto.Encrypt(nomeHabMot.Text);
+        novoMotorista.InsertParameters["idHab"].DefaultValue = Crypto.Encrypt(idHabMot.Text);
+        novoMotorista.InsertParameters["registroHab"].DefaultValue = Crypto.Encrypt(registroHabMot.Text);
+        novoMotorista.InsertParameters["localHab"].DefaultValue = Crypto.Encrypt(localGeradoHabMot.Text);
 
         //Inserindo Habilitação
         novoMotorista.Insert();
