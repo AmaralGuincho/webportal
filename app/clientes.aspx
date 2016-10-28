@@ -237,17 +237,17 @@
      VALUES
      (@nome, @sobrenome, @cpf, @email, @sexo, @telefone, @dataNasc, @cep, @bairro, @cidade, @uf, @endereco)">
     <InsertParameters>
-      <asp:ControlParameter Name="nome" ControlID="nomeCli" PropertyName="Text"/>
-      <asp:ControlParameter Name="sobrenome" ControlID="SobrenomeCli" PropertyName="Text"/>
-      <asp:ControlParameter Name="sexo" ControlID="sexoCli" PropertyName="SelectedValue"/>
-      <asp:ControlParameter Name="email" ControlID="emailCli" PropertyName="Text"/>
-      <asp:ControlParameter Name="cpf" ControlID="cpfCli" PropertyName="Text"/>
-      <asp:ControlParameter Name="telefone" ControlID="telCli" PropertyName="Text"/>
-      <asp:ControlParameter Name="cep" ControlID="cepCli" PropertyName="Text"/>
-      <asp:ControlParameter Name="bairro" ControlID="bairroCli" PropertyName="Text"/>
-      <asp:ControlParameter Name="uf" ControlID="ufCli" PropertyName="Text"/>
-      <asp:ControlParameter Name="cidade" ControlID="cidadeCli" PropertyName="Text"/>
-      <asp:ControlParameter Name="endereco" ControlID="residenciaCli" PropertyName="Text"/>
+      <asp:Parameter Name="nome"/>
+      <asp:Parameter Name="sobrenome"/>
+      <asp:Parameter Name="sexo"/>
+      <asp:Parameter Name="email"/>
+      <asp:Parameter Name="cpf"/>
+      <asp:Parameter Name="telefone"/>
+      <asp:Parameter Name="cep"/>
+      <asp:Parameter Name="bairro"/>
+      <asp:Parameter Name="uf"/>
+      <asp:Parameter Name="cidade"/>
+      <asp:Parameter Name="endereco"/>
       <asp:Parameter Name="dataNasc"/>
     </InsertParameters>
   </asp:SqlDataSource>
