@@ -8,7 +8,7 @@ public class cryptoHandler{
   // Getting Cryptography
   CsharpCryptography Crypto = new CsharpCryptography("helloWorld");
 
-  public DataTable decryptDataView(DataView dataView) {
+  public DataView decryptDataView(DataView dataView) {
     //  Converting DataView into DataTable
     DataTable EncryptedTable = dataView.ToTable();
     //  getting table rows count
@@ -28,8 +28,10 @@ public class cryptoHandler{
         UncryptedTable.Rows[i][j] = Crypto.Decrypt(EncryptedTable.Rows[i][j].ToString());
       }
     }
-    // Return Uncrypted Table
-    return UncryptedTable;
+    // Converting Uncrypted Table into a Dataview for Response
+    var UncryptedDataView = new DataView(UncryptedTable);
+    // Sending Uncrypted Data View
+    return UncryptedDataView;
   }
 
 }

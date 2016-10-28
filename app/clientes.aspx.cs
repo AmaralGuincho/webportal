@@ -59,9 +59,19 @@ public partial class app_clientes : System.Web.UI.Page
     }
     protected void cadastrar(object sender, EventArgs e){
       //Converting date to international format
-
+      cliente.InsertParameters["nome"].DefaultValue = Crypto.Encrypt(nomeCli.Text);
+      cliente.InsertParameters["sobrenome"].DefaultValue = Crypto.Encrypt(SobrenomeCli.Text);
+      cliente.InsertParameters["sexo"].DefaultValue = Crypto.Encrypt(sexoCli.Text);
+      cliente.InsertParameters["email"].DefaultValue = Crypto.Encrypt(emailCli.Text);
+      cliente.InsertParameters["cpf"].DefaultValue = Crypto.Encrypt(cpfCli.Text);
+      cliente.InsertParameters["telefone"].DefaultValue = Crypto.Encrypt(telCli.Text);
+      cliente.InsertParameters["cep"].DefaultValue = Crypto.Encrypt(cepCli.Text);
+      cliente.InsertParameters["bairro"].DefaultValue = Crypto.Encrypt(bairroCli.Text);
+      cliente.InsertParameters["uf"].DefaultValue = Crypto.Encrypt(ufCli.Text);
+      cliente.InsertParameters["cidade"].DefaultValue = Crypto.Encrypt(cidadeCli.Text);
+      cliente.InsertParameters["endereco"].DefaultValue = Crypto.Encrypt(residenciaCli.Text);
       cliente.InsertParameters["dataNasc"].DefaultValue =
-        Convert.ToDateTime(dtNascCli.Text).ToString("yyyy/MM/dd");
+      Crypto.Encrypt(Convert.ToDateTime(dtNascCli.Text).ToString("yyyy/MM/dd"));
 
 
       cliente.Insert();

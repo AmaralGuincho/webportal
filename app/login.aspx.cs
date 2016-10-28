@@ -70,7 +70,7 @@ public partial class websites_login : System.Web.UI.Page
         }
       }
       catch(Exception ex){
-        ERRO NA CONEXÃO COM O BANCO DE DADOS
+        // ERRO NA CONEXÃO COM O BANCO DE DADOS
         Response.Write("<script>function dbError() {if (confirm('Ocorreu um erro no banco de dados interno. Você pode detalhar o erro para nossos desenvolvedores?')) {window.open('mailto:ioetep@gmail.com?subject=Erro+no+Banco+de+Dados&body=Por+favor+detalhe+o+que+estava+fazendo+ao+se+deparar+com+o+erro');}else{alert('Uma menssagem de erro genérica foi enviada ao Desenvolvedor');}} dbError();</script>");
       }
     }
