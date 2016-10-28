@@ -165,11 +165,7 @@
             <h2 class="mdl-card__title-text">Selecione o Seguro</h2>
             <div class="mdl-textfield mdl-js-textfield mdl-cell mdl-cell--8-col-desktop mdl-cell--4-col-tablet">
               <label class="simpleLabeldd" for="selectSeguro">Seguradora</label>
-              <asp:DropDownList ID="selectSeguro" runat="server" class="dropdown"
-               DataSourceID="seguro" DataTextField="nome_amigavel" DataValueField="id_seguro">
-                <asp:ListItem Text="Servidor Fora do Ar"/>
-                <asp:ListItem Text="Servidor Fora do Ar"/>
-                <asp:ListItem Text="Servidor Fora do Ar"/>
+              <asp:DropDownList ID="selectSeguro" runat="server" class="dropdown">
               </asp:DropDownList>
             </div>
         </div>
@@ -252,11 +248,7 @@
           <h2 class="mdl-card__title-text">Selecione o Tipo de Serviço</h2>
           <div class="mdl-textfield mdl-js-textfield mdl-cell mdl-cell--8-col-desktop mdl-cell--4-col-tablet">
             <label class="simpleLabeldd" for="selectServico">Tipo de Serviço</label>
-            <asp:DropDownList ID="selectServico" runat="server" class="dropdown"
-             DataSourceID="servico" DataTextField="tipo_servico" DataValueField="id_servico">
-              <asp:ListItem Text="Servidor Fora fo Ar"/>
-              <asp:ListItem Text="Servidor Fora fo Ar"/>
-              <asp:ListItem Text="Servidor Fora fo Ar"/>
+            <asp:DropDownList ID="selectServico" runat="server" class="dropdown">
             </asp:DropDownList>
           </div>
       </div>
@@ -347,11 +339,7 @@
           <h2 class="mdl-card__title-text">Selecione o Motorista</h2>
           <div class="mdl-textfield mdl-js-textfield mdl-cell mdl-cell--8-col-desktop mdl-cell--4-col-tablet">
             <label class="simpleLabeldd" for="selectMotorista">Nome do Motorista</label>
-            <asp:DropDownList ID="selectMotorista" runat="server" class="dropdown"
-             DataSourceID="motorista" DataTextField="nome_func" DataValueField="id_mot">
-              <asp:ListItem Text="Servidor Fora do Ar"/>
-              <asp:ListItem Text="Servidor Fora do Ar"/>
-              <asp:ListItem Text="Servidor Fora do Ar"/>
+            <asp:DropDownList ID="selectMotorista" runat="server" class="dropdown">
             </asp:DropDownList>
           </div>
       </div>
@@ -360,11 +348,7 @@
           <h2 class="mdl-card__title-text">Selecione a Viatura</h2>
           <div class="mdl-textfield mdl-js-textfield mdl-cell mdl-cell--8-col-desktop mdl-cell--4-col-tablet">
             <label class="simpleLabeldd" for="selectFrota">Veículo</label>
-            <asp:DropDownList ID="selectFrota" runat="server" class="dropdown"
-             DataSourceID="frota" DataTextField="nome_frota" DataValueField="id_frota">
-              <asp:ListItem Text="Servidor Fora do Ar"/>
-              <asp:ListItem Text="Servidor Fora do Ar"/>
-              <asp:ListItem Text="Servidor Fora do Ar"/>
+            <asp:DropDownList ID="selectFrota" runat="server" class="dropdown">
             </asp:DropDownList>
           </div>
       </div>
@@ -505,11 +489,7 @@
           <h2 class="mdl-card__title-text">Selecione o Tipo de Serviço</h2>
           <div class="mdl-textfield mdl-js-textfield mdl-cell mdl-cell--8-col-desktop mdl-cell--4-col-tablet">
             <label class="simpleLabeldd" for="selectServicoConsulta">Tipo de Serviço</label>
-            <asp:DropDownList ID="selectServicoConsulta" runat="server" class="dropdown"
-             DataSourceID="servico" DataTextField="tipo_servico" DataValueField="id_servico">
-              <asp:ListItem Text="Servidor Fora fo Ar"/>
-              <asp:ListItem Text="Servidor Fora fo Ar"/>
-              <asp:ListItem Text="Servidor Fora fo Ar"/>
+            <asp:DropDownList ID="selectServicoConsulta" runat="server" class="dropdown">
             </asp:DropDownList>
           </div>
       </div>
@@ -518,11 +498,7 @@
           <h2 class="mdl-card__title-text">Selecione o Seguro</h2>
           <div class="mdl-textfield mdl-js-textfield mdl-cell mdl-cell--8-col-desktop mdl-cell--4-col-tablet">
             <label class="simpleLabeldd" for="selectSeguroConsulta">Seguradora</label>
-            <asp:DropDownList ID="selectSeguroConsulta" runat="server" class="dropdown"
-             DataSourceID="seguro" DataTextField="nome_amigavel" DataValueField="id_seguro">
-              <asp:ListItem Text="Servidor Fora do Ar"/>
-              <asp:ListItem Text="Servidor Fora do Ar"/>
-              <asp:ListItem Text="Servidor Fora do Ar"/>
+            <asp:DropDownList ID="selectSeguroConsulta" runat="server" class="dropdown">
             </asp:DropDownList>
           </div>
       </div>
@@ -589,11 +565,7 @@
           <h2 class="mdl-card__title-text">Selecione o Motorista</h2>
           <div class="mdl-textfield mdl-js-textfield mdl-cell mdl-cell--8-col-desktop mdl-cell--4-col-tablet">
             <label class="simpleLabeldd" for="selectMotoristaConsulta">Nome do Motorista</label>
-            <asp:DropDownList ID="selectMotoristaConsulta" runat="server" class="dropdown"
-             DataSourceID="allMotorista" DataTextField="nome_func" DataValueField="id_mot">
-              <asp:ListItem Text="Servidor Fora do Ar"/>
-              <asp:ListItem Text="Servidor Fora do Ar"/>
-              <asp:ListItem Text="Servidor Fora do Ar"/>
+            <asp:DropDownList ID="selectMotoristaConsulta" runat="server" class="dropdown">
             </asp:DropDownList>
           </div>
       </div>
@@ -602,11 +574,7 @@
           <h2 class="mdl-card__title-text">Selecione a Viatura</h2>
           <div class="mdl-textfield mdl-js-textfield mdl-cell mdl-cell--8-col-desktop mdl-cell--4-col-tablet">
             <label class="simpleLabeldd" for="selectFrotaConsulta">Veículo</label>
-            <asp:DropDownList ID="selectFrotaConsulta" runat="server" class="dropdown"
-             DataSourceID="allFrota" DataTextField="nome_frota" DataValueField="id_frota">
-              <asp:ListItem Text="Servidor Fora do Ar"/>
-              <asp:ListItem Text="Servidor Fora do Ar"/>
-              <asp:ListItem Text="Servidor Fora do Ar"/>
+            <asp:DropDownList ID="selectFrotaConsulta" runat="server" class="dropdown">
             </asp:DropDownList>
           </div>
       </div>
@@ -978,6 +946,8 @@
 
     motoristaOnly.id_mot as 'idMotorista', motoristaOnly.nome_func as 'nomeMotorista',
 
+    frota.nome_frota,
+
     viagem.id_viagem, viagem.bairro_destino_viagem, viagem.bairro_partida_viagem,
     viagem.endereco_destino_viagem, viagem.endereco_partida_viagem,
     viagem.cidade_destino_viagem, viagem.cidade_partida_viagem,
@@ -987,7 +957,7 @@
 
     os.dtab_os, os.agendamento_os, os.status_os,
 
-    servico.id_servico,
+    servico.id_servico,servico.tipo_servico,
 
     seguro.id_seguro, seguro.nome_seguro
     FROM servico_os
