@@ -35,6 +35,10 @@
   <link href="../material/material.min.css" rel="stylesheet" />
   <!--Stylesheet-->
   <link href="~/style/app.css" rel="stylesheet" />
+  <!-- Animate.css -->
+  <link rel="stylesheet" href="../style/animate.css">
+  <!-- js -->
+  <script src="../scripts/animate.js" charset="utf-8"></script>
 
   <style>
   #view-source{
@@ -99,7 +103,7 @@
       <a class="mdl-navigation__link" href="clientes.aspx"><i class="mdl-color-text--blue-grey-400 material-icons">face</i>Clientes</a>
       <a class="mdl-navigation__link" href="seguro.aspx"><i class="mdl-color-text--blue-grey-400 material-icons">perm_contact_calendar</i>Seguro</a>
       <a class="mdl-navigation__link" href="funcionarios.aspx"><i class="mdl-color-text--blue-grey-400 material-icons">people</i>Funcionários</a>
-      <a class="mdl-navigation__link" href="search.aspx"><i class="mdl-color-text--blue-grey-400 material-icons">search</i>Pesquisa</a>
+      <a class="mdl-navigation__link" href="pesquisa.aspx"><i class="mdl-color-text--blue-grey-400 material-icons">search</i>Pesquisa</a>
       <!-- <a class="mdl-navigation__link" href="#" disabled><i class="mdl-color-text--blue-grey-400 material-icons">pie_chart</i>Estatisticas</a> -->
       <!-- <a class="mdl-navigation__link" href="#" disabled><i class="mdl-color-text--blue-grey-400 material-icons">monetization_on</i>Financeiro</a> -->
       <a class="mdl-navigation__link" href="settings.aspx"><i class="mdl-color-text--blue-grey-400 material-icons">settings</i>Ajustes</a>
@@ -171,6 +175,16 @@
       };
     }
   }());
+
+  window.onload = animate();
+
+  // Animate
+  function animate() {
+    var card = document.querySelector('.card');
+
+    card.classList.add('animated');
+    card.classList.add('slideInUp');
+  }
   </script>
 
 </body>
