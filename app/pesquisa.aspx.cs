@@ -27,8 +27,8 @@ public partial class app_pesquisa : System.Web.UI.Page
         novaTabela.Columns.Add("id_cli", typeof(int));
         novaTabela.Columns.Add("fabricante_veiculo", typeof(string));
         novaTabela.Columns.Add("modelo_veiculo",typeof(string));
-        novaTabela.Columns.Add("ano_veiculo",typeof(DateTime));
-        novaTabela.Columns.Add("placa_veiculo", typeof(double));
+        novaTabela.Columns.Add("ano_veiculo",typeof(int));
+        novaTabela.Columns.Add("placa_veiculo", typeof(string));
         novaTabela.Columns.Add("cor_veiculo",typeof(string));
 
         novaTabela.DefaultView.RowFilter = "placa_veiculo like '"+pesq+"%'";

@@ -8,37 +8,39 @@ using System.Data;
 
 public partial class app_settings : System.Web.UI.Page
 {
+  CsharpCryptography Crypto = new CsharpCryptography("ETEP");
   protected void Page_Load(object sender, EventArgs e)
   {
     if(!IsPostBack){
       DataView funcionario = (DataView)sqlFuncionario.Select(DataSourceSelectArguments.Empty);
       // Preenchendo..
-      nomeFunc.Text = funcionario.Table.Rows[0]["nome_func"].ToString();
-      sobrenomeFunc.Text = funcionario.Table.Rows[0]["sobrenome_func"].ToString();
-      cpfFunc.Text = funcionario.Table.Rows[0]["cpf_func"].ToString();
-      telFunc.Text = funcionario.Table.Rows[0]["tel_func"].ToString();
-      emailFunc.Text = funcionario.Table.Rows[0]["email_func"].ToString();
-      cepFunc.Text = funcionario.Table.Rows[0]["cep_func"].ToString();
-      bairroFunc.Text = funcionario.Table.Rows[0]["bairro_func"].ToString();
-      cidadeFunc.Text = funcionario.Table.Rows[0]["cid_func"].ToString();
-      ufFunc.Text = funcionario.Table.Rows[0]["uf_func"].ToString();
-      residenciaFunc.Text = funcionario.Table.Rows[0]["residencia_func"].ToString();
+      nomeFunc.Text = Crypto.Decrypt(funcionario.Table.Rows[0]["nome_func"].ToString());
+      sobrenomeFunc.Text = Crypto.Decrypt(funcionario.Table.Rows[0]["sobrenome_func"].ToString());
+      cpfFunc.Text = Crypto.Decrypt(funcionario.Table.Rows[0]["cpf_func"].ToString());
+      telFunc.Text = Crypto.Decrypt(funcionario.Table.Rows[0]["tel_func"].ToString());
+      emailFunc.Text = Crypto.Decrypt(funcionario.Table.Rows[0]["email_func"].ToString());
+      cepFunc.Text = Crypto.Decrypt(funcionario.Table.Rows[0]["cep_func"].ToString());
+      bairroFunc.Text = Crypto.Decrypt(funcionario.Table.Rows[0]["bairro_func"].ToString());
+      cidadeFunc.Text = Crypto.Decrypt(funcionario.Table.Rows[0]["cid_func"].ToString());
+      ufFunc.Text = Crypto.Decrypt(funcionario.Table.Rows[0]["uf_func"].ToString());
+      residenciaFunc.Text = Crypto.Decrypt(funcionario.Table.Rows[0]["residencia_func"].ToString());
 
       // DateTime
+      //Problemas com Data ("dd/MM/yyyy")
       if (funcionario.Table.Rows[0]["dtnasc_func"].ToString() != String.Empty) {
-        dtNascFunc.Text = Convert.ToDateTime(funcionario.Table.Rows[0]["dtnasc_func"]).ToShortDateString().ToString();
+        dtNascFunc.Text = Crypto.Decrypt(funcionario.Table.Rows[0]["dtnasc_func"].ToString());
       }else{
         dtNascFunc.Text = String.Empty;
       }
 
       if (funcionario.Table.Rows[0]["dtcont_func"].ToString() != String.Empty) {
-        contratacaoFunc.Text = Convert.ToDateTime(funcionario.Table.Rows[0]["dtcont_func"]).ToShortDateString().ToString();
+        contratacaoFunc.Text = Crypto.Decrypt(funcionario.Table.Rows[0]["dtcont_func"].ToString());
       }else{
         contratacaoFunc.Text = String.Empty;
       }
       // DropDown
-      sexoFunc.SelectedValue = funcionario.Table.Rows[0]["sx_func"].ToString();
-      cargoFunc.SelectedValue = funcionario.Table.Rows[0]["residencia_func"].ToString();
+      sexoFunc.SelectedValue = Crypto.Decrypt(funcionario.Table.Rows[0]["sx_func"].ToString());
+      cargoFunc.SelectedValue = Crypto.Decrypt(funcionario.Table.Rows[0]["residencia_func"].ToString());
     }
   }
 
