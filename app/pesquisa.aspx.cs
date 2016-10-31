@@ -10,9 +10,10 @@ public partial class app_pesquisa : System.Web.UI.Page
 {
     CsharpCryptography Crypto = new CsharpCryptography("ETEP");
 
-    protected void Page_Load(object sender, EventArgs e)
-    {
-
+    protected void Page_Load(object sender, EventArgs e){
+      if(!IsPostBack){
+        Session["response"] = true;
+      }
     }
 
     public void listaGrid(String pesq)
@@ -51,8 +52,8 @@ public partial class app_pesquisa : System.Web.UI.Page
 
     }
 
-    protected void btnPesq_Click(object sender, EventArgs e)
-    {
-        listaGrid(txtPlaca.Text);
+    protected void searchQuery(object sender, EventArgs e){
+      Session["response"] = true;
+      listaGrid(pesqQuery.Text);
     }
 }
