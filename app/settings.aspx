@@ -12,7 +12,7 @@
 </style>
 <form runat="server">
   <div class="mdl-grid mdl-cell mdl-cell--12-col card-box">
-    <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col mdl-grid">
+    <div class="card mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col mdl-grid">
       <div class="mdl-card__title mdl-cell mdl-cell-12-col">
         <h2 class="mdl-card__title-text mdl-color-text--grey-600">
           <i class="material-icons ">tune</i>
@@ -35,7 +35,7 @@
       </div>
     </div>
 
-    <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col mdl-grid" id="changePassword">
+    <div class="card mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col mdl-grid" id="changePassword">
       <div class="mdl-card__title mdl-cell mdl-cell-12-col">
         <h2 class="mdl-card__title-text mdl-color-text--grey-600">
           <i class="material-icons">lock</i>
@@ -270,7 +270,7 @@ function displaySwitch(card) {
   if(card.style.display == 'none'){
     card.style.display = 'block';
   }else {
-    card.style.display = 'none';
+    card.classList.toggle('slideOutDown');
   }
 }
 </script>

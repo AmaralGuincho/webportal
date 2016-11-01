@@ -137,7 +137,12 @@
     var responseCard = document.querySelector('#response-card');
 
     if (isResponse == true){
-      isResponse.hideCard();
+      showCard(searchCard);
+      hideCard(responseCard);
+    }else{
+      showCard(responseCard);
+      hideCard(searchCard);
     }
+
   </script>
 </asp:Content>

@@ -3,11 +3,12 @@
 <asp:Content ContentplaceholderID="indexBodyPlaceholder" runat="server">
   <form runat="server">
   <div class="mdl-grid card-box">
-    <div class="mdl-textfield mdl-js-textfield mdl-cell mdl-cell--12-col">
+
+    <!-- <div class="mdl-textfield mdl-js-textfield mdl-cell mdl-cell--12-col">
       <input ID="searchMot" class="mdl-textfield__input" runat="server" pattern="[A-Z,a-z, ]*"></input>
       <label class="mdl-textfield__label" for="search-Mot"> <i class="material-icons" style="font-size:14px;position:relative;bottom:-2px;">search</i> Procure um Motorista</label>
       <span class="mdl-textfield__error">Números ou Simbulos não são válidos</span>
-    </div>
+    </div> -->
 
 
     <div class="card mdl-card mdl-shadow--4dp mdl-cell mdl-cell--6-col-desktop mdl-cell--8-col-tablet mdl-cell--4-col-phone mdl-grid" id="cardMot">

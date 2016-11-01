@@ -176,14 +176,14 @@
     }
   }());
 
-  window.onload = animate();
-
-  // Animate
-  function animate() {
-    var card = document.querySelector('.card');
-
-    card.classList.add('animated');
-    card.classList.add('slideInUp');
+  window.onload = function () {
+    // geting Cards
+    var card = document.querySelectorAll('.card');
+    // Repeating on each card
+    for (var i = 0; i < card.length; i++) {
+      card[i].classList.add('animated');
+      card[i].classList.add('slideInUp');
+    }
   }
   </script>
 

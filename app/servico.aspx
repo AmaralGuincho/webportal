@@ -16,7 +16,7 @@
 </style>
 <form  runat="server">
   <div class="mdl-grid card-box">
-    <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--6-col-desktop mdl-cell--8-col-tablet mdl-cell--4-col-phone mdl-grid" id="osAberta">
+    <div class="card mdl-card mdl-shadow--4dp mdl-cell mdl-cell--6-col-desktop mdl-cell--8-col-tablet mdl-cell--4-col-phone mdl-grid" id="osAberta">
       <div class="mdl-card__title mdl-cell mdl-cell--12-col">
         <h2 class="mdl-card__title-text">Ordens de Serviço Abertas</h2>
       </div>
@@ -73,7 +73,7 @@
       </div>
     </div>
 
-    <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--6-col-desktop mdl-cell--8-col-tablet mdl-cell--4-col-phone mdl-grid" id="servicoRecente">
+    <div class="card mdl-card mdl-shadow--4dp mdl-cell mdl-cell--6-col-desktop mdl-cell--8-col-tablet mdl-cell--4-col-phone mdl-grid" id="servicoRecente">
       <div class="mdl-card__title mdl-cell mdl-cell--12-col">
         <h2 class="mdl-card__title-text">Serviços Fechados Recentemente</h2>
       </div>
@@ -147,7 +147,7 @@
     </div>
 
     <!-- NovaOS -->
-    <div class="card mdl-card mdl-cell mdl-cell--12-col-desktop mdl-cell--8-col-tablet mdl-cell--4-col-phone mdl-grid" id="novoServico">
+    <div class="card card mdl-card mdl-cell mdl-cell--12-col-desktop mdl-cell--8-col-tablet mdl-cell--4-col-phone mdl-grid" id="novoServico">
       <div class="mdl-card__title mdl-cell mdl-cell--12-col">
         <h2 class="mdl-card__title-text">Novo Serviço</h2>
       </div>
@@ -170,7 +170,7 @@
             </div>
         </div>
 
-        <div class=" mdl-card mdl-cell mdl-cell--12-col-desktop mdl-cell--8-col-tablet mdl-cell--4-col-phone mdl-grid mdl-card--border mdl-shadow--1dp" id="newCli">
+        <div class=" card mdl-card mdl-cell mdl-cell--12-col-desktop mdl-cell--8-col-tablet mdl-cell--4-col-phone mdl-grid mdl-card--border mdl-shadow--1dp" id="newCli">
           <div class="title mdl-card__title mdl-cell mdl-cell--12-col">
             <h3 class="mdl-card__title-text">Cliente</h2>
           </div>
@@ -207,7 +207,7 @@
       <!-- Fim cliente -->
 
       <!-- inicio veiculo -->
-      <div class=" mdl-card mdl-cell mdl-cell--12-col mdl-card--border" id="newVeiculo">
+      <div class=" card mdl-card mdl-cell mdl-cell--12-col mdl-card--border" id="newVeiculo">
         <div class="title mdl-card__title">
           <h2 class="mdl-card__title-text">Veículo</h2>
         </div>
@@ -253,7 +253,7 @@
           </div>
       </div>
 
-      <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col" id="searchSinistro" style="display:none;">
+      <div class="card mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col" id="searchSinistro" style="display:none;">
         <div class="mdl-card__title">
           <h2 class="mdl-card__title-text">Sinistro Existênte</h2>
         </div>
@@ -275,7 +275,7 @@
         </div>
       </div>
 
-      <div class="mdl-card mdl-cell mdl-cell--12-col" id="newViagem">
+      <div class="card mdl-card mdl-cell mdl-cell--12-col" id="newViagem">
         <div class="mdl-card__title">
           <h2 class="mdl-card__title-text">Adicionando uma Viagem</h2>
         </div>
@@ -395,13 +395,13 @@
     <!-- FIM DO CARTÃO NOVO SERVICO -->
 
     <!-- ConsultaOS -->
-    <div class="card mdl-card mdl-cell mdl-cell--12-col-desktop mdl-cell--8-col-tablet mdl-cell--4-col-phone mdl-grid" id="pesqServico">
+    <div class="card card mdl-card mdl-cell mdl-cell--12-col-desktop mdl-cell--8-col-tablet mdl-cell--4-col-phone mdl-grid" id="pesqServico">
       <div class="mdl-card__title mdl-cell mdl-cell--12-col">
         <h2 class="mdl-card__title-text">Serviço</h2>
       </div>
       <div class="card-content mdl-grid mdl-cell mdl-cell--12-col">
 
-        <div class=" mdl-card mdl-cell mdl-cell--12-col-desktop mdl-cell--8-col-tablet mdl-cell--4-col-phone mdl-grid mdl-card--border mdl-shadow--1dp" id="Abertura">
+        <div class=" card mdl-card mdl-cell mdl-cell--12-col-desktop mdl-cell--8-col-tablet mdl-cell--4-col-phone mdl-grid mdl-card--border mdl-shadow--1dp" id="Abertura">
           <div class="title mdl-card__title mdl-cell mdl-cell--12-col">
             <h3 class="mdl-card__title-text">Condições de Abertura</h2>
           </div>
@@ -418,7 +418,7 @@
           </div>
         </div>
 
-        <div class=" mdl-card mdl-cell mdl-cell--12-col-desktop mdl-cell--8-col-tablet mdl-cell--4-col-phone mdl-grid mdl-card--border mdl-shadow--1dp" id="pesqCli">
+        <div class=" card mdl-card mdl-cell mdl-cell--12-col-desktop mdl-cell--8-col-tablet mdl-cell--4-col-phone mdl-grid mdl-card--border mdl-shadow--1dp" id="pesqCli">
           <div class="title mdl-card__title mdl-cell mdl-cell--12-col">
             <h3 class="mdl-card__title-text">Cliente</h2>
           </div>
@@ -448,7 +448,7 @@
       <!-- Fim cliente -->
 
       <!-- inicio veiculo -->
-      <div class=" mdl-card mdl-cell mdl-cell--12-col-desktop mdl-cell--8-col-tablet mdl-card--border" id="newVeiculo">
+      <div class=" card mdl-card mdl-cell mdl-cell--12-col-desktop mdl-cell--8-col-tablet mdl-card--border" id="newVeiculo">
         <div class="title mdl-card__title">
           <h2 class="mdl-card__title-text">Veículo</h2>
         </div>
@@ -503,7 +503,7 @@
           </div>
       </div>
 
-      <div class="mdl-card mdl-cell mdl-cell--12-col" id="newViagem">
+      <div class="card mdl-card mdl-cell mdl-cell--12-col" id="newViagem">
         <div class="mdl-card__title">
           <h2 class="mdl-card__title-text">Adicionando uma Viagem</h2>
         </div>
