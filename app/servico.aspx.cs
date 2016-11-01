@@ -72,9 +72,9 @@ public partial class app_servico : System.Web.UI.Page
 
     public void loadDropDownOs(){
       DataView ddlSeguro = (DataView)seguro.Select(DataSourceSelectArguments.Empty);
-      DataView dllServico = (DataView)servico.Select(DataSourceSelectArguments.Empty);
-      DataView dllMot = (DataView)allMotorista.Select(DataSourceSelectArguments.Empty);
-      DataView dllFrota = (DataView)allFrota.Select(DataSourceSelectArguments.Empty);
+      DataView ddlServico = (DataView)servico.Select(DataSourceSelectArguments.Empty);
+      DataView ddlMot = (DataView)allMotorista.Select(DataSourceSelectArguments.Empty);
+      DataView ddlFrota = (DataView)allFrota.Select(DataSourceSelectArguments.Empty);
 
       //Seguro
       selectSeguroConsulta.Items.Clear();
@@ -85,35 +85,35 @@ public partial class app_servico : System.Web.UI.Page
 
       //Servico
       selectServicoConsulta.Items.Clear();
-      for(int i = 0; i < dllServico.Table.Rows.Count; i++)
+      for(int i = 0; i < ddlServico.Table.Rows.Count; i++)
       {
-        selectServicoConsulta.Items.Add(new ListItem(Crypto.Decrypt(dllServico.Table.Rows[i]["tipo_servico"].ToString()),
-        dllServico.Table.Rows[i]["id_servico"].ToString()));
+        selectServicoConsulta.Items.Add(new ListItem(Crypto.Decrypt(ddlServico.Table.Rows[i]["tipo_servico"].ToString()),
+        ddlServico.Table.Rows[i]["id_servico"].ToString()));
       }
 
       //Motorista
       selectMotoristaConsulta.Items.Clear();
-      for(int i = 0; i < dllMot.Table.Rows.Count; i++)
+      for(int i = 0; i < ddlMot.Table.Rows.Count; i++)
       {
-        selectMotoristaConsulta.Items.Add(new ListItem(Crypto.Decrypt(dllMot.Table.Rows[i]["nome_func"].ToString()),
-        dllMot.Table.Rows[i]["id_mot"].ToString()));
+        selectMotoristaConsulta.Items.Add(new ListItem(Crypto.Decrypt(ddlMot.Table.Rows[i]["nome_func"].ToString()),
+        ddlMot.Table.Rows[i]["id_mot"].ToString()));
       }
 
       //Viatura (Frota)
       selectFrotaConsulta.Items.Clear();
-      for(int i = 0; i < dllFrota.Table.Rows.Count; i++)
+      for(int i = 0; i < ddlFrota.Table.Rows.Count; i++)
       {
-        selectFrotaConsulta.Items.Add(new ListItem(Crypto.Decrypt(dllFrota.Table.Rows[i]["nome_frota"].ToString()),
-        dllFrota.Table.Rows[i]["id_frota"].ToString()));
+        selectFrotaConsulta.Items.Add(new ListItem(Crypto.Decrypt(ddlFrota.Table.Rows[i]["nome_frota"].ToString()),
+        ddlFrota.Table.Rows[i]["id_frota"].ToString()));
       }
 
     }
 
     public void loadDropDownPesq(){
       DataView ddlSeguro = (DataView)seguro.Select(DataSourceSelectArguments.Empty);
-      DataView dllServico = (DataView)servico.Select(DataSourceSelectArguments.Empty);
-      DataView dllMot = (DataView)allMotorista.Select(DataSourceSelectArguments.Empty);
-      DataView dllFrota = (DataView)allFrota.Select(DataSourceSelectArguments.Empty);
+      DataView ddlServico = (DataView)servico.Select(DataSourceSelectArguments.Empty);
+      DataView ddlMot = (DataView)allMotorista.Select(DataSourceSelectArguments.Empty);
+      DataView ddlFrota = (DataView)allFrota.Select(DataSourceSelectArguments.Empty);
 
       //Seguro
       selectSeguro.Items.Clear();
@@ -124,26 +124,26 @@ public partial class app_servico : System.Web.UI.Page
 
       //Servico
       selectServico.Items.Clear();
-      for(int i = 0; i < dllServico.Table.Rows.Count; i++)
+      for(int i = 0; i < ddlServico.Table.Rows.Count; i++)
       {
-        selectServico.Items.Add(new ListItem(Crypto.Decrypt(dllServico.Table.Rows[i]["tipo_servico"].ToString()),
-        dllServico.Table.Rows[i]["id_servico"].ToString()));
+        selectServico.Items.Add(new ListItem(Crypto.Decrypt(ddlServico.Table.Rows[i]["tipo_servico"].ToString()),
+        ddlServico.Table.Rows[i]["id_servico"].ToString()));
       }
 
       //Motorista
       selectMotorista.Items.Clear();
-      for(int i = 0; i < dllMot.Table.Rows.Count; i++)
+      for(int i = 0; i < ddlMot.Table.Rows.Count; i++)
       {
-        selectMotorista.Items.Add(new ListItem(Crypto.Decrypt(dllMot.Table.Rows[i]["nome_func"].ToString()),
-        dllMot.Table.Rows[i]["id_mot"].ToString()));
+        selectMotorista.Items.Add(new ListItem(Crypto.Decrypt(ddlMot.Table.Rows[i]["nome_func"].ToString()),
+        ddlMot.Table.Rows[i]["id_mot"].ToString()));
       }
 
       //Viatura (Frota)
       selectFrota.Items.Clear();
-      for(int i = 0; i < dllFrota.Table.Rows.Count; i++)
+      for(int i = 0; i < ddlFrota.Table.Rows.Count; i++)
       {
-        selectFrota.Items.Add(new ListItem(Crypto.Decrypt(dllFrota.Table.Rows[i]["nome_frota"].ToString()),
-        dllFrota.Table.Rows[i]["id_frota"].ToString()));
+        selectFrota.Items.Add(new ListItem(Crypto.Decrypt(ddlFrota.Table.Rows[i]["nome_frota"].ToString()),
+        ddlFrota.Table.Rows[i]["id_frota"].ToString()));
       }
 
     }
