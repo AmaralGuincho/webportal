@@ -89,6 +89,7 @@ public partial class app_index : System.Web.UI.MasterPage
       Response.Redirect("../index.html");
 
       // Loging out User
+      Session["logOn"] = null;
       Session["log"] = null;
     }
 
