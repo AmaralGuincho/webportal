@@ -2,6 +2,10 @@ html, body {
   font-family: 'Roboto', 'Helvetica', sans-serif;
 }
 
+.mdl-card__title-text{
+  color:#757575;
+}
+
 .ioetep{
   text-decoration:none;
 }
