@@ -260,11 +260,15 @@ var updateAccount = document.getElementById('editFunc');
 var botaoAlterarDados = document.getElementById('alterarDados');
 var botaoAlterarSenha = document.getElementById('changePassword');
 var botaoReportarErro = document.getElementById('reportarErro');
+var fabButton = document.querySelector('#fabButton');
 
 // Changing Shell Title
-window.onload = shellTitle.innerHTML = 'Ajustes';
-window.onload = passwordCard.style.display = 'none';
-window.onload = updateAccount.style.display = 'none';
+  window.addEventListener('load' ()=>{
+    shellTitle.innerHTML = 'Ajustes';
+    passwordCard.style.display = 'none';
+    updateAccount.style.display = 'none';
+    fabButton.style.display = 'none';
+  })
 
 function displaySwitch(card) {
   if(card.style.display == 'none'){

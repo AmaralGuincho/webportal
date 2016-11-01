@@ -535,9 +535,26 @@
     <div class="mdl-snackbar__text"></div>
     <button type="button" class="mdl-snackbar__action"></button>
   </div>
-  <script type="text/javascript">
-    var shellTitle = document.getElementById("shellTitle");
-    window.onload = shellTitle.innerHTML = 'Inbox';
+
+  <script>
+    (function() {
+      'use strict';
+      var notification = document.querySelector('#mainSnackBar');
+      var userName = document.querySelector('#nome');
+      var serverMessage = 'Bem Vindo ' + nome;
+
+      if(serverMessage != null){
+        window.onload = function() {
+          var data = {
+            message: serverMessage,
+            timeout: 3000
+          };
+
+          notification.MaterialSnackbar.showSnackbar(data);
+          serverMessage = null;
+        };
+      }
+    }());
   </script>
   <!-- Sql Interacions -->
   <asp:SqlDataSource
@@ -628,5 +645,6 @@
   SELECT id_os, id_servico FROM servico_os
    ORDER BY id_os DESC LIMIT 3 ">
   </asp:SqlDataSource>
+
 
 </asp:Content>

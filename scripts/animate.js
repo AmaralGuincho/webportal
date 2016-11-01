@@ -1,36 +1,53 @@
-// Animate.css JAVASCRIPT (NOT JQUERY) function
+// A js file to help us with animations inside the project
 
-// create a one-time event
-function onetime(node, type, callback) {
+// Getting Cadastro Card
+var cardCadastro = document.querySelectorAll('.cardCadastro');
+// Getting all cards
+var card = document.querySelectorAll('.card');
+// Getting FAB buttons
+var fabButton = document.querySelector('#fabButton');
 
-	// create event
-	node.addEventListener(type, function(e) {
-		// remove event
-		e.target.removeEventListener(e.type, arguments.callee);
-		// call handler
-		return callback(e);
-	});
+// Preset Window animations
+window.addEventListener('load', function(){
+	// Animatting Every Default Card
+	for (var i = 0; i < card.length; i++) {
+		// Adding Animation Class
+		card[i].classList.add('animated');
+		// Intro effect
+		card[i].classList.add('bounceInUp');
+	}
 
-}
+	// Adding Animations to FAB
+	fabButton.classList.add('animated');
+	fabButton.classList.add('rotateIn');
+});
 
-function animate(animationName) {
-  var animationEnd = 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend';
-  this.classList.add('animated' + animationName).oneTime(animationEnd,function() {
-    this.removeClass('animated' + animationName);
-  });
-}
+// FAB action (hiding normal cards and showing cadastro only)
+fabButton.addEventListener('click', function(){
+	// Taking out normal cards animations
+	for (var i = 0; i < card.length; i++) {
+		card[i].classList.remove('bounceInUp');
+		card[i].classList.add('bounceOutLeft');
 
-function animateCSS(animationName) {
-  this.classList.add('animated');
-  this.classList.add(animationName);
-}
+		// Hide Cards after animation ends
+		if(card[i].classList.contains('bounceOutLeft') == true){
+			// Waiting for out animation to end
+			card[i].addEventListener('animationend', function(e) {
+				//Hiding default cards
+				this.classList.add('hidden');
 
-function hideCard(cardID) {
-	var card = document.getElementById(cardID);
-	card.classList.add('hidden');
-}
+				// Hiding FAB
+				fabButton.classList.remove('rotateIn');
+				fabButton.classList.add('bounceOutRight');
 
-function showCard(cardID){
-	var card = document.getElementById(cardID);
-	card.classList.remove('hidden');
-}
+				// Showing cardCadastro
+				for (var j = 0; j < cardCadastro.length; j++) {
+					cardCadastro[j].classList.remove('hidden');
+					cardCadastro[j].classList.add('animated');
+					cardCadastro[j].classList.add('bounceInUp');
+				}
+
+			});
+		}
+	}
+});

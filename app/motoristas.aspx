@@ -107,7 +107,7 @@
       </div>
     </div>
 
-    <div class="card mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col-desktop mdl-cell--8-col-tablet mdl-cell--4-col-phone mdl-grid" id="addMot">
+    <div class="cardCadastro hidden mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col-desktop mdl-cell--8-col-tablet mdl-cell--4-col-phone mdl-grid" id="addMot">
       <div class="mdl-card__title mdl-cell mdl-cell--12-col">
         <h2 class="mdl-card__title-text">Cadastrando um Novo Motorista</h2>
       </div>
@@ -202,7 +202,7 @@
             <asp:TextBox ID="validadeHabMot" type="date" class="mdl-textfield__input date" runat="server" placeholder=" "></asp:TextBox>
             <label class="mdl-textfield__label" for="validadeHabMot">Validade</label>
           </div>
-          <div class="mdPl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--4-col mdl-cell-4-col-phone">
+          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--4-col mdl-cell-4-col-phone">
             <asp:TextBox ID="localGeradoHabMot" type="text" class="mdl-textfield__input" runat="server" ></asp:TextBox>
             <label class="mdl-textfield__label" for="localGeradoHabMot">Local Gerado</label>
           </div>

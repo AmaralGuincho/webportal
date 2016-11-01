@@ -37,9 +37,6 @@
   <link href="~/style/app.css" rel="stylesheet" />
   <!-- Animate.css -->
   <link rel="stylesheet" href="../style/animate.css">
-  <!-- js -->
-  <script src="../scripts/animate.js" charset="utf-8"></script>
-
   <style>
   #view-source{
     position: fixed;
@@ -157,35 +154,8 @@
 </SelectParameters>
 </asp:SqlDataSource>
 
-  <script>
-  (function() {
-    'use strict';
-    var notification = document.querySelector('#mainSnackBar');
-    var serverMessage = '<%= Session["serverMessage"]%>';
-
-    if(serverMessage != null){
-      window.onload = function() {
-        var data = {
-          message: serverMessage,
-          timeout: 3000
-        };
-
-        notification.MaterialSnackbar.showSnackbar(data);
-        serverMessage = null;
-      };
-    }
-  }());
-
-  window.onload = function () {
-    // geting Cards
-    var card = document.querySelectorAll('.card');
-    // Repeating on each card
-    for (var i = 0; i < card.length; i++) {
-      card[i].classList.add('animated');
-      card[i].classList.add('slideInUp');
-    }
-  }
-  </script>
+  <!-- js Animations -->
+  <script src="../scripts/animate.js"></script>
 
 </body>
 </html>
