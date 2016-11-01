@@ -14,15 +14,17 @@
         <div class="card-content mdl-card--border mdl-grid mdl-cell mdl-cell--12-col">
           <div class="mdl-textfield mdl-js-textfield mdl-cell mdl-cell--4-col-desktop mdl-cell--4-col-tablet">
             <label class="simpleLabeldd" for="selectSeguroConsulta">Pesquisar em:</label>
-            <asp:DropDownList ID="selectTables" runat="server" class="dropdown">
+            <asp:DropDownList ID="selectTables" runat="server" class="dropdown" AutoPostBack ="true" >
+              <asp:ListItem Text="Cliente"/>
+              <asp:ListItem Text="Funcionário"/>
               <asp:ListItem Text="Veículo"/>
+              <asp:ListItem Text="Frota"/>
             </asp:DropDownList>
           </div>
 
           <div class="mdl-textfield mdl-js-textfield mdl-cell mdl-cell--4-col-desktop mdl-cell--4-col-tablet">
             <label class="simpleLabeldd" for="selectSeguroConsulta">Pesquisar por:</label>
             <asp:DropDownList ID="selectAtribute" runat="server" class="dropdown">
-              <asp:ListItem Text="Placa"/>
             </asp:DropDownList>
           </div>
 
@@ -48,66 +50,8 @@
         </div>
 
         <div class="card-content mdl-card--border mdl-grid mdl-cell mdl-cell--12-col">
-          <asp:GridView ID="gvPesq" runat="server" AutoGenerateColumns="False" BackColor="White" BorderColor="#999999" BorderStyle="Solid" BorderWidth="1px" CellPadding="3" DataKeyNames="cod_produto" ForeColor="Black" GridLines="Vertical">
+          <asp:GridView ID="gvPesq" runat="server" AutoGenerateColumns="False" BackColor="White" BorderColor="#999999" BorderStyle="Solid" BorderWidth="1px" CellPadding="3" ForeColor="Black" GridLines="Vertical" DataSourceID="sqlFull">
                 <AlternatingRowStyle BackColor="#CCCCCC" />
-                <Columns>
-                  <asp:TemplateField HeaderText="Código" InsertVisible="False" SortExpression="id_veiculo">
-                  <EditItemTemplate>
-                    <asp:Label ID="Label1" runat="server" Text='<%# Eval("id_veiculo") %>'></asp:Label>
-                  </EditItemTemplate>
-                  <ItemTemplate>
-                    <asp:Label ID="Label1" runat="server" Text='<%# Bind("id_veiculo") %>'></asp:Label>
-                  </ItemTemplate>
-                </asp:TemplateField>
-                <asp:TemplateField HeaderText="CódigoCli" InsertVisible="False" SortExpression="id_cli">
-                <EditItemTemplate>
-                  <asp:Label ID="Label1" runat="server" Text='<%# Eval("id_cli") %>'></asp:Label>
-                </EditItemTemplate>
-                <ItemTemplate>
-                  <asp:Label ID="Label2" runat="server" Text='<%# Bind("id_cli") %>'></asp:Label>
-                </ItemTemplate>
-              </asp:TemplateField>
-              <asp:TemplateField HeaderText="Marca" SortExpression="fabricante_veiculo">
-              <EditItemTemplate>
-                <asp:TextBox ID="TextBox1" runat="server" Text='<%# Bind("fabricante_veiculo")%>'></asp:TextBox>
-              </EditItemTemplate>
-              <ItemTemplate>
-                <asp:Label ID="Label3" runat="server" Text='<%# Bind("fabricante_veiculo") %>'></asp:Label>
-              </ItemTemplate>
-              </asp:TemplateField>
-              <asp:TemplateField HeaderText="Modelo" SortExpression="modelo_veiculo">
-              <EditItemTemplate>
-                <asp:TextBox ID="TextBox2" runat="server" Text='<%# Bind("modelo_veiculo")%>'></asp:TextBox>
-              </EditItemTemplate>
-              <ItemTemplate>
-                <asp:Label ID="Label4" runat="server" Text='<%# Bind("modelo_veiculo") %>'></asp:Label>
-              </ItemTemplate>
-              </asp:TemplateField>
-              <asp:TemplateField HeaderText="Ano" SortExpression="ano_veiculo">
-              <EditItemTemplate>
-                <asp:TextBox ID="TextBox3" runat="server" Text='<%# Bind("ano_veiculo")%>'></asp:TextBox>
-              </EditItemTemplate>
-              <ItemTemplate>
-                <asp:Label ID="Label5" runat="server" Text='<%# Bind("ano_veiculo") %>'></asp:Label>
-              </ItemTemplate>
-              </asp:TemplateField>
-              <asp:TemplateField HeaderText="Placa" SortExpression="placa_veiculo">
-              <EditItemTemplate>
-                <asp:TextBox ID="TextBox4" runat="server" Text='<%# Bind("placa_veiculo")%>'></asp:TextBox>
-              </EditItemTemplate>
-              <ItemTemplate>
-                <asp:Label ID="Label6" runat="server" Text='<%# Bind("placa_veiculo") %>'></asp:Label>
-              </ItemTemplate>
-              </asp:TemplateField>
-              <asp:TemplateField HeaderText="Cor" SortExpression="cor_veiculo">
-              <EditItemTemplate>
-                <asp:TextBox ID="TextBox5" runat="server" Text='<%# Bind("cor_veiculo")%>'></asp:TextBox>
-              </EditItemTemplate>
-              <ItemTemplate>
-                <asp:Label ID="Label7" runat="server" Text='<%# Bind("cor_veiculo") %>'></asp:Label>
-              </ItemTemplate>
-              </asp:TemplateField>
-              </Columns>
               <FooterStyle BackColor="#CCCCCC" />
               <HeaderStyle BackColor="Black" Font-Bold="True" ForeColor="White" />
               <PagerStyle BackColor="#999999" ForeColor="Black" HorizontalAlign="Center" />
@@ -124,11 +68,15 @@
   </form>
 
   <asp:SqlDataSource
-    ID="sqlPlaca"
+    ID="sqlFull"
     runat="server"
     ConnectionString="<%$ ConnectionStrings:amaralguinchoConnectionString %>"
     ProviderName="<%$ ConnectionStrings:amaralguinchoConnectionString.ProviderName %>"
-    SelectCommand="SELECT * FROM veiculo">
+    SelectCommand="SELECT * FROM @tabela">
+    <SelectParameters>
+      <asp:Parameter name="tabela"/>
+      <asp:Parameter name="campo"/>
+    </SelectParameters>
   </asp:SqlDataSource>
 
   <script>
