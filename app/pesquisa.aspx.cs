@@ -14,79 +14,41 @@ public partial class app_pesquisa : System.Web.UI.Page
       if(!IsPostBack){
         Session["response"] = true;
       }
-      gettingDdl();
-    }
-
-    public void gettingDdl()
-    {
-      switch (selectTables.SelectedValue)
-      {
-        case "Cliente":
-            selectAtribute.Items.Clear();
-            selectAtribute.Items.Add(new ListItem("Nome","nome_cli"));
-            selectAtribute.Items.Add(new ListItem("Cpf","cpf_cli"));
-            selectAtribute.Items.Add(new ListItem("E-mail","email_cli"));
-            // Using table as sql constraint
-            sqlFull.SelectParameters["tabela"].DefaultValue = "cliente";
-            break;
-
-        case "Funcionário":
-            selectAtribute.Items.Clear();
-                selectAtribute.Items.Add(new ListItem("Nome", "nome_func"));
-                selectAtribute.Items.Add(new ListItem("Cpf", "cpf_func"));
-                selectAtribute.Items.Add(new ListItem("E-mail", "email_func"));
-                // Using table as sql constraint
-                sqlFull.SelectParameters["tabela"].DefaultValue = "funcionario";
-            break;
-        case "Frota":
-            selectAtribute.Items.Clear();
-                selectAtribute.Items.Add(new ListItem("Nome", "nome_frota"));
-                selectAtribute.Items.Add(new ListItem("Modelo", "modelo_frota"));
-                selectAtribute.Items.Add(new ListItem("Placa", "placa_frota"));
-                // Using table as sql constraint
-                sqlFull.SelectParameters["tabela"].DefaultValue = "frota";
-            break;
-        case "Veículo":
-            selectAtribute.Items.Clear();
-            selectAtribute.Items.Add(new ListItem("Modelo","modelo_veiculo"));
-            selectAtribute.Items.Add(new ListItem("Placa", "placa_veiculo"));
-            // Using table as sql constraint
-            sqlFull.SelectParameters["tabela"].DefaultValue = "veiculo";
-            break;
-        default:
-            break;
-      }
-      selectTables.DataBind();
-      DataView listFunc = (DataView)sqlFull.Select(DataSourceSelectArguments.Empty);
-      DataView listFrota = (DataView)sqlFull.Select(DataSourceSelectArguments.Empty);
-      DataView listVeiculo = (DataView)sqlFull.Select(DataSourceSelectArguments.Empty);
     }
 
     public void listaGrid(String pesq)
     {
-      DataTable tableCli = new DataTable();
+        DataView listaPlaca;
 
-      tableCli.Columns.Add("Nome");
-      tableCli.Columns.Add("Cpf");
-      tableCli.Columns.Add("E-mail");
+        listaPlaca = (DataView)sqlPlaca.Select(DataSourceSelectArguments.Empty);
 
-      tableCli.DefaultView.RowFilter = "nome_cli like '"+pesq+"%'";
+        DataTable novaTabela = new DataTable();
+        novaTabela.Columns.Add("id_veiculo", typeof(int));
+        novaTabela.Columns.Add("id_cli", typeof(int));
+        novaTabela.Columns.Add("fabricante_veiculo", typeof(string));
+        novaTabela.Columns.Add("modelo_veiculo",typeof(string));
+        novaTabela.Columns.Add("ano_veiculo",typeof(int));
+        novaTabela.Columns.Add("placa_veiculo", typeof(string));
+        novaTabela.Columns.Add("cor_veiculo",typeof(string));
 
-      DataView listCli = (DataView)sqlFull.Select(DataSourceSelectArguments.Empty);
+        novaTabela.DefaultView.RowFilter = "placa_veiculo like '"+pesq+"%'";
 
-      for(int i=0; i<listCli.Table.Rows.Count; i++)
-      {
-          DataRow linha = tableCli.NewRow();
+        for(int i=0; i<listaPlaca.Table.Rows.Count; i++)
+        {
+            DataRow linha = novaTabela.NewRow();
 
-          linha["nome_cli"] = Crypto.Decrypt(listCli.Table.Rows[i]["nome_cli"].ToString());
-          linha["cpf_cli"] = Crypto.Decrypt(listCli.Table.Rows[i]["cpf_cli"].ToString());
-          linha["email_cli"] = Crypto.Decrypt(listCli.Table.Rows[i]["email_cli"].ToString());
+            linha["id_veiculo"] = listaPlaca.Table.Rows[i]["id_veiculo"].ToString();
+            linha["id_cli"] = listaPlaca.Table.Rows[i]["id_cli"].ToString();
+            linha["fabricante_veiculo"] = Crypto.Decrypt(listaPlaca.Table.Rows[i]["fabricante_veiculo"].ToString());
+            linha["modelo_veiculo"] = Crypto.Decrypt(listaPlaca.Table.Rows[i]["modelo_veiculo"].ToString());
+            linha["ano_veiculo"] = Crypto.Decrypt(listaPlaca.Table.Rows[i]["ano_veiculo"].ToString());
+            linha["placa_veiculo"] = Crypto.Decrypt(listaPlaca.Table.Rows[i]["placa_veiculo"].ToString());
+            linha["cor_veiculo"] = Crypto.Decrypt(listaPlaca.Table.Rows[i]["cor_veiculo"].ToString());
 
-          tableCli.Rows.Add(linha);
-      }
-
-      gvPesq.DataSource = listCli;
-      gvPesq.DataBind();
+            novaTabela.Rows.Add(linha);
+        }
+        gvPesq.DataSource = novaTabela;
+        gvPesq.DataBind();
 
     }
 
