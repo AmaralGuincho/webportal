@@ -36,7 +36,6 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
 
     <!-- Animate.css -->
-
     <link rel="stylesheet" href="../style/animate.css">
 
     <!-- Web Application Manifest -->
@@ -48,6 +47,13 @@
 </head>
 <body>
   <style>
+  .invisible{
+    visibility: none;
+  }
+  .title{
+    font-weight: 300;
+    font-size: 64px;
+  }
     #view-source {
     position: fixed;
     display: block;
@@ -125,14 +131,18 @@
     <main class="main mdl-layout__content">
       <div class="container mdl-grid">
         <div class="mdl-cell mdl-cell--2-col mdl-cell--hide-tablet mdl-cell--hide-phone"></div>
-        <div class="content mdl-color--white mdl-shadow--4dp content mdl-color-text--grey-800 mdl-cell mdl-cell--8-col">
+        <div class="content invisible mdl-color--white mdl-shadow--4dp content mdl-color-text--grey-800 mdl-cell mdl-cell--8-col">
           <div class="crumbs mdl-color-text--grey-500 mdl-grid mdl-cell mdl-cell--12-col">
             <div runat="server" class="mdl-grid mdl-cell mdl-cell--12-col-desktop mdl-cell--8-col-tablet mdl-cell--2-col-offset-tablet">
-              <div class="mdl-cell mdl-cell--6-col-desktop mdl-cell--8-col-tablet">
-                <img src="../Resources/icon.png" />
+              <div class="mdl-cell mdl-cell--6-col-desktop mdl-cell--4-col-tablet mdl-cell--2-offset-tablet">
+                <img src="../Resources/icon.png" id="img" class="invisible"/>
               </div>
-              <div class="loginForm mdl-grid mdl-cell mdl-cell--6-col-desktop mdl-cell--8-col-tablet">
+              <div class="loginForm invisible mdl-grid mdl-cell mdl-cell--6-col-desktop mdl-cell--8-col-tablet">
                 <form runat="server">
+                  <span class="title mdl-layout-title mdl-color-text--grey-700 mdl-cell mdl-cell--12-col mdl-cell--hide-phone mdl-cell--hide-tablet">
+                    Entrar
+                  </span>
+                  <div class="mdl-layout-spacer"></div>
                   <div class="mdl-textfield mdl-textfield--floating-label mdl-js-textfield mdl-cell mdl-cell--12-col-desktop mdl-cell--8-col-tablet">
                     <asp:TextBox ID="txtUsername" runat="server" class="mdl-textfield__input"></asp:TextBox>
                     <label class="mdl-textfield__label" for="agendamentoOS">Nome de Usuário</label>
@@ -173,6 +183,34 @@
       function join() {
         alert("Peça autorização ao administrador!");
       }
+
+      window.addEventListener('load', function(){
+        // getting cards
+        var mainCard = document.querySelector('.content');
+        var loginForm = document.querySelector('.loginForm');
+        var image = document.querySelector('#img');
+
+        // animating mainCard
+        mainCard.classList.remove('invisible');
+        mainCard.classList.add('animated');
+        mainCard.classList.add('slideInDown');
+
+        // animating img after mainCard end
+        mainCard.addEventListener('animationend', function() {
+          image.classList.remove('invisible');
+          image.classList.add('animated');
+          image.classList.add('pulse');
+
+          // Animating login after Image is done
+          image.addEventListener('animationend', function(){
+            loginForm.classList.remove('invisible');
+            loginForm.classList.add('animated');
+            loginForm.classList.add('fadeIn');
+
+          });
+        });
+
+      });
     </script>
 </body>
 </html>
