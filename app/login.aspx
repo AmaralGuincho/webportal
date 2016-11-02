@@ -30,131 +30,145 @@
     <meta name="msapplication-TileColor" content="#FFF">
     <link rel="shortcut icon" href="../images/icon-white.png">
 
+    <!-- Roboto Font -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italiic,light,bolditalic,black,medium&apm;lang=en" rel="stylesheet" />
+    <!-- Google Material Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+
+    <!-- Animate.css -->
+
+    <link rel="stylesheet" href="../style/animate.css">
+
     <!-- Web Application Manifest -->
     <link rel="manifest" href="../manifest.json">
+    <!-- Material Design Lite -->
+    <link href="../material/material.min.css" rel="stylesheet" />
+
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </head>
 <body>
-    <style>
-        form{
-            display:block;
-            margin-left:auto;
-            margin-right:auto;
-            padding:25px;
-            width:400px;
-        }
-        .input{
-          font-size:18px;
-          font-family: 'Open Sans','Arial',sans-serif;
-          font-weight: 300;
-          padding:10px 10px 10px 5px;
-          display:block;
-          width:300px;
-          border:none;
-          border-bottom:1px solid #757575;
-          margin-bottom:18px;
-          display:block;
-          margin-left:auto;
-          margin-right:auto;
-        }
-        .input:focus{
-            outline:none;
-        }
-        h1{
-            margin-top:0;
-            margin-bottom:50px;
-            font-family:'Open Sans', Arial, sans-serif;
-            font-weight:300;
-            text-align:center;
-        }
-        .button{
-          display:block;
+  <style>
+    #view-source {
+    position: fixed;
+    display: block;
+    right: 0;
+    bottom: 0;
+    margin-right: 40px;
+    margin-bottom: 40px;
+    z-index: 900;
+    }
+    .ribbon {
+    width: 100%;
+    height: 40vh;
+    background-color: #3F51B5;
+    flex-shrink: 0;
+    }
+    .main {
+      margin-top: -35vh;
+      flex-shrink: 0;
+    }
 
-	        font:normal normal 300 1.3em 'Roboto';
-            font-family:'Roboto', Arial , sans-serif;
-	        text-decoration:none;
+    .header .mdl-layout__header-row {
+      padding-left: 40px;
+    }
 
-	        color:#177ac4;
-	        background-color:transparent;
-	        border:1px solid #177ac4;
-	        border-radius:8px;
+    .container {
+      max-width: 1600px;
+      width: calc(100% - 16px);
+      margin: 0 auto;
+    }
 
-	        padding: .3em 2.4em;
-	        margin:15px;
-            margin-right:auto;
-            margin-left:auto;
-            margin-top: 50px;
+    .content {
+      border-radius: 2px;
+      padding: 80px 56px;
+      margin-bottom: 80px;
+    }
 
-	        background-size: 200% 100%;
-	        background-image: linear-gradient(to right, transparent 50%, #177ac4 50%);
-	        transition: background-position .3s cubic-bezier(0.19, 1, 0.22, 1) .1s, color .5s ease 0s, background-color .5s ease;
-        }
+    .layout.is-small-screen .content {
+      padding: 40px 28px;
+    }
 
-         .button:hover, .button:active{
-	        color:rgba(255, 255, 255, 1);
-	        background-color: rgba(23, 122, 196, 0.99);
-	        background-position: -100% 100%;
-        }
-         .button:focus{
-             outline:none;
-         }
-         @media (max-width: 320px) {
-          form{
-            padding: 0;
-            width:300px;
-            margin:10px 5px;
-          }
-          h1{
-            width:200px;
-            margin:10px auto 80px auto;
-          }
-          .input{
-            width: 250px;
-          }
-          .button{
-            margin-top:50px;
-          }
-         }
-    </style>
-    <nav>
-        <ul>
-            <li>
-              <a href="../index.html" id="mainLogo">
-                <img src="../images/icon.png" />
-                <span>Amaral Guincho</span>
-              </a>
-            </li>
-            <li><a href="../index.html">Home</a></li>
-            <li><a onclick="join();">Cadastre-se</a></li>
-            <li><a href="http://amaralguincho.com.br">Contato</a></li>
-        </ul>
-    </nav>
-    <content>
-        <form runat="server">
-            <h1>Bem-Vindo</h1>
-            <div class="group">
-                <asp:TextBox ID="txtUsername" runat="server" CssClass="input" placeholder="Nome de Usuario" type="email"></asp:TextBox>
-                <span class="highlight"></span>
-                <span class="bar"></span>
+    .content h3 {
+      margin-top: 48px;
+    }
+
+    .footer {
+      padding-left: 40px;
+    }
+
+    .footer .mdl-mini-footer--link-list a {
+      font-size: 13px;
+    }
+
+    div img{
+      display: block;
+      margin: auto;
+
+      height: auto;
+      max-height: 100%;
+
+      width: auto;
+      max-width: 100%;
+    }
+  </style>
+  <div class="layout mdl-layout mdl-layout--fixed-header mdl-js-layout mdl-color--grey-100">
+    <header class="header mdl-layout__header mdl-layout__header--scroll mdl-color--grey-100 mdl-color-text--grey-800">
+      <div class="mdl-layout__header-row">
+        <span class="mdl-layout-title mdl-color-text--grey-600">
+          <i class="material-icons">supervisor_account</i>
+          Portal do Funcionário
+        </span>
+        <div class="mdl-layout-spacer"></div>
+      </div>
+    </header>
+    <div class="ribbon"></div>
+    <main class="main mdl-layout__content">
+      <div class="container mdl-grid">
+        <div class="mdl-cell mdl-cell--2-col mdl-cell--hide-tablet mdl-cell--hide-phone"></div>
+        <div class="content mdl-color--white mdl-shadow--4dp content mdl-color-text--grey-800 mdl-cell mdl-cell--8-col">
+          <div class="crumbs mdl-color-text--grey-500 mdl-grid mdl-cell mdl-cell--12-col">
+            <div runat="server" class="mdl-grid mdl-cell mdl-cell--12-col-desktop mdl-cell--8-col-tablet mdl-cell--2-col-offset-tablet">
+              <div class="mdl-cell mdl-cell--6-col-desktop mdl-cell--8-col-tablet">
+                <img src="../Resources/icon.png" />
+              </div>
+              <div class="loginForm mdl-grid mdl-cell mdl-cell--6-col-desktop mdl-cell--8-col-tablet">
+                <form runat="server">
+                  <div class="mdl-textfield mdl-textfield--floating-label mdl-js-textfield mdl-cell mdl-cell--12-col-desktop mdl-cell--8-col-tablet">
+                    <asp:TextBox ID="txtUsername" runat="server" class="mdl-textfield__input"></asp:TextBox>
+                    <label class="mdl-textfield__label" for="agendamentoOS">Nome de Usuário</label>
+                  </div>
+                  <div class="mdl-textfield mdl-textfield--floating-label mdl-js-textfield mdl-cell mdl-cell--12-col-desktop mdl-cell--8-col-tablet">
+                    <asp:TextBox ID="txtPassword" runat="server" class="mdl-textfield__input" type="password"></asp:TextBox>
+                    <label class="mdl-textfield__label" for="agendamentoOS">Senha</label>
+                  </div>
+                  <div class="g-recaptcha hidden mdl-cell mdl-cell--4-col--offset" data-sitekey="6LfO2woUAAAAACq39JNsQgZ72fKH226foaZeTK1o"></div>
+                  <asp:Button Text="entrar" onclick="login" runat="server"
+                   class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-cell mdl-cell--5-col-desktop mdl-cell--8-offset-desktop mdl-cell--2-offset-tablet">
+                  </asp:Button>
+                </form>
+              </div>
             </div>
-            <div class="group">
-                <asp:TextBox ID="txtPassword" runat="server" CssClass="input" placeholder="Senha" TextMode="Password" type="password"></asp:TextBox>
-                <span class="highlight"></span>
-                <span class="bar"></span>
-            </div>
-            <asp:button text="Entrar" runat="server" CssClass="button" OnClick="loginSubmit_Click" />
-            <asp:SqlDataSource ID="SqlLogin" runat="server" ConnectionString="<%$ ConnectionStrings:amaralguinchoConnectionString %>" ProviderName="<%$ ConnectionStrings:amaralguinchoConnectionString.ProviderName %>" SelectCommand="SELECT id_login, username_login, password_login, id_func FROM login WHERE (username_login = @LOGIN) AND (password_login = @SENHA)">
-                <SelectParameters>
-                    <asp:Parameter Name="LOGIN" />
-                    <asp:Parameter Name="SENHA" />
-                </SelectParameters>
-            </asp:SqlDataSource>
-            <asp:SqlDataSource ID="SqlFunc" runat="server" ConnectionString="<%$ ConnectionStrings:amaralguinchoConnectionString %>" ProviderName="<%$ ConnectionStrings:amaralguinchoConnectionString.ProviderName %>" SelectCommand="SELECT id_func, id_cargo, nome_func, sobrenome_func, dtnasc_func, cep_func, cpf_func, dtcont_func, sx_func, tel_func, email_func, uf_func, cid_func, img_func FROM funcionario WHERE (id_func = @ID)">
-                <SelectParameters>
-                    <asp:SessionParameter Name="@ID" SessionField="log" />
-                </SelectParameters>
-            </asp:SqlDataSource>
-        </form>
-    </content>
+          </div>
+      </div>
+    </main>
+  </div>
+  <!-- Material Design Scripts src -->
+  <script src="../material/material.min.js"></script>
+
+
+
+    <asp:SqlDataSource ID="SqlLogin" runat="server" ConnectionString="<%$ ConnectionStrings:amaralguinchoConnectionString %>" ProviderName="<%$ ConnectionStrings:amaralguinchoConnectionString.ProviderName %>" SelectCommand="SELECT id_login, username_login, password_login, id_func FROM login WHERE (username_login = @LOGIN) AND (password_login = @SENHA)">
+        <SelectParameters>
+            <asp:Parameter Name="LOGIN" />
+            <asp:Parameter Name="SENHA" />
+        </SelectParameters>
+    </asp:SqlDataSource>
+    <asp:SqlDataSource ID="SqlFunc" runat="server" ConnectionString="<%$ ConnectionStrings:amaralguinchoConnectionString %>" ProviderName="<%$ ConnectionStrings:amaralguinchoConnectionString.ProviderName %>" SelectCommand="SELECT id_func, id_cargo, nome_func, sobrenome_func, dtnasc_func, cep_func, cpf_func, dtcont_func, sx_func, tel_func, email_func, uf_func, cid_func, img_func FROM funcionario WHERE (id_func = @ID)">
+        <SelectParameters>
+            <asp:SessionParameter Name="@ID" SessionField="log" />
+        </SelectParameters>
+    </asp:SqlDataSource>
+
     <script type="text/javascript">
       function join() {
         alert("Peça autorização ao administrador!");
