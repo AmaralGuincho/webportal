@@ -564,6 +564,17 @@
     </InsertParameters>
   </asp:SqlDataSource>
 
+  <asp:SqlDataSource ID="userLog" runat="server"
+  ConnectionString="<%$ ConnectionStrings:amaralguinchoConnectionString %>"
+  ProviderName="<%$ ConnectionStrings:amaralguinchoConnectionString.ProviderName %>"
+  InsertCommand="INSERT INTO userlog VALUES (null,@funcionario,@acao,@time)">
+    <InsertParameters>
+      <asp:Parameter Name="funcionario"/>
+      <asp:Parameter Name="acao"/>
+      <asp:Parameter Name="time"/>
+    </InsertParameters>
+  </asp:SqlDataSource>
+
   <button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored mdl-color--red mdl-color-text--white" id="fabButton">
     <i class="material-icons">add</i>
     <span class="visuallyhidden">Add</span>

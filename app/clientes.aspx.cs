@@ -75,6 +75,21 @@ public partial class app_clientes : System.Web.UI.Page
 
 
       cliente.Insert();
+
+      // AUDITORIA
+      // Gravando Ação no `userlog`
+      string curretUser = Session["log"].ToString();
+      string acao = "Insert Client";
+      // Transformando a data no padrão internacional
+      string currentDate = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+
+      userLog.InsertParameters["funcionario"].DefaultValue = (curretUser);
+      userLog.InsertParameters["acao"].DefaultValue = Crypto.Encrypt(acao);
+      userLog.InsertParameters["time"].DefaultValue = Crypto.Encrypt(currentDate);
+
+      // Inserindo as informações
+      userLog.Insert();
+
       Response.Redirect("home.aspx");
     }
 }

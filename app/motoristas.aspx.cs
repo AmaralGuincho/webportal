@@ -111,12 +111,26 @@ public partial class app_motoristas : System.Web.UI.Page
         novoMotorista.InsertParameters["dtValidadeHab"].DefaultValue = null;
       }
 
-      novoMotorista.InsertParameters["nomeHab"].DefaultValue = Crypto.Encrypt(nomeHabMot.Text);
-      novoMotorista.InsertParameters["idHab"].DefaultValue = (idHabMot.Text);
-      novoMotorista.InsertParameters["registroHab"].DefaultValue = Crypto.Encrypt(registroHabMot.Text);
-      novoMotorista.InsertParameters["localHab"].DefaultValue = Crypto.Encrypt(localGeradoHabMot.Text);
-      //Inserindo Habilitação
-      novoMotorista.Insert();
+    novoMotorista.InsertParameters["nomeHab"].DefaultValue = Crypto.Encrypt(nomeHabMot.Text);
+    novoMotorista.InsertParameters["idHab"].DefaultValue = (idHabMot.Text);
+    novoMotorista.InsertParameters["registroHab"].DefaultValue = Crypto.Encrypt(registroHabMot.Text);
+    novoMotorista.InsertParameters["localHab"].DefaultValue = Crypto.Encrypt(localGeradoHabMot.Text);
+    //Inserindo Habilitação
+    novoMotorista.Insert();
+
+    // AUDITORIA
+    // Gravando Ação no `userlog`
+    string curretUser = Session["log"].ToString();
+    string acao = "Insert Motorista";
+    // Transformando a data no padrão internacional
+    string currentDate = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+
+    userLog.InsertParameters["funcionario"].DefaultValue = (curretUser);
+    userLog.InsertParameters["acao"].DefaultValue = Crypto.Encrypt(acao);
+    userLog.InsertParameters["time"].DefaultValue = Crypto.Encrypt(currentDate);
+
+    // Inserindo as informações
+    userLog.Insert();
 
     Response.Redirect("~/app/home.aspx");
   }
