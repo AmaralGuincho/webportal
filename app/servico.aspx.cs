@@ -293,7 +293,7 @@ public partial class app_servico : System.Web.UI.Page
         obsViagemConsulta.Text = Crypto.Decrypt(consulta.Table.Rows[0]["obs_viagem"].ToString());
 
         //StatusOS
-        statusOsConsulta.Text = Crypto.Decrypt(consulta.Table.Rows[0]["status_os"].ToString());
+        statusOsConsulta.Text = consulta.Table.Rows[0]["status_os"].ToString();
 
         //Sinistro
         numeroSinistroConsulta.Text = Crypto.Decrypt(consulta.Table.Rows[0]["sinistro"].ToString());
