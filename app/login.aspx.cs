@@ -16,6 +16,7 @@ public partial class websites_login : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
       if(!IsPostBack){
+        Response.Write(Crypto.Encrypt("0000").ToString());
         if(Session["log"] != null){
           Response.Redirect("home.aspx");
         }else{
