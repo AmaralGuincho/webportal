@@ -12,6 +12,8 @@ public partial class websites_login : System.Web.UI.Page
 {
   // Generating a Decryptor
   CsharpCryptography Crypto = new CsharpCryptography("ETEP");
+  Email mail = new Email();
+
 
     protected void Page_Load(object sender, EventArgs e)
     {
@@ -101,5 +103,68 @@ public partial class websites_login : System.Web.UI.Page
         // ERRO NA CONEXÃO COM O BANCO DE DADOS
         Response.Write("<script>function dbError() {if (confirm('Ocorreu um erro no banco de dados interno. Você pode detalhar o erro para nossos desenvolvedores?')) {window.open('mailto:ioetep@gmail.com?subject=Erro+no+Banco+de+Dados&body=Por+favor+detalhe+o+que+estava+fazendo+ao+se+deparar+com+o+erro');}else{alert('Uma menssagem de erro genérica foi enviada ao Desenvolvedor');}} dbError();</script>");
       }
+    }
+
+    public void forgotPass(object sender, EventArgs e){
+      string email = txtUsername.Text;
+
+      DataView listaFunc = (DataView)sqlForgotPass.Select(DataSourceSelectArguments.Empty);
+      // Criando novo dataTAbe
+      DataTable uncryptedTable = new DataTable();
+      uncryptedTable.Columns.Add("id_func", typeof(int));
+      uncryptedTable.Columns.Add("id_cargo", typeof(int));
+      uncryptedTable.Columns.Add("nome_func", typeof(string));
+      uncryptedTable.Columns.Add("sobrenome_func", typeof(string));
+      uncryptedTable.Columns.Add("dtnasc_func",typeof(string));
+      uncryptedTable.Columns.Add("cep_func",typeof(string));
+      uncryptedTable.Columns.Add("cpf_func", typeof(string));
+      uncryptedTable.Columns.Add("dtcont_func",typeof(string));
+      uncryptedTable.Columns.Add("sx_func", typeof(string));
+      uncryptedTable.Columns.Add("tel_func", typeof(string));
+      uncryptedTable.Columns.Add("email_func",typeof(string));
+      uncryptedTable.Columns.Add("residencia_func",typeof(string));
+      uncryptedTable.Columns.Add("bairro_func", typeof(string));
+      uncryptedTable.Columns.Add("uf_func",typeof(string));
+      uncryptedTable.Columns.Add("cid_func", typeof(string));
+      uncryptedTable.Columns.Add("img_func", typeof(string));
+
+      uncryptedTable.DefaultView.RowFilter = "email_func like '"+email+"%'";
+
+      for(int i=0; i<listaFunc.Table.Rows.Count; i++)
+      {
+        DataRow linha = uncryptedTable.NewRow();
+
+        linha["id_func"] = listaFunc.Table.Rows[i]["id_func"].ToString();
+        linha["id_cargo"] = listaFunc.Table.Rows[i]["id_cargo"].ToString();
+        linha["nome_func"] = Crypto.Decrypt(listaFunc.Table.Rows[i]["nome_func"].ToString());
+        linha["sobrenome_func"] = Crypto.Decrypt(listaFunc.Table.Rows[i]["sobrenome_func"].ToString());
+        linha["dtnasc_func"] = Crypto.Decrypt(listaFunc.Table.Rows[i]["dtnasc_func"].ToString());
+        linha["cep_func"] = Crypto.Decrypt(listaFunc.Table.Rows[i]["cep_func"].ToString());
+        linha["cpf_func"] = Crypto.Decrypt(listaFunc.Table.Rows[i]["cpf_func"].ToString());
+        linha["dtcont_func"] = Crypto.Decrypt(listaFunc.Table.Rows[i]["dtcont_func"].ToString());
+        linha["sx_func"] = Crypto.Decrypt(listaFunc.Table.Rows[i]["sx_func"].ToString());
+        linha["tel_func"] = Crypto.Decrypt(listaFunc.Table.Rows[i]["tel_func"].ToString());
+        linha["email_func"] = Crypto.Decrypt(listaFunc.Table.Rows[i]["email_func"].ToString());
+        linha["residencia_func"] = Crypto.Decrypt(listaFunc.Table.Rows[i]["residencia_func"].ToString());
+        linha["bairro_func"] = Crypto.Decrypt(listaFunc.Table.Rows[i]["bairro_func"].ToString());
+        linha["uf_func"] = Crypto.Decrypt(listaFunc.Table.Rows[i]["uf_func"].ToString());
+        linha["cid_func"] = Crypto.Decrypt(listaFunc.Table.Rows[i]["cid_func"].ToString());
+        linha["img_func"] = listaFunc.Table.Rows[i]["img_func"].ToString();
+
+        uncryptedTable.Rows.Add(linha);
+      };
+
+      DataView funcionarios = new DataView(uncryptedTable);
+
+      string newPassword = Membership.GeneratePassword(12,1);
+
+      sqlUpdateLogin.UpdateParameters["newpassword"].DefaultValue = newPassword.ToString();
+      sqlUpdateLogin.UpdateParameters["func"].DefaultValue = funcionarios.Table.Rows[0]["id_func"].ToString();
+
+      string destinatario = funcionarios.Table.Rows[0]["email_func"].ToString();
+      string nome = funcionarios.Table.Rows[0]["nome_func"].ToString();
+      string login = funcionarios.Table.Rows[0]["email_func"].ToString();
+      string senha = newPassword.ToString();
+      Email.sendForgotPass(destinatario, nome, login, senha);
     }
 }

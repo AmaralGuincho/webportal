@@ -154,6 +154,9 @@
                   <asp:Button id="btnLogin" type="submit" Text="entrar" onclick="login" runat="server"
                    class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-cell mdl-cell--2-offset-desktop mdl-cell--2-offset-tablet">
                   </asp:Button>
+                  <asp:Button id="btnForgotPass" type="submit" Text="Esqueceu sua senha?" onclick="forgotPass" runat="server"
+                   class="hidden mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-cell mdl-cell--2-offset-desktop mdl-cell--2-offset-tablet">
+                  </asp:Button>
                 </form>
               </div>
           </div>
@@ -187,9 +190,27 @@
       </InsertParameters>
     </asp:SqlDataSource>
 
+    <asp:SqlDataSource ID="sqlForgotPass" runat="server"
+    ConnectionString="<%$ ConnectionStrings:amaralguinchoConnectionString %>"
+    ProviderName="<%$ ConnectionStrings:amaralguinchoConnectionString.ProviderName %>"
+    SelectCommand="SELECT * FROM funcionario">
+    </asp:SqlDataSource>
+
+    <asp:SqlDataSource ID="sqlUpdateLogin" runat="server"
+    ConnectionString="<%$ ConnectionStrings:amaralguinchoConnectionString %>"
+    ProviderName="<%$ ConnectionStrings:amaralguinchoConnectionString.ProviderName %>"
+    UpdateCommand="UPDATE login SET password_login = @newpassword where id_func = @func">
+      <SelectParameters>
+        <asp:Parameter Name="newpassword"/>
+        <asp:Parameter Name="func"/>
+      </SelectParameters>
+    </asp:SqlDataSource>
+
+
     <script type="text/javascript">
       var captcha = document.getElementById('googleCaptcha');
       var loginButton = document.getElementById('btnLogin');
+      var buttonForgotPass = document.getElementById("btnForgotPass");
 
       function checkCaptcha() {
         // Getting Variable from Server
@@ -197,6 +218,7 @@
         // Checking number of wrong attempts
         if (logAttempt >= 3) {
           captcha.classList.remove('hidden');
+          buttonForgotPass.classList.remove('hidden');
           loginButton.classList.add('invisible');
         }
 
@@ -204,7 +226,7 @@
 
       var inFactNotARobot = function () {
         captcha.classList.add('animated');
-        captcha.classList.add('hinge');
+        captcha.classList.add('fadeOutDown');
         captcha.addEventListener('animationend',function() {
           captcha.classList.add('invisible');
           loginButton.classList.remove('invisible');
