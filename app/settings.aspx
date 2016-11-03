@@ -44,8 +44,9 @@
       </div>
       <div class="card-content mdl-card--border mdl-grid mdl-cell mdl-cell--12-col">
         <div class="mdl-textfield mdl-js-textfield mdl-cell mdl-cell--6-col mdl-cell--3-offset-desktop">
-          <asp:TextBox class="mdl-textfield__input" id="novaSenha" type="password" runat="server"></asp:TextBox>
+          <input class="mdl-textfield__input" id="novaSenha" type="password" pattern="[]*"></input>
           <label class="mdl-textfield__label" for="novaSenha">Nova Senha</label>
+          <span class="mdl-textfield__error" id="passwordFeedBack"></span>
         </div>
       </div>
       <div class="mdl-card__actions mdl-grid mdl-cell mdl-cell--4-col mdl-cell--4-offset">
@@ -248,7 +249,7 @@
   </SelectParameters>
 </asp:SqlDataSource>
 
-
+<script src="../scripts/owasap.js" charset="utf-8"></script>
 
 <script type="text/javascript">
 // Shell Title
@@ -262,8 +263,35 @@ var botaoAlterarSenha = document.getElementById('changePassword');
 var botaoReportarErro = document.getElementById('reportarErro');
 var fabButton = document.querySelector('#fabButton');
 
+var inputSenha = document.getElementById('novaSenha');
+var passwordFeedBack = document.getElementById('passwordFeedBack');
+
+inputSenha.addEventListener('keyup', function() {
+
+  var errorsLegth = owaspPasswordStrengthTest.test(novaSenha.value).passedTests.length;
+  // var passwordError = owaspPasswordStrengthTest.test(novaSenha.value).errors[0]
+
+  var forcaDaSenha = function() {
+    if(errorsLegth <= 5){
+      return "fraca";
+    }else if (errorsLegth <= 3) {
+      return "média";
+    }else if (errorsLegth <= 1) {
+      return 'boa';
+    }else if (errorsLegth == 0) {
+      return "Exelente";
+    }else{
+      return "ok";
+    }
+  }
+
+   passwordFeedBack.innerHTML = owaspPasswordStrengthTest.test(novaSenha.value).errors[0]
+   + ' (força da senha: '+forcaDaSenha()+' )'
+  // passwordFeedBack.innerHTML = passwordMessage();
+});
+
 // Changing Shell Title
-  window.addEventListener('load' ()=>{
+  window.addEventListener('load', function(){
     shellTitle.innerHTML = 'Ajustes';
     passwordCard.style.display = 'none';
     updateAccount.style.display = 'none';
