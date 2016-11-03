@@ -16,6 +16,7 @@ public partial class websites_login : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
       if(!IsPostBack){
+        Response.Write(Crypto.Encrypt("0000").ToString());
         if(Session["log"] != null){
           Response.Redirect("home.aspx");
         }else{
@@ -64,6 +65,20 @@ public partial class websites_login : System.Web.UI.Page
             //Guardando o id do Funcionario
             Session["log"] = dvFunc.Table.Rows[0]["id_func"].ToString();
             Response.Redirect("~/app/home.aspx");
+
+            // AUDITORIA
+            // Gravando Ação no `userlog`
+            string curretUser = Session["log"].ToString();
+            string acao = "Seção Iniciada";
+            // Transformando a data no padrão internacional
+            string currentDate = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+
+            userLog.InsertParameters["funcionario"].DefaultValue = Crypto.Encrypt(curretUser);
+            userLog.InsertParameters["acao"].DefaultValue = Crypto.Encrypt(acao);
+            userLog.InsertParameters["time"].DefaultValue = Crypto.Encrypt(currentDate);
+
+            // Inserindo as informações
+            userLog.Insert();
         }
         //Falha na Autênticação
         else{

@@ -176,6 +176,17 @@
         </SelectParameters>
     </asp:SqlDataSource>
 
+    <asp:SqlDataSource ID="userLog" runat="server"
+    ConnectionString="<%$ ConnectionStrings:amaralguinchoConnectionString %>"
+    ProviderName="<%$ ConnectionStrings:amaralguinchoConnectionString.ProviderName %>"
+    InsertCommand="INSERT INTO userlog VALUES (null,@funcionario,@acao,@time)">
+      <InsertParameters>
+        <asp:Parameter Name="funcionario"/>
+        <asp:Parameter Name="acao"/>
+        <asp:Parameter Name="time"/>
+      </InsertParameters>
+    </asp:SqlDataSource>
+
     <script type="text/javascript">
       var captcha = document.getElementById('googleCaptcha');
       var loginButton = document.getElementById('btnLogin');
