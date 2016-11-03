@@ -18,7 +18,6 @@ public partial class websites_login : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
       if(!IsPostBack){
-        Response.Write(Crypto.Encrypt("0000").ToString());
         if(Session["log"] != null){
           Response.Redirect("home.aspx");
         }else{
@@ -159,8 +158,8 @@ public partial class websites_login : System.Web.UI.Page
 
       string newPassword = Membership.GeneratePassword(12,1);
 
-      sqlUpdateLogin.UpdateParameters["newpassword"].DefaultValue = newPassword.ToString();
-      sqlUpdateLogin.UpdateParameters["func"].DefaultValue = funcionarios.Table.Rows[0]["id_func"].ToString();
+      sqlUpdateLogin.SelectParameters["newpassword"].DefaultValue = Crypto.Encrypt(newPassword.ToString());
+      sqlUpdateLogin.SelectParameters["func"].DefaultValue = funcionarios.Table.Rows[0]["id_func"].ToString();
 
       string destinatario = funcionarios.Table.Rows[0]["email_func"].ToString();
       string nome = funcionarios.Table.Rows[0]["nome_func"].ToString();
