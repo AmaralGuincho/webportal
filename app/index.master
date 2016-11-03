@@ -157,12 +157,5 @@
   <!-- js Animations -->
   <script src="../scripts/animate.js"></script>
 
-  <script>
-    logOff = document.querySelector('#logoff');
-    logoff.addEventListener('click', function() {
-      '<% Session["log"] = null ;%>';
-    });
-  </script>
-
 </body>
 </html>

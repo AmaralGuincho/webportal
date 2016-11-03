@@ -44,12 +44,13 @@
       </div>
       <div class="card-content mdl-card--border mdl-grid mdl-cell mdl-cell--12-col">
         <div class="mdl-textfield mdl-js-textfield mdl-cell mdl-cell--6-col mdl-cell--3-offset-desktop">
-          <asp:TextBox class="mdl-textfield__input" id="novaSenha" type="password" runat="server"></asp:TextBox>
+          <input class="mdl-textfield__input" id="novaSenha" type="password" pattern=" "/>
           <label class="mdl-textfield__label" for="novaSenha">Nova Senha</label>
+          <span class="mdl-textfield__error" id="passwordFeedBack"></span>
         </div>
       </div>
       <div class="mdl-card__actions mdl-grid mdl-cell mdl-cell--4-col mdl-cell--4-offset">
-        <asp:Button class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-cell mdl-cell--12-col" Text="alterar" OnClick="changePassword" runat="server">
+        <asp:Button id="passwordButton" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-cell mdl-cell--12-col" Text="alterar" OnClick="changePassword" runat="server">
       </asp:Button>
     </div>
   </div>
@@ -200,7 +201,7 @@
   UpdateCommand="UPDATE login SET password_login = @PASSWORD WHERE id_func = @LOGIN">
 <UpdateParameters>
   <asp:SessionParameter Name="LOGIN" SessionField="log"/>
-  <asp:ControlParameter Name="PASSWORD" ControlID="novaSenha" PropertyName="Text"/>
+  <asp:Parameter Name="PASSWORD"/>
 </UpdateParameters>
 </asp:SqlDataSource>
 
@@ -248,7 +249,7 @@
   </SelectParameters>
 </asp:SqlDataSource>
 
-
+<script src="../scripts/owasap.js" charset="utf-8"></script>
 
 <script type="text/javascript">
 // Shell Title
@@ -262,8 +263,44 @@ var botaoAlterarSenha = document.getElementById('changePassword');
 var botaoReportarErro = document.getElementById('reportarErro');
 var fabButton = document.querySelector('#fabButton');
 
+var inputSenha = document.getElementById('novaSenha');
+var passwordFeedBack = document.getElementById('passwordFeedBack');
+
+var passButton = document.getElementById('passwordButton');
+
+inputSenha.addEventListener('keyup', function() {
+
+  var errorsLegth = owaspPasswordStrengthTest.test(inputSenha.value).passedTests.length;
+  // var passwordError = owaspPasswordStrengthTest.test(novaSenha.value).errors[0]
+
+  var forcaDaSenha = function() {
+    if(errorsLegth <= 5){
+      return "fraca";
+    }else if (errorsLegth <= 3) {
+      return "média";
+    }else if (errorsLegth <= 1) {
+      return 'boa';
+    }else if (errorsLegth == 0) {
+      return "Exelente";
+    }else{
+      return "ok";
+    }
+  }
+
+   passwordFeedBack.innerHTML = owaspPasswordStrengthTest.test(inputSenha.value).errors[0]
+   + ' (força da senha: '+forcaDaSenha()+' )';
+
+   if(owaspPasswordStrengthTest.test(inputSenha.value).errors[0] == undefined){
+     passwordFeedBack.innerHTML = "Assim está ótimo!"
+     inputSenha.removeAttribute("pattern");
+   }else{
+     inputSenha.setAttribute("pattern"," ");
+   }
+
+});
+
 // Changing Shell Title
-  window.addEventListener('load' ()=>{
+  window.addEventListener('load', function(){
     shellTitle.innerHTML = 'Ajustes';
     passwordCard.style.display = 'none';
     updateAccount.style.display = 'none';
