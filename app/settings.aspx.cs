@@ -81,13 +81,15 @@ public partial class app_settings : System.Web.UI.Page
 
   protected void changePassword(object sender, EventArgs e){
     try{
-      string newPass = Request.QueryString["novaSenha"];
+      // Getting New pass from UI
+      string newPass = novaSenhaASP.Text;
+      // Encrypting new pass
       sqlChangePassword.UpdateParameters["PASSWORD"].DefaultValue =
       Crypto.Encrypt(newPass);
+      // updating Query
       sqlChangePassword.Update();
-      // novaSenha.Text = String.Empty;
-      Response.Write("<script>alert('Senha Alterada!')</script>");
-    }
-    catch(Exception ex){}
+      novaSenhaASP.Text = String.Empty;
+      Response.Write("<script>alert('Senha Alterada')</script>");
+    }catch(Exception ex){}
   }
 }

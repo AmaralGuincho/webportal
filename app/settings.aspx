@@ -44,7 +44,7 @@
       </div>
       <div class="card-content mdl-card--border mdl-grid mdl-cell mdl-cell--12-col">
         <div class="mdl-textfield mdl-js-textfield mdl-cell mdl-cell--6-col mdl-cell--3-offset-desktop">
-          <input class="mdl-textfield__input" id="novaSenha" type="password" pattern=" "/>
+          <asp:TextBox id="novaSenhaASP" class="mdl-textfield__input" type="password" pattern=" " runat="server"/>
           <label class="mdl-textfield__label" for="novaSenha">Nova Senha</label>
           <span class="mdl-textfield__error" id="passwordFeedBack"></span>
         </div>
@@ -263,13 +263,13 @@ var botaoAlterarSenha = document.getElementById('changePassword');
 var botaoReportarErro = document.getElementById('reportarErro');
 var fabButton = document.querySelector('#fabButton');
 
-var inputSenha = document.getElementById('novaSenha');
+// var inputSenha = document.getElementById('novaSenha');
+var inputSenha = document.getElementById("<%= novaSenhaASP.ClientID %>");
 var passwordFeedBack = document.getElementById('passwordFeedBack');
 
 var passButton = document.getElementById('passwordButton');
 
 inputSenha.addEventListener('keyup', function() {
-
   var errorsLegth = owaspPasswordStrengthTest.test(inputSenha.value).passedTests.length;
   // var passwordError = owaspPasswordStrengthTest.test(novaSenha.value).errors[0]
 
@@ -314,5 +314,9 @@ function displaySwitch(card) {
     card.classList.toggle('slideOutDown');
   }
 }
+
+passbutton.addEventListener('click', function(){
+
+});
 </script>
 </asp:Content>
