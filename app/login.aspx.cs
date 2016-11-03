@@ -18,6 +18,10 @@ public partial class websites_login : System.Web.UI.Page
       if(!IsPostBack){
         if(Session["logOn"] != null){
           Response.Redirect("home.aspx");
+        }else{
+          if(Session["failedLogAttempts"] == null){
+            Session["failedLogAttempts"] = 0;
+          }
         }
       }
     }
@@ -67,6 +71,16 @@ public partial class websites_login : System.Web.UI.Page
           txtUsername.Text = String.Empty;
           txtPassword.Text = String.Empty;
           Response.Write("<script>alert('Login ou senha incorretos!');</script>");
+
+          // Adicionando uma tentativa na session logAttempt
+          if (Session["failedLogAttempts"] != null) {
+            int failedAttempts = Convert.ToInt32(Session["failedLogAttempts"].ToString());
+            string jsFailed = failedAttempts.ToString();
+            Session["failedLogAttempts"] = failedAttempts + 1;
+          }else{
+            // Adicionando a primeira falha
+            Session["failedLogAttempts"] = 1;
+          }
         }
       }
       catch(Exception ex){

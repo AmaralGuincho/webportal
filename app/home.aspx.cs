@@ -349,6 +349,9 @@ public partial class app_home : System.Web.UI.Page
   protected void Page_Load(object sender, EventArgs e){
     //Preventing solution to crash
     if(!IsPostBack){
+      // Cleanning any possible failed Login attempts
+      Session["failedLogAttempts"] = null;
+      
       //Loading Cards with most recent infos
       loadRecentCliente();
       loadServicoAberto();
@@ -366,7 +369,7 @@ public partial class app_home : System.Web.UI.Page
         Session["serverMessage"] = "Logado como " + userFullName;
       }
       catch(Exception ex){
-        
+
       }
 
     }

@@ -42,8 +42,6 @@
     <link rel="manifest" href="../manifest.json">
     <!-- Material Design Lite -->
     <link href="../material/material.min.css" rel="stylesheet" />
-
-    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </head>
 <body>
   <style>
@@ -133,39 +131,38 @@
         <div class="mdl-cell mdl-cell--2-col mdl-cell--hide-tablet mdl-cell--hide-phone"></div>
         <div class="content invisible mdl-color--white mdl-shadow--4dp content mdl-color-text--grey-800 mdl-cell mdl-cell--8-col">
           <div class="crumbs mdl-color-text--grey-500 mdl-grid mdl-cell mdl-cell--12-col">
-            <div runat="server" class="mdl-grid mdl-cell mdl-cell--12-col-desktop mdl-cell--8-col-tablet mdl-cell--2-col-offset-tablet">
               <div class="mdl-cell mdl-cell--6-col-desktop mdl-cell--4-col-tablet mdl-cell--2-offset-tablet">
                 <img src="../Resources/icon.png" id="img" class="invisible"/>
               </div>
               <div class="loginForm invisible mdl-grid mdl-cell mdl-cell--6-col-desktop mdl-cell--8-col-tablet">
-                <form runat="server">
+                <form runat="server" action="?" method="POST" class="mdl-cell mdl-cell--12-col">
                   <span class="title mdl-layout-title mdl-color-text--grey-700 mdl-cell mdl-cell--12-col mdl-cell--hide-phone mdl-cell--hide-tablet">
                     Entrar
                   </span>
                   <div class="mdl-layout-spacer"></div>
-                  <div class="mdl-textfield mdl-textfield--floating-label mdl-js-textfield mdl-cell mdl-cell--12-col-desktop mdl-cell--8-col-tablet">
+                  <div class="mdl-textfield mdl-textfield--floating-label mdl-js-textfield mdl-cell mdl-cell--12-col-desktop mdl-cell--6-col-tablet mdl-cell--1-offset-tablet">
                     <asp:TextBox ID="txtUsername" runat="server" class="mdl-textfield__input"></asp:TextBox>
                     <label class="mdl-textfield__label" for="agendamentoOS">Nome de Usuário</label>
                   </div>
-                  <div class="mdl-textfield mdl-textfield--floating-label mdl-js-textfield mdl-cell mdl-cell--12-col-desktop mdl-cell--8-col-tablet">
+                  <div class="mdl-textfield mdl-textfield--floating-label mdl-js-textfield mdl-cell mdl-cell--12-col-desktop mdl-cell--6-col-tablet mdl-cell--1-offset-tablet">
                     <asp:TextBox ID="txtPassword" runat="server" class="mdl-textfield__input" type="password"></asp:TextBox>
                     <label class="mdl-textfield__label" for="agendamentoOS">Senha</label>
                   </div>
-                  <div class="g-recaptcha hidden mdl-cell mdl-cell--4-col--offset" data-sitekey="6LfO2woUAAAAACq39JNsQgZ72fKH226foaZeTK1o"></div>
-                  <asp:Button Text="entrar" onclick="login" runat="server"
-                   class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-cell mdl-cell--5-col-desktop mdl-cell--8-offset-desktop mdl-cell--2-offset-tablet">
+                  <div class="captchaDiv mdl-cell mdl-cell--12-col mdl-cell--2-offset-tablet">
+                    <div id="googleCaptcha" class="g-recaptcha hidden mdl-cell mdl-cell--12-col" data-sitekey="6LfO2woUAAAAACq39JNsQgZ72fKH226foaZeTK1o" data-callback="inFactNotARobot"></div>
+                  </div>
+                  <asp:Button id="btnLogin" type="submit" Text="entrar" onclick="login" runat="server"
+                   class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-cell mdl-cell--2-offset-desktop mdl-cell--2-offset-tablet">
                   </asp:Button>
                 </form>
               </div>
-            </div>
           </div>
       </div>
     </main>
   </div>
   <!-- Material Design Scripts src -->
   <script src="../material/material.min.js"></script>
-
-
+  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 
     <asp:SqlDataSource ID="SqlLogin" runat="server" ConnectionString="<%$ ConnectionStrings:amaralguinchoConnectionString %>" ProviderName="<%$ ConnectionStrings:amaralguinchoConnectionString.ProviderName %>" SelectCommand="SELECT id_login, username_login, password_login, id_func FROM login WHERE (username_login = @LOGIN) AND (password_login = @SENHA)">
         <SelectParameters>
@@ -180,6 +177,29 @@
     </asp:SqlDataSource>
 
     <script type="text/javascript">
+      var captcha = document.getElementById('googleCaptcha');
+      var loginButton = document.getElementById('btnLogin');
+
+      function checkCaptcha() {
+        // Getting Variable from Server
+        var logAttempt = '<%=((int)Session["failedLogAttempts"])%>';
+        // Checking number of wrong attempts
+        if (logAttempt >= 3) {
+          captcha.classList.remove('hidden');
+          loginButton.classList.add('invisible');
+        }
+
+      };
+
+      var inFactNotARobot = function () {
+        captcha.classList.add('animated');
+        captcha.classList.add('hinge');
+        captcha.addEventListener('animationend',function() {
+          captcha.classList.add('invisible');
+          loginButton.classList.remove('invisible');
+        });
+      }
+
       function join() {
         alert("Peça autorização ao administrador!");
       }
@@ -209,6 +229,9 @@
 
           });
         });
+
+        // checking captcha
+        checkCaptcha();
 
       });
     </script>
