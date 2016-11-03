@@ -483,6 +483,21 @@ public partial class app_servico : System.Web.UI.Page
         updateSinistro();
         updateOrdemServico();
         updateServico();
+
+        // AUDITORIA
+        // Gravando Ação no `userlog`
+        string curretUser = Session["log"].ToString();
+        string acao = "Update OrdemServico";
+        // Transformando a data no padrão internacional
+        string currentDate = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+
+        userLog.InsertParameters["funcionario"].DefaultValue = (curretUser);
+        userLog.InsertParameters["acao"].DefaultValue = Crypto.Encrypt(acao);
+        userLog.InsertParameters["time"].DefaultValue = Crypto.Encrypt(currentDate);
+
+        // Inserindo as informações
+        userLog.Insert();
+
         Response.Redirect("servico.aspx");
       }catch(Exception ex){
         Response.Write("<script>alert('Ocorreu um erro');</script>");

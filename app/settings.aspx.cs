@@ -76,6 +76,21 @@ public partial class app_settings : System.Web.UI.Page
 
     // Solicitando Alteração ao Servidor
     sqlFuncionario.Update();
+
+    // AUDITORIA
+    // Gravando Ação no `userlog`
+    string curretUser = Session["log"].ToString();
+    string acao = "Update Funcionario";
+    // Transformando a data no padrão internacional
+    string currentDate = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+
+    userLog.InsertParameters["funcionario"].DefaultValue = (curretUser);
+    userLog.InsertParameters["acao"].DefaultValue = Crypto.Encrypt(acao);
+    userLog.InsertParameters["time"].DefaultValue = Crypto.Encrypt(currentDate);
+
+    // Inserindo as informações
+    userLog.Insert();
+
     Response.Redirect("home.aspx");
   }
 
@@ -90,6 +105,21 @@ public partial class app_settings : System.Web.UI.Page
       sqlChangePassword.Update();
       novaSenhaASP.Text = String.Empty;
       Response.Write("<script>alert('Senha Alterada')</script>");
+
+      // AUDITORIA
+      // Gravando Ação no `userlog`
+      string curretUser = Session["log"].ToString();
+      string acao = "Update Password";
+      // Transformando a data no padrão internacional
+      string currentDate = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+
+      userLog.InsertParameters["funcionario"].DefaultValue = (curretUser);
+      userLog.InsertParameters["acao"].DefaultValue = Crypto.Encrypt(acao);
+      userLog.InsertParameters["time"].DefaultValue = Crypto.Encrypt(currentDate);
+
+      // Inserindo as informações
+      userLog.Insert();
+
     }catch(Exception ex){}
   }
 }

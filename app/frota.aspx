@@ -230,6 +230,17 @@
   SelectCommand="SELECT nome_frota, img_frota, placa_frota FROM frota ORDER BY id_frota DESC LIMIT 3">
   </asp:SqlDataSource>
 
+  <asp:SqlDataSource ID="userLog" runat="server"
+  ConnectionString="<%$ ConnectionStrings:amaralguinchoConnectionString %>"
+  ProviderName="<%$ ConnectionStrings:amaralguinchoConnectionString.ProviderName %>"
+  InsertCommand="INSERT INTO userlog VALUES (null,@funcionario,@acao,@time)">
+    <InsertParameters>
+      <asp:Parameter Name="funcionario"/>
+      <asp:Parameter Name="acao"/>
+      <asp:Parameter Name="time"/>
+    </InsertParameters>
+  </asp:SqlDataSource>
+
   <script src="../scripts/cpf.min.js" charset="utf-8"></script>
 
   <script>

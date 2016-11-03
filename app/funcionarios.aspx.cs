@@ -121,6 +121,21 @@ public partial class app_funcionarios : System.Web.UI.Page
         //Inserindo Habilitação
         novoMotorista.Insert();
       }
+
+      // AUDITORIA
+      // Gravando Ação no `userlog`
+      string curretUser = Session["log"].ToString();
+      string acao = "Insert Func";
+      // Transformando a data no padrão internacional
+      string currentDate = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+
+      userLog.InsertParameters["funcionario"].DefaultValue = (curretUser);
+      userLog.InsertParameters["acao"].DefaultValue = Crypto.Encrypt(acao);
+      userLog.InsertParameters["time"].DefaultValue = Crypto.Encrypt(currentDate);
+
+      // Inserindo as informações
+      userLog.Insert();
+
       Response.Redirect("~/app/home.aspx");
     }
 }

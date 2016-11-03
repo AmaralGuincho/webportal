@@ -80,6 +80,21 @@ public partial class app_seguro : System.Web.UI.Page{
       seguro.InsertParameters["nomeAmigavel"].DefaultValue = Crypto.Encrypt(nomeAmigavel.Text);
 
       seguro.Insert();
+
+      // AUDITORIA
+      // Gravando Ação no `userlog`
+      string curretUser = Session["log"].ToString();
+      string acao = "Insert Consulta";
+      // Transformando a data no padrão internacional
+      string currentDate = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+
+      userLog.InsertParameters["funcionario"].DefaultValue = (curretUser);
+      userLog.InsertParameters["acao"].DefaultValue = Crypto.Encrypt(acao);
+      userLog.InsertParameters["time"].DefaultValue = Crypto.Encrypt(currentDate);
+
+      // Inserindo as informações
+      userLog.Insert();
+
       Response.Redirect("~/app/home.aspx");
     }
 }

@@ -88,6 +88,21 @@ public partial class app_frota : System.Web.UI.Page
       frota.InsertParameters["placa"].DefaultValue = Crypto.Encrypt(placaFrota.Text);
       frota.InsertParameters["cor"].DefaultValue = Crypto.Encrypt(corFrota.Text);
       frota.Insert();
+
+      // AUDITORIA
+      // Gravando Ação no `userlog`
+      string curretUser = Session["log"].ToString();
+      string acao = "Insert Frota";
+      // Transformando a data no padrão internacional
+      string currentDate = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+
+      userLog.InsertParameters["funcionario"].DefaultValue = (curretUser);
+      userLog.InsertParameters["acao"].DefaultValue = Crypto.Encrypt(acao);
+      userLog.InsertParameters["time"].DefaultValue = Crypto.Encrypt(currentDate);
+
+      // Inserindo as informações
+      userLog.Insert();
+
       Response.Redirect("~/app/home.aspx");
     }
 }

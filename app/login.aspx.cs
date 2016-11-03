@@ -69,11 +69,11 @@ public partial class websites_login : System.Web.UI.Page
             // AUDITORIA
             // Gravando Ação no `userlog`
             string curretUser = Session["log"].ToString();
-            string acao = "Seção Iniciada";
+            string acao = "Start Session";
             // Transformando a data no padrão internacional
             string currentDate = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
 
-            userLog.InsertParameters["funcionario"].DefaultValue = Crypto.Encrypt(curretUser);
+            userLog.InsertParameters["funcionario"].DefaultValue = (curretUser);
             userLog.InsertParameters["acao"].DefaultValue = Crypto.Encrypt(acao);
             userLog.InsertParameters["time"].DefaultValue = Crypto.Encrypt(currentDate);
 
