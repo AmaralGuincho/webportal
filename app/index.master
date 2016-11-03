@@ -105,7 +105,7 @@
       <!-- <a class="mdl-navigation__link" href="#" disabled><i class="mdl-color-text--blue-grey-400 material-icons">monetization_on</i>Financeiro</a> -->
       <a class="mdl-navigation__link" href="settings.aspx"><i class="mdl-color-text--blue-grey-400 material-icons">settings</i>Ajustes</a>
       <div class="mdl-layout-spacer"></div>
-      <a class="mdl-navigation__link" runat="server" href="../index.html" onclick="logoff();"><i class="mdl-color-text--blue-grey-400 material-icons">power_settings_new</i>Sair</a>
+      <a class="mdl-navigation__link" href="../index.html" id="logoff"><i class="mdl-color-text--blue-grey-400 material-icons">power_settings_new</i>Sair</a>
     </nav>
   </div>
 
@@ -156,6 +156,13 @@
 
   <!-- js Animations -->
   <script src="../scripts/animate.js"></script>
+
+  <script>
+    logOff = document.querySelector('#logoff');
+    logoff.addEventListener('click', function() {
+      '<% Session["log"] = null ;%>';
+    });
+  </script>
 
 </body>
 </html>
