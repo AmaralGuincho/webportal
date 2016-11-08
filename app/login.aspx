@@ -148,14 +148,14 @@
                     <asp:TextBox ID="txtPassword" runat="server" class="mdl-textfield__input" type="password"></asp:TextBox>
                     <label class="mdl-textfield__label" for="agendamentoOS">Senha</label>
                   </div>
-                  <div class="captchaDiv mdl-cell mdl-cell--12-col mdl-cell--2-offset-tablet">
+                  <div class="captchaDiv mdl-cell mdl-cell--12-col mdl-cell--1-offset-tablet">
                     <div id="googleCaptcha" class="g-recaptcha hidden mdl-cell mdl-cell--12-col" data-sitekey="6LfO2woUAAAAACq39JNsQgZ72fKH226foaZeTK1o" data-callback="inFactNotARobot"></div>
                   </div>
                   <asp:Button id="btnLogin" type="submit" Text="entrar" onclick="login" runat="server"
                    class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-cell mdl-cell--2-offset-desktop mdl-cell--2-offset-tablet">
                   </asp:Button>
                   <asp:Button id="btnForgotPass" type="submit" Text="Esqueceu sua senha?" onclick="forgotPass" runat="server"
-                   class="hidden mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-cell mdl-cell--2-offset-desktop mdl-cell--2-offset-tablet">
+                   class="hidden mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-cell mdl-cell--2-offset-tablet mdl-cell--8-col-desktop">
                   </asp:Button>
                 </form>
               </div>
