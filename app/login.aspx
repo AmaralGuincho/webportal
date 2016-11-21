@@ -193,17 +193,20 @@
     <asp:SqlDataSource ID="sqlForgotPass" runat="server"
     ConnectionString="<%$ ConnectionStrings:amaralguinchoConnectionString %>"
     ProviderName="<%$ ConnectionStrings:amaralguinchoConnectionString.ProviderName %>"
-    SelectCommand="SELECT * FROM funcionario">
+    SelectCommand="SELECT * FROM funcionario WHERE (email_func = @login)">
+      <SelectParameters>
+        <asp:Parameter Name="login"/>
+      </SelectParameters>
     </asp:SqlDataSource>
 
     <asp:SqlDataSource ID="sqlUpdateLogin" runat="server"
     ConnectionString="<%$ ConnectionStrings:amaralguinchoConnectionString %>"
     ProviderName="<%$ ConnectionStrings:amaralguinchoConnectionString.ProviderName %>"
     UpdateCommand="UPDATE login SET password_login = @newpassword where id_func = @func">
-      <SelectParameters>
+      <UpdateParameters>
         <asp:Parameter Name="newpassword"/>
         <asp:Parameter Name="func"/>
-      </SelectParameters>
+      </UpdateParameters>
     </asp:SqlDataSource>
 
 

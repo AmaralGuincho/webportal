@@ -106,7 +106,9 @@ public partial class websites_login : System.Web.UI.Page
     }
 
     public void forgotPass(object sender, EventArgs e){
-      string email = txtUsername.Text;
+      string email = Crypto.Encrypt(txtUsername.Text);
+
+      sqlForgotPass.SelectParameters["login"].DefaultValue = email;
 
       DataView listaFunc = (DataView)sqlForgotPass.Select(DataSourceSelectArguments.Empty);
       // Criando novo dataTAbe
@@ -158,13 +160,15 @@ public partial class websites_login : System.Web.UI.Page
 
       string newPassword = Membership.GeneratePassword(12,1);
 
-      sqlUpdateLogin.SelectParameters["newpassword"].DefaultValue = Crypto.Encrypt(newPassword.ToString());
-      sqlUpdateLogin.SelectParameters["func"].DefaultValue = funcionarios.Table.Rows[0]["id_func"].ToString();
+      sqlUpdateLogin.UpdateParameters["newpassword"].DefaultValue = Crypto.Encrypt(newPassword.ToString());
+      sqlUpdateLogin.UpdateParameters["func"].DefaultValue = funcionarios.Table.Rows[0]["id_func"].ToString();
 
       string destinatario = funcionarios.Table.Rows[0]["email_func"].ToString();
       string nome = funcionarios.Table.Rows[0]["nome_func"].ToString();
       string login = funcionarios.Table.Rows[0]["email_func"].ToString();
       string senha = newPassword.ToString();
       Email.sendForgotPass(destinatario, nome, login, senha);
+
+      sqlUpdateLogin.Update();
     }
 }
