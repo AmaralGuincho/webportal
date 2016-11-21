@@ -14,6 +14,7 @@ public partial class app_seguro : System.Web.UI.Page{
     }
 
     protected void cadastro_seguro(object sender, EventArgs e){
+      try{
       //singin up `seguro` to database
       seguro.InsertParameters["nomeSeguro"].DefaultValue = Crypto.Encrypt(nomeSeguro.Text);
       seguro.InsertParameters["codPrestador"].DefaultValue = Crypto.Encrypt(codPrestador.Text);
@@ -96,5 +97,9 @@ public partial class app_seguro : System.Web.UI.Page{
       userLog.Insert();
 
       Response.Redirect("~/app/home.aspx");
+    }
+    catch{
+
+    }
     }
 }

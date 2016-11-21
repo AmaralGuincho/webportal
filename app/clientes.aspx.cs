@@ -58,6 +58,7 @@ public partial class app_clientes : System.Web.UI.Page
       }
     }
     protected void cadastrar(object sender, EventArgs e){
+      try{
       //Converting date to international format
       cliente.InsertParameters["nome"].DefaultValue = Crypto.Encrypt(nomeCli.Text);
       cliente.InsertParameters["sobrenome"].DefaultValue = Crypto.Encrypt(SobrenomeCli.Text);
@@ -91,5 +92,9 @@ public partial class app_clientes : System.Web.UI.Page
       userLog.Insert();
 
       Response.Redirect("home.aspx");
+    }
+    catch{
+
+    }
     }
 }

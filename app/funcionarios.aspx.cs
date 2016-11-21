@@ -56,36 +56,37 @@ public partial class app_funcionarios : System.Web.UI.Page
 
     protected void cadastrar(object sender, EventArgs e){
       // Getting data from ui
-      novoFuncionario.InsertParameters["nome"].DefaultValue = Crypto.Encrypt(nomeFunc.Text);
-      novoFuncionario.InsertParameters["sobrenome"].DefaultValue = Crypto.Encrypt(sobrenomeFunc.Text);
-      novoFuncionario.InsertParameters["sexo"].DefaultValue = Crypto.Encrypt(sexoFunc.Text);
-      novoFuncionario.InsertParameters["email"].DefaultValue = Crypto.Encrypt(emailFunc.Text);
-      novoFuncionario.InsertParameters["cpf"].DefaultValue = Crypto.Encrypt(cpfFunc.Text);
-      novoFuncionario.InsertParameters["telefone"].DefaultValue = Crypto.Encrypt(telFunc.Text);
-      novoFuncionario.InsertParameters["cep"].DefaultValue = Crypto.Encrypt(cepFunc.Text);
-      novoFuncionario.InsertParameters["residencia"].DefaultValue = Crypto.Encrypt(residenciaFunc.Text);
-      novoFuncionario.InsertParameters["bairro"].DefaultValue = Crypto.Encrypt(bairroFunc.Text);
-      novoFuncionario.InsertParameters["cidade"].DefaultValue = Crypto.Encrypt(cidadeFunc.Text);
-      novoFuncionario.InsertParameters["uf"].DefaultValue = Crypto.Encrypt(ufFunc.Text);
-      novoFuncionario.InsertParameters["cargo"].DefaultValue = cargoFunc.SelectedValue;
-      //Converting Date
-      if(dtNascFunc.Text != String.Empty){
-        novoFuncionario.InsertParameters["dataNasc"].DefaultValue =
-          Crypto.Encrypt(Convert.ToDateTime(dtNascFunc.Text).ToString("yyyy/MM/dd"));
-      } else{
-        novoFuncionario.InsertParameters["dataNasc"].DefaultValue = null;
-      }
+      try{
+        novoFuncionario.InsertParameters["nome"].DefaultValue = Crypto.Encrypt(nomeFunc.Text);
+        novoFuncionario.InsertParameters["sobrenome"].DefaultValue = Crypto.Encrypt(sobrenomeFunc.Text);
+        novoFuncionario.InsertParameters["sexo"].DefaultValue = Crypto.Encrypt(sexoFunc.Text);
+        novoFuncionario.InsertParameters["email"].DefaultValue = Crypto.Encrypt(emailFunc.Text);
+        novoFuncionario.InsertParameters["cpf"].DefaultValue = Crypto.Encrypt(cpfFunc.Text);
+        novoFuncionario.InsertParameters["telefone"].DefaultValue = Crypto.Encrypt(telFunc.Text);
+        novoFuncionario.InsertParameters["cep"].DefaultValue = Crypto.Encrypt(cepFunc.Text);
+        novoFuncionario.InsertParameters["residencia"].DefaultValue = Crypto.Encrypt(residenciaFunc.Text);
+        novoFuncionario.InsertParameters["bairro"].DefaultValue = Crypto.Encrypt(bairroFunc.Text);
+        novoFuncionario.InsertParameters["cidade"].DefaultValue = Crypto.Encrypt(cidadeFunc.Text);
+        novoFuncionario.InsertParameters["uf"].DefaultValue = Crypto.Encrypt(ufFunc.Text);
+        novoFuncionario.InsertParameters["cargo"].DefaultValue = cargoFunc.SelectedValue;
+        //Converting Date
+        if(dtNascFunc.Text != String.Empty){
+          novoFuncionario.InsertParameters["dataNasc"].DefaultValue =
+            Crypto.Encrypt(Convert.ToDateTime(dtNascFunc.Text).ToString("yyyy/MM/dd"));
+        } else{
+          novoFuncionario.InsertParameters["dataNasc"].DefaultValue = null;
+        }
 
-      if(contratacaoFunc.Text != String.Empty){
-        novoFuncionario.InsertParameters["dataContratacao"].DefaultValue =
-          Crypto.Encrypt(Convert.ToDateTime(contratacaoFunc.Text).ToString("yyyy/MM/dd"));
-      } else{
-        novoFuncionario.InsertParameters["dataContratacao"].DefaultValue = null;
+        if(contratacaoFunc.Text != String.Empty){
+          novoFuncionario.InsertParameters["dataContratacao"].DefaultValue =
+            Crypto.Encrypt(Convert.ToDateTime(contratacaoFunc.Text).ToString("yyyy/MM/dd"));
+        } else{
+          novoFuncionario.InsertParameters["dataContratacao"].DefaultValue = null;
 
-      }
+        }
 
-      //Inserindo Funcionario
-      novoFuncionario.Insert();
+        //Inserindo Funcionario
+        novoFuncionario.Insert();
 
       if (cargoFunc.SelectedItem.Value == "3") {
         //Habilitação required
@@ -138,4 +139,8 @@ public partial class app_funcionarios : System.Web.UI.Page
 
       Response.Redirect("~/app/home.aspx");
     }
+    catch{
+
+    }
+  }
 }

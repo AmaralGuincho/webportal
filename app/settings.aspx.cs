@@ -47,6 +47,7 @@ public partial class app_settings : System.Web.UI.Page
   }
 
   protected void updateFuncionario(object sender, EventArgs e){
+    try{
     sqlFuncionario.UpdateParameters["user"].DefaultValue = Session["log"].ToString();
     sqlFuncionario.UpdateParameters["nomeFunc"].DefaultValue = Crypto.Encrypt(nomeFunc.Text.ToString());
     sqlFuncionario.UpdateParameters["sobrenomeFunc"].DefaultValue = Crypto.Encrypt(sobrenomeFunc.Text.ToString());
@@ -92,6 +93,10 @@ public partial class app_settings : System.Web.UI.Page
     userLog.Insert();
 
     Response.Redirect("home.aspx");
+  }
+  catch{
+
+  }
   }
 
   protected void changePassword(object sender, EventArgs e){

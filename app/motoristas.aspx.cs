@@ -52,6 +52,7 @@ public partial class app_motoristas : System.Web.UI.Page
   }
 
   protected void cadastrar(object sender, EventArgs e){
+    try{
     //Checking if Habilitacão is required
 
     //Converting Date
@@ -133,5 +134,9 @@ public partial class app_motoristas : System.Web.UI.Page
     userLog.Insert();
 
     Response.Redirect("~/app/home.aspx");
+    }
+    catch{
+
+    }
   }
 }

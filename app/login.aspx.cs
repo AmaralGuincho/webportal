@@ -18,7 +18,7 @@ public partial class websites_login : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
       if(!IsPostBack){
-        if(Session["log"] != null){
+        if(Session["logOn"] != null){
           Response.Redirect("home.aspx");
         }else{
           if(Session["failedLogAttempts"] == null){
