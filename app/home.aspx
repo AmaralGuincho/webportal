@@ -568,7 +568,7 @@
   ID="lattestOs" runat="server"
   ConnectionString="<%$ ConnectionStrings:amaralguinchoConnectionString %>"
   ProviderName="<%$ ConnectionStrings:amaralguinchoConnectionString.ProviderName %>"
-  SelectCommand="SELECT id_os, dtab_os FROM ordem_de_servico WHERE (status_os = 'Aberto') ORDER BY id_os ASC LIMIT 3">
+  SelectCommand="SELECT id_os, dtab_os FROM ordem_de_servico WHERE (status_os = 'cI+y/PwWr0cMRCHLvePLjQ==') ORDER BY id_os ASC LIMIT 3">
   </asp:SqlDataSource>
 
   <asp:SqlDataSource
@@ -613,7 +613,7 @@
         ordem_de_servico.id_func = funcionario.id_func
         INNER JOIN frota on
         viagem.id_frota = frota.id_frota
-    WHERE ordem_de_servico.status_os = 'aberto'
+    WHERE ordem_de_servico.status_os = 'cI+y/PwWr0cMRCHLvePLjQ=='
               ORDER BY servico.id_servico DESC LIMIT 3">
   </asp:SqlDataSource>
 
