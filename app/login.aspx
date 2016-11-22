@@ -149,7 +149,7 @@
                     <label class="mdl-textfield__label" for="agendamentoOS">Senha</label>
                   </div>
                   <div class="captchaDiv mdl-cell mdl-cell--12-col mdl-cell--1-offset-tablet">
-                    <div id="googleCaptcha" class="g-recaptcha hidden mdl-cell mdl-cell--12-col" data-sitekey="6LfO2woUAAAAACq39JNsQgZ72fKH226foaZeTK1o" data-callback="inFactNotARobot"></div>
+                    <div id="googleCaptcha" class="g-recaptcha hidden mdl-cell mdl-cell--12-col" data-sitekey="6Ld0oAwUAAAAAEFZ-y9sOAvYltsWdMitGvTlLcjp" data-callback="6Ld0oAwUAAAAAFVB_nny54biv9UAydLdRgx9fLDn"></div>
                   </div>
                   <asp:Button id="btnLogin" type="submit" Text="entrar" onclick="login" runat="server"
                    class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-cell mdl-cell--2-offset-desktop mdl-cell--2-offset-tablet">
