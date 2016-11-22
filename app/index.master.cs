@@ -14,7 +14,6 @@ public partial class app_index : System.Web.UI.MasterPage
     //Creating a new DataView
     // Putting MySql's information inside our `Usuario` DataView
     DataView user = (DataView)getUsuario.Select(DataSourceSelectArguments.Empty);
-
     // User data to be shown
    string userId = user.Table.Rows[0]["id_func"].ToString();
    string userName = Crypto.Decrypt(user.Table.Rows[0]["nome_func"].ToString());
@@ -51,7 +50,7 @@ public partial class app_index : System.Web.UI.MasterPage
   public void Page_Load(object sender, EventArgs e)
   {
     if(!IsPostBack){
-      // try{
+      try{
         //Verifying if user have a elegible log
         if(Session["log"] == null){
           //User does not have a elegible log
@@ -64,8 +63,6 @@ public partial class app_index : System.Web.UI.MasterPage
           string genericImage = "../images/profiles/generic.png";
 
           Session["userFullName"] = getUserInfo("userFullName");
-
-
 
           //Displaying user information on screen
           nome.InnerHtml = name;
@@ -80,7 +77,7 @@ public partial class app_index : System.Web.UI.MasterPage
             profileImage.Attributes["src"] = image;
           }
         }
-        // }catch(Exception ex){}
+      }catch(Exception ex){}
       }
     }
 

@@ -256,7 +256,7 @@ public partial class app_home : System.Web.UI.Page
     if (recentViagemProgresso.Table.Rows.Count > 0) {
       codigoServicoProgresso1.InnerHtml = Crypto.Decrypt(recentViagemProgresso.Table.Rows[0]["tipo_servico"].ToString());
       cidadeServicoProgresso1.InnerHtml = Crypto.Decrypt(recentViagemProgresso.Table.Rows[0]["cidade_destino_viagem"].ToString());
-      nomeMotoristaServicoProgresso1.InnerHtml = Crypto.Decrypt(recentViagemProgresso.Table.Rows[0]["nome_func"].ToString());
+      // nomeMotoristaServicoProgresso1.InnerHtml = Crypto.Decrypt(recentViagemProgresso.Table.Rows[0]["nome_func"].ToString());
 
       if(recentViagemProgresso.Table.Rows[0]["nome_frota"].ToString() == String.Empty){
         nomeFrotaServicoProgresso1.InnerHtml = Crypto.Decrypt(recentViagemProgresso.Table.Rows[0]["placa_frota"].ToString());
@@ -351,17 +351,21 @@ public partial class app_home : System.Web.UI.Page
     if(!IsPostBack){
       // Cleanning any possible failed Login attempts
       Session["failedLogAttempts"] = null;
-      
-      //Loading Cards with most recent infos
-      loadRecentCliente();
-      loadServicoAberto();
-      loadFrota();
-      loadFuncionario();
-      loadMotorista();
-      loadViagem();
-      loadSinistro();
-      loadServicoOS();
-      loadVeiculo();
+      try{
+        //Loading Cards with most recent infos
+        loadRecentCliente();
+        loadServicoAberto();
+        loadFrota();
+        loadFuncionario();
+        loadMotorista();
+        loadViagem();
+        loadSinistro();
+        loadServicoOS();
+        loadVeiculo();
+
+      }catch(Exception ex){
+
+      }
 
       try{
         // Greeting The user
