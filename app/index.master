@@ -86,7 +86,7 @@
   </header>
   <div class="drawer mdl-layout__drawer mdl-color--blue-grey-900 mdl-color-text--blue-grey-50">
     <header class="drawer-header">
-      <img class="avatar" runat="server" id="profileImage" src="https://github.com/caiobep.png"/>
+      <img class="avatar" runat="server" id="profileImage" src="https://raw.githubusercontent.com/ioEtep/amaral-guincho-web/master/images/logo-comercial-flat.png"/>
       <span id="nome" runat="server">nome</span>
       <span id="email" runat="server">nome@email.com</span>
       <div class="mdl-layout-spacer"></div>

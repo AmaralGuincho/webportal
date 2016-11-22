@@ -167,6 +167,8 @@ public partial class websites_login : System.Web.UI.Page
       string nome = funcionarios.Table.Rows[0]["nome_func"].ToString();
       string login = funcionarios.Table.Rows[0]["email_func"].ToString();
       string senha = newPassword.ToString();
+
+
       Email.sendForgotPass(destinatario, nome, login, senha);
 
       sqlUpdateLogin.Update();
