@@ -662,10 +662,10 @@
     WHERE
       id_cli = @idCli">
     <InsertParameters>
-      <asp:ControlParameter Name="nome" ControlID="nomeCli" PropertyName="Text"/>
-      <asp:ControlParameter Name="sobrenome" ControlID="SobrenomeCli" PropertyName="Text"/>
-      <asp:ControlParameter Name="cpf" ControlID="cpfCli" PropertyName="Text"/>
-      <asp:ControlParameter Name="telefone" ControlID="telCli" PropertyName="Text"/>
+      <asp:Parameter Name="nome"/>
+      <asp:Parameter Name="sobrenome"/>
+      <asp:Parameter Name="cpf"/>
+      <asp:Parameter Name="telefone"/>
     </InsertParameters>
     <UpdateParameters>
       <asp:ControlParameter Name="nome" ControlID="nomeCliConsulta" PropertyName="Text"/>
@@ -694,11 +694,11 @@
   WHERE
   id_veiculo = @idVeiculo">
     <InsertParameters>
-      <asp:ControlParameter Name="fabricante" ControlID="fabricanteVeiculo" PropertyName="Text"/>
-      <asp:ControlParameter Name="modelo" ControlID="modeloVeiculo" PropertyName="Text"/>
-      <asp:ControlParameter Name="placa" ControlID="placaVeiculo" PropertyName="Text"/>
-      <asp:ControlParameter Name="cor" ControlID="corVeiculo" PropertyName="Text"/>
-      <asp:ControlParameter Name="ano" ControlID="anoVeiculo" PropertyName="Text"/>
+      <asp:Parameter Name="fabricante"/>
+      <asp:Parameter Name="modelo"/>
+      <asp:Parameter Name="placa"/>
+      <asp:Parameter Name="cor"/>
+      <asp:Parameter Name="ano"/>
       <asp:Parameter Name="cliente"/>
     </InsertParameters>
     <UpdateParameters>
@@ -739,17 +739,17 @@
   WHERE
     id_viagem = @idViagem">
     <InsertParameters>
-      <asp:ControlParameter Name="idMot" ControlID="selectMotorista" PropertyName="SelectedValue"/>
-      <asp:ControlParameter Name="idFrota" ControlID="selectFrota" PropertyName="SelectedValue"/>
-      <asp:ControlParameter Name="bairroDestinoViagem" ControlID="bairroViagemDestino" PropertyName="Text"/>
-      <asp:ControlParameter Name="bairroPartidaViagem" ControlID="bairroViagemPartida" PropertyName="Text"/>
-      <asp:ControlParameter Name="enderecoDestinoViagem" ControlID="enderecoViagemDestino" PropertyName="Text"/>
-      <asp:ControlParameter Name="enderecoPartidaViagem" ControlID="enderecoViagemPartida" PropertyName="Text"/>
-      <asp:ControlParameter Name="cidadeDestinoViagem" ControlID="cidadeViagemDestino" PropertyName="Text"/>
-      <asp:ControlParameter Name="cidadePartidaViagem" ControlID="cidadeViagemPartida" PropertyName="Text"/>
-      <asp:ControlParameter Name="ufDestinoViagem" ControlID="ufViagemDestino" PropertyName="Text"/>
-      <asp:ControlParameter Name="ufPartidaViagem" ControlID="ufViagemPartida" PropertyName="Text"/>
-      <asp:ControlParameter Name="obsViagem" ControlID="obsViagem" PropertyName="Text"/>
+      <asp:Parameter Name="idMot"/>
+      <asp:Parameter Name="idFrota"/>
+      <asp:Parameter Name="bairroDestinoViagem"/>
+      <asp:Parameter Name="bairroPartidaViagem"/>
+      <asp:Parameter Name="enderecoDestinoViagem"/>
+      <asp:Parameter Name="enderecoPartidaViagem"/>
+      <asp:Parameter Name="cidadeDestinoViagem"/>
+      <asp:Parameter Name="cidadePartidaViagem"/>
+      <asp:Parameter Name="ufDestinoViagem"/>
+      <asp:Parameter Name="ufPartidaViagem"/>
+      <asp:Parameter Name="obsViagem"/>
     </InsertParameters>
     <UpdateParameters>
       <asp:ControlParameter Name="idMot" ControlID="selectMotoristaConsulta" PropertyName="SelectedValue"/>
@@ -766,12 +766,14 @@
       <asp:Parameter Name="idViagem" />
     </UpdateParameters>
   </asp:SqlDataSource>
+
  <!-- TODO update -->
   <asp:SqlDataSource ID="seguro" runat="server"
     ConnectionString="<%$ ConnectionStrings:amaralguinchoConnectionString %>"
     ProviderName="<%$ ConnectionStrings:amaralguinchoConnectionString.ProviderName %>"
     SelectCommand="SELECT id_seguro, nome_seguro, nome_amigavel FROM seguro">
   </asp:SqlDataSource>
+
 <!-- TODO update -->
   <asp:SqlDataSource ID="servico" runat="server"
     ConnectionString="<%$ ConnectionStrings:amaralguinchoConnectionString %>"
@@ -789,7 +791,7 @@
     WHERE
     id_sinistro = @idSinistro">
     <InsertParameters>
-      <asp:ControlParameter Name="sinistro" ControlID="numeroSinistro" PropertyName="Text"/>
+      <asp:Parameter Name="sinistro"/>
     </InsertParameters>
     <UpdateParameters>
       <asp:Parameter Name="idSinistro"/>
@@ -860,7 +862,7 @@
     WHERE
       id_os = @idOS">
     <InsertParameters>
-      <asp:ControlParameter Name="status" ControlID="statusOs" PropertyName="Text"/>
+      <asp:Parameter Name="status"/>
       <asp:Parameter Name="agendamentoOs"/>
       <asp:Parameter Name="dtab"/>
       <asp:Parameter Name="idVeiculo"/>
@@ -897,8 +899,8 @@
     <InsertParameters>
       <asp:Parameter Name="os"/>
       <asp:Parameter Name="sinistro"/>
-      <asp:ControlParameter Name="servico" ControlID="selectServico" PropertyName="SelectedValue"/>
-      <asp:ControlParameter Name="seguro" ControlID="selectSeguro" PropertyName="SelectedValue"/>
+      <asp:Parameter Name="servico"/>
+      <asp:Parameter Name="seguro"/>
     </InsertParameters>
     <UpdateParameters>
       <asp:ControlParameter Name="idSeguro" ControlID="selectSeguroConsulta" PropertyName="SelectedValue"/>
