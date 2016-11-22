@@ -314,7 +314,7 @@ public partial class app_servico : System.Web.UI.Page
         string sobrenomeFuncionario = Crypto.Decrypt(consulta.Table.Rows[0]["sobrenome_func"].ToString());
         abertoPor.Text = (nomeFuncionario + " " + sobrenomeFuncionario);
 
-        dataAbertura.Text = Convert.ToDateTime(consulta.Table.Rows[0]["dtab_os"]).ToString();
+        dataAbertura.Text = Convert.ToDateTime(Crypto.Decrypt(consulta.Table.Rows[0]["dtab_os"].ToString())).ToString("dd/MM/yyyy HH:mm");
 
         //Cliente
         nomeCliConsulta.Text = Crypto.Decrypt(consulta.Table.Rows[0]["nome_cli"].ToString());
@@ -347,12 +347,10 @@ public partial class app_servico : System.Web.UI.Page
         numeroSinistroConsulta.Text = Crypto.Decrypt(consulta.Table.Rows[0]["sinistro"].ToString());
 
         //Agendamento
-        if (consulta.Table.Rows[0]["agendamento_os"].ToString() != String.Empty)
-        {
-            agendamentoOSConsulta.Text = Crypto.Decrypt(Convert.ToDateTime(consulta.Table.Rows[0]["agendamento_os"]).ToString());
+        if (consulta.Table.Rows[0]["agendamento_os"].ToString() == String.Empty){
+            agendamentoOSConsulta.Text = Convert.ToDateTime(Crypto.Decrypt(consulta.Table.Rows[0]["agendamento_os"].ToString())).ToString("dd/MM/yyyy HH:mm");
         }
-        else
-        {
+        else{
             agendamentoOSConsulta.Text = "Sem Agendamento";
         }
     }
@@ -382,7 +380,7 @@ public partial class app_servico : System.Web.UI.Page
         string sobrenomeFuncionario = Crypto.Decrypt(consulta.Table.Rows[0]["sobrenome_func"].ToString());
         abertoPor.Text = (nomeFuncionario + " " + sobrenomeFuncionario);
 
-        dataAbertura.Text = Crypto.Decrypt(Convert.ToDateTime(consulta.Table.Rows[0]["dtab_os"]).ToString());
+        dataAbertura.Text = Convert.ToDateTime(Crypto.Decrypt(consulta.Table.Rows[0]["dtab_os"].ToString())).ToString("dd/MM/yyyy HH:mm");
 
         //Cliente
         nomeCliConsulta.Text = Crypto.Decrypt(consulta.Table.Rows[0]["nome_cli"].ToString());
@@ -414,7 +412,7 @@ public partial class app_servico : System.Web.UI.Page
 
         //Agendamento
         if(consulta.Table.Rows[0]["agendamento_os"].ToString() != String.Empty){
-          agendamentoOSConsulta.Text = Crypto.Decrypt(Convert.ToDateTime(consulta.Table.Rows[0]["agendamento_os"]).ToString());
+          agendamentoOSConsulta.Text = Convert.ToDateTime(Crypto.Decrypt(consulta.Table.Rows[0]["agendamento_os"].ToString())).ToString("dd/MM/yyyy HH:mm");
         }else{
           agendamentoOSConsulta.Text = "Sem Agendamento";
         }
@@ -447,6 +445,12 @@ public partial class app_servico : System.Web.UI.Page
       cliente.UpdateParameters["idCli"].DefaultValue =
         consulta.Table.Rows[0]["id_cli"].ToString();
 
+      // Definindo os Parametros de alteração
+      cliente.UpdateParameters["nome"].DefaultValue = Crypto.Encrypt(nomeCliConsulta.Text.ToString());
+      cliente.UpdateParameters["sobrenome"].DefaultValue = Crypto.Encrypt(sobrenomeCliConsulta.Text.ToString());
+      cliente.UpdateParameters["cpf"].DefaultValue = Crypto.Encrypt(cpfCliConsulta.Text.ToString());
+      cliente.UpdateParameters["telefone"].DefaultValue = Crypto.Encrypt(telefoneCliConsulta.Text.ToString());
+
       // Solicitando Alteração p/ o MySQL
       cliente.Update();
     }
@@ -463,6 +467,13 @@ public partial class app_servico : System.Web.UI.Page
       veiculo.UpdateParameters["idVeiculo"].DefaultValue =
         consulta.Table.Rows[0]["id_veiculo"].ToString();
 
+      // Definindo os parametros de alteração
+      veiculo.UpdateParameters["fabricante"].DefaultValue = Crypto.Encrypt(fabricanteVeiculoConsulta.Text.ToString());
+      veiculo.UpdateParameters["modelo"].DefaultValue = Crypto.Encrypt(modeloVeiculoConsulta.Text.ToString());
+      veiculo.UpdateParameters["placa"].DefaultValue = Crypto.Encrypt(placaVeiculoConsulta.Text.ToString());
+      veiculo.UpdateParameters["cor"].DefaultValue = Crypto.Encrypt(corVeiculoConsulta.Text.ToString());
+      veiculo.UpdateParameters["ano"].DefaultValue = Crypto.Encrypt(anoVeiculoConsulta.Text.ToString());
+
       // Solicitando Alteração p/ o MySQL
       veiculo.Update();
     }
@@ -477,6 +488,20 @@ public partial class app_servico : System.Web.UI.Page
       viagem.UpdateParameters["idViagem"].DefaultValue =
         consulta.Table.Rows[0]["id_viagem"].ToString();
 
+      // Definindo os parametros de alteração
+      viagem.UpdateParameters["bairroDestinoViagem"].DefaultValue = Crypto.Encrypt(bairroViagemDestinoConsulta.Text.ToString());
+      viagem.UpdateParameters["bairroPartidaViagem"].DefaultValue = Crypto.Encrypt(bairroViagemPartidaConsulta.Text.ToString());
+      viagem.UpdateParameters["enderecoDestinoViagem"].DefaultValue = Crypto.Encrypt(enderecoViagemDestinoConsulta.Text.ToString());
+      viagem.UpdateParameters["enderecoPartidaViagem"].DefaultValue = Crypto.Encrypt(enderecoViagemPartidaConsulta.Text.ToString());
+      viagem.UpdateParameters["cidadeDestinoViagem"].DefaultValue = Crypto.Encrypt(cidadeViagemDestinoConsulta.Text.ToString());
+      viagem.UpdateParameters["cidadePartidaViagem"].DefaultValue = Crypto.Encrypt(cidadeViagemPartidaConsulta.Text.ToString());
+      viagem.UpdateParameters["ufDestinoViagem"].DefaultValue = Crypto.Encrypt(ufViagemDestinoConsulta.Text.ToString());
+      viagem.UpdateParameters["ufPartidaViagem"].DefaultValue = Crypto.Encrypt(ufViagemPartidaConsulta.Text.ToString());
+      viagem.UpdateParameters["obsViagem"].DefaultValue = Crypto.Encrypt(obsViagemConsulta.Text.ToString());
+      // Carregando os Itens do DropDownList
+      viagem.UpdateParameters["idMot"].DefaultValue = selectMotoristaConsulta.SelectedValue.ToString();
+      viagem.UpdateParameters["idFrota"].DefaultValue = selectFrotaConsulta.SelectedValue.ToString();
+      // Solicitando Alteração p/ o MySQL
       viagem.Update();
     }
 
@@ -491,7 +516,8 @@ public partial class app_servico : System.Web.UI.Page
       // Realizando o update no veículo selacionado em `consultaOS`
       sinistro.UpdateParameters["idSinistro"].DefaultValue =
         consulta.Table.Rows[0]["id_sinistro"].ToString();
-
+      // Definindo os parametros de alteração
+      sinistro.UpdateParameters["sinistro"].DefaultValue = Crypto.Encrypt(numeroSinistroConsulta.Text.ToString());
       // Solicitando Alteração p/ o MySQL
       sinistro.Update();
     }
@@ -504,11 +530,12 @@ public partial class app_servico : System.Web.UI.Page
       os.UpdateParameters["idOS"].DefaultValue = idOS;
       if(agendamentoOS.Text != String.Empty){
         DateTime agendamento = Convert.ToDateTime(agendamentoOSConsulta.Text);
-        os.InsertParameters["agendamentoOs"].DefaultValue = agendamento.ToString("yyyy-MM-dd HH:mm");
+        os.UpdateParameters["agendamentoOs"].DefaultValue = agendamento.ToString("yyyy-MM-dd HH:mm");
       }else{
-        os.InsertParameters["agendamentoOs"].DefaultValue = String.Empty;
+        os.UpdateParameters["agendamentoOs"].DefaultValue = String.Empty;
       }
-
+      // Definindo os Parametros para alteração
+      os.UpdateParameters["statusOs"].DefaultValue = Crypto.Encrypt(statusOsConsulta.Text.ToString());
       // Solicitando Alteração p/ o MySQL
       os.Update();
     }
@@ -520,11 +547,15 @@ public partial class app_servico : System.Web.UI.Page
       // Realizando o update no veículo selacionado em `consultaOS`
       servicoOs.UpdateParameters["idOS"].DefaultValue = idOS;
 
+      //Inserindo ServicoOS
+      servicoOs.UpdateParameters["idServico"].DefaultValue = selectServicoConsulta.SelectedValue;
+      servicoOs.UpdateParameters["idSeguro"].DefaultValue = selectSeguroConsulta.SelectedValue;
+
       servicoOs.Update();
     }
 
     protected void updateOs(object sender,EventArgs e){
-      try{
+      // try{
         updateCliente();
         updateVeiculo();
         updateViagem();
@@ -532,7 +563,7 @@ public partial class app_servico : System.Web.UI.Page
         updateOrdemServico();
         updateServico();
 
-        // AUDITORIA
+        // AUDITORIA -------------------------------------------//
         // Gravando Ação no `userlog`
         string curretUser = Session["log"].ToString();
         string acao = "Update OrdemServico";
@@ -547,8 +578,8 @@ public partial class app_servico : System.Web.UI.Page
         userLog.Insert();
 
         Response.Redirect("servico.aspx");
-      }catch(Exception ex){
-        Response.Write("<script>alert('Ocorreu um erro');</script>");
-      }
+      // }catch(Exception ex){
+        // Response.Write("<script>alert('Ocorreu um erro');</script>");
+      // }
     }
 }
