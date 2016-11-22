@@ -12,9 +12,7 @@ public partial class app_servico : System.Web.UI.Page
   CsharpCryptography Crypto = new CsharpCryptography("ETEP");
     protected void Page_Load(object sender, EventArgs e)
     {
-
-      if (! IsPostBack)
-      {
+      if (! IsPostBack){
 
       Session["pesqOS"] = false;
 
@@ -50,7 +48,9 @@ public partial class app_servico : System.Web.UI.Page
         osID3.InnerHtml = "--";
       }
 
+      // Recently Closed OS's
       DataView recentServicoOs = (DataView)lattestServicoOs.Select(DataSourceSelectArguments.Empty);
+
       if (recentServicoOs.Table.Rows.Count > 0) {
         codigoServico1.InnerHtml = Crypto.Decrypt(recentServicoOs.Table.Rows[0]["tipo_servico"].ToString());
         codigoOS1.InnerHtml = "# " + recentServicoOs.Table.Rows[0]["id_os"].ToString();
@@ -63,6 +63,7 @@ public partial class app_servico : System.Web.UI.Page
         codigoServico3.InnerHtml = Crypto.Decrypt(recentServicoOs.Table.Rows[2]["tipo_servico"].ToString());
         codigoOS3.InnerHtml = "# " + recentServicoOs.Table.Rows[2]["id_os"].ToString();
       }
+
       //loading dropDown lists
       loadDropDownOs();
       loadDropDownPesq();
@@ -148,73 +149,120 @@ public partial class app_servico : System.Web.UI.Page
 
     }
 
+    public void insertCliente(){
+      // Defining cliente's Parametters
+      cliente.InsertParameters["nome"].DefaultValue = Crypto.Encrypt(nomeCli.Text.ToString());
+      cliente.InsertParameters["sobrenome"].DefaultValue = Crypto.Encrypt(SobrenomeCli.Text.ToString());
+      cliente.InsertParameters["cpf"].DefaultValue = Crypto.Encrypt(cpfCli.Text.ToString());
+      cliente.InsertParameters["telefone"].DefaultValue = Crypto.Encrypt(telCli.Text.ToString());
+      // Inserting Cliente
+      cliente.Insert();
+    }
+
+    public void insertVeiculo(string ultimoCliente){
+      // Defining veiculo's Parametters
+      veiculo.InsertParameters["cliente"].DefaultValue = ultimoCliente;
+      veiculo.InsertParameters["fabricante"].DefaultValue = Crypto.Encrypt(fabricanteVeiculo.Text.ToString());
+      veiculo.InsertParameters["modelo"].DefaultValue = Crypto.Encrypt(modeloVeiculo.Text.ToString());
+      veiculo.InsertParameters["placa"].DefaultValue = Crypto.Encrypt(placaVeiculo.Text.ToString());
+      veiculo.InsertParameters["cor"].DefaultValue = Crypto.Encrypt(corVeiculo.Text.ToString());
+      veiculo.InsertParameters["ano"].DefaultValue = Crypto.Encrypt(anoVeiculo.Text.ToString());
+      // Inserting Veiculo
+      veiculo.Insert();
+
+    }
+
+    public void insertViagem(){
+      //Defining Viagem Parametters
+      viagem.InsertParameters["bairroDestinoViagem"].DefaultValue = Crypto.Encrypt(bairroViagemDestino.Text.ToString());
+      viagem.InsertParameters["bairroPartidaViagem"].DefaultValue = Crypto.Encrypt(bairroViagemPartida.Text.ToString());
+      viagem.InsertParameters["enderecoDestinoViagem"].DefaultValue = Crypto.Encrypt(enderecoViagemDestino.Text.ToString());
+      viagem.InsertParameters["enderecoPartidaViagem"].DefaultValue = Crypto.Encrypt(enderecoViagemPartida.Text.ToString());
+      viagem.InsertParameters["cidadeDestinoViagem"].DefaultValue = Crypto.Encrypt(cidadeViagemDestino.Text.ToString());
+      viagem.InsertParameters["cidadePartidaViagem"].DefaultValue = Crypto.Encrypt(cidadeViagemPartida.Text.ToString());
+      viagem.InsertParameters["ufDestinoViagem"].DefaultValue = Crypto.Encrypt(ufViagemDestino.Text.ToString());
+      viagem.InsertParameters["ufPartidaViagem"].DefaultValue = Crypto.Encrypt(ufViagemPartida.Text.ToString());
+      viagem.InsertParameters["obsViagem"].DefaultValue = Crypto.Encrypt(obsViagem.Text.ToString());
+      // Loading DropDown Lists itens on it
+      viagem.InsertParameters["idMot"].DefaultValue = selectMotorista.SelectedValue.ToString();
+      viagem.InsertParameters["idFrota"].DefaultValue = selectFrota.SelectedValue.ToString();
+      // Inserting Viagem
+      viagem.Insert();
+    }
+
+    public void insertSinistro(){
+      //Defining Sinistro Parametters
+      sinistro.InsertParameters["sinistro"].DefaultValue = Crypto.Encrypt(numeroSinistro.Text.ToString());
+      // Inserting Sinistro
+      sinistro.Insert();
+    }
+
 
     protected void newOs(object sender, EventArgs e){
       try{
-        // Inserindo o cliente
-        cliente.Insert();
-        //obtendo o id do cliente inserido
-        DataView ultimoCliente =
-        (DataView)cliente.Select(DataSourceSelectArguments.Empty);
+        // Inserting Cliente
+        insertCliente();
 
-        string ultimoclienteID = ultimoCliente.Table.Rows[0]["MAX(id_cli)"].ToString();
+        //Getting Last Client ID
+        DataView ultimoClienteDv = (DataView)cliente.Select(DataSourceSelectArguments.Empty);
+        string ultimoCliente = ultimoClienteDv.Table.Rows[0]["MAX(id_cli)"].ToString();
 
-        // inserindo o veículo
-        veiculo.InsertParameters["cliente"].DefaultValue = ultimoclienteID;
-        veiculo.Insert();
+        // Inserting Veículo
+        insertVeiculo(ultimoCliente);
 
-        DataView ultimoVeiculo =
-        (DataView)veiculo.Select(DataSourceSelectArguments.Empty);
+        // Getting Last Veiculo ID
+        DataView ultimoVeiculoDv = (DataView)veiculo.Select(DataSourceSelectArguments.Empty);
+        string ultimoVeiculo = ultimoVeiculoDv.Table.Rows[0]["MAX(id_veiculo)"].ToString();
 
-        string ultimoVeiculoID = ultimoVeiculo.Table.Rows[0]["MAX(id_veiculo)"].ToString();
+        // Inserting Viagem
+        insertViagem();
 
-        //inserindo viagem
-        viagem.Insert();
+        // Getting last Viagem ID
+        DataView ultimaViagemDv = (DataView)viagem.Select(DataSourceSelectArguments.Empty);
+        string ultimaViagem = ultimaViagemDv.Table.Rows[0]["MAX(id_viagem)"].ToString();
 
-        DataView ultimaViagem =
-        (DataView)viagem.Select(DataSourceSelectArguments.Empty);
+        // Inserting sinistro
+        insertSinistro();
 
-        string ultimaViagemID = ultimaViagem.Table.Rows[0]["MAX(id_viagem)"].ToString();
+        // Getting last Sinistro ID
+        DataView ultimoSinistroDv = (DataView)sinistro.Select(DataSourceSelectArguments.Empty);
+        string ultimoSinistro = ultimoSinistroDv.Table.Rows[0]["MAX(id_sinistro)"].ToString();
 
-        //inserindo o sinistro
-        sinistro.Insert();
-
-        DataView ultimoSinistro =
-        (DataView)sinistro.Select(DataSourceSelectArguments.Empty);
-
-        string ultimoSinistroID = ultimoSinistro.Table.Rows[0]["MAX(id_sinistro)"].ToString();
-
-
-        //inserindo a Ordem de Serviço
-        DateTime agora = DateTime.Now;
-
+        //Inserting OS
+        // Getting Current Time
+        DateTime now = DateTime.Now;
+        // Checking if there is a schedule
         if(agendamentoOS.Text != String.Empty){
           DateTime agendamento = Convert.ToDateTime(agendamentoOS.Text);
-          os.InsertParameters["agendamentoOs"].DefaultValue = agendamento.ToString("yyyy-MM-dd HH:mm");
+          os.InsertParameters["agendamentoOs"].DefaultValue = Crypto.Encrypt(agendamento.ToString("yyyy-MM-dd HH:mm"));
         }else{
           os.InsertParameters["agendamentoOs"].DefaultValue = String.Empty;
         }
-
-        os.InsertParameters["dtab"].DefaultValue = agora.ToString("yyyy-MM-dd HH:mm");
-        os.InsertParameters["idVeiculo"].DefaultValue = ultimoVeiculoID;
+        // Defining other Parametters
+        os.InsertParameters["dtab"].DefaultValue = Crypto.Encrypt(now.ToString("yyyy-MM-dd HH:mm"));
+        os.InsertParameters["idVeiculo"].DefaultValue = ultimoVeiculo;
+        os.InsertParameters["status"].DefaultValue = Crypto.Encrypt(statusOs.Text);
         os.Insert();
 
-        DataView ultimoOs =
-        (DataView)os.Select(DataSourceSelectArguments.Empty);
-
-        string osID = ultimoOs.Table.Rows[0]["MAX(id_os)"].ToString();
+        // Getting Last OS ID
+        DataView ultimoOsDv = (DataView)os.Select(DataSourceSelectArguments.Empty);
+        string lastOS = ultimoOsDv.Table.Rows[0]["MAX(id_os)"].ToString();
 
         //Inserindo Viagem Servico
-        viagemServico.InsertParameters["os"].DefaultValue = osID;
-        viagemServico.InsertParameters["viagem"].DefaultValue = ultimaViagemID;
+        viagemServico.InsertParameters["os"].DefaultValue = lastOS;
+        viagemServico.InsertParameters["viagem"].DefaultValue = ultimaViagem;
         viagemServico.Insert();
 
         //Inserindo ServicoOS
-        servicoOs.InsertParameters["os"].DefaultValue = osID;
-        servicoOs.InsertParameters["sinistro"].DefaultValue = ultimoSinistroID;
+        servicoOs.InsertParameters["os"].DefaultValue = lastOS;
+        servicoOs.InsertParameters["sinistro"].DefaultValue = ultimoSinistro;
+        servicoOs.InsertParameters["servico"].DefaultValue = selectServico.SelectedValue;
+        servicoOs.InsertParameters["seguro"].DefaultValue = selectSeguro.SelectedValue;
+
         servicoOs.Insert();
 
         //General Response
+        Response.Write("<script>alert('Ordem de Serviço Aberta com sucesso!');</script>");
         Response.Redirect("servico.aspx");
       }
       catch(Exception ex){
@@ -266,7 +314,7 @@ public partial class app_servico : System.Web.UI.Page
         string sobrenomeFuncionario = Crypto.Decrypt(consulta.Table.Rows[0]["sobrenome_func"].ToString());
         abertoPor.Text = (nomeFuncionario + " " + sobrenomeFuncionario);
 
-        dataAbertura.Text = Convert.ToDateTime(consulta.Table.Rows[0]["dtab_os"]).ToString();
+        dataAbertura.Text = Convert.ToDateTime(Crypto.Decrypt(consulta.Table.Rows[0]["dtab_os"].ToString())).ToString("dd/MM/yyyy HH:mm");
 
         //Cliente
         nomeCliConsulta.Text = Crypto.Decrypt(consulta.Table.Rows[0]["nome_cli"].ToString());
@@ -299,18 +347,16 @@ public partial class app_servico : System.Web.UI.Page
         numeroSinistroConsulta.Text = Crypto.Decrypt(consulta.Table.Rows[0]["sinistro"].ToString());
 
         //Agendamento
-        if (consulta.Table.Rows[0]["agendamento_os"].ToString() != String.Empty)
-        {
-            agendamentoOSConsulta.Text = Crypto.Decrypt(Convert.ToDateTime(consulta.Table.Rows[0]["agendamento_os"]).ToString());
+        if (consulta.Table.Rows[0]["agendamento_os"].ToString() == String.Empty){
+            agendamentoOSConsulta.Text = Convert.ToDateTime(Crypto.Decrypt(consulta.Table.Rows[0]["agendamento_os"].ToString())).ToString("dd/MM/yyyy HH:mm");
         }
-        else
-        {
+        else{
             agendamentoOSConsulta.Text = "Sem Agendamento";
         }
     }
 
     public void pesqOS(int numeroOrdem){
-      try{
+      // try{
         Session["pesqOS"] = true;
 
         //importando o id da os no qual o botão foi pressionado
@@ -334,7 +380,7 @@ public partial class app_servico : System.Web.UI.Page
         string sobrenomeFuncionario = Crypto.Decrypt(consulta.Table.Rows[0]["sobrenome_func"].ToString());
         abertoPor.Text = (nomeFuncionario + " " + sobrenomeFuncionario);
 
-        dataAbertura.Text = Crypto.Decrypt(Convert.ToDateTime(consulta.Table.Rows[0]["dtab_os"]).ToString());
+        dataAbertura.Text = Convert.ToDateTime(Crypto.Decrypt(consulta.Table.Rows[0]["dtab_os"].ToString())).ToString("dd/MM/yyyy HH:mm");
 
         //Cliente
         nomeCliConsulta.Text = Crypto.Decrypt(consulta.Table.Rows[0]["nome_cli"].ToString());
@@ -366,7 +412,7 @@ public partial class app_servico : System.Web.UI.Page
 
         //Agendamento
         if(consulta.Table.Rows[0]["agendamento_os"].ToString() != String.Empty){
-          agendamentoOSConsulta.Text = Crypto.Decrypt(Convert.ToDateTime(consulta.Table.Rows[0]["agendamento_os"]).ToString());
+          agendamentoOSConsulta.Text = Convert.ToDateTime(Crypto.Decrypt(consulta.Table.Rows[0]["agendamento_os"].ToString())).ToString("dd/MM/yyyy HH:mm");
         }else{
           agendamentoOSConsulta.Text = "Sem Agendamento";
         }
@@ -374,9 +420,9 @@ public partial class app_servico : System.Web.UI.Page
         //StatusOS
         statusOsConsulta.Text = Crypto.Decrypt(consulta.Table.Rows[0]["status_os"].ToString());
 
-      }catch(Exception ex){
-        Response.Write("<script>alert('Ocorreu um erro');</script>");
-      }
+      // }catch(Exception ex){
+        // Response.Write("<script>alert('Ocorreu um erro');</script>");
+      // }
     }
 
     protected void showOs(object sender,EventArgs e){
@@ -399,6 +445,12 @@ public partial class app_servico : System.Web.UI.Page
       cliente.UpdateParameters["idCli"].DefaultValue =
         consulta.Table.Rows[0]["id_cli"].ToString();
 
+      // Definindo os Parametros de alteração
+      cliente.UpdateParameters["nome"].DefaultValue = Crypto.Encrypt(nomeCliConsulta.Text.ToString());
+      cliente.UpdateParameters["sobrenome"].DefaultValue = Crypto.Encrypt(sobrenomeCliConsulta.Text.ToString());
+      cliente.UpdateParameters["cpf"].DefaultValue = Crypto.Encrypt(cpfCliConsulta.Text.ToString());
+      cliente.UpdateParameters["telefone"].DefaultValue = Crypto.Encrypt(telefoneCliConsulta.Text.ToString());
+
       // Solicitando Alteração p/ o MySQL
       cliente.Update();
     }
@@ -415,6 +467,13 @@ public partial class app_servico : System.Web.UI.Page
       veiculo.UpdateParameters["idVeiculo"].DefaultValue =
         consulta.Table.Rows[0]["id_veiculo"].ToString();
 
+      // Definindo os parametros de alteração
+      veiculo.UpdateParameters["fabricante"].DefaultValue = Crypto.Encrypt(fabricanteVeiculoConsulta.Text.ToString());
+      veiculo.UpdateParameters["modelo"].DefaultValue = Crypto.Encrypt(modeloVeiculoConsulta.Text.ToString());
+      veiculo.UpdateParameters["placa"].DefaultValue = Crypto.Encrypt(placaVeiculoConsulta.Text.ToString());
+      veiculo.UpdateParameters["cor"].DefaultValue = Crypto.Encrypt(corVeiculoConsulta.Text.ToString());
+      veiculo.UpdateParameters["ano"].DefaultValue = Crypto.Encrypt(anoVeiculoConsulta.Text.ToString());
+
       // Solicitando Alteração p/ o MySQL
       veiculo.Update();
     }
@@ -429,6 +488,20 @@ public partial class app_servico : System.Web.UI.Page
       viagem.UpdateParameters["idViagem"].DefaultValue =
         consulta.Table.Rows[0]["id_viagem"].ToString();
 
+      // Definindo os parametros de alteração
+      viagem.UpdateParameters["bairroDestinoViagem"].DefaultValue = Crypto.Encrypt(bairroViagemDestinoConsulta.Text.ToString());
+      viagem.UpdateParameters["bairroPartidaViagem"].DefaultValue = Crypto.Encrypt(bairroViagemPartidaConsulta.Text.ToString());
+      viagem.UpdateParameters["enderecoDestinoViagem"].DefaultValue = Crypto.Encrypt(enderecoViagemDestinoConsulta.Text.ToString());
+      viagem.UpdateParameters["enderecoPartidaViagem"].DefaultValue = Crypto.Encrypt(enderecoViagemPartidaConsulta.Text.ToString());
+      viagem.UpdateParameters["cidadeDestinoViagem"].DefaultValue = Crypto.Encrypt(cidadeViagemDestinoConsulta.Text.ToString());
+      viagem.UpdateParameters["cidadePartidaViagem"].DefaultValue = Crypto.Encrypt(cidadeViagemPartidaConsulta.Text.ToString());
+      viagem.UpdateParameters["ufDestinoViagem"].DefaultValue = Crypto.Encrypt(ufViagemDestinoConsulta.Text.ToString());
+      viagem.UpdateParameters["ufPartidaViagem"].DefaultValue = Crypto.Encrypt(ufViagemPartidaConsulta.Text.ToString());
+      viagem.UpdateParameters["obsViagem"].DefaultValue = Crypto.Encrypt(obsViagemConsulta.Text.ToString());
+      // Carregando os Itens do DropDownList
+      viagem.UpdateParameters["idMot"].DefaultValue = selectMotoristaConsulta.SelectedValue.ToString();
+      viagem.UpdateParameters["idFrota"].DefaultValue = selectFrotaConsulta.SelectedValue.ToString();
+      // Solicitando Alteração p/ o MySQL
       viagem.Update();
     }
 
@@ -443,7 +516,8 @@ public partial class app_servico : System.Web.UI.Page
       // Realizando o update no veículo selacionado em `consultaOS`
       sinistro.UpdateParameters["idSinistro"].DefaultValue =
         consulta.Table.Rows[0]["id_sinistro"].ToString();
-
+      // Definindo os parametros de alteração
+      sinistro.UpdateParameters["sinistro"].DefaultValue = Crypto.Encrypt(numeroSinistroConsulta.Text.ToString());
       // Solicitando Alteração p/ o MySQL
       sinistro.Update();
     }
@@ -456,11 +530,12 @@ public partial class app_servico : System.Web.UI.Page
       os.UpdateParameters["idOS"].DefaultValue = idOS;
       if(agendamentoOS.Text != String.Empty){
         DateTime agendamento = Convert.ToDateTime(agendamentoOSConsulta.Text);
-        os.InsertParameters["agendamentoOs"].DefaultValue = agendamento.ToString("yyyy-MM-dd HH:mm");
+        os.UpdateParameters["agendamentoOs"].DefaultValue = agendamento.ToString("yyyy-MM-dd HH:mm");
       }else{
-        os.InsertParameters["agendamentoOs"].DefaultValue = String.Empty;
+        os.UpdateParameters["agendamentoOs"].DefaultValue = String.Empty;
       }
-
+      // Definindo os Parametros para alteração
+      os.UpdateParameters["statusOs"].DefaultValue = Crypto.Encrypt(statusOsConsulta.Text.ToString());
       // Solicitando Alteração p/ o MySQL
       os.Update();
     }
@@ -472,11 +547,15 @@ public partial class app_servico : System.Web.UI.Page
       // Realizando o update no veículo selacionado em `consultaOS`
       servicoOs.UpdateParameters["idOS"].DefaultValue = idOS;
 
+      //Inserindo ServicoOS
+      servicoOs.UpdateParameters["idServico"].DefaultValue = selectServicoConsulta.SelectedValue;
+      servicoOs.UpdateParameters["idSeguro"].DefaultValue = selectSeguroConsulta.SelectedValue;
+
       servicoOs.Update();
     }
 
     protected void updateOs(object sender,EventArgs e){
-      try{
+      // try{
         updateCliente();
         updateVeiculo();
         updateViagem();
@@ -484,7 +563,7 @@ public partial class app_servico : System.Web.UI.Page
         updateOrdemServico();
         updateServico();
 
-        // AUDITORIA
+        // AUDITORIA -------------------------------------------//
         // Gravando Ação no `userlog`
         string curretUser = Session["log"].ToString();
         string acao = "Update OrdemServico";
@@ -499,8 +578,8 @@ public partial class app_servico : System.Web.UI.Page
         userLog.Insert();
 
         Response.Redirect("servico.aspx");
-      }catch(Exception ex){
-        Response.Write("<script>alert('Ocorreu um erro');</script>");
-      }
+      // }catch(Exception ex){
+        // Response.Write("<script>alert('Ocorreu um erro');</script>");
+      // }
     }
 }
