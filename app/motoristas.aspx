@@ -283,10 +283,10 @@
     VALUES
     (@id, @nomeHab, @idHab, @registroHab, @dtValidadeHab, @localHab, @dtEmissaoHab)">
     <InsertParameters>
-      <asp:ControlParameter Name="nomeHab" ControlID="nomeHabMot" PropertyName="Text"/>
-      <asp:ControlParameter Name="idHab" ControlID="idHabMot" PropertyName="Text"/>
-      <asp:ControlParameter Name="registroHab" ControlID="registroHabMot" PropertyName="Text"/>
-      <asp:ControlParameter Name="localHab" ControlID="localGeradoHabMot" PropertyName="Text"/>
+      <asp:Parameter Name="nomeHab"/>
+      <asp:Parameter Name="idHab"/>
+      <asp:Parameter Name="registroHab"/>
+      <asp:Parameter Name="localHab"/>
       <asp:Parameter Name="dtEmissaoHab"/>
       <asp:Parameter Name="dtValidadeHab"/>
       <asp:Parameter Name="id"/>
